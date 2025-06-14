@@ -33,6 +33,7 @@ RoundEventFunc g_OnPlayerHitFuncPtr;
 #include "effects/4_speedboost.sp"
 #include "effects/5_thirdperson.sp"
 #include "effects/6_vampire.sp"
+#include "effects/7_swim.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -53,6 +54,7 @@ enum Effect {
 	EFFECT_SPEEDBOOST		=	4,
 	EFFECT_THIRDPERSON		=	5,
 	EFFECT_VAMPIRE			=	6,
+	EFFECT_SWIM			=	7,
 	// EFFECT_MATH			= 	7,
 	// EFFECT_FORCEMELEE	=	8,
 	// EFFECT_FIREMELEE		=	9,

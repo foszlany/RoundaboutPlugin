@@ -1,7 +1,10 @@
 #pragma semicolon 1
 
 public int setEffect(int id) {
-     if(id == -1) {
+     if(id >= view_as<int>(EFFECT_MAXCOUNT)) {
+          id = 0;
+     }
+     else if(id <= -1) {
           id = GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
      }
 
@@ -55,8 +58,12 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_6_Vampire;
           }
 
-          default:
-               return id;
+          case EFFECT_SWIM: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_7_Swim;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_7_Swim;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_7_Swim;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

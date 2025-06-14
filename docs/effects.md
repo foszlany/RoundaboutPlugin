@@ -27,3 +27,7 @@
 * **Vampire**<br>
      - ID: `6`
      - Heals back `60%` of the damage dealt when not overhealed.<br>
+
+* **Swim**<br>
+     - ID: `7`
+     - Allows players to swim in the air.<br>
