@@ -3,12 +3,15 @@
 #endif
 #define _RAHEADER
 
+/* VERSION */
+#define PLUGIN_VERSION "0.02a"
+
 /* GENERIC INCLUDES */
 #include <sourcemod>
 #include <sdktools>
+#include <sdktools_gamerules>
 #include <tf2>
 #include <tf2_stocks>
-#include <sdktools_gamerules>
 
 /* GLOBAL VARIABLES */
 bool g_IsEffectActive = false;
@@ -20,6 +23,7 @@ typedef RoundEventFunc = function void(Event event, const char[] name, bool dont
 RoundEventFunc g_OnRoundStartFuncPtr;
 RoundEventFunc g_OnRoundEndFuncPtr;
 RoundEventFunc g_OnPlayerUpdateFuncPtr;
+RoundEventFunc g_OnPlayerHitFuncPtr;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -28,6 +32,7 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 #include "effects/3_crit.sp"
 #include "effects/4_speedboost.sp"
 #include "effects/5_thirdperson.sp"
+#include "effects/6_vampire.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -36,6 +41,8 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 
 /* COMMANDS */
 #include "commands/force.sp"
+#include "commands/github.sp"
+#include "commands/version.sp"
 
 /* EFFECTS */
 enum Effect {
@@ -45,7 +52,7 @@ enum Effect {
 	EFFECT_CRIT			=	3,
 	EFFECT_SPEEDBOOST		=	4,
 	EFFECT_THIRDPERSON		=	5,
-	// EFFECT_VAMPIRE		=	6
+	EFFECT_VAMPIRE			=	6,
 	// EFFECT_MATH			= 	7,
 	// EFFECT_FORCEMELEE	=	8,
 	// EFFECT_FIREMELEE		=	9,
