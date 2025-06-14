@@ -15,6 +15,8 @@ Read the effect details [here](./docs/effects.md).
 <br>
 
 ## Compile
+The compiled plugin version `roundabout.smx` can be found inside the `plugin` folder.<br><br>
+
 If you wish to compile the source code yourself, use [this](https://github.com/modcommunity/how-to-compile-sourcemod-plugins) guide.
 
 Alternatively you can use the VSCode extension [SourcePawn Studio](https://github.com/Sarrus1/sourcepawn-studio) and follow its [Quick Start](https://sarrus1.github.io/sourcepawn-studio/docs/quick-start/) guide.
