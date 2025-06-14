@@ -25,16 +25,6 @@ public Action ForceToMelee(Handle timer, int client) {
           TF2_RemoveWeaponSlot(client, 4);
           TF2_RemoveWeaponSlot(client, 3);
      }
-     else {
-          int weapon = -1;
-          while((weapon = FindEntityByClassname(weapon, "tf_weapon_builder")) != -1) {
-               if(IsValidEntity(weapon) && GetEntPropEnt(weapon, Prop_Send, "m_hOwnerEntity") == client) {
-                    RemovePlayerItem(client, weapon);
-                    RemoveEntity(weapon);
-                    PrintToChatAll("removed supposedly");
-               }
-          }
-     }
 
      int melee = GetPlayerWeaponSlot(client, 2);
      if(IsValidEntity(melee)) {
