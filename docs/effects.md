@@ -22,8 +22,8 @@
 
 * **Thirdperson**<br>
      - ID: `5`
-     - Turns on third person view for everyone<br>
+     - Turns on third person view for everyone.<br>
 
 * **Vampire**<br>
      - ID: `6`
-     - Heals back 60% of the damage dealt to the user.<br>
+     - Heals back `60%` of the damage dealt when not overhealed.<br>

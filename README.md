@@ -1,7 +1,7 @@
 # Roundabout
 **Roundabout** is a TF2 server plugin that rolls a random effect each round to make the gameplay as chaotic as possible.
 
-The plugin is currently under heavy developement, more features are being added.<br><br>
+The plugin is currently under heavy development, more features are being added.<br><br>
 
 ## Effects
 Read the effect details [here](./docs/effects.md).<br><br>
