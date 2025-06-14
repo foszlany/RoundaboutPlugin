@@ -19,7 +19,7 @@ public void Event_PlayerUpdate_3_Crit(Event event, const char[] name, bool dontB
           pack.WriteCell(client);
           pack.WriteCell(TFCond_CritOnWin);
 
-          CreateTimer(0.06, Timer_AddCondition, pack);
+          CreateTimer(0.2, Timer_AddCondition, pack);
      }
 }
 

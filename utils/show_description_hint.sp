@@ -1,4 +1,4 @@
-void ShowHintToAllClients(const char[] message, float delay = 0.4) {
+void ShowHintToAllClients(const char[] message, float delay = 0.2) {
      DataPack pack = new DataPack();
      pack.WriteString(message);
      

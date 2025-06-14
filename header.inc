@@ -27,6 +27,7 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 #include "effects/2_minicrit.sp"
 #include "effects/3_crit.sp"
 #include "effects/4_speedboost.sp"
+#include "effects/5_thirdperson.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -43,7 +44,7 @@ enum Effect {
 	EFFECT_MINICRIT		=	2,
 	EFFECT_CRIT			=	3,
 	EFFECT_SPEEDBOOST		=	4,
-	// EFFECT_THIRDPERSON	=	5,
+	EFFECT_THIRDPERSON		=	5,
 	// EFFECT_VAMPIRE		=	6
 	// EFFECT_MATH			= 	7,
 	// EFFECT_FORCEMELEE	=	8,

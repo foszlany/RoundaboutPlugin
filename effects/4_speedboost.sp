@@ -19,7 +19,7 @@ public void Event_PlayerUpdate_4_SpeedBoost(Event event, const char[] name, bool
           pack.WriteCell(client);
           pack.WriteCell(TFCond_SpeedBuffAlly);
 
-          CreateTimer(0.06, Timer_AddCondition, pack);
+          CreateTimer(0.2, Timer_AddCondition, pack);
      }
 }
 

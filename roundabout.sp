@@ -62,8 +62,6 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			g_forceRoundEffect = -1;
 		}
 
-		g_IsEffectActive = true;
-
 		if(g_OnRoundStartFuncPtr != INVALID_FUNCTION) {
 			Call_StartFunction(INVALID_HANDLE, g_OnRoundStartFuncPtr);
 			Call_PushCell(event);
@@ -71,6 +69,8 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			Call_PushCell(dontBroadcast);
 			Call_Finish();
 		}
+		g_IsEffectActive = true;
+
 		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
 	}
 }
@@ -78,6 +78,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE  */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+	
 	if(g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
 		Call_StartFunction(INVALID_HANDLE, g_OnRoundEndFuncPtr);
 		Call_PushCell(event);
@@ -85,7 +86,6 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 		Call_PushCell(dontBroadcast);
 		Call_Finish();
 	}
-
 	g_IsEffectActive = false;
 }
 

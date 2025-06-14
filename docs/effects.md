@@ -19,3 +19,7 @@
 * **Speedboost**<br>
      - ID: `4`
      - Gives faster movement speed.<br>
+
+* **Thirdperson**<br>
+     - ID: `5`
+     - Turns on third person view for everyone<br>

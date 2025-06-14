@@ -19,7 +19,7 @@ public void Event_PlayerUpdate_2_MiniCrit(Event event, const char[] name, bool d
           pack.WriteCell(client);
           pack.WriteCell(TFCond_CritCola);
 
-          CreateTimer(0.06, Timer_AddCondition, pack);
+          CreateTimer(0.2, Timer_AddCondition, pack);
      }
 }
 

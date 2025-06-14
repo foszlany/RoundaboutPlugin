@@ -36,6 +36,12 @@ public int setEffect(int id) {
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_4_SpeedBoost;
           }
 
+          case EFFECT_THIRDPERSON: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_5_ThirdPerson;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_5_ThirdPerson;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_5_ThirdPerson;
+          }
+
           default:
                return id;
      }
