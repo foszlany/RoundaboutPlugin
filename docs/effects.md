@@ -40,3 +40,7 @@
 * **Force Melee**<br>
      - ID: `9`
      - Every user is stripped to melee.<br>
+
+* **Fire Aspect**<br>
+     - ID: `10`
+     - Melee hits set the target on fire for `8` seconds.<br>

@@ -59,7 +59,7 @@ public int setEffect(int id) {
 
           case EFFECT_VAMPIRE: {
                g_OnRoundStartFuncPtr = Event_RoundStart_6_Vampire;
-               g_OnRoundEndFuncPtr = Event_RoundEnd_6_Vampire;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr = Event_PlayerHit_6_Vampire;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
@@ -86,6 +86,14 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_9_ForceMelee;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
+
+          case EFFECT_FIREMELEE: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_10_FireMelee;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_10_FireMelee;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
      }

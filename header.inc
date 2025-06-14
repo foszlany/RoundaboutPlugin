@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.03a"
+#define PLUGIN_VERSION "0.04a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -39,6 +39,7 @@ int g_Effect8_InvulnIndex[MAXPLAYERS];
 #include "effects/7_swim.sp"
 #include "effects/8_strongsuit.sp"
 #include "effects/9_forcemelee.sp"
+#include "effects/10_firemelee.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -62,7 +63,7 @@ enum Effect {
 	EFFECT_SWIM			=	7,
 	EFFECT_STRONGSUIT		=	8,
 	EFFECT_FORCEMELEE		=	9,
-	// EFFECT_FIREMELEE		=	10,
+	EFFECT_FIREMELEE		=	10,
 	// EFFECT_RNGDEATH		=	11,
 	// EFFECT_MATH			= 	12,
 	EFFECT_MAXCOUNT

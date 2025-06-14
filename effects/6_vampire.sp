@@ -27,7 +27,3 @@ public void Event_PlayerHit_6_Vampire(Event event, const char[] name, bool dontB
           }
      }
 }
-
-public void Event_RoundEnd_6_Vampire(Event event, const char[] name, bool dontBroadcast) {
-     g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-}
