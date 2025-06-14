@@ -34,4 +34,5 @@
 
 * **Strong Suit**<br>
      - ID: `8`
-     - Receive `Bullet`, `Explosion` or `Fire` invulnerability upon spawning.<br>
+     - Receive `Bullet`, `Explosion` or `Fire` invulnerability upon death.<br>
+          - Player will not receive a different effect when changing weapons or classes in the spawn room.
