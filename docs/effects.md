@@ -34,5 +34,9 @@
 
 * **Strong Suit**<br>
      - ID: `8`
-     - Receive `Bullet`, `Explosion` or `Fire` invulnerability upon death.<br>
+     - Receive `Bullet`, `Explosion` or `Fire` invulnerability when spawning.<br>
           - Player will not receive a different effect when changing weapons or classes in the spawn room.
+
+* **Force Melee**<br>
+     - ID: `9`
+     - Every user is stripped to melee.<br>

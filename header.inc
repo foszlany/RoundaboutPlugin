@@ -38,6 +38,7 @@ int g_Effect8_InvulnIndex[MAXPLAYERS];
 #include "effects/6_vampire.sp"
 #include "effects/7_swim.sp"
 #include "effects/8_strongsuit.sp"
+#include "effects/9_forcemelee.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -60,10 +61,9 @@ enum Effect {
 	EFFECT_VAMPIRE			=	6,
 	EFFECT_SWIM			=	7,
 	EFFECT_STRONGSUIT		=	8,
-	// EFFECT_MATH			= 	7,
-	// EFFECT_FORCEMELEE	=	8,
-	// EFFECT_FIREMELEE		=	9,
-	// EFFECT_RNGDEATH		=	10,
-
+	EFFECT_FORCEMELEE		=	9,
+	// EFFECT_FIREMELEE		=	10,
+	// EFFECT_RNGDEATH		=	11,
+	// EFFECT_MATH			= 	12,
 	EFFECT_MAXCOUNT
 }
