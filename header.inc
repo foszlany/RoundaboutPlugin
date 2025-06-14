@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.02a"
+#define PLUGIN_VERSION "0.03a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -24,6 +24,9 @@ RoundEventFunc g_OnRoundStartFuncPtr;
 RoundEventFunc g_OnRoundEndFuncPtr;
 RoundEventFunc g_OnPlayerUpdateFuncPtr;
 RoundEventFunc g_OnPlayerHitFuncPtr;
+RoundEventFunc g_OnPlayerDeathFuncPtr;
+
+int g_Effect8_InvulnIndex[MAXPLAYERS];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -34,6 +37,7 @@ RoundEventFunc g_OnPlayerHitFuncPtr;
 #include "effects/5_thirdperson.sp"
 #include "effects/6_vampire.sp"
 #include "effects/7_swim.sp"
+#include "effects/8_strongsuit.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -55,6 +59,7 @@ enum Effect {
 	EFFECT_THIRDPERSON		=	5,
 	EFFECT_VAMPIRE			=	6,
 	EFFECT_SWIM			=	7,
+	EFFECT_STRONGSUIT		=	8,
 	// EFFECT_MATH			= 	7,
 	// EFFECT_FORCEMELEE	=	8,
 	// EFFECT_FIREMELEE		=	9,

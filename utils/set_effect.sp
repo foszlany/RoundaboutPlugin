@@ -14,6 +14,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_LOWGRAVITY: {
@@ -21,6 +22,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_1_LowGravity;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_MINICRIT: {
@@ -28,6 +30,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_2_MiniCrit;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_2_MiniCrit;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_CRIT: {
@@ -35,6 +38,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_3_Crit;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_3_Crit;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_SPEEDBOOST: {
@@ -42,6 +46,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_4_SpeedBoost;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_4_SpeedBoost;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_THIRDPERSON: {
@@ -49,6 +54,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_5_ThirdPerson;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_5_ThirdPerson;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_VAMPIRE: {
@@ -56,6 +62,7 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_6_Vampire;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr = Event_PlayerHit_6_Vampire;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
           case EFFECT_SWIM: {
@@ -63,6 +70,15 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = Event_RoundEnd_7_Swim;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_7_Swim;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
+
+          case EFFECT_STRONGSUIT: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_8_StrongSuit;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_8_StrongSuit;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_8_StrongSuit;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_8_StrongSuit;
           }
      }
      return id;

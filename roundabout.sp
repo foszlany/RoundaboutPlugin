@@ -34,10 +34,10 @@ public void OnPluginStart() {
 	HookEvent("teamplay_round_win", Event_RoundEnd, EventHookMode_Pre);
 	HookEvent("teamplay_round_stalemate", Event_RoundEnd, EventHookMode_Pre);
 	
-	HookEvent("player_spawn", Event_PlayerUpdate, EventHookMode_Post);
 	HookEvent("post_inventory_application", Event_PlayerUpdate, EventHookMode_Post);
 
-	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Post);
+	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
+	HookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
 
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
@@ -59,6 +59,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		g_OnRoundEndFuncPtr = INVALID_FUNCTION;
 		g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
 		g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+		g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 		if(g_forceRoundEffect == -1) {
 			setEffect(-1);
@@ -103,10 +104,22 @@ public void Event_PlayerHit(Event event, const char[] name, bool dontBroadcast) 
 	}
 }
 
+/* PLAYER DEATH EVENT */
+public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast) {
+	if(g_OnPlayerDeathFuncPtr != INVALID_FUNCTION) {
+		Call_StartFunction(INVALID_HANDLE, g_OnPlayerDeathFuncPtr);
+		Call_PushCell(event);
+		Call_PushString(name);
+		Call_PushCell(dontBroadcast);
+		Call_Finish();
+	}
+}
+
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE  */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 	if(g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
 		Call_StartFunction(INVALID_HANDLE, g_OnRoundEndFuncPtr);

@@ -31,3 +31,7 @@
 * **Swim**<br>
      - ID: `7`
      - Allows players to swim in the air.<br>
+
+* **Strong Suit**<br>
+     - ID: `8`
+     - Receive `Bullet`, `Explosion` or `Fire` invulnerability upon spawning.<br>
