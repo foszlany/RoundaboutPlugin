@@ -40,18 +40,25 @@
 
 * **Force Melee**<br>
      - ID: `9`
-     - Every user is stripped to melee.
+     - Every Players is stripped to melee.
 
 * **Fire Aspect**<br>
      - ID: `10`
      - Melee hits set the target on fire for `8` seconds.
-     - Users already on fire will receive `Mini-crits`.
+     - Players already on fire will receive `Mini-crits`.
 
 * **Schadenfreude**<br>
      - ID: `11`
-     - Users have a 33% chance each kill to forcibly taunt.
+     - Players have a `33%` chance each kill to forcibly taunt.
 
 * **Spontaneous Combustion**<br>
      - ID: `12`
-     - Users have 1% chance of dying each second.
-     - There's also a 0.01% chance of everyone dying!
+     - Players have a `1%` chance of dying each second.
+     - There's also a `0.01%` chance of everyone dying!
+
+* **Perfect Math Class**<br>
+     - ID: `13`
+     - Gives a random unique math problem every `16 - 42` seconds that must be answered in chat.
+          - Not answering the problem correctly or within `8 seconds` results in the player's death.
+          - Better performing players generally receive harder math problems.
+               - Upper bound for the answer is `400 x (Kills / Deaths)` rounded appropriately.

@@ -1,3 +1,5 @@
+#pragma semicolon 1
+
 public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
      PrintCenterTextAll("Fire Aspect");
      ShowHintToAllClients("Fire Aspect\n\nMelee hits set the enemy on fire for 8 seconds, burning players receive mini-crits.");

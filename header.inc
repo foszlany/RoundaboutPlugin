@@ -28,6 +28,8 @@ RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
+int g_Effect13_MathAnswer[MAXPLAYERS + 1];
+Handle g_Effect13_MathTimers[MAXPLAYERS + 1];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -43,6 +45,7 @@ int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 #include "effects/10_firemelee.sp"
 #include "effects/11_schadenfreude.sp"
 #include "effects/12_rngdeath.sp"
+#include "effects/13_math.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -69,6 +72,6 @@ enum Effect {
 	EFFECT_FIREMELEE		=	10,
 	EFFECT_SCHADENFREUDE	=	11,
 	EFFECT_RNGDEATH		=	12,
-	// EFFECT_MATH			=	12,
+	EFFECT_MATH			=	13,
 	EFFECT_MAXCOUNT
 }
