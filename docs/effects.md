@@ -10,11 +10,11 @@
 
 * **Mini-crits**<br>
      - ID: `2`
-     - Gives guaranteed Mini-crits.<br>
+     - Gives guaranteed `Mini-crits`.<br>
 
 * **Criticals**<br>
      - ID: `3`
-     - Gives guaranteed Crits.<br>
+     - Gives guaranteed `Crits`.<br>
 
 * **Speedboost**<br>
      - ID: `4`
@@ -43,4 +43,5 @@
 
 * **Fire Aspect**<br>
      - ID: `10`
-     - Melee hits set the target on fire for `8` seconds.<br>
+     - Melee hits set the target on fire for `8` seconds.
+     - Users already on fire will receive `Mini-crits`.

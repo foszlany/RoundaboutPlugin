@@ -26,7 +26,7 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
-int g_Effect8_InvulnIndex[MAXPLAYERS];
+int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -53,7 +53,7 @@ int g_Effect8_InvulnIndex[MAXPLAYERS];
 
 /* EFFECTS */
 enum Effect {
-	EFFECT_PURE 			= 	0,
+	EFFECT_PURE			=	0,
 	EFFECT_LOWGRAVITY		=	1,
 	EFFECT_MINICRIT		=	2,
 	EFFECT_CRIT			=	3,
@@ -65,6 +65,6 @@ enum Effect {
 	EFFECT_FORCEMELEE		=	9,
 	EFFECT_FIREMELEE		=	10,
 	// EFFECT_RNGDEATH		=	11,
-	// EFFECT_MATH			= 	12,
+	// EFFECT_MATH			=	12,
 	EFFECT_MAXCOUNT
 }
