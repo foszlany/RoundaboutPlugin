@@ -61,12 +61,12 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
 		g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
-		if(g_forceRoundEffect == -1) {
+		if(g_ForceRoundEffect == -1) {
 			setEffect(-1);
 		}
 		else {
-			setEffect(g_forceRoundEffect);
-			g_forceRoundEffect = -1;
+			setEffect(g_ForceRoundEffect);
+			g_ForceRoundEffect = -1;
 		}
 
 		if(g_OnRoundStartFuncPtr != INVALID_FUNCTION) {

@@ -2,45 +2,45 @@
 
 * **Pure**<br>
      - ID: `0`
-     - Vanilla TF2 experience, doesn't change anything.<br>
+     - Vanilla TF2 experience, doesn't change anything.
 
 * **Low Gravity**<br>
      - ID: `1`
-     - Lowers the gravity to a random value between `100` and `400`.<br>
+     - Lowers the gravity to a random value between `100` and `400`.
 
 * **Mini-crits**<br>
      - ID: `2`
-     - Gives guaranteed `Mini-crits`.<br>
+     - Gives guaranteed `Mini-crits`.
 
 * **Criticals**<br>
      - ID: `3`
-     - Gives guaranteed `Crits`.<br>
+     - Gives guaranteed `Crits`.
 
 * **Speedboost**<br>
      - ID: `4`
-     - Gives faster movement speed.<br>
+     - Gives faster movement speed.
 
 * **Thirdperson**<br>
      - ID: `5`
-     - Turns on third person view for everyone.<br>
+     - Turns on third person view for everyone.
 
 * **Vampire**<br>
      - ID: `6`
-     - Heals back `60%` of the damage dealt when not overhealed.<br>
+     - Heals back `60%` of the damage dealt when not overhealed.
 
 * **Swim**<br>
      - ID: `7`
-     - Allows players to swim in the air.<br>
+     - Allows players to swim in the air.
 
 * **Strong Suit**<br>
      - ID: `8`
-     - Receive `Bullet`, `Explosion` or `Fire` invulnerability when spawning.<br>
+     - Receive `Bullet`, `Explosion` or `Fire` invulnerability when spawning.
           - Player will not receive a different effect when changing weapons or classes in the spawn room.
           - Players will not be able to perform specific actions (e.g. rocket jumps) using damage types that they are immune to.
 
 * **Force Melee**<br>
      - ID: `9`
-     - Every user is stripped to melee.<br>
+     - Every user is stripped to melee.
 
 * **Fire Aspect**<br>
      - ID: `10`
@@ -49,4 +49,9 @@
 
 * **Schadenfreude**<br>
      - ID: `11`
-     - Users have a 33% chance each kill to forcibly taunt.<br>
+     - Users have a 33% chance each kill to forcibly taunt.
+
+* **Spontaneous Combustion**<br>
+     - ID: `12`
+     - Users have 1% chance of dying each second.
+     - There's also a 0.01% chance of everyone dying!

@@ -15,9 +15,10 @@
 
 /* GLOBAL VARIABLES */
 bool g_IsEffectActive = false;
-int g_forceRoundEffect = -1;
+int g_ForceRoundEffect = -1;
 
 Handle g_RestartGameHandle;
+Handle g_Util_OneSecondTimer;
 
 typedef RoundEventFunc = function void(Event event, const char[] name, bool dontBroadcast);
 RoundEventFunc g_OnRoundStartFuncPtr;
@@ -41,6 +42,7 @@ int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 #include "effects/9_forcemelee.sp"
 #include "effects/10_firemelee.sp"
 #include "effects/11_schadenfreude.sp"
+#include "effects/12_rngdeath.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -66,7 +68,7 @@ enum Effect {
 	EFFECT_FORCEMELEE		=	9,
 	EFFECT_FIREMELEE		=	10,
 	EFFECT_SCHADENFREUDE	=	11,
-	// EFFECT_RNGDEATH		=	11,
+	EFFECT_RNGDEATH		=	12,
 	// EFFECT_MATH			=	12,
 	EFFECT_MAXCOUNT
 }
