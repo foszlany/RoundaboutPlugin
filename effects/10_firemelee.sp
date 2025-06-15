@@ -1,6 +1,6 @@
 public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
      PrintCenterTextAll("Fire Aspect");
-     ShowHintToAllClients("Fire Aspect\n\nMelee hits will set the enemy on fire for 8 seconds.");
+     ShowHintToAllClients("Fire Aspect\n\nMelee hits set the enemy on fire for 8 seconds, burning players receive mini-crits.");
 }
 
 public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
@@ -20,8 +20,20 @@ public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool do
      }
 
      int weapon = GetPlayerWeaponSlot(attacker, 2);
-     if(weapon != -1 && weapon == GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon")) {
-          TF2_IgnitePlayer(victim, attacker, 8.0);
+     int damage = event.GetInt("damageamount");
+     if(weapon != -1 && weapon == GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") && damage > 6) {
+          if(
+               TF2_IsPlayerInCondition(victim, TFCond_OnFire)                   &&
+               !TF2_IsPlayerInCondition(victim, TFCond_Jarated)                 &&
+               !TF2_IsPlayerInCondition(attacker, TFCond_Buffed)                &&
+               !TF2_IsPlayerInCondition(attacker, TFCond_NoHealingDamageBuff)
+          ) {
+               event.SetBool("minicrit", true);
+               event.SetInt("damageamount", RoundToNearest(damage * 1.35));
+          }
+          else {
+               TF2_IgnitePlayer(victim, attacker, 8.0);
+          }
      }
 }
 
