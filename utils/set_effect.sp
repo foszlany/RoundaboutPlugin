@@ -96,6 +96,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_10_FireMelee;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_SCHADENFREUDE: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_11_Schadenfreude;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_11_Schadenfreude;
+          }
      }
      return id;
 }

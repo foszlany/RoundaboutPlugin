@@ -36,6 +36,7 @@
      - ID: `8`
      - Receive `Bullet`, `Explosion` or `Fire` invulnerability when spawning.<br>
           - Player will not receive a different effect when changing weapons or classes in the spawn room.
+          - Players will not be able to perform specific actions (e.g. rocket jumps) using damage types that they are immune to.
 
 * **Force Melee**<br>
      - ID: `9`
@@ -45,3 +46,7 @@
      - ID: `10`
      - Melee hits set the target on fire for `8` seconds.
      - Users already on fire will receive `Mini-crits`.
+
+* **Schadenfreude**<br>
+     - ID: `11`
+     - Users have a 33% chance each kill to forcibly taunt.<br>
