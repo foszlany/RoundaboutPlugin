@@ -65,4 +65,5 @@
 
 * **Weaklings**<br>
      - ID: `14`
-     - All damage is reduced to a mere `33%`.
+     - All player-to-player damage is reduced to a mere `33%`.
+          - Self-damage and damage against buildings remain the same.
