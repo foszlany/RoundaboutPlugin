@@ -120,6 +120,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_13_Math;
           }
+
+          case EFFECT_WEAKLINGS: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_14_Weaklings;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_14_Weaklings;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

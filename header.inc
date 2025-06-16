@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.06a"
+#define PLUGIN_VERSION "0.07a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -47,6 +47,7 @@ Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
 #include "effects/11_schadenfreude.sp"
 #include "effects/12_rngdeath.sp"
 #include "effects/13_math.sp"
+#include "effects/14_weaklings.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -74,5 +75,6 @@ enum Effect {
 	EFFECT_SCHADENFREUDE	=	11,
 	EFFECT_RNGDEATH		=	12,
 	EFFECT_MATH			=	13,
+	EFFECT_WEAKLINGS		=	14,
 	EFFECT_MAXCOUNT
 }

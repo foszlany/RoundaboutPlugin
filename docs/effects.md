@@ -63,6 +63,6 @@
           - Better performing players generally receive harder math problems.
                - Upper bound for the answer is `400 x (Kills / Deaths)` rounded appropriately.
 
-* **Spontaneous Combustion**<br>
+* **Weaklings**<br>
      - ID: `14`
-     - All damage is reduced to a mere `30%`.
+     - All damage is reduced to a mere `33%`.
