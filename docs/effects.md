@@ -61,4 +61,8 @@
      - Gives a random unique math problem every `12 - 36` seconds that must be answered in chat.
           - Not answering the problem correctly or within `8` seconds results in the player's death.
           - Better performing players generally receive harder math problems.
-               - Upper bound for the answer is `200 x (Kills / Deaths)` rounded appropriately.
+               - Upper bound for the answer is `400 x (Kills / Deaths)` rounded appropriately.
+
+* **Spontaneous Combustion**<br>
+     - ID: `14`
+     - All damage is reduced to a mere `30%`.
