@@ -29,9 +29,12 @@ RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
+
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
 Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
+
 int g_Effect15_BleedCauserIndex[MAXPLAYERS + 1];
+int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -50,6 +53,7 @@ int g_Effect15_BleedCauserIndex[MAXPLAYERS + 1];
 #include "effects/13_math.sp"
 #include "effects/14_weaklings.sp"
 #include "effects/15_bleedbuffed.sp"
+#include "effects/16_rolemodel.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -79,5 +83,6 @@ enum Effect {
 	EFFECT_MATH			=	13,
 	EFFECT_WEAKLINGS		=	14,
 	EFFECT_BLEEDBUFFED		=	15,
+	EFFECT_ROLEMODEL		=	16,
 	EFFECT_MAXCOUNT
 }

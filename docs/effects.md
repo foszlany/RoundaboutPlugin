@@ -71,5 +71,9 @@
 * **Buffed**<br>
      - ID: `15`
      - All damage causes `8` seconds of bleed.
-          - Effect does not stack
+          - Effect does not stack.
           - Effect is associated with whoever dealt damage to a player last.
+
+ * **Rolemodel**<br>
+     - ID: `16`
+     - Users are randomly assigned a class that they cannot swap from.

@@ -136,6 +136,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_15_BleedBuff;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_ROLEMODEL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_16_Rolemodel;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_16_Rolemodel;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
