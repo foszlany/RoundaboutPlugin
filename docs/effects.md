@@ -58,7 +58,7 @@
 
 * **Perfect Math Class**<br>
      - ID: `13`
-     - Gives a random unique math problem every `16 - 42` seconds that must be answered in chat.
+     - Gives a random unique math problem every `12 - 36` seconds that must be answered in chat.
           - Not answering the problem correctly or within `8 seconds` results in the player's death.
           - Better performing players generally receive harder math problems.
                - Upper bound for the answer is `400 x (Kills / Deaths)` rounded appropriately.

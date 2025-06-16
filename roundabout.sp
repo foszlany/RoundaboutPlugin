@@ -16,6 +16,7 @@ public Plugin myinfo = {
 public void OnPluginStart() {
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
+	g_hudSync = CreateHudSynchronizer();
 
 	/* INITIALIZE FUNCTION POINTERS */
 	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
@@ -39,6 +40,9 @@ public void OnPluginStart() {
 	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
 	HookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
 
+	AddCommandListener(Event_ChatMessage, "say");
+	AddCommandListener(Event_ChatMessage, "say_team");
+
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
@@ -47,7 +51,7 @@ public void OnPluginStart() {
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
 	if(GameRules_GetProp("m_bInWaitingForPlayers") != 1) {
-		if(g_IsEffectActive && g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
+		if(g_CurrentEffect != -1 && g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
 				Call_StartFunction(INVALID_HANDLE, g_OnRoundEndFuncPtr);
 				Call_PushCell(event);
 				Call_PushString(name);
@@ -62,10 +66,10 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 		if(g_ForceRoundEffect == -1) {
-			setEffect(-1);
+			g_CurrentEffect = setEffect(-1);
 		}
 		else {
-			setEffect(g_ForceRoundEffect);
+			g_CurrentEffect = setEffect(g_ForceRoundEffect);
 			g_ForceRoundEffect = -1;
 		}
 
@@ -76,7 +80,6 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			Call_PushCell(dontBroadcast);
 			Call_Finish();
 		}
-		g_IsEffectActive = true;
 
 		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
 	}
@@ -115,6 +118,16 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
 	}
 }
 
+/* CHAT MESSAGE EVENT */
+public Action Event_ChatMessage(int client, const char[] command, int argc) {
+	// not planning to do more chat related effects for now, so this should do
+	if(g_CurrentEffect == view_as<int>(EFFECT_MATH)) {
+		checkMathResponse(client, command, argc);
+	}
+
+	return Plugin_Handled;
+}
+
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE  */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
@@ -128,7 +141,7 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 		Call_PushCell(dontBroadcast);
 		Call_Finish();
 	}
-	g_IsEffectActive = false;
+	g_CurrentEffect = -1;
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */

@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.04a"
+#define PLUGIN_VERSION "0.06a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -14,9 +14,10 @@
 #include <tf2_stocks>
 
 /* GLOBAL VARIABLES */
-bool g_IsEffectActive = false;
+int g_CurrentEffect = -1;
 int g_ForceRoundEffect = -1;
 
+Handle g_hudSync;
 Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
 
@@ -29,7 +30,7 @@ RoundEventFunc g_OnPlayerDeathFuncPtr;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
-Handle g_Effect13_MathTimers[MAXPLAYERS + 1];
+Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
