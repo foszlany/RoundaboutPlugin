@@ -28,6 +28,8 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
+int g_Effect1_OriginalGravity;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];

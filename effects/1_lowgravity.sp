@@ -4,6 +4,7 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
      int randGravity = GetRandomInt(100, 400);
 
      ConVar gravity = FindConVar("sv_gravity");
+     g_Effect1_OriginalGravity = GetConVarInt(gravity);
 
      if(gravity != null) {
           int originalFlags = GetConVarFlags(gravity);
@@ -22,9 +23,9 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
 public void Event_RoundEnd_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {
      ConVar gravity = FindConVar("sv_gravity");
      if(gravity != null) {
-          SetConVarInt(gravity, 800, true, false);
+          SetConVarInt(gravity, g_Effect1_OriginalGravity, true, false);
      }
      else {
-          ServerCommand("sv_gravity 800");
+          ServerCommand("sv_gravity %d", g_Effect1_OriginalGravity);
      }
 }
