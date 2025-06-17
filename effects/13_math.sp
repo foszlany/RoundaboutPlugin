@@ -9,6 +9,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
                g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, i);
           }
      }
+     
      PrintCenterTextAll("Perfect Math Class");
      ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
 }
@@ -23,13 +24,7 @@ public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dont
 
 public void Event_PlayerDeath_13_Math(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     g_Effect13_MathAnswer[client] = -1;
-
-     if(g_Effect13_MathQuestionTimers[client] != null) {
-          ShowSyncHudText(client, g_hudSync, "");
-          KillTimer(g_Effect13_MathQuestionTimers[client]);
-          g_Effect13_MathQuestionTimers[client] = null;
-     }
+     NullifyClientMathData(client);
 }
 
 // GIVE A CUSTOM MATH PROBLEM
@@ -145,6 +140,10 @@ public void NullifyClientMathData(int client) {
      if(g_Effect13_MathQuestionTimers[client] != null) {
           KillTimer(g_Effect13_MathQuestionTimers[client]);
           g_Effect13_MathQuestionTimers[client] = null;
-          g_Effect13_MathAnswer[client] = -1;
+
+          if(g_Effect13_MathAnswer != -1) {
+               g_Effect13_MathAnswer[client] = -1;
+               ShowSyncHudText(client, g_hudSync, "");
+          }
      }
 }
