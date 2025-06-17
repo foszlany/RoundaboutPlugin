@@ -51,12 +51,8 @@ public void OnPluginStart() {
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
 	if(GameRules_GetProp("m_bInWaitingForPlayers") != 1) {
-		if(g_CurrentEffect != -1 && g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
-				Call_StartFunction(INVALID_HANDLE, g_OnRoundEndFuncPtr);
-				Call_PushCell(event);
-				Call_PushString(name);
-				Call_PushCell(dontBroadcast);
-				Call_Finish();
+		if(g_CurrentEffect != -1) {
+			CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
 		}
 
 		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
@@ -73,13 +69,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			g_ForceRoundEffect = -1;
 		}
 
-		if(g_OnRoundStartFuncPtr != INVALID_FUNCTION) {
-			Call_StartFunction(INVALID_HANDLE, g_OnRoundStartFuncPtr);
-			Call_PushCell(event);
-			Call_PushString(name);
-			Call_PushCell(dontBroadcast);
-			Call_Finish();
-		}
+		CallEventFunction(g_OnRoundStartFuncPtr, event, name, dontBroadcast);
 
 		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
 	}
@@ -87,35 +77,17 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 
 /* REAPPLIES EFFECTS IF NEEDED */
 public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcast) {
-	if(g_OnPlayerUpdateFuncPtr != INVALID_FUNCTION) {
-		Call_StartFunction(INVALID_HANDLE, g_OnPlayerUpdateFuncPtr);
-		Call_PushCell(event);
-		Call_PushString(name);
-		Call_PushCell(dontBroadcast);
-		Call_Finish();
-	}
+	CallEventFunction(g_OnPlayerUpdateFuncPtr, event, name, dontBroadcast);
 }
 
 /* PLAYER HIT EVENT */
 public void Event_PlayerHit(Event event, const char[] name, bool dontBroadcast) {
-	if(g_OnPlayerHitFuncPtr != INVALID_FUNCTION) {
-		Call_StartFunction(INVALID_HANDLE, g_OnPlayerHitFuncPtr);
-		Call_PushCell(event);
-		Call_PushString(name);
-		Call_PushCell(dontBroadcast);
-		Call_Finish();
-	}
+	CallEventFunction(g_OnPlayerHitFuncPtr, event, name, dontBroadcast);
 }
 
 /* PLAYER DEATH EVENT */
 public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast) {
-	if(g_OnPlayerDeathFuncPtr != INVALID_FUNCTION) {
-		Call_StartFunction(INVALID_HANDLE, g_OnPlayerDeathFuncPtr);
-		Call_PushCell(event);
-		Call_PushString(name);
-		Call_PushCell(dontBroadcast);
-		Call_Finish();
-	}
+	CallEventFunction(g_OnPlayerDeathFuncPtr, event, name, dontBroadcast);
 }
 
 /* CHAT MESSAGE EVENT */
@@ -128,19 +100,13 @@ public Action Event_ChatMessage(int client, const char[] command, int argc) {
 	return Plugin_Handled;
 }
 
-/* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE  */
+/* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
-	if(g_OnRoundEndFuncPtr != INVALID_FUNCTION) {
-		Call_StartFunction(INVALID_HANDLE, g_OnRoundEndFuncPtr);
-		Call_PushCell(event);
-		Call_PushString(name);
-		Call_PushCell(dontBroadcast);
-		Call_Finish();
-	}
+	CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
 	g_CurrentEffect = -1;
 }
 
@@ -148,4 +114,14 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 public void OnRestartGameChanged(ConVar convar, const char[] oldValue, const char[] newValue) {
 	Event event = CreateEvent("teamplay_round_end");
 	Event_RoundEnd(event, "teamplay_round_end", false);
+}
+
+public void CallEventFunction(RoundEventFunc funcPointer, Event event, const char[] name, bool dontBroadcast) {
+	if(funcPointer != INVALID_FUNCTION) {
+		Call_StartFunction(INVALID_HANDLE, funcPointer);
+		Call_PushCell(event);
+		Call_PushString(name);
+		Call_PushCell(dontBroadcast);
+		Call_Finish();
+	}
 }
