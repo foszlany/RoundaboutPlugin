@@ -36,6 +36,9 @@ Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
 int g_Effect15_BleedCauserIndex[MAXPLAYERS + 1];
 int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 
+int g_Effect17_RedTeamClass;
+int g_Effect17_BluTeamClass;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -54,6 +57,7 @@ int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 #include "effects/14_weaklings.sp"
 #include "effects/15_bleedbuffed.sp"
 #include "effects/16_rolemodel.sp"
+#include "effects/17_classwars.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -84,5 +88,6 @@ enum Effect {
 	EFFECT_WEAKLINGS		=	14,
 	EFFECT_BLEEDBUFFED		=	15,
 	EFFECT_ROLEMODEL		=	16,
+	EFFECT_CLASSWARS		=	17,
 	EFFECT_MAXCOUNT
 }

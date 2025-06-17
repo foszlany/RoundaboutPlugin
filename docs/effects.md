@@ -77,3 +77,7 @@
  * **Rolemodel**<br>
      - ID: `16`
      - Users are randomly assigned a class that they cannot swap from.
+
+ * **Class Wars**<br>
+     - ID: `17`
+     - A team consisting of one class versus another.
