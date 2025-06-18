@@ -81,3 +81,7 @@
  * **Class Wars**<br>
      - ID: `17`
      - A team consisting of one class versus another.
+
+ * **Pure...?**<br>
+     - ID: `18`
+     - <details><summary>SPOILER</summary>A one-time event will occur sometime between 60 and 160 seconds where everyone will be forced to A-pose without the ability to move or use weapons. This lasts 12 seconds.</details>

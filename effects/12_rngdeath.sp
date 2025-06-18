@@ -12,7 +12,7 @@ public void Executioner(Handle timer) {
           PrintToChatAll("\x07FFE800[Roundabout]\x01 \x07B143F1Everyone\x01 has spontaneously combusted!");
           EmitSoundToAll("weapons/explode3.wav");
 
-          for(int i = 0; i <= MaxClients; i++) {
+          for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i) && IsPlayerAlive(i)) {
                     FakeClientCommand(i, "explode");
                }

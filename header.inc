@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.07a"
+#define PLUGIN_VERSION "0.08a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -41,6 +41,8 @@ int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 int g_Effect17_RedTeamClass;
 int g_Effect17_BluTeamClass;
 
+bool g_Effect18_IsActive;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -60,6 +62,7 @@ int g_Effect17_BluTeamClass;
 #include "effects/15_bleedbuffed.sp"
 #include "effects/16_rolemodel.sp"
 #include "effects/17_classwars.sp"
+#include "effects/18_fakepure.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -91,5 +94,6 @@ enum Effect {
 	EFFECT_BLEEDBUFFED		=	15,
 	EFFECT_ROLEMODEL		=	16,
 	EFFECT_CLASSWARS		=	17,
+	EFFECT_FAKEPURE		=	18,
 	EFFECT_MAXCOUNT
 }

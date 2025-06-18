@@ -14,6 +14,10 @@ public Plugin myinfo = {
 };
 
 public void OnPluginStart() {
+	/* PRECACHE SOUNDS */
+	PrecacheSound("weapons/explode3.wav", true);
+	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
+
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
 	g_hudSync = CreateHudSynchronizer();
