@@ -11,8 +11,8 @@ public int setEffect(int id) {
      switch(id) {
           case EFFECT_PURE: {
                g_OnRoundStartFuncPtr = Event_RoundStart_0_Pure;
-               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_0_Pure;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_0_Pure;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
@@ -149,14 +149,6 @@ public int setEffect(int id) {
                g_OnRoundStartFuncPtr = Event_RoundStart_17_ClassWars;
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_17_ClassWars;
-               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
-          }
-
-          case EFFECT_FAKEPURE: {
-               g_OnRoundStartFuncPtr = Event_RoundStart_18_FakePure;
-               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_18_FakePure;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }

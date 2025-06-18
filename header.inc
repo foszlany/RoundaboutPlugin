@@ -28,6 +28,9 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
+Handle g_Effect0_FakePure_Timer;
+bool g_Effect0_FakePure_IsActive;
+
 int g_Effect1_OriginalGravity;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
@@ -41,7 +44,6 @@ int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 int g_Effect17_RedTeamClass;
 int g_Effect17_BluTeamClass;
 
-bool g_Effect18_IsActive;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -62,7 +64,6 @@ bool g_Effect18_IsActive;
 #include "effects/15_bleedbuffed.sp"
 #include "effects/16_rolemodel.sp"
 #include "effects/17_classwars.sp"
-#include "effects/18_fakepure.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -94,6 +95,6 @@ enum Effect {
 	EFFECT_BLEEDBUFFED		=	15,
 	EFFECT_ROLEMODEL		=	16,
 	EFFECT_CLASSWARS		=	17,
-	EFFECT_FAKEPURE		=	18,
+	// EFFECT_FAKEPURE		=	18,
 	EFFECT_MAXCOUNT
 }
