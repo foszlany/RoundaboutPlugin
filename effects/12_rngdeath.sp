@@ -9,10 +9,13 @@ public void Event_RoundStart_12_RNGDeath(Event event, const char[] name, bool do
 
 public void Executioner(Handle timer) {
      if(GetRandomInt(1, 10000) == 1) {
-          for(int i = 1; i <= MaxClients; i++) {
-               FakeClientCommand(i, "explode");
-               PrintToChatAll("\x07FFE800[Roundabout]\x01 \x07B143F1Everyone\x01 has spontaneously combusted!");
-               EmitSoundToAll("sound/mysound.wav");
+          PrintToChatAll("\x07FFE800[Roundabout]\x01 \x07B143F1Everyone\x01 has spontaneously combusted!");
+          EmitSoundToAll("weapons/explode3.wav");
+
+          for(int i = 0; i <= MaxClients; i++) {
+               if(IsClientInGame(i) && IsPlayerAlive(i)) {
+                    FakeClientCommand(i, "explode");
+               }
           }
      }
      else {

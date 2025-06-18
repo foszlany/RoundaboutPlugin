@@ -27,6 +27,12 @@ public void Event_PlayerDeath_13_Math(Event event, const char[] name, bool dontB
      NullifyClientMathData(client);
 }
 
+public void Event_RoundEnd_13_Math(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MAXPLAYERS; i++) {
+          NullifyClientMathData(i);
+     }
+}
+
 // GIVE A CUSTOM MATH PROBLEM
 public void GiveMathProblem(Handle timer, int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
@@ -141,7 +147,7 @@ public void NullifyClientMathData(int client) {
           KillTimer(g_Effect13_MathQuestionTimers[client]);
           g_Effect13_MathQuestionTimers[client] = null;
 
-          if(g_Effect13_MathAnswer != -1) {
+          if(g_Effect13_MathAnswer[client] != -1) {
                g_Effect13_MathAnswer[client] = -1;
                ShowSyncHudText(client, g_hudSync, "");
           }
