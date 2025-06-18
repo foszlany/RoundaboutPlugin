@@ -29,6 +29,7 @@ RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
 Handle g_Effect0_FakePure_Timer;
+Handle g_Effect0_FakePure_ExplodeTimer;
 bool g_Effect0_FakePure_IsActive;
 
 int g_Effect1_OriginalGravity;

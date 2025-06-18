@@ -2,8 +2,9 @@
 
 public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBroadcast) {
      g_Effect0_FakePure_Timer = null;
+     g_Effect0_FakePure_ExplodeTimer = null;
 
-     if(GetRandomInt(1, 10) <= 10) { // change
+     if(GetRandomInt(1, 10) <= 2) {
           g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(10.0, 25.0), FakePureEvent);
      }
 
@@ -27,6 +28,11 @@ public void Event_RoundEnd_0_Pure(Event event, const char[] name, bool dontBroad
           KillTimer(g_Effect0_FakePure_Timer);
           g_Effect0_FakePure_Timer = null;
      }
+
+     if(g_Effect0_FakePure_ExplodeTimer != null) {
+          KillTimer(g_Effect0_FakePure_ExplodeTimer);
+          g_Effect0_FakePure_ExplodeTimer = null;
+     }
 }
 
 public void StunPlayerTimer(Handle timer, int client) {
@@ -46,12 +52,17 @@ public void FakePureEvent(Handle timer) {
           }
      }
 
+     int entity = -1;
+     while((entity = FindEntityByClassname(entity, "obj_sentrygun")) != -1) {
+          SetEntProp(entity, Prop_Send, "m_bDisabled", 1);
+     }
+
      for(int i = 0; i < 3; i++) {
           PrintToChatAll("\x078D8D8Dthe fog is coming...\x01");
           EmitSoundToAll("player/taunt_scorchers_solo2.wav");
      }
 
-     CreateTimer(12.0, ExplodeAll);
+     g_Effect0_FakePure_ExplodeTimer = CreateTimer(12.0, ExplodeAll);
 }
 
 public void ExplodeAll(Handle timer) {
@@ -61,6 +72,11 @@ public void ExplodeAll(Handle timer) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                FakeClientCommand(i, "explode");
           }
+     }
+
+     int entity = -1;
+     while((entity = FindEntityByClassname(entity, "obj_sentrygun")) != -1) {
+          SetEntProp(entity, Prop_Send, "m_bDisabled", 0);
      }
 
      g_Effect0_FakePure_IsActive = false;
