@@ -27,6 +27,7 @@ public void OnPluginStart() {
 	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");
@@ -50,6 +51,25 @@ public void OnPluginStart() {
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
+}
+
+public void OnPluginEnd() {
+	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
+	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+
+	UnhookEvent("teamplay_round_start", Event_RoundStart);
+	UnhookEvent("teamplay_round_win", Event_RoundEnd, EventHookMode_Pre);
+	UnhookEvent("teamplay_round_stalemate", Event_RoundEnd, EventHookMode_Pre);
+	UnhookEvent("post_inventory_application", Event_PlayerUpdate, EventHookMode_Post);
+	UnhookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
+	UnhookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
+	UnhookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
+
+	RemoveCommandListener(Event_ChatMessage, "say");
+	RemoveCommandListener(Event_ChatMessage, "say_team");
 }
 
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
