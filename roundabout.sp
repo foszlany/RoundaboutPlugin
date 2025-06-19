@@ -18,6 +18,10 @@ public void OnPluginStart() {
 	PrecacheSound("weapons/explode3.wav", true);
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
 
+	/* CREATE CONVARS */
+	g_EnablePlugin = CreateConVar("sm_roundabout_enable", "1", "Enables/disables my feature", FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	g_EnablePlugin.AddChangeHook(ConvarChange_EnablePlugin);
+
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
 	g_hudSync = CreateHudSynchronizer();
@@ -30,6 +34,7 @@ public void OnPluginStart() {
 	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 	/* COMMANDS */
+	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");
 	RegConsoleCmd("sm_roundabout_github", Command_Github, "Returns the Github link for the repository of this plugin.");
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");

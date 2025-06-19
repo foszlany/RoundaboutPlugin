@@ -13,6 +13,9 @@
 #include <tf2>
 #include <tf2_stocks>
 
+/* CONVARS */
+ConVar g_EnablePlugin;
+
 /* GLOBAL VARIABLES */
 int g_CurrentEffect = -1;
 int g_ForceRoundEffect = -1;
@@ -45,7 +48,6 @@ int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 int g_Effect17_RedTeamClass;
 int g_Effect17_BluTeamClass;
 
-
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -71,10 +73,14 @@ int g_Effect17_BluTeamClass;
 #include "utils/show_description_hint.sp"
 #include "utils/apply_timed_condition.sp"
 
+/* CONVARS */
+#include "convars/enableplugin.sp"
+
 /* COMMANDS */
 #include "commands/force.sp"
 #include "commands/github.sp"
 #include "commands/version.sp"
+#include "commands/enable.sp"
 
 /* EFFECTS */
 enum Effect {
