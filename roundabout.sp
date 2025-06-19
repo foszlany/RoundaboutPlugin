@@ -80,6 +80,9 @@ public void EnablePluginFeatures() {
 }
 
 public void DisablePluginFeatures() {
+	Event event = CreateEvent("teamplay_round_end");
+	Event_RoundEnd(event, "teamplay_round_end", false);
+
 	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
 	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
