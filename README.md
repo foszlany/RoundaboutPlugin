@@ -13,9 +13,17 @@ Read the effect details [here](./docs/effects.md).<br><br>
 
 ### Admin commands
 * **roundabout_force \<id\>** - Forces a new round with a desired effect<br>
-     -  **id:** ID of the effect. Choosen randomly when not given. <br>
+     -  **id:** ID of the effect. Chosen randomly when not given. <br>
      -  Example usage: `!roundabout_force 1`<br>
-<br>
+* **roundabout_enable \<arg\>** - Enables or disables the plugin effects<br>
+     -  **arg:** 1 or 0 (enable or disable) <br>
+     -  Enabling the effects will not restart the round.
+     -  Example usage: `!roundabout_enable 0`
+
+### ConVars
+* **sm_roundabout_enable \<arg\>** - Enables or disables the plugin effects<br>
+     -  **arg:** 1 or 0 (enable or disable) <br>
+     -  Enabling the effects will not restart the round.<br><br>
 
 ## Compile
 The compiled plugin version `roundabout.smx` can be found inside the `plugin` folder.<br><br>
