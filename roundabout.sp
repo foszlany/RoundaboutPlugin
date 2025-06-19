@@ -20,7 +20,7 @@ public void OnPluginStart() {
 
 	/* CREATE CONVARS */
 	g_EnablePlugin = CreateConVar("sm_roundabout_enable", "1", "Enables/disables my feature", FCVAR_NOTIFY, true, 0.0, true, 1.0);
-	g_EnablePlugin.AddChangeHook(ConvarChange_EnablePlugin);
+	HookConVarChange(g_EnablePlugin, ConvarChange_EnablePlugin);
 
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
@@ -53,12 +53,33 @@ public void OnPluginStart() {
 	AddCommandListener(Event_ChatMessage, "say");
 	AddCommandListener(Event_ChatMessage, "say_team");
 
+	g_RestartGameHandle = FindConVar("mp_restartgame");
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
 }
 
 public void OnPluginEnd() {
+	DisablePluginFeatures();
+}
+
+public void EnablePluginFeatures() {
+	HookEvent("teamplay_round_start", Event_RoundStart);
+	HookEvent("teamplay_round_win", Event_RoundEnd, EventHookMode_Pre);
+	HookEvent("teamplay_round_stalemate", Event_RoundEnd, EventHookMode_Pre);
+	HookEvent("post_inventory_application", Event_PlayerUpdate, EventHookMode_Post);
+	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
+	HookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
+
+	if(g_RestartGameHandle != INVALID_HANDLE) {
+		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
+	}
+
+	AddCommandListener(Event_ChatMessage, "say");
+	AddCommandListener(Event_ChatMessage, "say_team");
+}
+
+public void DisablePluginFeatures() {
 	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
 	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
@@ -71,7 +92,9 @@ public void OnPluginEnd() {
 	UnhookEvent("post_inventory_application", Event_PlayerUpdate, EventHookMode_Post);
 	UnhookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
 	UnhookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
-	UnhookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
+	if(g_RestartGameHandle != INVALID_HANDLE) {
+		UnhookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
+	}
 
 	RemoveCommandListener(Event_ChatMessage, "say");
 	RemoveCommandListener(Event_ChatMessage, "say_team");
