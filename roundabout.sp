@@ -8,7 +8,7 @@
 public Plugin myinfo = {
 	name = "Roundabout",
 	author = "foszlany",
-	description = "Experience a new type of chaos or gimmick every round!",
+	description = "Experience a new type of gimmick every round!",
 	version = PLUGIN_VERSION,
 	url = "https://github.com/foszlany/RoundaboutPlugin"
 };
@@ -19,8 +19,10 @@ public void OnPluginStart() {
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
 
 	/* CREATE CONVARS */
-	g_EnablePlugin = CreateConVar("sm_roundabout_enable", "1", "Enables/disables my feature", FCVAR_NOTIFY, true, 0.0, true, 1.0);
-	HookConVarChange(g_EnablePlugin, ConvarChange_EnablePlugin);
+	if(g_CVAR_EnablePlugin == null) {
+		g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_enable", "1", "Enables/disables my feature", FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	}
+	HookConVarChange(g_CVAR_EnablePlugin, ConvarChange_EnablePlugin);
 
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");

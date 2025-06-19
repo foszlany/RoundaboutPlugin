@@ -1,6 +1,12 @@
 #pragma semicolon 1
 
 public Action Command_ForceRound(int client, int args) {
+	bool isEnabled = g_CVAR_EnablePlugin.BoolValue;
+	if(!isEnabled) {
+		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Plugin effects are currently disabled.");
+		return Plugin_Handled;
+	}
+
 	if(args <= 0) {
 		g_ForceRoundEffect = GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
 

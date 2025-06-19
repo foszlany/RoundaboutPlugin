@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.08a"
+#define PLUGIN_VERSION "0.09a"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -14,7 +14,7 @@
 #include <tf2_stocks>
 
 /* CONVARS */
-ConVar g_EnablePlugin;
+ConVar g_CVAR_EnablePlugin = null;
 
 /* GLOBAL VARIABLES */
 int g_CurrentEffect = -1;

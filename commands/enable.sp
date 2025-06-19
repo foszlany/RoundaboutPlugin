@@ -14,8 +14,8 @@ public Action Command_EnablePlugin(int client, int args)
           return Plugin_Handled;
      }
 
-     SetConVarInt(g_EnablePlugin, val, true);
-     ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Plugin %s", val ? "enabled" : "disabled");
+     SetConVarInt(g_CVAR_EnablePlugin, val, true);
+     ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Plugin %s.", val ? "enabled, effects will start to appear next round." : "disabled");
 
      return Plugin_Handled;
 }
