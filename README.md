@@ -21,7 +21,7 @@ Read the effect details [here](./docs/effects.md).<br><br>
      -  Example usage: `!roundabout_enable 0`
 
 ### ConVars
-* **sm_roundabout_enable \<arg\>** - Enables or disables the plugin effects<br>
+* **sm_roundabout_toggle \<arg\>** - Enables or disables the plugin effects<br>
      -  **arg:** 1 or 0 (enable or disable) <br>
      -  Enabling the effects will not restart the round.<br><br>
 

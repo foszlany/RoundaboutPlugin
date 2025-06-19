@@ -19,9 +19,7 @@ public void OnPluginStart() {
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
 
 	/* CREATE CONVARS */
-	if(g_CVAR_EnablePlugin == null) {
-		g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_enable", "1", "Enables/disables my feature", FCVAR_NOTIFY, true, 0.0, true, 1.0);
-	}
+	g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_toggle", "1", "Enables or disables the plugin", FCVAR_NOTIFY, true, 0.0, true, 1.0);
 	HookConVarChange(g_CVAR_EnablePlugin, ConvarChange_EnablePlugin);
 
 	/* INITIALIZE GLOBAL VARIABLES */
