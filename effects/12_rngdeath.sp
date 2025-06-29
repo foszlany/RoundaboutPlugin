@@ -34,6 +34,8 @@ public void Executioner(Handle timer) {
 }
 
 public void Event_RoundEnd_12_RNGDeath(Event event, const char[] name, bool dontBroadcast) {
-     KillTimer(g_Util_OneSecondTimer);
-     g_Util_OneSecondTimer = null;
+     if(g_Util_OneSecondTimer != null) {
+          KillTimer(g_Util_OneSecondTimer);
+          g_Util_OneSecondTimer = null;
+     }
 }
