@@ -1,7 +1,13 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {
-     int randGravity = GetRandomInt(100, 400);
+     int randGravity;
+     if(GetRandomInt(0, 100) <= 2) {
+          randGravity = 0;
+     }
+     else {
+          randGravity = GetRandomInt(100, 400);
+     }
 
      ConVar gravity = FindConVar("sv_gravity");
      g_Effect1_OriginalGravity = GetConVarInt(gravity);
