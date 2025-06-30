@@ -1,3 +1,5 @@
+#pragma semicolon 1
+
 public Action Timer_AddCondition(Handle timer, DataPack pack) {
      pack.Reset();
      int client = pack.ReadCell();

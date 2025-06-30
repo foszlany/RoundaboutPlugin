@@ -1,3 +1,5 @@
+#pragma semicolon 1
+
 public Action Command_EnablePlugin(int client, int args) {
      if(args < 1) {
           ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: sm_roundabout_enable <1|0>");

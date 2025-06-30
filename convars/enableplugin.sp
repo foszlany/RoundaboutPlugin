@@ -1,3 +1,5 @@
+#pragma semicolon 1
+
 public void ConvarChange_EnablePlugin(ConVar convar, const char[] oldValue, const char[] newValue) {
      bool isEnabled = convar.BoolValue;
 
