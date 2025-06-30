@@ -22,8 +22,9 @@ public Action ForceToMelee(Handle timer, int client) {
      TF2_RemoveWeaponSlot(client, 1);
 
      if(TF2_GetPlayerClass(client) != TFClass_Spy) {
-          TF2_RemoveWeaponSlot(client, 4);
           TF2_RemoveWeaponSlot(client, 3);
+          TF2_RemoveWeaponSlot(client, 4);
+          TF2_RemoveWeaponSlot(client, 5);
      }
 
      int melee = GetPlayerWeaponSlot(client, 2);
