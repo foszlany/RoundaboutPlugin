@@ -82,3 +82,15 @@
  * **Class Wars**<br>
      - ID: `17`
      - A team consisting of one class versus another.
+
+ * **Snowball Effect**<br>
+     - ID: `18`
+     - Players receive increasingly better status effects upon chaining kills.
+     - All effects last `8` seconds and they renew after getting a kill.
+     - Effects can be obtained from the previous one in the following order:
+          - (None)
+          - Speedboost
+          - Mini-crit
+          - Defense buff
+          - Crits
+          - Uber

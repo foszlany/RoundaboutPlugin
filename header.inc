@@ -4,14 +4,16 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.09a"
+#define PLUGIN_VERSION "0.1"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
 #include <sdktools>
 #include <sdktools_gamerules>
+
 #include <tf2>
 #include <tf2_stocks>
+#include <tf2items>
 
 /* CONVARS */
 ConVar g_CVAR_EnablePlugin = null;
@@ -48,6 +50,9 @@ int g_Effect16_AssignedClass[MAXPLAYERS + 1];
 int g_Effect17_RedTeamClass;
 int g_Effect17_BluTeamClass;
 
+int g_Effect18_EffectIndex[MAXPLAYERS + 1];
+Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -67,6 +72,7 @@ int g_Effect17_BluTeamClass;
 #include "effects/15_bleedbuffed.sp"
 #include "effects/16_rolemodel.sp"
 #include "effects/17_classwars.sp"
+#include "effects/18_snowball.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -102,6 +108,6 @@ enum Effect {
 	EFFECT_BLEEDBUFFED		=	15,
 	EFFECT_ROLEMODEL		=	16,
 	EFFECT_CLASSWARS		=	17,
-	// EFFECT_FAKEPURE		=	18,
+	EFFECT_SNOWBALL		=	18,
 	EFFECT_MAXCOUNT
 }

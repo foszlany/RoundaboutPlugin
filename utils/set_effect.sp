@@ -144,13 +144,21 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
-
+          
           case EFFECT_CLASSWARS: {
                g_OnRoundStartFuncPtr = Event_RoundStart_17_ClassWars;
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_17_ClassWars;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
+
+          case EFFECT_SNOWBALL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_18_Snowball;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_18_Snowball;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_18_Snowball;
           }
      }
      return id;
