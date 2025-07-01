@@ -12,6 +12,11 @@ public void Event_RoundStart_19_Justice(Event event, const char[] name, bool don
 public void Event_PlayerDeath_19_Justice(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
+
+     if(victim == attacker) {
+          return;
+     }
+
      g_Effect19_LastKiller[victim] = attacker;
      
      if(attacker != 0 && victim != 0 && g_Effect19_LastKiller[attacker] == victim && IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
