@@ -41,7 +41,9 @@ public void Event_RoundEnd_18_Snowball(Event event, const char[] name, bool dont
 
 public Action SnowballRemoveEffectsTimer(Handle timer, int client) {
      g_Effect18_EffectTimer[client] = null;
+     g_Effect18_EffectIndex[client] = 0;
      SnowballRemoveEffects(client);
+     
      return Plugin_Handled;
 }
 
