@@ -160,6 +160,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_18_Snowball;
           }
+
+          case EFFECT_JUSTICE: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_19_Justice;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_19_Justice;
+          }
      }
      return id;
 }

@@ -95,3 +95,7 @@
           - Defense buff
           - Crits
           - Uber
+
+ * **Frontier Justice**<br>
+     - ID: `19`
+     - Killing the last player who killed another will grant them crits for `8` seconds.

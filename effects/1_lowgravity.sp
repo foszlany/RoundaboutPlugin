@@ -19,7 +19,7 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
           SetConVarInt(gravity, randGravity, true, false);
      }
      else {
-          ServerCommand("sm_cvar sv_gravity %d", randGravity);
+          ServerCommand("sv_gravity %d", randGravity);
      }
 
      PrintCenterTextAll("Low Gravity");

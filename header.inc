@@ -53,6 +53,8 @@ int g_Effect17_BluTeamClass;
 int g_Effect18_EffectIndex[MAXPLAYERS + 1];
 Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
 
+int g_Effect19_LastKiller[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -73,6 +75,7 @@ Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
 #include "effects/16_rolemodel.sp"
 #include "effects/17_classwars.sp"
 #include "effects/18_snowball.sp"
+#include "effects/19_justice.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -109,5 +112,6 @@ enum Effect {
 	EFFECT_ROLEMODEL		=	16,
 	EFFECT_CLASSWARS		=	17,
 	EFFECT_SNOWBALL		=	18,
+	EFFECT_JUSTICE			=	19,
 	EFFECT_MAXCOUNT
 }
