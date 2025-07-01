@@ -1,6 +1,15 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_20_Infection(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MAXPLAYERS; i++) {
+          if(i <= MaxClients) {
+               g_Effect20_CurrentTeam[i] = TF2_GetClientTeam(i);
+          }
+          else {
+               g_Effect20_CurrentTeam[i] = view_as<TFTeam>(GetRandomInt(2, 3));
+          }
+     }
+
      PrintCenterTextAll("Infection Tag");
      ShowHintToAllClients("Infection Tag\n\nBring killed players into your team and try to win.");
 }
@@ -9,19 +18,27 @@ public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool 
      int victim = GetClientOfUserId(event.GetInt("userid"));
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
 
+     if(TF2_GetClientTeam(victim) != g_Effect20_CurrentTeam[victim]) {
+          ChangeClientTeam(victim, g_Effect20_CurrentTeam[victim]);
+          return;
+     }
+
      if(victim == attacker || attacker == 0) {
           return;
      }
 
      if(IsClientInGame(victim)) {
-          TF2_ChangeClientTeam(victim, TF2_GetClientTeam(attacker));
+          TFTeam attackerTeam = TF2_GetClientTeam(attacker);
+
+          TF2_ChangeClientTeam(victim, attackerTeam);
+          g_Effect20_CurrentTeam[victim] = attackerTeam;
      }
 
      InfectionTeamCheck();
 }
 
 public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool dontBroadcast) {
-     ServerCommand("mp_scrambleteams"); // this needs fixing
+     // ServerCommand("mp_scrambleteams"); // this completely bugs the game out
 }
 
 public void InfectionTeamCheck() {

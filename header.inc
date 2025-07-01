@@ -55,6 +55,8 @@ Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
 
 int g_Effect19_LastKiller[MAXPLAYERS + 1];
 
+TFTeam g_Effect20_CurrentTeam[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
