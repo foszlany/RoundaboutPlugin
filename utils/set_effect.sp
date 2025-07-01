@@ -168,6 +168,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_19_Justice;
           }
+
+          case EFFECT_INFECTION: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_20_Infection;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_20_Infection;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_20_Infection;
+          }
      }
      return id;
 }

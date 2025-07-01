@@ -99,3 +99,7 @@
  * **Frontier Justice**<br>
      - ID: `19`
      - Killing the last player who killed another will grant them crits for `8` seconds.
+
+ * **Infection Tag**<br>
+     - ID: `20`
+     - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team.

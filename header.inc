@@ -76,11 +76,13 @@ int g_Effect19_LastKiller[MAXPLAYERS + 1];
 #include "effects/17_classwars.sp"
 #include "effects/18_snowball.sp"
 #include "effects/19_justice.sp"
+#include "effects/20_infection.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
 #include "utils/show_description_hint.sp"
 #include "utils/apply_timed_condition.sp"
+#include "utils/force_win.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
@@ -113,5 +115,6 @@ enum Effect {
 	EFFECT_CLASSWARS		=	17,
 	EFFECT_SNOWBALL		=	18,
 	EFFECT_JUSTICE			=	19,
+	EFFECT_INFECTION		=	20,
 	EFFECT_MAXCOUNT
 }
