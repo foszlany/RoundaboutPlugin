@@ -91,6 +91,7 @@ Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
 #include "utils/force_win.sp"
 #include "utils/is_opposing_team.sp"
 #include "utils/explode_player.sp"
+#include "utils/class_to_string.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"

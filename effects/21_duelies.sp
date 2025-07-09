@@ -90,7 +90,7 @@ public void AssignDuel(Handle timer, int client) {
                if(g_Effect21_EffectTimer[candidate] != null) {
                     KillTimer(g_Effect21_EffectTimer[candidate]);
                     g_Effect21_EffectTimer[candidate] = null;
-               } 
+               }
                
                char name1[33];
                GetClientName(client, name1, sizeof(name1));
@@ -110,6 +110,14 @@ public void AssignDuel(Handle timer, int client) {
                );
                ShowSyncHudText(client, g_hudSync, "You have 30 seconds to kill %s!", name2);
                ShowSyncHudText(candidate, g_hudSync, "You have 30 seconds to kill %s!", name1);
+
+               char classClient[9];
+               GetClassString(TF2_GetPlayerClass(client), classClient, sizeof(classClient));
+               char classCandidate[9];
+               GetClassString(TF2_GetPlayerClass(candidate), classCandidate, sizeof(classCandidate));
+
+               PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your opponent is a \x07FF0000%s\x01.", classCandidate);
+               PrintToChat(candidate, "\x07B143F1[Roundabout]\x01 Your opponent is a \x07FF0000%s\x01.", classClient);
                
                return;
           }
