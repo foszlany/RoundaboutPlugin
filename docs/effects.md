@@ -112,4 +112,4 @@
 
 * **Heatwave**<br>
      - ID: `22`
-     - Every `36 - 72` seconds a heatwave will occur, which sets all players on fire until it is extinguished.
+     - Every `36 - 72` seconds a heatwave will occur, which sets all players on fire.
