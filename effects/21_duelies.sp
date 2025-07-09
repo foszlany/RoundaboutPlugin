@@ -80,8 +80,7 @@ public void AssignDuel(Handle timer, int client) {
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
           int candidate = GetRandomInt(1, playerCount);
 
-          // check for spectators and other
-          if(candidate != client && g_Effect21_EffectTimer[candidate] != null && g_Effect21_Duelee[candidate] == 0 && IsClientInGame(candidate) && IsPlayerAlive(candidate) && TF2_GetClientTeam(candidate) != TF2_GetClientTeam(client)) {
+          if(candidate != client && g_Effect21_EffectTimer[candidate] != null && g_Effect21_Duelee[candidate] == 0 && IsClientInGame(candidate) && IsPlayerAlive(candidate) && IsOpposingTeam(client, candidate)) {
                g_Effect21_Duelee[client] = candidate;
                g_Effect21_Duelee[candidate] = client;
 
