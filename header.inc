@@ -15,6 +15,9 @@
 #include <tf2_stocks>
 #include <tf2items>
 
+/* LIB */
+#include <tf2attributes>
+
 /* CONVARS */
 ConVar g_CVAR_EnablePlugin = null;
 
@@ -86,6 +89,7 @@ Handle g_Effect22_HeatwaveTimer;
 #include "effects/20_infection.sp"
 #include "effects/21_duelies.sp"
 #include "effects/22_heatwave.sp"
+#include "effects/23_hyperheal.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -130,5 +134,6 @@ enum Effect {
 	EFFECT_INFECTION		=	20,
 	EFFECT_DUELIES			=	21,
 	EFFECT_HEATWAVE		=	22,
+	EFFECT_HYPERHEAL		=	23,
 	EFFECT_MAXCOUNT
 }

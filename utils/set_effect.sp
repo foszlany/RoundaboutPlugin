@@ -192,6 +192,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_HYPERHEAL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_23_Hyperheal;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_23_Hyperheal;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_23_Hyperheal;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

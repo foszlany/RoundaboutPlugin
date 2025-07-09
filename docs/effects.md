@@ -113,3 +113,7 @@
 * **Heatwave**<br>
      - ID: `22`
      - Every `36 - 72` seconds a heatwave will occur, which sets all players on fire.
+
+* **Hyperheal**<br>
+     - ID: `23`
+     - Medics are able to overheal infinitely.
