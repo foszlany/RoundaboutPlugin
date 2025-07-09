@@ -61,7 +61,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
 }
 
 public void Event_RoundEnd_21_Duelies(Event event, const char[] name, bool dontBroadcast) {
-     for(int i = 1; i <= MAXPLAYERS; i++) {
+     for(int i = 1; i <= MaxClients; i++) {
           NullifyClientDuelData(i);
      }
 }
@@ -128,7 +128,6 @@ public Action ExplodeDuelingPlayers(Handle timer, int client1) {
           char name2[33];
           GetClientName(client2, name2, sizeof(name2));
 
-          // Refactor
           ExplodePlayer(client1);
           ExplodePlayer(client2);
 
