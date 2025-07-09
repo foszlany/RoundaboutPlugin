@@ -36,6 +36,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
 
                ShowSyncHudText(attacker, g_hudSync, "");
                PrintToChatAll("\x07B143F1[Roundabout]\x01 %s duelled %s to the death!", attackerName, killedName);
+               TF2_AddCondition(attacker, TFCond_Buffed, 8.0);
 
                g_Effect21_EffectTimer[attacker] = CreateTimer(float(GetRandomInt(20, 46)), AssignDuel, attacker);
           }

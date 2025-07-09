@@ -108,4 +108,4 @@
      - ID: `21`
      - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
-          - If no suitable partner is found, the game will reattempt to assign a duelee.
+          - Killing the duelee will give the attacker `8` seconds of Mini-crits.
