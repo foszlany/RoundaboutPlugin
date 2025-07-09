@@ -176,6 +176,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_20_Infection;
           }
+
+          case EFFECT_DUELIES: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_21_Duelies;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_21_Duelies;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_21_Duelies;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_21_Duelies;
+          }
      }
      return id;
 }

@@ -102,4 +102,10 @@
 
  * **Infection Tag**<br>
      - ID: `20`
-     - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team.
+     - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team (or when the objective is completed).
+
+ * **Duelies**<br>
+     - ID: `21`
+     - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
+          - If neither party dies, both users will explode violently.
+          - If no suitable partner is found, the game will reattempt to assign a duelee.
