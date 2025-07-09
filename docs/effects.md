@@ -109,3 +109,7 @@
      - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
           - Killing the duelee will give the attacker `8` seconds of Mini-crits.
+
+* **Heatwave**<br>
+     - ID: `22`
+     - Every `36 - 72` seconds a heatwave will occur, which sets all players on fire until it is extinguished.

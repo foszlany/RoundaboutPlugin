@@ -60,6 +60,8 @@ TFTeam g_Effect20_CurrentTeam[MAXPLAYERS + 1];
 int g_Effect21_Duelee[MAXPLAYERS + 1];
 Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
 
+Handle g_Effect22_HeatwaveTimer;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -83,6 +85,7 @@ Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
 #include "effects/19_justice.sp"
 #include "effects/20_infection.sp"
 #include "effects/21_duelies.sp"
+#include "effects/22_heatwave.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -126,5 +129,6 @@ enum Effect {
 	EFFECT_JUSTICE			=	19,
 	EFFECT_INFECTION		=	20,
 	EFFECT_DUELIES			=	21,
+	EFFECT_HEATWAVE		=	22,
 	EFFECT_MAXCOUNT
 }
