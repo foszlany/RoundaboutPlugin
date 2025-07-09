@@ -24,8 +24,7 @@ public void Executioner(Handle timer) {
                     char name[33];
                     GetClientName(i, name, sizeof(name));
 
-                    FakeClientCommand(i, "explode");
-                    EmitSoundToClient(i, "weapons/explode3.wav");
+                    ExplodePlayer(i);
 
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 %s has spontaneously combusted.", name);
                }

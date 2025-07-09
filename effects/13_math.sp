@@ -81,8 +81,7 @@ public void checkMathResponse(int client, const char[] command, int argc) {
                char name[33];
                GetClientName(client, name, sizeof(name));
 
-               FakeClientCommand(client, "explode");
-               EmitSoundToClient(client, "weapons/explode3.wav");
+               ExplodePlayer(client);
 
                PrintToChatAll("\x07B143F1[Roundabout]\x01 %s can't add two numbers together.", name);
                NullifyClientMathData(client);
@@ -132,8 +131,7 @@ public void MathExplode(Handle timer, int client) {
           char name[33];
           GetClientName(client, name, sizeof(name));
 
-          FakeClientCommand(client, "explode");
-          EmitSoundToClient(client, "weapons/explode3.wav");
+          ExplodePlayer(client);
 
           PrintToChatAll("\x07B143F1[Roundabout]\x01 %s skipped their math class.", name);
      }

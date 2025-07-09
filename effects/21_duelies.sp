@@ -129,10 +129,8 @@ public Action ExplodeDuelingPlayers(Handle timer, int client1) {
           GetClientName(client2, name2, sizeof(name2));
 
           // Refactor
-          FakeClientCommand(client1, "explode");
-          EmitSoundToClient(client1, "weapons/explode3.wav");
-          FakeClientCommand(client2, "explode");
-          EmitSoundToClient(client2, "weapons/explode3.wav");
+          ExplodePlayer(client1);
+          ExplodePlayer(client2);
 
           PrintToChatAll("\x07B143F1[Roundabout]\x01 %s and %s couldn't find each other!", name1, name2);
      }
