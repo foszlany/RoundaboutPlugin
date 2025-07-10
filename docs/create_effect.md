@@ -2,14 +2,14 @@
 ## **Step 1:** Registering the effect
 - Create the effect file inside the `effects` folder.
      - I recommend using the `EFFECTID_EFFECTNAME.sp` format (with the effect ID following the last effect's), such as `256_COOLEFFECT`.
-- Inside the `header.inc` file, create any global variables or include libraries or files you may need.
+- Inside the `header.inc` file, create any global variables and include the libraries or files that you may need.
      - Include the effect file you just created.
      - Declare your desired effect inside the `Effect` enum just before `EFFECT_MAXCOUNT`.
           - You don't need to write the ID next to the effect, but it can help with readability.
 
 ## **Step 2:** Adding the necessary functions to `set_effect`
 - Go inside `utils` and find the file `set_effect.sp`.
-- After the last effect, create a case for yours.
+- After the last effect, create a case matching yours.
      - You will need to set all function pointers (see all in `header.sp: RoundEventFunc`). If you don't need one (e.g. for hitting a player), set it to `INVALID_FUNCTION`.
           - Naming convention for the methods: `Event_EventName_ID_EffectName;`
           - If you don't yet know what you'll need, set everything to `INVALID_FUNCTION` and add it later.

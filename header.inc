@@ -68,6 +68,8 @@ Handle g_Effect22_HeatwaveTimer;
 
 float g_Effect24_knockbackBonus;
 
+int g_Effect26_OriginalAirAcceleration;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -95,6 +97,7 @@ float g_Effect24_knockbackBonus;
 #include "effects/23_hyperheal.sp"
 #include "effects/24_forceful.sp"
 #include "effects/25_assassins.sp"
+#include "effects/26_incontrol.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -143,5 +146,6 @@ enum Effect {
 	EFFECT_HYPERHEAL		=	23,
 	EFFECT_FORCEFUL		=	24,
 	EFFECT_ASSASSINS		=	25,
+	EFFECT_INCONTROL		=	26,
 	EFFECT_MAXCOUNT
 }

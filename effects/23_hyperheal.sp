@@ -16,7 +16,6 @@ public void Event_PlayerUpdate_23_Hyperheal(Event event, const char[] name, bool
      TF2Attrib_SetByName(client, "patient overheal penalty", 999.0);
 }
 
-
 public void Event_RoundEnd_23_Hyperheal(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {

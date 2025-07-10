@@ -246,6 +246,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_INCONTROL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_26_InControl;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_26_InControl;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_26_InControl;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

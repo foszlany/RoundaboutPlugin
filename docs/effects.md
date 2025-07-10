@@ -128,3 +128,7 @@
 * **Assassins Indeed**<br>
      - ID: `25`
      - Both teams are forced to play Spy. Revolvers have one bullet per clip and they deal `10000%` more damage.
+
+* **In Control**<br>
+     - ID: `26`
+     - Increases Air Control to `250`. All Soldier melee weapons crit while rocket jumping.
