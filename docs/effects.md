@@ -121,3 +121,7 @@
      - ID: `24`
      - Increases the knockback by `300%`
           - Additionally, there's a `2%` chance of the knockback being increased by `1000%`
+
+* **Assassins Indeed**<br>
+     - ID: `25`
+     - Both teams are forced to play Spy. Revolvers have one bullet per clip and they deal `10000%` more damage.

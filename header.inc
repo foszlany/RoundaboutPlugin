@@ -93,6 +93,7 @@ float g_Effect24_knockbackBonus;
 #include "effects/22_heatwave.sp"
 #include "effects/23_hyperheal.sp"
 #include "effects/24_forceful.sp"
+#include "effects/25_assassins.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -139,5 +140,6 @@ enum Effect {
 	EFFECT_HEATWAVE		=	22,
 	EFFECT_HYPERHEAL		=	23,
 	EFFECT_FORCEFUL		=	24,
+	EFFECT_ASSASSINS		=	25,
 	EFFECT_MAXCOUNT
 }
