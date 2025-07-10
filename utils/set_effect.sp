@@ -91,8 +91,8 @@ public int setEffect(int id) {
 
           case EFFECT_FIREMELEE: {
                g_OnRoundStartFuncPtr = Event_RoundStart_10_FireMelee;
-               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_10_FireMelee;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_10_FireMelee;
                g_OnPlayerHitFuncPtr = Event_PlayerHit_10_FireMelee;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }

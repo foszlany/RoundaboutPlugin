@@ -1,6 +1,10 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MaxClients; i++) {
+          applyMiniCritVsBurning(i);
+     }
+     
      PrintCenterTextAll("Fire Aspect");
      ShowHintToAllClients("Fire Aspect\n\nMelee hits set the enemy on fire for 8 seconds, burning players receive mini-crits.");
 }
@@ -22,19 +26,39 @@ public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool do
      }
 
      int weapon = GetPlayerWeaponSlot(attacker, 2);
-     int damage = event.GetInt("damageamount");
-     if(weapon != -1 && weapon == GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") && damage > 6) {
+     if(weapon != -1 && weapon == GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon")) {
           if(
-               TF2_IsPlayerInCondition(victim, TFCond_OnFire)                   &&
-               !TF2_IsPlayerInCondition(victim, TFCond_Jarated)                 &&
-               !TF2_IsPlayerInCondition(attacker, TFCond_Buffed)                &&
-               !TF2_IsPlayerInCondition(attacker, TFCond_NoHealingDamageBuff)
+               !TF2_IsPlayerInCondition(victim, TFCond_OnFire)                   &&
+               TF2_IsPlayerInCondition(victim, TFCond_Jarated)                 &&
+               TF2_IsPlayerInCondition(attacker, TFCond_Buffed)                &&
+               TF2_IsPlayerInCondition(attacker, TFCond_NoHealingDamageBuff)
           ) {
-               event.SetBool("minicrit", true);
-               event.SetInt("damageamount", RoundToNearest(damage * 1.35));
-          }
-          else {
                TF2_IgnitePlayer(victim, attacker, 8.0);
+          }
+     }
+}
+
+public void Event_PlayerUpdate_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
+     int client = GetClientOfUserId(event.GetInt("userid"));
+     applyMiniCritVsBurning(client);
+}
+
+public void Event_RoundEnd_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MaxClients; i++) {
+          if(IsClientInGame(i)) {
+               int meleeWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Melee);
+               if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
+                    TF2Attrib_RemoveByName(meleeWeapon, "minicrit vs burning player");
+               }
+          }
+     }
+}
+
+public void applyMiniCritVsBurning(int client) {
+     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+          int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
+          if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
+               TF2Attrib_SetByName(meleeWeapon, "minicrit vs burning player", 1.0);
           }
      }
 }
