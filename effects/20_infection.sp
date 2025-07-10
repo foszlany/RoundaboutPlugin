@@ -2,7 +2,7 @@
 
 public void Event_RoundStart_20_Infection(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
-          if(i <= MaxClients) {
+          if(i <= MaxClients && IsClientInGame(i)) {
                g_Effect20_CurrentTeam[i] = TF2_GetClientTeam(i);
           }
           else {
