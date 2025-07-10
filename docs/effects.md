@@ -116,3 +116,8 @@
 * **Hyperheal**<br>
      - ID: `23`
      - Medics are able to overheal infinitely.
+
+* **Forceful**<br>
+     - ID: `24`
+     - Increases the knockback by `200%`
+          - Additionally, there's a `2%` chance of the knockback being increased by `1000%`

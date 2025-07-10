@@ -200,6 +200,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+          
+          case EFFECT_FORCEFUL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_24_Forceful;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_24_Forceful;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_24_Forceful;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

@@ -65,6 +65,8 @@ Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
 
 Handle g_Effect22_HeatwaveTimer;
 
+float g_Effect24_knockbackBonus;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -90,6 +92,7 @@ Handle g_Effect22_HeatwaveTimer;
 #include "effects/21_duelies.sp"
 #include "effects/22_heatwave.sp"
 #include "effects/23_hyperheal.sp"
+#include "effects/24_forceful.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -135,5 +138,6 @@ enum Effect {
 	EFFECT_DUELIES			=	21,
 	EFFECT_HEATWAVE		=	22,
 	EFFECT_HYPERHEAL		=	23,
+	EFFECT_FORCEFUL		=	24,
 	EFFECT_MAXCOUNT
 }
