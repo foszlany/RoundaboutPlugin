@@ -103,6 +103,7 @@ float g_Effect24_knockbackBonus;
 #include "utils/is_opposing_team.sp"
 #include "utils/explode_player.sp"
 #include "utils/class_to_string.sp"
+#include "utils/count_active_players.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"

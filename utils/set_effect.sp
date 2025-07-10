@@ -1,10 +1,10 @@
 #pragma semicolon 1
 
 public int setEffect(int id) {
-     if(id >= view_as<int>(EFFECT_MAXCOUNT)) {
-          id = 0;
-     }
-     else if(id <= -1) {
+     bool isForced = id >= 0 && id < view_as<int>(EFFECT_MAXCOUNT);
+     int activePlayers = CountActivePlayers();
+
+     if(!(id >= 0 && id < view_as<int>(EFFECT_MAXCOUNT))) {
           id = GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
      }
 
@@ -170,6 +170,20 @@ public int setEffect(int id) {
           }
 
           case EFFECT_INFECTION: {
+               if(activePlayers < 4) {
+                    int newEffect = EFFECT_INFECTION;
+
+                    if(isForced) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Infection effect was forced, but its conditions were not met. Unwanted effects may occur.");
+                    }
+                    else {
+                         PrintToServer("\x07B143F1[Roundabout]\x01 Infection effect condition not met, reshuffling.");
+                         newEffect = setEffect(-1);
+                    }
+
+                    return newEffect;
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_20_Infection;
                g_OnRoundEndFuncPtr = Event_RoundEnd_20_Infection;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
@@ -218,4 +232,12 @@ public int setEffect(int id) {
           }
      }
      return id;
+}
+
+public void InvalidateAll() {
+     g_OnRoundStartFuncPtr = INVALID_FUNCTION;
+     g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+     g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+     g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+     g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 }
