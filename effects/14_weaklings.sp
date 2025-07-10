@@ -1,14 +1,29 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MaxClients; i++) {
+          if(IsClientInGame(i) && IsPlayerAlive(i)) {
+               TF2Attrib_SetByName(i, "dmg taken increased", 0.3333333);
+               TF2Attrib_SetByName(i, "dmg penalty vs buildings", 0.3333333);
+          }
+     }
+
      PrintCenterTextAll("Weaklings");
-     ShowHintToAllClients("Weaklings\n\nAll player-to-player damage is reduced to 33 percent.");
+     ShowHintToAllClients("Weaklings\n\nAll damage is reduced to 33 percent.");
 }
 
-public void Event_PlayerHit_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {
-     float floatDamage = float(event.GetInt("damageamount"));
-     floatDamage *= 0.33333333333;
-     
-     int intDamage = floatDamage <= 1 ? 1 : RoundToNearest(floatDamage);
-     event.SetInt("damageamount", intDamage);
+public void Event_PlayerUpdate_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {
+     int client = GetClientOfUserId(event.GetInt("userid"));
+     TF2Attrib_SetByName(client, "dmg taken increased", 0.3333333);
+     TF2Attrib_SetByName(client, "dmg penalty vs buildings", 0.3333333);
+}
+
+
+public void Event_RoundEnd_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {
+     for(int i = 1; i <= MaxClients; i++) {
+          if(IsClientInGame(i)) {
+               TF2Attrib_RemoveByName(i, "dmg taken increased");
+               TF2Attrib_RemoveByName(i, "dmg penalty vs buildings");
+          }
+     }
 }

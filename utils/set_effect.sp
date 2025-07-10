@@ -123,9 +123,9 @@ public int setEffect(int id) {
 
           case EFFECT_WEAKLINGS: {
                g_OnRoundStartFuncPtr = Event_RoundStart_14_Weaklings;
-               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-               g_OnPlayerHitFuncPtr = Event_PlayerHit_14_Weaklings;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_14_Weaklings;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_14_Weaklings;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
