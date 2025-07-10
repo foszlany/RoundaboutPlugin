@@ -135,10 +135,10 @@
 
 * **Bodycount**<br>
      - ID: `27`
-     - Killing a player grants the killer `25` bonus max health.
-          - The attacker also heal for this amount.
+     - Killing a player grants the user `25` bonus max health.
+          - The attacker also heals for this amount.
           - If a player disconnects and another joins in their place, they may get their health bonus.
-               - For now this is a design choice to prevent newcomers to be overwhelmed.
+               - For now this is a design choice to prevent newcomers from being overwhelmed.
      - This effect has two variants, each have a `50%` chance of occurring.
           - **Variant 1:** Bonus max health is lost upon death. 
           - **Variant 2:** Bonus max health is kept after death.

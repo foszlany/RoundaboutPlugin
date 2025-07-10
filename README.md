@@ -40,7 +40,6 @@ The compiled plugin version `roundabout.smx` can be found inside the `plugin` fo
 **TF2Attributes** is required to compile this plugin.
 
 If you wish to compile the source code yourself, use [this](https://github.com/modcommunity/how-to-compile-sourcemod-plugins) guide.
-
 Alternatively you can use the VSCode extension [SourcePawn Studio](https://github.com/Sarrus1/sourcepawn-studio) and follow its [Quick Start](https://sarrus1.github.io/sourcepawn-studio/docs/quick-start/) guide.
 
 If you wish to create your own effects, read about how to do that [here](./docs/create_effect.md).<br><br>
