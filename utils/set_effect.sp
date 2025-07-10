@@ -254,6 +254,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_BODYCOUNT: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_27_Bodycount;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_27_Bodycount;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_27_Bodycount;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_27_Bodycount;
+          }
      }
      return id;
 }

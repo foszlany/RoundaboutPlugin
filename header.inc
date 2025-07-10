@@ -66,9 +66,12 @@ Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
 
 Handle g_Effect22_HeatwaveTimer;
 
-float g_Effect24_knockbackBonus;
+float g_Effect24_KnockbackBonus;
 
 int g_Effect26_OriginalAirAcceleration;
+
+bool g_Effect27_isPersistent;
+float g_Effect27_Bodycount[MAXPLAYERS + 1];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -98,6 +101,7 @@ int g_Effect26_OriginalAirAcceleration;
 #include "effects/24_forceful.sp"
 #include "effects/25_assassins.sp"
 #include "effects/26_incontrol.sp"
+#include "effects/27_bodycount.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -147,5 +151,6 @@ enum Effect {
 	EFFECT_FORCEFUL		=	24,
 	EFFECT_ASSASSINS		=	25,
 	EFFECT_INCONTROL		=	26,
+	EFFECT_BODYCOUNT		=	27,
 	EFFECT_MAXCOUNT
 }
