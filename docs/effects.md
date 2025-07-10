@@ -101,10 +101,12 @@
 
  * **Infection Tag**<br>
      - ID: `20`
+     - **CONDITIONAL EFFECT:** In-game playercount must be 4 or higher.
      - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team (or when the objective is completed).
 
  * **Duelies**<br>
      - ID: `21`
+     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
      - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
           - Killing the duelee will give the attacker `8` seconds of Mini-crits.
@@ -115,6 +117,7 @@
 
 * **Hyperheal**<br>
      - ID: `23`
+     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
      - Medics are able to overheal infinitely.
 
 * **Forceful**<br>

@@ -15,7 +15,9 @@ Read the effect details [here](./docs/effects.md).<br><br>
 
 ### Admin commands
 * **roundabout_force \<id\>** - Forces a new round with a desired effect<br>
-     -  **id:** ID of the effect. Chosen randomly when not given. <br>
+     -  **id:** ID of the effect.<br>
+          - Chosen randomly when not given.
+          - When given, it ignores all conditions for certain effects. May cause unwanted effects.
      -  Example usage: `!roundabout_force 1`<br>
 * **roundabout_enable \<arg\>** - Enables or disables the plugin effects<br>
      -  **arg:** 1 or 0 (enable or disable) <br>
