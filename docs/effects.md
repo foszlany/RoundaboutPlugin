@@ -119,5 +119,5 @@
 
 * **Forceful**<br>
      - ID: `24`
-     - Increases the knockback by `200%`
+     - Increases the knockback by `300%`
           - Additionally, there's a `2%` chance of the knockback being increased by `1000%`
