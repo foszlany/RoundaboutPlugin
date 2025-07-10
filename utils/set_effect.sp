@@ -18,6 +18,19 @@ public int setEffect(int id) {
           }
 
           case EFFECT_LOWGRAVITY: {
+               ConVar gravity = FindConVar("sv_gravity");
+               currentGravity = GetConVarInt(gravity);
+
+               if(currentGravity <= 400) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Low Gravity effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Low Gravity effect condition not met, reshuffled.");
+                         return setEffect(-1);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_1_LowGravity;
                g_OnRoundEndFuncPtr = Event_RoundEnd_1_LowGravity;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
