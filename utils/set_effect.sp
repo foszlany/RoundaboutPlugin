@@ -171,15 +171,12 @@ public int setEffect(int id) {
 
           case EFFECT_INFECTION: {
                if(activePlayers < 4) {
-                    int newEffect = EFFECT_INFECTION;
-
-                    if(isForced) {
+                    if(isForced && !g_WasForceRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Infection effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
-                         PrintToServer("\x07B143F1[Roundabout]\x01 Infection effect condition not met, reshuffling.");
-                         newEffect = setEffect(-1);
-                         return newEffect;
+                         PrintToServer("[Roundabout] Infection effect condition not met, reshuffled.");
+                         return setEffect(-1);
                     }
                }
 
@@ -192,15 +189,12 @@ public int setEffect(int id) {
 
           case EFFECT_DUELIES: {
                if(activePlayers < 3) {
-                    int newEffect = EFFECT_DUELIES;
-
-                    if(isForced) {
+                    if(isForced && !g_WasForceRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Duelies effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
-                         PrintToServer("\x07B143F1[Roundabout]\x01 Duelies effect condition not met, reshuffling.");
-                         newEffect = setEffect(-1);
-                         return newEffect;
+                         PrintToServer("[Roundabout] Duelies effect condition not met, reshuffled.");
+                         return setEffect(-1);
                     }
                }
 
@@ -221,15 +215,12 @@ public int setEffect(int id) {
 
           case EFFECT_HYPERHEAL: {
                if(activePlayers < 3) {
-                    int newEffect = EFFECT_HYPERHEAL;
-
-                    if(isForced) {
+                    if(isForced && !g_WasForceRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
-                         PrintToServer("\x07B143F1[Roundabout]\x01 Hyperheal effect condition not met, reshuffling.");
-                         newEffect = setEffect(-1);
-                         return newEffect;
+                         PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
+                         return setEffect(-1);
                     }
                }
 

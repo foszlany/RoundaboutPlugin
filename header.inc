@@ -24,6 +24,7 @@ ConVar g_CVAR_EnablePlugin = null;
 /* GLOBAL VARIABLES */
 int g_CurrentEffect = -1;
 int g_ForceRoundEffect = -1;
+bool g_WasForceRandom = false;
 
 Handle g_hudSync;
 Handle g_RestartGameHandle;

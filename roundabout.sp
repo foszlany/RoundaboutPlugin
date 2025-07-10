@@ -122,6 +122,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		else {
 			g_CurrentEffect = setEffect(g_ForceRoundEffect);
 			g_ForceRoundEffect = -1;
+			g_WasForceRandom = false;
 		}
 
 		CallEventFunction(g_OnRoundStartFuncPtr, event, name, dontBroadcast);
