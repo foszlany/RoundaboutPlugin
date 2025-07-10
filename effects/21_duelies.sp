@@ -27,7 +27,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
 
      if(attacker != 0 && g_Effect21_Duelee[client] != 0) {
-          // Duel completed
+          // DUEL COMPLETED
           if(g_Effect21_Duelee[client] == attacker) {
                char killedName[33];
                GetClientName(client, killedName, sizeof(killedName));
@@ -75,8 +75,8 @@ public void AssignDuel(Handle timer, int client) {
           }
      }
 
-     // Attempt to find a duel partner max 10 times
-     // Reattempt after 10 seconds
+     // ATTEMPT TO FIND A DUEL PARTNER MAX 10 TIMES
+     // REATTEMPT AFTER 10 TRIES
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
           int candidate = GetRandomInt(1, playerCount);
 
@@ -84,7 +84,7 @@ public void AssignDuel(Handle timer, int client) {
                g_Effect21_Duelee[client] = candidate;
                g_Effect21_Duelee[candidate] = client;
 
-               // One timer is sufficient
+               // USE ONE TIMER
                g_Effect21_EffectTimer[client] = CreateTimer(30.0, ExplodeDuelingPlayers, client);
 
                if(g_Effect21_EffectTimer[candidate] != null) {

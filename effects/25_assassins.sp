@@ -33,15 +33,15 @@ public void applyAssassinEffect(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
 
-          // Remove bullets from the clip upon spawning
+          // REMOVE BULLETS FROM CLIP UPON SPAWNING
           if(IsValidEntity(primaryWeapon)) {
                EquipPlayerWeapon(client, primaryWeapon);
                SetEntProp(primaryWeapon, Prop_Send, "m_iClip1", 1);
           }
 
-          // Apply attributes
+          // APPLY ATTRIBUTES
           if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
-               TF2Attrib_SetByName(primaryWeapon, "damage bonus", 99.0);
+               TF2Attrib_SetByName(primaryWeapon, "damage bonus", 100.0);
                TF2Attrib_SetByName(primaryWeapon, "clip size penalty", 0.1);
           }
      }
