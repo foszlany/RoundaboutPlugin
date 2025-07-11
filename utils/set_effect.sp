@@ -283,6 +283,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_MOSQUITO: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_29_Mosquito;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_29_Mosquito;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_29_Mosquito;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

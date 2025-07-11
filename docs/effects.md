@@ -148,3 +148,12 @@
      - ID: `28`
      - Player size is multiplied by a random value between `0.35` and `0.70`.
           - Additionally, there's a `5%` chance of this value being `0.15`.
+
+* **Mosquito Infestation**<br>
+     - ID: `29`
+     - Causes players to mimic mosquitos. The following effects are in place:
+          - All players are forced to play Scout.
+          - Players can infinitely double jump.
+          - Players are faster by `120%`.
+          - Players size is multiplied by `0.75`.
+          - Voice pitch is changed to `2.0`.
