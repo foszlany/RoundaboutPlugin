@@ -154,6 +154,7 @@
      - Causes players to mimic mosquitos. The following effects are in place:
           - All players are forced to play Scout.
           - Players can infinitely double jump.
+          - Players deal `Mini-crits` while mid-air.
           - Players are faster by `120%`.
           - Players size is multiplied by `0.75`.
           - Voice pitch is changed to `2.0`.
