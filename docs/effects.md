@@ -68,7 +68,7 @@
 
 * **Weaklings**<br>
      - ID: `14`
-     - All player-to-player damage is reduced to a mere `33%`.
+     - All damage is reduced to a mere `33%`.
 
 * **Buffed**<br>
      - ID: `15`
@@ -141,5 +141,10 @@
           - If a player disconnects and another joins in their place, they may get their health bonus.
                - For now this is a design choice to prevent newcomers from being overwhelmed.
      - This effect has two variants, each have a `50%` chance of occurring.
-          - **Variant 1:** Bonus max health is lost upon death. 
+          - **Variant 1:** Bonus max health is lost upon death.
           - **Variant 2:** Bonus max health is kept after death.
+
+* **Small**<br>
+     - ID: `28`
+     - Player size is multiplied by a random value between `0.35` and `0.70`.
+          - Additionally, there's a `5%` chance of this value being `0.15`.

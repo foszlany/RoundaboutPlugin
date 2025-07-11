@@ -70,8 +70,10 @@ float g_Effect24_KnockbackBonus;
 
 int g_Effect26_OriginalAirAcceleration;
 
-bool g_Effect27_isPersistent;
+bool g_Effect27_IsPersistent;
 float g_Effect27_Bodycount[MAXPLAYERS + 1];
+
+float g_Effect28_SizeMultiplier;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
@@ -102,6 +104,7 @@ float g_Effect27_Bodycount[MAXPLAYERS + 1];
 #include "effects/25_assassins.sp"
 #include "effects/26_incontrol.sp"
 #include "effects/27_bodycount.sp"
+#include "effects/28_small.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -152,5 +155,6 @@ enum Effect {
 	EFFECT_ASSASSINS		=	25,
 	EFFECT_INCONTROL		=	26,
 	EFFECT_BODYCOUNT		=	27,
+	EFFECT_SMALL			=	28,
 	EFFECT_MAXCOUNT
 }

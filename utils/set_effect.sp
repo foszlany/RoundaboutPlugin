@@ -19,7 +19,7 @@ public int setEffect(int id) {
 
           case EFFECT_LOWGRAVITY: {
                ConVar gravity = FindConVar("sv_gravity");
-               currentGravity = GetConVarInt(gravity);
+               int currentGravity = GetConVarInt(gravity);
 
                if(currentGravity <= 400) {
                     if(isForced && !g_WasForceRandom) {
@@ -274,6 +274,14 @@ public int setEffect(int id) {
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_27_Bodycount;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_27_Bodycount;
+          }
+
+          case EFFECT_SMALL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_28_Small;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_28_Small;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_28_Small;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
      }
      return id;

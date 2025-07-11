@@ -6,11 +6,11 @@ public void Event_RoundStart_27_Bodycount(Event event, const char[] name, bool d
      }
 
      if(GetRandomInt(0, 1) == 0) { // TEMPORARY HEALTH BONUS
-          g_Effect27_isPersistent = false;
+          g_Effect27_IsPersistent = false;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x071BB0F6temporary\x01.", name);
      }
      else { // PERSISTENT
-          g_Effect27_isPersistent = true;
+          g_Effect27_IsPersistent = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x07FF9D05persistent\x01.", name);
      }
 
@@ -37,7 +37,7 @@ public void Event_PlayerDeath_27_Bodycount(Event event, const char[] name, bool 
           TF2Attrib_SetByName(attacker, "max health additive bonus", g_Effect27_Bodycount[attacker] * 25);
      }
 
-     if(!g_Effect27_isPersistent) {
+     if(!g_Effect27_IsPersistent) {
           g_Effect27_Bodycount[killed] = 0.0;
           TF2Attrib_RemoveByName(killed, "max health additive bonus");
      }
