@@ -35,8 +35,10 @@ public void Event_RoundEnd_29_Mosquito(Event event, const char[] name, bool dont
                     TF2Attrib_RemoveByName(meleeWeapon, "air dash count");
                }
 
+               TF2Attrib_RemoveByName(secondaryWeapon, "damage bonus");
                TF2Attrib_RemoveByName(i, "voice pitch scale");
                TF2Attrib_RemoveByName(i, "move speed penalty");
+               
                SetEntPropFloat(i, Prop_Send, "m_flModelScale", 1.0);
           }
      }
@@ -53,6 +55,7 @@ public void SetMosquitoAttributes(int client) {
      int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
      if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
           TF2Attrib_SetByName(secondaryWeapon, "air dash count", 999.0);
+          TF2Attrib_SetByName(secondaryWeapon, "damage bonus", 1.3);
      }
      
      int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
