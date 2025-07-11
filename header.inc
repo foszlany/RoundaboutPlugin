@@ -105,6 +105,7 @@ float g_Effect28_SizeMultiplier;
 #include "effects/26_incontrol.sp"
 #include "effects/27_bodycount.sp"
 #include "effects/28_small.sp"
+#include "effects/29_mosquito.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -115,6 +116,7 @@ float g_Effect28_SizeMultiplier;
 #include "utils/explode_player.sp"
 #include "utils/class_to_string.sp"
 #include "utils/count_active_players.sp"
+#include "utils/force_class.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
@@ -156,5 +158,6 @@ enum Effect {
 	EFFECT_INCONTROL		=	26,
 	EFFECT_BODYCOUNT		=	27,
 	EFFECT_SMALL			=	28,
+	EFFECT_MOSQUITO		=	29,
 	EFFECT_MAXCOUNT
 }

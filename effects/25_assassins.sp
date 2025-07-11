@@ -2,7 +2,7 @@
 
 public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          forceSpy(i);
+          forceClass(i, TFClass_Spy);
           applyAssassinEffect(i);
      }
 
@@ -13,7 +13,7 @@ public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool d
 public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     forceSpy(client);
+     forceClass(client, TFClass_Spy);
      applyAssassinEffect(client);
 }
 
@@ -43,15 +43,6 @@ public void applyAssassinEffect(int client) {
           if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
                TF2Attrib_SetByName(primaryWeapon, "damage bonus", 100.0);
                TF2Attrib_SetByName(primaryWeapon, "clip size penalty", 0.1);
-          }
-     }
-}
-
-public void forceSpy(int client) {
-     if(IsClientInGame(client) && IsPlayerAlive(client)) {
-          if(TF2_GetPlayerClass(client) != TFClass_Spy) {
-               TF2_SetPlayerClass(client, TFClass_Spy, false);
-               TF2_RegeneratePlayer(client);
           }
      }
 }
