@@ -48,7 +48,6 @@ void ApplyVulnerability(int client) {
      extra       = (extra < 0.0) ? 0.0 : (extra > 2.0 ? 2.0 : extra);
 
      float multiplier = 1.0 + extra;
-     PrintToChatAll("%d vuln: %.2f", client, multiplier);
 
      TF2Attrib_SetByName(client, "dmg taken from bullets increased", multiplier);
      TF2Attrib_SetByName(client, "dmg taken from blast increased", multiplier);
