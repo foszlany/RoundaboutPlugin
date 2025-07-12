@@ -107,6 +107,7 @@ int g_Effect30_BalanceIndicator;
 #include "effects/28_small.sp"
 #include "effects/29_mosquito.sp"
 #include "effects/30_balanced.sp"
+#include "effects/31_pperform.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -161,5 +162,6 @@ enum Effect {
 	EFFECT_SMALL			=	28,
 	EFFECT_MOSQUITO		=	29,
 	EFFECT_BALANCED		=	30,
+	EFFECT_PPERFORM		=	31,
 	EFFECT_MAXCOUNT
 }

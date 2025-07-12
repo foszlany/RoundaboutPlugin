@@ -168,3 +168,8 @@
                - If the indicator goes negative, `BLU` has a higher killcount, `RED` will be favored.
           - Each player will receive a max health bonus depending on how advantaged their team is.
           - Each surplus kill will give `3` extra max hp to every player in the losing team, while the winning team's players will lose the same amount of max hp.
+
+* **Perilous Performance**
+     - ID: `31`
+     - Players receive more damage if their kill-to-death ratio is higher than 1.
+          - Caps at `+200%` (reached at 18:1 ratio)
