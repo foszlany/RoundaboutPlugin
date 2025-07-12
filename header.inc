@@ -4,12 +4,10 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.11"
+#define PLUGIN_VERSION "0.13"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
-#include <sdktools>
-#include <sdktools_gamerules>
 
 #include <tf2>
 #include <tf2_stocks>
@@ -75,6 +73,8 @@ float g_Effect27_Bodycount[MAXPLAYERS + 1];
 
 float g_Effect28_SizeMultiplier;
 
+int g_Effect30_BalanceIndicator;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -106,6 +106,7 @@ float g_Effect28_SizeMultiplier;
 #include "effects/27_bodycount.sp"
 #include "effects/28_small.sp"
 #include "effects/29_mosquito.sp"
+#include "effects/30_balanced.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -159,5 +160,6 @@ enum Effect {
 	EFFECT_BODYCOUNT		=	27,
 	EFFECT_SMALL			=	28,
 	EFFECT_MOSQUITO		=	29,
+	EFFECT_BALANCED		=	30,
 	EFFECT_MAXCOUNT
 }

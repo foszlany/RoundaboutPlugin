@@ -159,3 +159,12 @@
           - Players are faster by `120%`.
           - Players size is multiplied by `0.75`.
           - Voice pitch is changed to `2.0`.
+
+* **Balanced**<br>
+     - ID: `30`
+     - Each death will contribute towards a universal indicator of team balance.
+          - This indicator keeps track of which team has a higher killcount.
+               - If the indicator is positive, `RED` has a higher killcount, `BLU` will be favored.
+               - If the indicator goes negative, `BLU` has a higher killcount, `RED` will be favored.
+          - Each player will receive a max health bonus depending on how advantaged their team is.
+          - Each surplus kill will give `3` extra max hp to every player in the losing team, while the winning team's players will lose the same amount of max hp.

@@ -291,14 +291,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_BALANCED: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_30_Balanced;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_30_Balanced;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_30_Balanced;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_30_Balanced;
+          }
      }
      return id;
-}
-
-public void InvalidateAll() {
-     g_OnRoundStartFuncPtr = INVALID_FUNCTION;
-     g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-     g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-     g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-     g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 }
