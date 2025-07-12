@@ -4,14 +4,13 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.13"
+#define PLUGIN_VERSION "0.14"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
 
 #include <tf2>
 #include <tf2_stocks>
-#include <tf2items>
 
 /* LIB */
 #include <tf2attributes>
