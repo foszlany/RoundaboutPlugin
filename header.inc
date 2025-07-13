@@ -112,6 +112,7 @@ bool g_Effect34_IsSpecialRound;
 #include "effects/32_slowmo.sp"
 #include "effects/33_invis.sp"
 #include "effects/34_secondary.sp"
+#include "effects/35_hell.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -170,5 +171,6 @@ enum Effect {
 	EFFECT_SLOWMO			=	32,
 	EFFECT_INVIS			=	33,
 	EFFECT_SECONDARY		=	34,
+	EFFECT_HELL			=	35,
 	EFFECT_MAXCOUNT
 }

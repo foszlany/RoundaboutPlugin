@@ -331,6 +331,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_HELL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_35_Hell;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_35_Hell;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_35_Hell;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

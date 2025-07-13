@@ -192,3 +192,16 @@
      - Primary weapons cannot be used.
           - Spy is an exception, they will keep their revolvers.
           - Additionally, there's a `5%` chance of melee weapons being taken away as well.
+
+* **Hell**
+     - ID: `35`
+     - Simulates true hell. The following effects are in place:
+          - All players are forced to play Pyro.
+          - The following flame attributes are changed:
+               - Particle size is larger by `75%`.
+               - Spread area is increased by `40` degrees.
+          - The following primary weapon attributes are changed:
+               - Primary weapon ammo is increased by `250%`.
+               - Primary weapon firing rate is increased by `100%`.
+               - Airblast force is increased by `75%`.
+         - Secondary and melee weapons deal `25%` increased damage.
