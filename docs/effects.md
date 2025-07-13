@@ -173,3 +173,11 @@
      - ID: `31`
      - Players receive more damage if their kill-to-death ratio is higher than 1.
           - Caps at `+200%` (reached at 18:1 ratio)
+
+* **Slowmo**
+     - ID: `32`
+     - This effect simulates slow motion without touching host_timescale.
+          - Player speed is multiplied by `0.8`.
+          - Reload, firing and projectile speed is reduced by `50%`.
+               - Does not apply to some projectiles.
+          - Gravity lowered to `350`.

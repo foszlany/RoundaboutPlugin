@@ -307,6 +307,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_31_PPerform;
           }
+
+          case EFFECT_SLOWMO: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_32_Slowmo;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_32_Slowmo;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_32_Slowmo;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
