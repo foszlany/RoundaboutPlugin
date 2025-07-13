@@ -184,5 +184,11 @@
 
 * **Invis**
      - ID: `33`
-     - Everyone is invisible.
-          - Status effects (such as healing, jarate or fire) can make players visible.
+     - Every player becomes invisible.
+          - Status effects (such as healing, jarate or fire) and some minor details (muzzle, reloading) can make players visible.
+
+* **Secondary Combat**
+     - ID: `34`
+     - Primary weapons cannot be used.
+          - Spy is an exception, they will keep their revolvers.
+          - Additionally, there's a `5%` chance of melee weapons being taken away as well.

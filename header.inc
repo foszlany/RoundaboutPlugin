@@ -74,6 +74,8 @@ float g_Effect28_SizeMultiplier;
 
 int g_Effect30_BalanceIndicator;
 
+bool g_Effect34_IsSpecialRound;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -109,6 +111,7 @@ int g_Effect30_BalanceIndicator;
 #include "effects/31_pperform.sp"
 #include "effects/32_slowmo.sp"
 #include "effects/33_invis.sp"
+#include "effects/34_secondary.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -166,5 +169,6 @@ enum Effect {
 	EFFECT_PPERFORM		=	31,
 	EFFECT_SLOWMO			=	32,
 	EFFECT_INVIS			=	33,
+	EFFECT_SECONDARY		=	34,
 	EFFECT_MAXCOUNT
 }
