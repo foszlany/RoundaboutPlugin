@@ -116,8 +116,8 @@ public void AssignDuel(Handle timer, int client) {
                char classCandidate[9];
                GetClassString(TF2_GetPlayerClass(candidate), classCandidate, sizeof(classCandidate));
 
-               PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your opponent is a \x07FF0000%s\x01.", classCandidate);
-               PrintToChat(candidate, "\x07B143F1[Roundabout]\x01 Your opponent is a \x07FF0000%s\x01.", classClient);
+               PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your opponent is a(n) \x07FF0000%s\x01.", classCandidate);
+               PrintToChat(candidate, "\x07B143F1[Roundabout]\x01 Your opponent is a(n) \x07FF0000%s\x01.", classClient);
                
                return;
           }
