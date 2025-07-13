@@ -3,7 +3,7 @@
 public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               EquipPlayerWeapon(i, GetPlayerWeaponSlot(i, 2));
+               EquipPlayerWeapon(i, GetPlayerWeaponSlot(i, TFWeaponSlot_Melee));
                CreateTimer(0.12, ForceToMelee, i);
           }
      }
@@ -18,16 +18,16 @@ public void Event_PlayerUpdate_9_ForceMelee(Event event, const char[] name, bool
 }
 
 public Action ForceToMelee(Handle timer, int client) {
-     TF2_RemoveWeaponSlot(client, 0);
-     TF2_RemoveWeaponSlot(client, 1);
+     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Primary);
+     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 
      if(TF2_GetPlayerClass(client) != TFClass_Spy) {
-          TF2_RemoveWeaponSlot(client, 3);
-          TF2_RemoveWeaponSlot(client, 4);
-          TF2_RemoveWeaponSlot(client, 5);
+          TF2_RemoveWeaponSlot(client, TFWeaponSlot_Grenade);
+          TF2_RemoveWeaponSlot(client, TFWeaponSlot_Building);
+          TF2_RemoveWeaponSlot(client, TFWeaponSlot_PDA);
      }
 
-     int melee = GetPlayerWeaponSlot(client, 2);
+     int melee = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
      if(IsValidEntity(melee)) {
           EquipPlayerWeapon(client, melee);
      }
