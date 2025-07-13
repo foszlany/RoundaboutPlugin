@@ -46,6 +46,8 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
                     TF2Attrib_RemoveByName(primaryWeapon, "Reload time increased");
                     TF2Attrib_RemoveByName(primaryWeapon, "fire rate penalty");
                     TF2Attrib_RemoveByName(primaryWeapon, "Projectile speed decreased");
+                    TF2Attrib_RemoveByName(primaryWeapon, "single wep holster time increased");
+                    TF2Attrib_RemoveByName(primaryWeapon, "single wep deploy time increased");
                }
 
                int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
@@ -53,12 +55,16 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
                     TF2Attrib_RemoveByName(secondaryWeapon, "Reload time increased");
                     TF2Attrib_RemoveByName(secondaryWeapon, "fire rate penalty");
                     TF2Attrib_RemoveByName(secondaryWeapon, "Projectile speed decreased");
+                    TF2Attrib_RemoveByName(secondaryWeapon, "single wep holster time increased");
+                    TF2Attrib_RemoveByName(secondaryWeapon, "single wep deploy time increased");
                }
                
                int meleeWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Melee);
                if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
                     TF2Attrib_RemoveByName(meleeWeapon, "fire rate penalty");
                     TF2Attrib_RemoveByName(meleeWeapon, "Projectile speed decreased");
+                    TF2Attrib_RemoveByName(meleeWeapon, "single wep holster time increased");
+                    TF2Attrib_RemoveByName(meleeWeapon, "single wep deploy time increased");
                }
                
                TF2Attrib_RemoveByName(i, "move speed penalty");
@@ -72,19 +78,25 @@ public void SetSlowmoAttributes(int client) {
           TF2Attrib_SetByName(primaryWeapon, "Reload time increased", 1.50);
           TF2Attrib_SetByName(primaryWeapon, "fire rate penalty", 1.50);
           TF2Attrib_SetByName(primaryWeapon, "Projectile speed decreased", 0.50);
+          TF2Attrib_SetByName(primaryWeapon, "single wep holster time increased", 1.50);
+          TF2Attrib_SetByName(primaryWeapon, "single wep deploy time increased", 1.50);
      }
 
      int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
      if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
           TF2Attrib_SetByName(secondaryWeapon, "Reload time increased", 1.50);
           TF2Attrib_SetByName(secondaryWeapon, "fire rate penalty", 1.50);
-          TF2Attrib_SetByName(primaryWeapon, "Projectile speed decreased", 0.50);
+          TF2Attrib_SetByName(secondaryWeapon, "Projectile speed decreased", 0.50);
+          TF2Attrib_SetByName(secondaryWeapon, "single wep holster time increased", 1.50);
+          TF2Attrib_SetByName(secondaryWeapon, "single wep deploy time increased", 1.50);
      }
      
      int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
      if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
           TF2Attrib_SetByName(meleeWeapon, "fire rate penalty", 1.50);
-          TF2Attrib_SetByName(primaryWeapon, "Projectile speed decreased", 0.50);
+          TF2Attrib_SetByName(meleeWeapon, "Projectile speed decreased", 0.50);
+          TF2Attrib_SetByName(meleeWeapon, "single wep holster time increased", 1.50);
+          TF2Attrib_SetByName(meleeWeapon, "single wep deploy time increased", 1.50);
      }
 
      TF2Attrib_SetByName(client, "move speed penalty", 0.80);

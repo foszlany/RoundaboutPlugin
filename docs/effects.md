@@ -178,6 +178,6 @@
      - ID: `32`
      - This effect simulates slow motion without touching host_timescale.
           - Player speed is multiplied by `0.8`.
-          - Reload, firing and projectile speed is reduced by `50%`.
+          - Reload, firing, holster, deploy and projectile speed is reduced by `50%`.
                - Does not apply to some projectiles.
           - Gravity lowered to `350`.
