@@ -4,10 +4,11 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.14"
+#define PLUGIN_VERSION "0.16"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
+#include <sdkhooks>
 
 #include <tf2>
 #include <tf2_stocks>
@@ -113,6 +114,7 @@ bool g_Effect34_IsSpecialRound;
 #include "effects/33_invis.sp"
 #include "effects/34_secondary.sp"
 #include "effects/35_hell.sp"
+#include "effects/36_socialdist.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -124,6 +126,7 @@ bool g_Effect34_IsSpecialRound;
 #include "utils/class_to_string.sp"
 #include "utils/count_active_players.sp"
 #include "utils/force_class.sp"
+#include "utils/calculate_dist.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
@@ -172,5 +175,6 @@ enum Effect {
 	EFFECT_INVIS			=	33,
 	EFFECT_SECONDARY		=	34,
 	EFFECT_HELL			=	35,
+	EFFECT_SOCIALDIST		=	36,
 	EFFECT_MAXCOUNT
 }

@@ -16,6 +16,7 @@ public Plugin myinfo = {
 public void OnPluginStart() {
 	/* PRECACHE SOUNDS */
 	PrecacheSound("weapons/explode3.wav", true);
+	PrecacheSound("ambient/energy/zap3.wav", true);
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
 
 	/* CREATE CONVARS */

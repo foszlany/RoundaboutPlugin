@@ -205,3 +205,9 @@
                - Primary weapon firing rate is increased by `100%`.
                - Airblast force is increased by `75%`.
          - Secondary and melee weapons deal `25%` increased damage.
+
+* **Social Distancing**
+     - ID: `36`
+     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
+     - Teammates too close to each other (within a `256 Hammer Unit` radius) receive `66%` of the damage taken by someone.
+          - This does not create a chain-reaction.

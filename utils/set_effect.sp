@@ -339,6 +339,25 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+
+          case EFFECT_SOCIALDIST: {
+               if(activePlayers < 3) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Social Distancing effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
+                         return setEffect(-1);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_36_SocialDistancing;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_36_SocialDistancing;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
