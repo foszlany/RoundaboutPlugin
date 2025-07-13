@@ -181,3 +181,8 @@
           - Reload, firing, holster, deploy and projectile speed is reduced by `50%`.
                - Does not apply to some projectiles.
           - Gravity lowered to `350`.
+
+* **Invis**
+     - ID: `33`
+     - Everyone is invisible.
+          - Status effects (such as healing, jarate or fire) can make players visible.

@@ -108,6 +108,7 @@ int g_Effect30_BalanceIndicator;
 #include "effects/30_balanced.sp"
 #include "effects/31_pperform.sp"
 #include "effects/32_slowmo.sp"
+#include "effects/33_invis.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -164,5 +165,6 @@ enum Effect {
 	EFFECT_BALANCED		=	30,
 	EFFECT_PPERFORM		=	31,
 	EFFECT_SLOWMO			=	32,
+	EFFECT_INVIS			=	33,
 	EFFECT_MAXCOUNT
 }
