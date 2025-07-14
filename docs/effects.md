@@ -219,7 +219,7 @@
           - Scout can no longer double jump
           - Soldier can no longer rocket jump.
           - Pyro can no longer airblast.
-          - Demoman can no longer has access to their secondary weapon.
+          - Demoman can no longer use their secondary weapon.
           - Engineer can no longer build.
           - Medic can no longer use their medigun.
           - Sniper can no longer headshot
