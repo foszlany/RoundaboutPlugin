@@ -226,4 +226,4 @@
 
 * **No Scrubs Allowed**
      - ID: `38`
-     - Players are forced to play Sniper. Bodyshots will instantly kill the attacker.
+     - Players are forced to play Sniper with only their primary weapon. Bodyshots will instantly kill the attacker.
