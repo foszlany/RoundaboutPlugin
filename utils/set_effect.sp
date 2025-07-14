@@ -193,7 +193,7 @@ public int setEffect(int id) {
           }
 
           case EFFECT_INFECTION: {
-               if(activePlayers < 4) {
+               if(activePlayers < 4 || IsGamemodeArena()) {
                     if(isForced && !g_WasForceRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Infection effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }

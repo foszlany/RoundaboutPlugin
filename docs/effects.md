@@ -7,7 +7,7 @@
 
 * **Low Gravity**<br>
      - ID: `1`
-     - **CONDITIONAL EFFECT:** Gravity must be higher than 400.
+     - **CONDITIONAL EFFECT:** Gravity must be higher than `400`.
      - Lowers the gravity to a random value between `100` and `400`.
           - Additionally, there's a `2%` chance of the gravity being `0`.
 
@@ -98,16 +98,17 @@
 
  * **Frontier Justice**<br>
      - ID: `19`
+     - **CONDITIONAL EFFECT:** Gamemode cannot be `Arena`.
      - Killing the last player who killed another will grant them crits for `8` seconds.
 
  * **Infection Tag**<br>
      - ID: `20`
-     - **CONDITIONAL EFFECT:** In-game playercount must be 4 or higher.
+     - **CONDITIONAL EFFECT:** In-game playercount must be `4` or higher **AND** gamemode cannot be `Arena`.
      - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team (or when the objective is completed).
 
  * **Duelies**<br>
      - ID: `21`
-     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher.
      - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
           - Killing the duelee will give the attacker `8` seconds of Mini-crits.
@@ -118,7 +119,7 @@
 
 * **Hyperheal**<br>
      - ID: `23`
-     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher.
      - Medics are able to overheal infinitely.
 
 * **Forceful**<br>
@@ -208,7 +209,7 @@
 
 * **Social Distancing**
      - ID: `36`
-     - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher.
      - Teammates too close to each other (within a `256 Hammer Unit` radius) receive `66%` of the damage taken by someone.
           - This does not create a chain-reaction.
 
