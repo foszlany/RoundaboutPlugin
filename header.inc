@@ -77,6 +77,8 @@ int g_Effect30_BalanceIndicator;
 
 bool g_Effect34_IsSpecialRound;
 
+TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -115,6 +117,7 @@ bool g_Effect34_IsSpecialRound;
 #include "effects/34_secondary.sp"
 #include "effects/35_hell.sp"
 #include "effects/36_socialdist.sp"
+#include "effects/37_disadvantaged.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -176,5 +179,6 @@ enum Effect {
 	EFFECT_SECONDARY		=	34,
 	EFFECT_HELL			=	35,
 	EFFECT_SOCIALDIST		=	36,
+	EFFECT_DISADVANTAGED	=	37,
 	EFFECT_MAXCOUNT
 }

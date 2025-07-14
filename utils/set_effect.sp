@@ -340,7 +340,6 @@ public int setEffect(int id) {
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
-
           case EFFECT_SOCIALDIST: {
                if(activePlayers < 3) {
                     if(isForced && !g_WasForceRandom) {
@@ -356,6 +355,14 @@ public int setEffect(int id) {
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr = Event_PlayerHit_36_SocialDistancing;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
+
+          case EFFECT_DISADVANTAGED: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_37_Disadvantaged;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_37_Disadvantaged;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_37_Disadvantaged;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
      }

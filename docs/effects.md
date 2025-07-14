@@ -211,3 +211,15 @@
      - **CONDITIONAL EFFECT:** In-game playercount must be 3 or higher.
      - Teammates too close to each other (within a `256 Hammer Unit` radius) receive `66%` of the damage taken by someone.
           - This does not create a chain-reaction.
+
+* **Disadvantaged**
+     - ID: `37`
+     - One special ability has been taken away from each class (except heavy, who doesn't have one).
+          - Scout can no longer double jump
+          - Soldier can no longer rocket jump.
+          - Pyro can no longer airblast.
+          - Demoman can no longer has access to their secondary weapon.
+          - Engineer can no longer build.
+          - Medic can no longer use their medigun.
+          - Sniper can no longer headshot
+          - Spy can no longer disguise.
