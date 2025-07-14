@@ -131,6 +131,7 @@ TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 #include "utils/count_active_players.sp"
 #include "utils/force_class.sp"
 #include "utils/calculate_dist.sp"
+#include "utils/is_arena.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"

@@ -175,6 +175,16 @@ public int setEffect(int id) {
           }
 
           case EFFECT_JUSTICE: {
+               if(IsGamemodeArena()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Frontier Justice effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Frontier Justice effect condition not met, reshuffled.");
+                         return setEffect(-1);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_19_Justice;
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;

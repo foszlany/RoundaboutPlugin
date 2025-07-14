@@ -102,7 +102,7 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                     TF2Attrib_SetByName(client, "sniper no headshots", 1.0);
                }
 
-               if (isNewClass) {
+               if(isNewClass) {
                     PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Sniper\x01: Rifle headshots have been disabled.");
                }
           }
