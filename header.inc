@@ -118,6 +118,7 @@ TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 #include "effects/35_hell.sp"
 #include "effects/36_socialdist.sp"
 #include "effects/37_disadvantaged.sp"
+#include "effects/38_noscrubs.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -180,5 +181,6 @@ enum Effect {
 	EFFECT_HELL			=	35,
 	EFFECT_SOCIALDIST		=	36,
 	EFFECT_DISADVANTAGED	=	37,
+	EFFECT_NOSCRUBS		=	38,
 	EFFECT_MAXCOUNT
 }

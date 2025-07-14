@@ -223,3 +223,7 @@
           - Medic can no longer use their medigun.
           - Sniper can no longer headshot
           - Spy can no longer disguise.
+
+* **No Scrubs Allowed**
+     - ID: `38`
+     - Players are forced to play Sniper. Bodyshots will instantly kill the attacker.

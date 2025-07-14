@@ -365,6 +365,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_NOSCRUBS: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_38_NoScrubs;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_38_NoScrubs;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_38_NoScrubs;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
