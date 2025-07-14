@@ -49,14 +49,14 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                TF2Attrib_SetByName(client, "no double jump", 1.0);
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Scout: Double jumping has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Scout\x01: Double jumping has been disabled.");
                }
           }
           case TFClass_Soldier: {
                TF2Attrib_SetByName(client, "self dmg push force decreased", 0.0);
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Soldier: Rocket jumping has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Soldier\x01: Rocket jumping has been disabled.");
                }
           }
           case TFClass_Pyro: {
@@ -66,19 +66,19 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                }
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Pyro: Airblasting has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Pyro\x01: Airblasting has been disabled.");
                }
           }
           case TFClass_DemoMan: {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Demoman: Secondary weapon has been removed.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Demoman\x01: Secondary weapon has been removed.");
                }
           }
           case TFClass_Heavy: {
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Heavy: No special effect. Play something less boring.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Heavy\x01: No special effect. Play something less boring.");
                }
           }
           case TFClass_Engineer: {
@@ -86,14 +86,14 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Building);
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Engineer: Building has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Engineer\x01: Building has been disabled.");
                }
           }
           case TFClass_Medic: {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Medic: Medigun usage has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Medic\x01: Medigun usage has been disabled.");
                }
           }
           case TFClass_Sniper: {
@@ -102,15 +102,15 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                     TF2Attrib_SetByName(client, "sniper no headshots", 1.0);
                }
 
-               if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Sniper: Rifle headshots have been disabled.");
+               if (isNewClass) {
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Sniper\x01: Rifle headshots have been disabled.");
                }
           }
           case TFClass_Spy: {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Grenade);
                
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Spy: Disguising has been disabled.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Spy\x01: Disguising has been disabled.");
                }
           }
      }
