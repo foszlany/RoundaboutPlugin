@@ -3,6 +3,9 @@
 public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           forceClass(i, TFClass_Sniper);
+
+          TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
+          TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
      }
 
      PrintCenterTextAll("No Scrubs Allowed");
@@ -13,7 +16,7 @@ public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool 
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      forceClass(client, TFClass_Sniper);
-     
+
      TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
      TF2_RemoveWeaponSlot(client, TFWeaponSlot_Melee);
 }
