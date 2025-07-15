@@ -233,3 +233,7 @@
      - ID: `39`
      - Greatly increased clip size for every weapon.
           - (Bit buggy and weird for now)
+
+* **Restriction**
+     - ID: `40`
+     - Randomly bans `3 - 7` classes.

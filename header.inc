@@ -79,6 +79,8 @@ bool g_Effect34_IsSpecialRound;
 
 TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 
+TFClassType g_Effect40_DisabledClasses[7];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -120,6 +122,7 @@ TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 #include "effects/37_disadvantaged.sp"
 #include "effects/38_noscrubs.sp"
 #include "effects/39_infiniteclip.sp"
+#include "effects/40_restriction.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -185,5 +188,6 @@ enum Effect {
 	EFFECT_DISADVANTAGED	=	37,
 	EFFECT_NOSCRUBS		=	38,
 	EFFECT_INFINITECLIP		=	39,
+	EFFECT_RESTRICTION		=	40,
 	EFFECT_MAXCOUNT
 }
