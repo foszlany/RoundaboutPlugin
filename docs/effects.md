@@ -237,3 +237,5 @@
 * **Restriction**
      - ID: `40`
      - Randomly bans `3 - 7` classes.
+     - When trying to change to a banned class, the plugin will force the player to the first class that isn't banned.
+          - This will cause bots to be restricted to that class!

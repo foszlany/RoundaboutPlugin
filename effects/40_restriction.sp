@@ -14,9 +14,9 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
           do {
                duplicate = false;
                bannedClassCandidate = GetRandomInt(1, 9);
-               // Check existing slots
-               for (int j = 0; j < i; j++) {
-                    if (g_Effect40_DisabledClasses[j] == view_as<TFClassType>(bannedClassCandidate)) {
+
+               for(int j = 0; j < i; j++) {
+                    if(g_Effect40_DisabledClasses[j] == view_as<TFClassType>(bannedClassCandidate)) {
                          duplicate = true;
                          break;
                     }
@@ -24,6 +24,11 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
           } while(duplicate);
 
           g_Effect40_DisabledClasses[i] = view_as<TFClassType>(bannedClassCandidate);
+
+          char classCandidate[9];
+          GetClassString(g_Effect40_DisabledClasses[i], classCandidate, sizeof(classCandidate));
+          
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07D5D5D5%s\x01 has been banned.", classCandidate);
      }
      
      for(int i = 1; i <= MaxClients; i++) {
@@ -46,7 +51,10 @@ public void ForceUnrestrictedClass(int client) {
 
           for(int i = 0; i < 7; i++) {
                if(clientClass == g_Effect40_DisabledClasses[i]) {
-                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 This class has been banned for this round!");
+                    char clientClassString[9];
+                    GetClassString(g_Effect40_DisabledClasses[i], clientClassString, sizeof(clientClassString));
+
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07EB2E2E%s has been banned for this round!\x01", clientClassString);
                     
                     // SEARCH FOR FIRST ALLOWED CLASS
                     for(int newClass = 1; newClass <= 9; newClass++) {
