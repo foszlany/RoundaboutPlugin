@@ -222,9 +222,14 @@
           - Demoman can no longer use their secondary weapon.
           - Engineer can no longer build.
           - Medic can no longer use their medigun.
-          - Sniper can no longer headshot
+          - Sniper can no longer headshot.
           - Spy can no longer disguise.
 
 * **No Scrubs Allowed**
      - ID: `38`
      - Players are forced to play Sniper with only their primary weapon. Bodyshots will instantly kill the attacker.
+
+* **What's a Reload?**
+     - ID: `39`
+     - Greatly increased clip size for every weapon.
+          - (Bit buggy and weird for now)

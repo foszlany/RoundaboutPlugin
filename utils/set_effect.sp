@@ -383,6 +383,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_38_NoScrubs;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_INFINITECLIP: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_39_InfiniteClip;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_39_InfiniteClip;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_39_InfiniteClip;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

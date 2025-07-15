@@ -119,6 +119,7 @@ TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 #include "effects/36_socialdist.sp"
 #include "effects/37_disadvantaged.sp"
 #include "effects/38_noscrubs.sp"
+#include "effects/39_infiniteclip.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -183,5 +184,6 @@ enum Effect {
 	EFFECT_SOCIALDIST		=	36,
 	EFFECT_DISADVANTAGED	=	37,
 	EFFECT_NOSCRUBS		=	38,
+	EFFECT_INFINITECLIP		=	39,
 	EFFECT_MAXCOUNT
 }
