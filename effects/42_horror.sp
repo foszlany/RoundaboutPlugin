@@ -41,7 +41,7 @@ Action BlindPlayerTimer(Handle timer) {
 }
 
 void BlindPlayer(int client, int hold_time, int alpha) {
-     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+     if(IsClientInGame(client) && IsPlayerAlive(client) && !IsFakeClient) {
           Handle message = StartMessageOne("Fade", client);
           BfWriteShort(message, 99999999);                       // FADE DURATION (MS)
           BfWriteShort(message, hold_time);                      // TIME TO HOLD (MS)
