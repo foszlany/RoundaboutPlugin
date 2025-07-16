@@ -46,10 +46,10 @@ void BlindPlayer(int client, int hold_time, int alpha) {
           BfWriteShort(message, 99999999);                       // FADE DURATION (MS)
           BfWriteShort(message, hold_time);                      // TIME TO HOLD (MS)
           BfWriteShort(message, FFADE_STAYOUT);                  // FFADE_STAYOUT
-          BfWriteByte(message, 0);                               // Red
-          BfWriteByte(message, 0);                               // Green
-          BfWriteByte(message, 0);                               // Blue
-          BfWriteByte(message, alpha);                           // Alpha (0-255)
+          BfWriteByte(message, 0);                               // R
+          BfWriteByte(message, 0);                               // G
+          BfWriteByte(message, 0);                               // B
+          BfWriteByte(message, alpha);                           // A
           EndMessage();
      }
 }
