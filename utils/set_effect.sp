@@ -415,6 +415,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_SUPERJUMP: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_43_SuperJump;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_43_SuperJump;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

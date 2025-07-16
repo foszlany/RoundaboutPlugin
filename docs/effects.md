@@ -248,3 +248,8 @@
 * **Horror Fortress**
      - ID: `42`
      - Greatly darkened screen.
+
+* **Super Jump**
+     - ID: `43`
+     - Crouching will create a non-damaging explosion below the player that acts like a rocket jump.
+          - Delay: 4 seconds.

@@ -127,6 +127,7 @@ Handle g_Effect42_HorrorTimer;
 #include "effects/40_restriction.sp"
 #include "effects/41_nohud.sp"
 #include "effects/42_horror.sp"
+#include "effects/43_superjump.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -195,5 +196,6 @@ enum Effect {
 	EFFECT_RESTRICTION		=	40,
 	EFFECT_NOHUD			=	41,
 	EFFECT_HORROR			=	42,
+	EFFECT_SUPERJUMP		=	43,
 	EFFECT_MAXCOUNT
 }
