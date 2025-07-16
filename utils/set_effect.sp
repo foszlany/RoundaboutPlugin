@@ -423,6 +423,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_PULLEY: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_44_Pulley;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_44_Pulley;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

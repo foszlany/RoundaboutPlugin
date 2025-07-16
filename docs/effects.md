@@ -253,3 +253,7 @@
      - ID: `43`
      - Crouching will create a non-damaging explosion below the player that acts like a rocket jump.
           - Delay: 4 seconds.
+
+* **Pulley**
+     - ID: `44`
+     - Hitting a player will pull them towards the attacker depending on damage dealt.
