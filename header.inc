@@ -123,6 +123,7 @@ TFClassType g_Effect40_DisabledClasses[7];
 #include "effects/38_noscrubs.sp"
 #include "effects/39_infiniteclip.sp"
 #include "effects/40_restriction.sp"
+#include "effects/41_nohud.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -189,5 +190,6 @@ enum Effect {
 	EFFECT_NOSCRUBS		=	38,
 	EFFECT_INFINITECLIP		=	39,
 	EFFECT_RESTRICTION		=	40,
+	EFFECT_NOHUD			=	41,
 	EFFECT_MAXCOUNT
 }

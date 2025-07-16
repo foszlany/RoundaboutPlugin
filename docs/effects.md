@@ -239,3 +239,8 @@
      - Randomly bans `3 - 7` classes.
      - When trying to change to a banned class, the plugin will force the player to the first class that isn't banned.
           - This will cause bots to be restricted to that class!
+
+* **Incognizance**
+     - ID: `41`
+     - Some elements of the HUD become hidden while alive.
+          - This includes the crosshair and all indicators (such as health, ammo, metal).

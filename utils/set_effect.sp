@@ -399,6 +399,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_NOHUD: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_41_NoHud;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_41_NoHud;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_41_NoHud;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
