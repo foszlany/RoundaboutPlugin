@@ -3,7 +3,7 @@
 * **Pure**<br>
      - ID: `0`
      - Vanilla TF2 experience, doesn't change anything.
-     - <details><summary>SPOILER</summary>There's a 10% chance of a one-time event occurring sometime between 60 and 160 seconds where everyone will be forced to A-pose without the ability to move or use weapons. This lasts 12 seconds, after which users will explode.</details>
+     - <details><summary>SPOILER</summary>There's a 4% chance of a one-time event occurring sometime between 60 and 160 seconds where everyone will be forced to A-pose without the ability to move or use weapons. This lasts 12 seconds, after which users will explode.</details>
 
 * **Low Gravity**<br>
      - ID: `1`

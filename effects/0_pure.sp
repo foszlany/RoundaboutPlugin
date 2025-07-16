@@ -4,7 +4,7 @@ public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBro
      g_Effect0_FakePure_Timer = null;
      g_Effect0_FakePure_ExplodeTimer = null;
 
-     if(GetRandomInt(1, 10) == 1) {
+     if(GetRandomInt(0, 100) <= 4) {
           g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(60.0, 160.0), FakePureEvent);
      }
      

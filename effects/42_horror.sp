@@ -5,7 +5,7 @@
 
 public void Event_RoundStart_42_HorrorFortress(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          BlindPlayer(i, 99999999, 250);
+          BlindPlayer(i, 99999999, 251);
      }
 
      PrintCenterTextAll("Horror Fortress");
