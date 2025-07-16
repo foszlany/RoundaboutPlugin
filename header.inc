@@ -81,6 +81,8 @@ TFClassType g_Effect37_PreviousClass[MAXPLAYERS + 1];
 
 TFClassType g_Effect40_DisabledClasses[7];
 
+Handle g_Effect42_HorrorTimer;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
