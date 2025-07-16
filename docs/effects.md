@@ -244,3 +244,7 @@
      - ID: `41`
      - Some elements of the HUD become hidden while alive.
           - This includes the crosshair and all indicators (such as health, ammo, metal).
+
+* **Horror Fortress**
+     - ID: `42`
+     - Greatly darkened screen.

@@ -407,6 +407,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_HORROR: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_42_HorrorFortress;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_42_HorrorFortress;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_42_HorrorFortress;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
