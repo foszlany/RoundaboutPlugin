@@ -3,7 +3,7 @@
 public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SDKHook(i, SDKHook_PreThink, Effect43_OnPreThink);
+               SDKHook(i, SDKHook_PreThink, Effect43_OnDuck);
           }
      }
     
@@ -14,12 +14,12 @@ public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool d
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               SDKUnhook(i, SDKHook_PreThink, Effect43_OnPreThink);
+               SDKUnhook(i, SDKHook_PreThink, Effect43_OnDuck);
           }
      }
 }
 
-public void Effect43_OnPreThink(int client) {
+public void Effect43_OnDuck(int client) {
      bool isDucked = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucked"));
      bool isDucking = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucking"));
 
@@ -27,14 +27,14 @@ public void Effect43_OnPreThink(int client) {
           CreateExplosionUnderPlayer(client);
 
           // APPLY DELAY
-          SDKUnhook(client, SDKHook_PreThink, Effect43_OnPreThink);
-          CreateTimer(4.0, ReapplyHook, client);
+          SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
+          CreateTimer(4.0, Effect43_ReapplyHook, client);
      }
 }
 
-public Action ReapplyHook(Handle timer, int client) {
+public Action Effect43_ReapplyHook(Handle timer, int client) {
      if(IsClientInGame(client)) {
-          SDKHook(client, SDKHook_PreThink, Effect43_OnPreThink);
+          SDKHook(client, SDKHook_PreThink, Effect43_OnDuck);
      }
 
      return Plugin_Handled;
