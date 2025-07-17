@@ -257,3 +257,8 @@
 * **Pulley**
      - ID: `44`
      - Hitting a player will pull them towards the attacker depending on damage dealt.
+
+* **On Demand Glass Cannon**
+     - ID: `45`
+     - Players will deal more damage depending on their health to max health ratio. The lower the health is, the more they damage.
+          - Capped at `2x` damage.

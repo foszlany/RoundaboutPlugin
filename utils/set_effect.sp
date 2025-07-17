@@ -431,6 +431,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_44_Pulley;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_ODGLASSCANNON: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_45_OnDemandGlassCannon;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_45_OnDemandGlassCannon;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = Event_PlayerHit_45_OnDemandGlassCannon;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_45_OnDemandGlassCannon;
+          }
      }
      return id;
 }
