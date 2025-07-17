@@ -109,7 +109,7 @@
  * **Duelies**<br>
      - ID: `21`
      - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher.
-     - Every `20 - 46` seconds, users will randomly receive a duel partner that they need to defeat.
+     - Every `20 - 50` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
           - Killing the duelee will give the attacker `8` seconds of Mini-crits.
 

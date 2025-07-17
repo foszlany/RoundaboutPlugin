@@ -70,6 +70,10 @@ public void AssignDuel(Handle timer, int client) {
           }
      }
 
+     if(playerCount <= 1) {
+          g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, client);
+     }
+
      // ATTEMPT TO FIND A DUEL PARTNER MAX 10 TIMES
      // REATTEMPT AFTER 10 TRIES
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
