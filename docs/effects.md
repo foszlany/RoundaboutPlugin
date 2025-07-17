@@ -286,9 +286,11 @@
                - Explosion: `2%`
                
 * **Skating Rink**
+     - ID: `47`
      - The server-wide friction is reduced to `0.1`.
 
 * **Stunning Metal**
+     - ID: `48`
      - Greater instances of damage will slow down an enemy.
           - `25 <= damage < 50` causes `0.17` slowdown for `1.4` seconds.
           - `50 <= damage < 80` causes `0.32` slowdown for `2.6` seconds.
