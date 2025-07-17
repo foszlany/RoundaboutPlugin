@@ -130,6 +130,7 @@ Handle g_Effect42_HorrorTimer;
 #include "effects/43_superjump.sp"
 #include "effects/44_pulley.sp"
 #include "effects/45_odglasscannon.sp"
+#include "effects/46_buffersgambit.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -201,5 +202,6 @@ enum Effect {
 	EFFECT_SUPERJUMP		=	43,
 	EFFECT_PULLEY			=	44,
 	EFFECT_ODGLASSCANNON	=	45,
+	EFFECT_BUFFERSGAMBIT	=	46,
 	EFFECT_MAXCOUNT
 }

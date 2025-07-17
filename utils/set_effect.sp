@@ -439,6 +439,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_45_OnDemandGlassCannon;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_45_OnDemandGlassCannon;
           }
+
+          case EFFECT_BUFFERSGAMBIT: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_46_BuffersGambit;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_46_BuffersGambit;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

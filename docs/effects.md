@@ -252,7 +252,7 @@
 * **Super Jump**
      - ID: `43`
      - Crouching will create a non-damaging explosion below the player that acts like a rocket jump.
-          - Delay: 4 seconds.
+          - Delay: `4` seconds.
 
 * **Pulley**
      - ID: `44`
@@ -262,3 +262,26 @@
      - ID: `45`
      - Players will deal more damage depending on their health to max health ratio. The lower the health is, the more they damage.
           - Capped at `2x` damage.
+
+* **Buffer's gambit**
+     - ID: `46`
+     - Crouching will apply a random (de)buff on the player.
+          - Delay: `16` seconds.
+          - Buffs last `8` seconds.
+          - Buff list with their appropriate chances:
+               - Random damage immunity: `10%`
+               - Speed-boost: `10%`
+               - Mini-crits: `10%`
+               - Defense bonus: `10%`
+               - Become a ghost: `5%`
+               - Crits: `3%`
+               - Ubercharge: `2%`
+          - Debuff list with their appropriate chances:
+               - Slowed: `13%`
+               - Marked for death: `12%`
+               - Set on Fire: `10%`
+               - Jarate, Mad Milk, Bleed: `6%`
+               - Stunned: `4%`
+               - Reduce player health to 1: `3%`
+               - Explosion: `2%`
+               
