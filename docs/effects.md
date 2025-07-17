@@ -287,3 +287,11 @@
                
 * **Skating Rink**
      - The server-wide friction is reduced to `0.1`.
+
+* **Stunning Metal**
+     - Greater instances of damage will slow down an enemy.
+          - `25 <= damage < 50` causes `0.17` slowdown for `1.4` seconds.
+          - `50 <= damage < 80` causes `0.32` slowdown for `2.6` seconds.
+          - `80 <= damage < 110` causes `0.50` slowdown for `3.8` seconds.
+          - `110 <= damage < 160` causes `0.75` slowdown for `5.0` seconds.
+          - `160 <= damage` causes the player to be stunned for `5.0` seconds.

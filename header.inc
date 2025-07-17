@@ -134,6 +134,7 @@ float g_Effect47_OriginalFriction;
 #include "effects/45_odglasscannon.sp"
 #include "effects/46_buffersgambit.sp"
 #include "effects/47_skatingrink.sp"
+#include "effects/48_stunningmetal.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -207,5 +208,6 @@ enum Effect {
 	EFFECT_ODGLASSCANNON	=	45,
 	EFFECT_BUFFERSGAMBIT	=	46,
 	EFFECT_SKATINGRINK		=	47,
+	EFFECT_STUNNINGMETAL	=	48,
 	EFFECT_MAXCOUNT
 }
