@@ -463,6 +463,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = Event_PlayerHit_48_StunningMetal;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_DEATHSTARE: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_49_DeathStare;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_49_DeathStare;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

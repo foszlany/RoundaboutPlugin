@@ -297,3 +297,9 @@
           - `80 <= damage < 110` causes `0.50` slowdown for `3.8` seconds.
           - `110 <= damage < 160` causes `0.75` slowdown for `5.0` seconds.
           - `160 <= damage` causes the player to be stunned for `5.0` seconds.
+
+* **Death Stare**
+     - ID: `49`
+     - When two players look at each other, they both explode.
+          - The check is periodic and generally strict to avoid overloading the server.
+          - Limit is `3000 Hammer Units`.

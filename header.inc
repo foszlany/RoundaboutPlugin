@@ -85,6 +85,10 @@ Handle g_Effect42_HorrorTimer;
 
 float g_Effect47_OriginalFriction;
 
+bool g_Effect49_bIsLookingAt[MAXPLAYERS + 1][MAXPLAYERS + 1];
+int g_Effect49_iCurrentPlayerIndex;
+Handle g_Effect49_Timer = null;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -135,6 +139,7 @@ float g_Effect47_OriginalFriction;
 #include "effects/46_buffersgambit.sp"
 #include "effects/47_skatingrink.sp"
 #include "effects/48_stunningmetal.sp"
+#include "effects/49_deathstare.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -209,5 +214,6 @@ enum Effect {
 	EFFECT_BUFFERSGAMBIT	=	46,
 	EFFECT_SKATINGRINK		=	47,
 	EFFECT_STUNNINGMETAL	=	48,
+	EFFECT_DEATHSTARE		=	49,
 	EFFECT_MAXCOUNT
 }
