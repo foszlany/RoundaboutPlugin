@@ -260,14 +260,14 @@
 
 * **On Demand Glass Cannon**
      - ID: `45`
-     - Players will deal more damage depending on their health to max health ratio. The lower the health is, the more they damage.
+     - Players deal more damage depending on their health to max health ratio. The lower the health is, the more they damage.
           - Capped at `2x` damage.
 
 * **Buffer's gambit**
      - ID: `46`
      - Crouching will apply a random (de)buff on the player.
           - Delay: `16` seconds.
-          - Buffs last `8` seconds.
+          - Effects last `8` seconds.
           - Buff list with their appropriate chances:
                - Random damage immunity: `10%`
                - Speed-boost: `10%`
