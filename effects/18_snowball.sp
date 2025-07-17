@@ -17,7 +17,7 @@ public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool d
 
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      
-     if(IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
+     if(attacker > 0 && IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
           SnowballKillTimer(attacker);
           
           switch(++g_Effect18_EffectIndex[attacker]) {
