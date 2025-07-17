@@ -285,3 +285,5 @@
                - Reduce player health to 1: `3%`
                - Explosion: `2%`
                
+* **Skating Rink**
+     - The server-wide friction is reduced to `0.1`.

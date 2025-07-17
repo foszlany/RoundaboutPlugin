@@ -447,6 +447,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_SKATINGRINK: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_47_SkatingRink;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_47_SkatingRink;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

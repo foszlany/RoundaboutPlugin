@@ -83,6 +83,8 @@ TFClassType g_Effect40_DisabledClasses[7];
 
 Handle g_Effect42_HorrorTimer;
 
+float g_Effect47_OriginalFriction;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -131,6 +133,7 @@ Handle g_Effect42_HorrorTimer;
 #include "effects/44_pulley.sp"
 #include "effects/45_odglasscannon.sp"
 #include "effects/46_buffersgambit.sp"
+#include "effects/47_skatingrink.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -203,5 +206,6 @@ enum Effect {
 	EFFECT_PULLEY			=	44,
 	EFFECT_ODGLASSCANNON	=	45,
 	EFFECT_BUFFERSGAMBIT	=	46,
+	EFFECT_SKATINGRINK		=	47,
 	EFFECT_MAXCOUNT
 }
