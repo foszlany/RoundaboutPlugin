@@ -29,13 +29,8 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
      if(attacker != 0 && g_Effect21_Duelee[client] != 0) {
           // DUEL COMPLETED
           if(g_Effect21_Duelee[client] == attacker) {
-               char killedName[33];
-               GetClientName(client, killedName, sizeof(killedName));
-               char attackerName[33];
-               GetClientName(attacker, attackerName, sizeof(attackerName));
-
                ShowSyncHudText(attacker, g_hudSync, "");
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 %s duelled %s to the death!", attackerName, killedName);
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 %N duelled %N to the death!", attacker, client);
                TF2_AddCondition(attacker, TFCond_Buffed, 8.0);
 
                g_Effect21_EffectTimer[attacker] = CreateTimer(float(GetRandomInt(20, 46)), AssignDuel, attacker);
@@ -92,11 +87,6 @@ public void AssignDuel(Handle timer, int client) {
                     g_Effect21_EffectTimer[candidate] = null;
                }
                
-               char name1[33];
-               GetClientName(client, name1, sizeof(name1));
-               char name2[33];
-               GetClientName(candidate, name2, sizeof(name2));
-
                SetHudTextParams(
                     -1.0,
                     0.2,
@@ -108,8 +98,8 @@ public void AssignDuel(Handle timer, int client) {
                     0,
                     2.0
                );
-               ShowSyncHudText(client, g_hudSync, "You have 30 seconds to kill %s!", name2);
-               ShowSyncHudText(candidate, g_hudSync, "You have 30 seconds to kill %s!", name1);
+               ShowSyncHudText(client, g_hudSync, "You have 30 seconds to kill %N!", candidate);
+               ShowSyncHudText(candidate, g_hudSync, "You have 30 seconds to kill %N!", client);
 
                char classClient[9];
                GetClassString(TF2_GetPlayerClass(client), classClient, sizeof(classClient));
@@ -131,15 +121,10 @@ public Action ExplodeDuelingPlayers(Handle timer, int client1) {
      int client2 = g_Effect21_Duelee[client1];
 
      if(client2 != 0 && IsClientInGame(client1) && IsPlayerAlive(client1) && IsClientInGame(client2) && IsPlayerAlive(client2)) {
-          char name1[33];
-          GetClientName(client1, name1, sizeof(name1));
-          char name2[33];
-          GetClientName(client2, name2, sizeof(name2));
-
           ExplodePlayer(client1);
           ExplodePlayer(client2);
 
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 %s and %s couldn't find each other!", name1, name2);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 %N and %N couldn't find each other!", client1, client2);
      }
      else {
           NullifyClientDuelData(client1);

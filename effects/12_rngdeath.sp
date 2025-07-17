@@ -21,12 +21,9 @@ public void Executioner(Handle timer) {
      else {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i) && IsPlayerAlive(i) && GetRandomInt(1, 100) == 1) {
-                    char name[33];
-                    GetClientName(i, name, sizeof(name));
-
                     ExplodePlayer(i);
 
-                    PrintToChatAll("\x07B143F1[Roundabout]\x01 %s has spontaneously combusted.", name);
+                    PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has spontaneously combusted.", i);
                }
           }
      }

@@ -23,11 +23,6 @@ public void Event_PlayerDeath_19_Justice(Event event, const char[] name, bool do
           g_Effect19_LastKiller[attacker] = 0;
           TF2_AddCondition(attacker, TFCond_CritOnWin, 8.0);
 
-          char victimName[33];
-          GetClientName(victim, victimName, sizeof(victimName));
-          char attackerName[33];
-          GetClientName(attacker, attackerName, sizeof(attackerName));
-
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 %s has avenged %s!", attackerName, victimName);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has avenged %N!", attacker, victim);
      }
 }

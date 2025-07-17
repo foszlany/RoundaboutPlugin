@@ -78,12 +78,9 @@ public void checkMathResponse(int client, const char[] command, int argc) {
 		}
 
           if(providedAnswer != g_Effect13_MathAnswer[client]) {
-               char name[33];
-               GetClientName(client, name, sizeof(name));
-
                ExplodePlayer(client);
 
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 %s can't add two numbers together.", name);
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 %N can't add two numbers together.", client);
                NullifyClientMathData(client);
           }
           else {
@@ -128,12 +125,9 @@ public void checkMathResponse(int client, const char[] command, int argc) {
 // KILL USER
 public void MathExplode(Handle timer, int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
-          char name[33];
-          GetClientName(client, name, sizeof(name));
-
           ExplodePlayer(client);
 
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 %s skipped their math class.", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 %N skipped their math class.", client);
      }
      else {
           NullifyClientMathData(client);

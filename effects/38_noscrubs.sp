@@ -45,9 +45,6 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
                NULL_VECTOR
           );
 
-          char attackerName[33];
-          GetClientName(attacker, attackerName, sizeof(attackerName));
-
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 %s is a scrub.", attackerName);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 %N is a scrub.", attacker);
      }
 }
