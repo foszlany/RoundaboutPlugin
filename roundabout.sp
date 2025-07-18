@@ -18,6 +18,7 @@ public void OnPluginStart() {
 	PrecacheSound("weapons/explode3.wav", true);
 	PrecacheSound("ambient/energy/zap3.wav", true);
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
+	PrecacheSound("misc/halloween/spell_teleport.wav", true);
 
 	/* CREATE CONVARS */
 	g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_toggle", "1", "Enables or disables the plugin", FCVAR_NOTIFY, true, 0.0, true, 1.0);

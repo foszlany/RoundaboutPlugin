@@ -2,13 +2,14 @@
 
 #define E50_MINTIME 3.0
 #define E50_MAXTIME 7.0
+#define E50_PLAYERGRACEPERIOD 15.0
 
 public void Event_RoundStart_50_Quickswap(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect50_PlayersReadyToBeSwapped[i] = true;
      }
 
-     g_Effect50_SwapTimer = CreateTimer(30.0, SwapPlayers);
+     g_Effect50_SwapTimer = CreateTimer(3.0, SwapPlayers);
      
      PrintCenterTextAll("Quickswap");
      ShowHintToAllClients("Quickswap\n\nYou may randomly swap places with other players.");
@@ -31,7 +32,7 @@ public Action SwapPlayers(Handle timer, int client) {
      int client1 = FindSwapCandidate(playerCount);
      int client2 = FindSwapCandidate(playerCount);
 
-     if(client1 == 0 || client2 == 0) {
+     if(client1 == 0 || client2 == 0 || client1 == client2) {
           g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), SwapPlayers, client);
           return Plugin_Handled;
      }
@@ -52,10 +53,15 @@ public Action SwapPlayers(Handle timer, int client) {
 
      g_Effect50_PlayersReadyToBeSwapped[client1] = false;
      g_Effect50_PlayersReadyToBeSwapped[client2] = false;
-     CreateTimer(20.0, ReadyPlayerForSwap, client1);
-     CreateTimer(20.0, ReadyPlayerForSwap, client2);
+     CreateTimer(E50_PLAYERGRACEPERIOD, ReadyPlayerForSwap, client1);
+     CreateTimer(E50_PLAYERGRACEPERIOD, ReadyPlayerForSwap, client2);
 
      g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), SwapPlayers, client);
+
+     EmitAmbientSound("misc/halloween/spell_teleport.wav", origin1);
+     EmitAmbientSound("misc/halloween/spell_teleport.wav", origin2);
+     CreateTeleportParticle(client1, TF2_GetClientTeam(client1) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 1.0);
+     CreateTeleportParticle(client2, TF2_GetClientTeam(client2) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 1.0);
 
      return Plugin_Handled;
 }
@@ -66,7 +72,7 @@ public int FindSwapCandidate(int playerCount) {
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
           client = GetRandomInt(1, MaxClients);
 
-          if(IsClientInGame(client) && IsPlayerAlive(client) && g_Effect50_PlayersReadyToBeSwapped[i]) {
+          if(IsClientInGame(client) && IsPlayerAlive(client) && g_Effect50_PlayersReadyToBeSwapped[client]) {
                return client;
           }
           else {
