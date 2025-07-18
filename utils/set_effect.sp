@@ -471,6 +471,14 @@ public int setEffect(int id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_QUICKSWAP: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_50_Quickswap;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_50_Quickswap;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

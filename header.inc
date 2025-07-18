@@ -89,6 +89,9 @@ bool g_Effect49_bIsLookingAt[MAXPLAYERS + 1][MAXPLAYERS + 1];
 int g_Effect49_iCurrentPlayerIndex;
 Handle g_Effect49_Timer = null;
 
+bool g_Effect50_PlayersReadyToBeSwapped[MAXPLAYERS + 1];
+Handle g_Effect50_SwapTimer;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -140,6 +143,7 @@ Handle g_Effect49_Timer = null;
 #include "effects/47_skatingrink.sp"
 #include "effects/48_stunningmetal.sp"
 #include "effects/49_deathstare.sp"
+#include "effects/50_quickswap.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -215,5 +219,6 @@ enum Effect {
 	EFFECT_SKATINGRINK		=	47,
 	EFFECT_STUNNINGMETAL	=	48,
 	EFFECT_DEATHSTARE		=	49,
+	EFFECT_QUICKSWAP		=	50,
 	EFFECT_MAXCOUNT
 }
