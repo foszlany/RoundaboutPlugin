@@ -38,7 +38,17 @@ public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool 
 }
 
 public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool dontBroadcast) {
-     // ServerCommand("mp_scrambleteams"); // this completely bugs the game out
+     // TEMPORARY SCRAMBLE
+     for(int i = 1; i <= MaxClients; i += 2) {
+          if(IsClientInGame(i) && IsPlayerAlive(i)) {
+               TFTeam clientTeam = TF2_GetClientTeam(i);
+               if(clientTeam != TFTeam_Blue && clientTeam != TFTeam_Red) {
+                    return;
+               }
+
+               TF2_ChangeClientTeam(i, clientTeam == TFTeam_Red ? TFTeam_Blue : TFTeam_Red);
+          }
+     }
 }
 
 public void InfectionTeamCheck() {
