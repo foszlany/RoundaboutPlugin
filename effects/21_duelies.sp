@@ -62,7 +62,7 @@ public void Event_RoundEnd_21_Duelies(Event event, const char[] name, bool dontB
 }
 
 // ASSIGN DUEL
-public void AssignDuel(Handle timer, int client) {
+public Action AssignDuel(Handle timer, int client) {
      int playerCount = 0;
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
@@ -72,6 +72,7 @@ public void AssignDuel(Handle timer, int client) {
 
      if(playerCount <= 1) {
           g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, client);
+          return Plugin_Handled;
      }
 
      // ATTEMPT TO FIND A DUEL PARTNER MAX 10 TIMES
@@ -113,11 +114,12 @@ public void AssignDuel(Handle timer, int client) {
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your opponent is a(n) \x07FF0000%s\x01.", classCandidate);
                PrintToChat(candidate, "\x07B143F1[Roundabout]\x01 Your opponent is a(n) \x07FF0000%s\x01.", classClient);
                
-               return;
+               return Plugin_Handled;
           }
      }
 
      g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(6, 12)), AssignDuel, client);
+     return Plugin_Handled;
 }
 
 // KILL USERS
