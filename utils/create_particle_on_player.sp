@@ -4,7 +4,7 @@ void CreateTeleportParticle(int client, const char[] particleName, float duratio
      GetClientAbsOrigin(client, pos);
      GetClientAbsAngles(client, ang);
 
-     pos[2] += 5.0;
+     pos[2] += 2.0;
 
      int particle = CreateEntityByName("info_particle_system");
 

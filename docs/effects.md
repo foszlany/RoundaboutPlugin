@@ -306,6 +306,6 @@
 
 * **Quickswap**
      - ID: `50`
-     - Two players will swap places every `3-8` seconds. There's a `30` second grace period after the round starts.
+     - Two players will swap places every `3-8` seconds. There's a `25` second grace period after the round starts.
           - Players have their own `15` second grace period after swapping places so they're not teleported around too often.
           - Swaps can happen with players from opposing teams.

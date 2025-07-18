@@ -2,6 +2,7 @@
 
 #define E50_MINTIME 3.0
 #define E50_MAXTIME 7.0
+#define E50_ROUNDSTARTGRACEPERIOD 25.0
 #define E50_PLAYERGRACEPERIOD 15.0
 
 public void Event_RoundStart_50_Quickswap(Event event, const char[] name, bool dontBroadcast) {
@@ -60,8 +61,8 @@ public Action SwapPlayers(Handle timer, int client) {
 
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin1);
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin2);
-     CreateTeleportParticle(client1, TF2_GetClientTeam(client1) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 1.0);
-     CreateTeleportParticle(client2, TF2_GetClientTeam(client2) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 1.0);
+     CreateTeleportParticle(client1, TF2_GetClientTeam(client1) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5);
+     CreateTeleportParticle(client2, TF2_GetClientTeam(client2) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5);
 
      return Plugin_Handled;
 }

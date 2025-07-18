@@ -63,22 +63,17 @@ public void Event_RoundEnd_21_Duelies(Event event, const char[] name, bool dontB
 
 // ASSIGN DUEL
 public Action AssignDuel(Handle timer, int client) {
-     int playerCount = 0;
-     for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i)) {
-               playerCount++;
-          }
-     }
+     int playerCount = CountActivePlayers();
 
      if(playerCount <= 1) {
-          g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, client);
+          g_Effect21_EffectTimer[client] = CreateTimer(GetRandomFloat(20.0, 50.0), AssignDuel, client);
           return Plugin_Handled;
      }
 
      // ATTEMPT TO FIND A DUEL PARTNER MAX 10 TIMES
      // REATTEMPT AFTER 10 TRIES
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
-          int candidate = GetRandomInt(1, playerCount);
+          int candidate = GetRandomInt(1, MaxClients);
 
           if(candidate != client && g_Effect21_EffectTimer[candidate] != null && g_Effect21_Duelee[candidate] == 0 && IsClientInGame(candidate) && IsPlayerAlive(candidate) && IsOpposingTeam(client, candidate)) {
                g_Effect21_Duelee[client] = candidate;
