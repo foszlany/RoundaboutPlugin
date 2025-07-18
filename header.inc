@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.18"
+#define PLUGIN_VERSION "0.20"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -167,6 +167,7 @@ Handle g_Effect50_SwapTimer;
 #include "commands/github.sp"
 #include "commands/version.sp"
 #include "commands/enable.sp"
+#include "commands/effects.sp"
 
 /* EFFECTS */
 enum Effect {

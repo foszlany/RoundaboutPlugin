@@ -39,6 +39,7 @@ public void OnPluginStart() {
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");
 	RegConsoleCmd("sm_roundabout_github", Command_Github, "Returns the Github link for the repository of this plugin.");
+	RegConsoleCmd("sm_roundabout_effects", Command_Effects, "Returns the doc for every effect and their details.");
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");
 
 	/* EVENT HOOKS */
