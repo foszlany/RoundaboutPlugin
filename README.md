@@ -17,6 +17,7 @@ Read the effect details [here](./docs/effects.md).<br><br>
 ### User commands
 * **roundabout_github** - Links to the GitHub repository<br>
 * **roundabout_version** - Returns the version of the plugin<br>
+* **roundabout_effects** - Returns the effect doc.<br>
 
 ### Admin commands
 * **roundabout_force \<id\>** - Forces a new round with a desired effect<br>
