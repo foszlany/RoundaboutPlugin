@@ -5,8 +5,7 @@ public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool d
           applyMiniCritVsBurning(i);
      }
      
-     PrintCenterTextAll("Fire Aspect");
-     ShowHintToAllClients("Fire Aspect\n\nMelee hits set the enemy on fire for 8 seconds, burning players receive mini-crits.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {

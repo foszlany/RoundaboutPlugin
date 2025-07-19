@@ -20,8 +20,7 @@ public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dont
           }
      }
 
-     PrintCenterTextAll("Slowmo");
-     ShowHintToAllClients("Slowmo\n\nYou're all in slow motion!");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_32_Slowmo(Event event, const char[] name, bool dontBroadcast) {

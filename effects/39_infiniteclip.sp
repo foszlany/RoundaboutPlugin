@@ -7,8 +7,7 @@ public void Event_RoundStart_39_InfiniteClip(Event event, const char[] name, boo
           }
      }
 
-     PrintCenterTextAll("What's a Reload?");
-     ShowHintToAllClients("What's a Reload?\n\nMassively increased clip size.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_39_InfiniteClip(Event event, const char[] name, bool dontBroadcast) {

@@ -13,8 +13,7 @@ public void Event_RoundStart_49_DeathStare(Event event, const char[] name, bool 
 
      g_Effect49_Timer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateLookMatrix, _, TIMER_REPEAT);
     
-     PrintCenterTextAll("Death Stare");
-     ShowHintToAllClients("Death Stare\n\nLook each other in the eye and you'll both die.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_49_DeathStare(Event event, const char[] name, bool dontBroadcast) {

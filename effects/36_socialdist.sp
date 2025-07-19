@@ -1,8 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_36_SocialDistancing(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Social Distancing");
-     ShowHintToAllClients("Social Distancing\n\nTeammates too close to each other also receive damage.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, bool dontBroadcast) {

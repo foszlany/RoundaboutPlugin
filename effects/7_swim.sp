@@ -7,8 +7,7 @@ public void Event_RoundStart_7_Swim(Event event, const char[] name, bool dontBro
           }
      }
 
-     PrintCenterTextAll("Swim");
-     ShowHintToAllClients("Swim\n\nSwim like the whole map is underwater.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_7_Swim(Event event, const char[] name, bool dontBroadcast) {

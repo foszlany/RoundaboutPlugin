@@ -7,8 +7,7 @@ public void Event_RoundStart_2_MiniCrit(Event event, const char[] name, bool don
           }
      }
 
-     PrintCenterTextAll("Mini-crits");
-     ShowHintToAllClients("Mini-crits\n\nMini-crits for all your heart's desires.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_2_MiniCrit(Event event, const char[] name, bool dontBroadcast) {

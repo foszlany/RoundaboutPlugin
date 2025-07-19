@@ -7,8 +7,7 @@ public void Event_RoundStart_4_SpeedBoost(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Speedboost");
-     ShowHintToAllClients("Speedboost\n\nMove faster.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_4_SpeedBoost(Event event, const char[] name, bool dontBroadcast) {

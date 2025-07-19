@@ -10,8 +10,7 @@ public void Event_RoundStart_21_Duelies(Event event, const char[] name, bool don
           }
      }
      
-     PrintCenterTextAll("Duelies");
-     ShowHintToAllClients("Duelies\n\nSometimes you'll receive a duel partner. Kill them or be killed.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_21_Duelies(Event event, const char[] name, bool dontBroadcast) {

@@ -10,8 +10,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
           }
      }
      
-     PrintCenterTextAll("Perfect Math Class");
-     ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dontBroadcast) {

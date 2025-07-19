@@ -14,8 +14,7 @@ public void Event_RoundStart_47_SkatingRink(Event event, const char[] name, bool
           ServerCommand("sv_friction 0.1");
      }
 
-     PrintCenterTextAll("Skating Rink");
-     ShowHintToAllClients("Skating Rink\n\nSlide around like you're ice skating!");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_47_SkatingRink(Event event, const char[] name, bool dontBroadcast) {

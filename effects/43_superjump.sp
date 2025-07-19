@@ -7,8 +7,7 @@ public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool d
           }
      }
     
-     PrintCenterTextAll("Super Jump");
-     ShowHintToAllClients("Super Jump\n\nCrouch to perform a big jump! (4.0s delay)");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {

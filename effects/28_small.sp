@@ -15,8 +15,7 @@ public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontB
           }
      }
 
-     PrintCenterTextAll("Small");
-     ShowHintToAllClients("Small\n\nReduced size for everyone.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_28_Small(Event event, const char[] name, bool dontBroadcast) {

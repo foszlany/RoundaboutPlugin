@@ -10,12 +10,7 @@ public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBro
      
      g_Effect0_FakePure_IsActive = false;
 
-     char message[256];
-     Format(message, sizeof(message), "Pure\n\nThe vanilla TF2 experience we all love%s", (g_Effect0_FakePure_Timer == null) ? "." : "?");
-
-     PrintCenterTextAll("Pure");
-     ShowHintToAllClients(message);
-     return;
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_0_Pure(Event event, const char[] name, bool dontBroadcast) {

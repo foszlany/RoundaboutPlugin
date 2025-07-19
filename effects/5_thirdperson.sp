@@ -7,8 +7,7 @@ public void Event_RoundStart_5_ThirdPerson(Event event, const char[] name, bool 
           }
      }
 
-     PrintCenterTextAll("Thirdperson");
-     ShowHintToAllClients("Thirdperson\n\nView yourself from outside.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_5_ThirdPerson(Event event, const char[] name, bool dontBroadcast) {

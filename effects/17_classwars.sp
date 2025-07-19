@@ -8,9 +8,6 @@ public void Event_RoundStart_17_ClassWars(Event event, const char[] name, bool d
           ForceClassWarsTeam(i);
      }
 
-     PrintCenterTextAll("Class Wars");
-     ShowHintToAllClients("Class Wars\n\nOne class versus another.");
-
      char classRed[9];
      GetClassString(g_Effect17_RedTeamClass, classRed, sizeof(classRed));
 
@@ -18,6 +15,8 @@ public void Event_RoundStart_17_ClassWars(Event event, const char[] name, bool d
      GetClassString(g_Effect17_BluTeamClass, classBlu, sizeof(classBlu));
       
      PrintToChatAll("\x07B143F1[Roundabout]\x01 This round's matchup: %s vs. %s.", classRed, classBlu);
+
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_17_ClassWars(Event event, const char[] name, bool dontBroadcast) {

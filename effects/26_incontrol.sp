@@ -26,8 +26,7 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
           }
      }
      
-     PrintCenterTextAll("In Control");
-     ShowHintToAllClients("In Control\n\nIncreased Air Control. All Soldier melee weapons crit while airborne.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {

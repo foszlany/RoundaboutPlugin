@@ -6,8 +6,7 @@ public void Event_RoundStart_37_Disadvantaged(Event event, const char[] name, bo
           HandleSpecialAbilityRemoval(i);
      }
 
-     PrintCenterTextAll("Disadvantaged");
-     ShowHintToAllClients("Disadvantaged\n\nSome special abilities have been taken away.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {

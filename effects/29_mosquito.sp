@@ -7,8 +7,7 @@ public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool do
           }
      }
 
-     PrintCenterTextAll("Mosquito Infestation");
-     ShowHintToAllClients("Mosquito Infestation\n\nYou are all extra annoying.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {

@@ -1,8 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_44_Pulley(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Pulley");
-     ShowHintToAllClients("Pulley\n\nDamaging a player will pull them towards you.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_44_Pulley(Event event, const char[] name, bool dontBroadcast) {

@@ -7,8 +7,7 @@ public void Event_RoundStart_3_Crit(Event event, const char[] name, bool dontBro
           }
      }
 
-     PrintCenterTextAll("Criticals");
-     ShowHintToAllClients("Criticals\n\nGuaranteed critical hits.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_3_Crit(Event event, const char[] name, bool dontBroadcast) {

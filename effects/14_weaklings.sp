@@ -8,8 +8,7 @@ public void Event_RoundStart_14_Weaklings(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Weaklings");
-     ShowHintToAllClients("Weaklings\n\nAll damage is reduced to 33 percent.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {

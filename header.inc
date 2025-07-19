@@ -158,6 +158,7 @@ Handle g_Effect50_SwapTimer;
 #include "utils/calculate_dist.sp"
 #include "utils/is_arena.sp"
 #include "utils/create_particle_on_player.sp"
+#include "utils/show_effect_description.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"

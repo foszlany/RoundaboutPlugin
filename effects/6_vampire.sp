@@ -1,8 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_6_Vampire(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Vampire");
-     ShowHintToAllClients("Vampire\n\nHeal back 60 percent of all your damage dealt when not overhealed.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_6_Vampire(Event event, const char[] name, bool dontBroadcast) {

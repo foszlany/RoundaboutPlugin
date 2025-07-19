@@ -1,8 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_48_StunningMetal(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Stunning Metal");
-     ShowHintToAllClients("Stunning Metal\n\nGreater instances of damage causes slowdown or stun.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_48_StunningMetal(Event event, const char[] name, bool dontBroadcast) {

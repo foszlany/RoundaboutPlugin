@@ -16,8 +16,7 @@ public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool do
           }
      }
 
-     PrintCenterTextAll("Forceful");
-     ShowHintToAllClients("Forceful\n\nIncreased knockback.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_24_Forceful(Event event, const char[] name, bool dontBroadcast) {

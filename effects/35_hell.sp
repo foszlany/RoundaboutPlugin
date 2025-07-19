@@ -7,8 +7,7 @@ public void Event_RoundStart_35_Hell(Event event, const char[] name, bool dontBr
           }
      }
 
-     PrintCenterTextAll("Hell");
-     ShowHintToAllClients("Hell\n\nGreatly amplified Pyro abilties.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_35_Hell(Event event, const char[] name, bool dontBroadcast) {

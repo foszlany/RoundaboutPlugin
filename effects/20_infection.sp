@@ -10,8 +10,7 @@ public void Event_RoundStart_20_Infection(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Infection Tag");
-     ShowHintToAllClients("Infection Tag\n\nBring killed players into your team and try to win.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool dontBroadcast) {

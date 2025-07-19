@@ -1,8 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_11_Schadenfreude(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Schadenfreude");
-     ShowHintToAllClients("Schadenfreude\n\nAfter each kill, you have a 33 percent chance to taunt.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerDeath_11_Schadenfreude(Event event, const char[] name, bool dontBroadcast) {

@@ -5,8 +5,7 @@
 public void Event_RoundStart_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
      g_Effect30_BalanceIndicator = 0;
 
-     PrintCenterTextAll("Balanced");
-     ShowHintToAllClients("Balanced\n\nMax health changes based on your team's killcount advantage.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_30_Balanced(Event event, const char[] name, bool dontBroadcast) {

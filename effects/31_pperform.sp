@@ -7,8 +7,7 @@ public void Event_RoundStart_31_PPerform(Event event, const char[] name, bool do
           }
      }
 
-     PrintCenterTextAll("Perilous Performance");
-     ShowHintToAllClients("Perilous Performance\n\nTake increased damage for being good at the game.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_31_PPerform(Event event, const char[] name, bool dontBroadcast) {

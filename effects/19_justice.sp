@@ -5,8 +5,7 @@ public void Event_RoundStart_19_Justice(Event event, const char[] name, bool don
           g_Effect19_LastKiller[i] = 0;
      }
 
-     PrintCenterTextAll("Frontier Justice");
-     ShowHintToAllClients("Frontier Justice\n\nKill the last player who killed you to get crits.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerDeath_19_Justice(Event event, const char[] name, bool dontBroadcast) {

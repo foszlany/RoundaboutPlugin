@@ -35,8 +35,7 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
           ForceUnrestrictedClass(i);
      }
 
-     PrintCenterTextAll("Restriction");
-     ShowHintToAllClients("Restriction\n\nSome classes were banned.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_40_Restriction(Event event, const char[] name, bool dontBroadcast) {

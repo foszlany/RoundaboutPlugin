@@ -1,10 +1,9 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_45_OnDemandGlassCannon(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("On Demand Glass Cannon");
-     ShowHintToAllClients("On Demand Glass Cannon\n\nThe lower your health, the more you damage!");
-
      HookEvent("player_healed", Event_PlayerHit_45_OnDemandGlassCannon, EventHookMode_Post);
+
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_45_OnDemandGlassCannon(Event event, const char[] name, bool dontBroadcast) {

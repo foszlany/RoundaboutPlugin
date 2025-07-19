@@ -8,8 +8,7 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
           TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
      }
 
-     PrintCenterTextAll("No Scrubs Allowed");
-     ShowHintToAllClients("No Scrubs Allowed\n\nHeadshot or die.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {

@@ -10,8 +10,7 @@ public void Event_RoundStart_16_Rolemodel(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Role Model");
-     ShowHintToAllClients("Role Model\n\nYou were assigned a class that you're now stuck with.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_16_Rolemodel(Event event, const char[] name, bool dontBroadcast) {

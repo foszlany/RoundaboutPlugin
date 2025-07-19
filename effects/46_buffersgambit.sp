@@ -7,8 +7,7 @@ public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bo
           }
      }
     
-     PrintCenterTextAll("Buffer's Gambit");
-     ShowHintToAllClients("Buffer's Gambit\n\nCrouch to receive a random (de)buff! (16.0s delay)");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {

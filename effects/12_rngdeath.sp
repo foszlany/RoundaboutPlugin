@@ -1,10 +1,9 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_12_RNGDeath(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Spontaneous Combustion");
-     ShowHintToAllClients("Spontaneous Combustion\n\nYou have a 1 percent chance of dying each second and a rare 0.01 percent chance of everyone dying.");
-
      g_Util_OneSecondTimer = CreateTimer(1.0, Executioner, _, TIMER_REPEAT);
+
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Executioner(Handle timer) {

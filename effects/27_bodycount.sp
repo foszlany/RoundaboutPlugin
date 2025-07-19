@@ -14,8 +14,7 @@ public void Event_RoundStart_27_Bodycount(Event event, const char[] name, bool d
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x07FF9D05persistent\x01.", name);
      }
 
-     PrintCenterTextAll("Bodycount");
-     ShowHintToAllClients("Bodycount\n\nMaximum health is increased by 25 upon killing someone.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_27_Bodycount(Event event, const char[] name, bool dontBroadcast) {

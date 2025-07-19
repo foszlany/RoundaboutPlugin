@@ -10,8 +10,7 @@ public void Event_RoundStart_8_StrongSuit(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Strong Suit");
-     ShowHintToAllClients("Strong Suit\n\nEvery respawn you get a random invulnerability (Bullet, blast or fire)");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_8_StrongSuit(Event event, const char[] name, bool dontBroadcast) {

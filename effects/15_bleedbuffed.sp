@@ -5,8 +5,7 @@ public void Event_RoundStart_15_BleedBuff(Event event, const char[] name, bool d
           g_Effect15_BleedCauserIndex[i] = -1;
      }
 
-     PrintCenterTextAll("Buffed");
-     ShowHintToAllClients("Buffed\n\nAll hits cause 8 seconds of bleed.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerHit_15_BleedBuff(Event event, const char[] name, bool dontBroadcast) {

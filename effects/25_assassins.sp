@@ -6,8 +6,7 @@ public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool d
           applyAssassinEffect(i);
      }
 
-     PrintCenterTextAll("Assassins Indeed");
-     ShowHintToAllClients("Assassins Indeed\n\nOne bullet, one kill.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool dontBroadcast) {

@@ -14,8 +14,7 @@ public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool d
           }
      }
 
-     PrintCenterTextAll("Secondary Combat");
-     ShowHintToAllClients("Secondary Combat\n\nYour primary weapons have been taken away.");
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_34_Secondary(Event event, const char[] name, bool dontBroadcast) {

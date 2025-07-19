@@ -1,10 +1,9 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Heatwave");
-     ShowHintToAllClients("Heatwave\n\nTo simulate global warming, you'll all be set on fire periodically.");
-
      g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), BurnAll);
+
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_RoundEnd_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {

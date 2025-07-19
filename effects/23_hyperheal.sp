@@ -1,14 +1,13 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_23_Hyperheal(Event event, const char[] name, bool dontBroadcast) {
-     PrintCenterTextAll("Hyperheal");
-     ShowHintToAllClients("Hyperheal\n\nOverheal infinitely.");
-
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                TF2Attrib_SetByName(i, "patient overheal penalty", 999.0);
           }
      }
+
+     ShowCurrentEffectDescription(-1);
 }
 
 public void Event_PlayerUpdate_23_Hyperheal(Event event, const char[] name, bool dontBroadcast) {
