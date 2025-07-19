@@ -38,10 +38,15 @@
 - You can copy-paste code from one of the already existing effects to get a headstart.<br><br>
 - `RoundStart` is the only necessary component for an effect.
      - It presents the effect details to the players, as well as initialize any variables.
-     - Example code:
+     - You will need to create the description for your effect inside `utils/show_effect_description.sp` following the same structure as the others.
+     - Example code inside `show_effect_description`:
           ```cpp
-          PrintCenterTextAll("Pure");
-          ShowHintToAllClients("Pure\n\nThe vanilla TF2 experience we all love.");
+          PrintCenterTextAll("Perfect Math Class");
+          ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
+          ```
+     - Example code inside the effect file itself (-1 can be replaced with effect ID):
+          ```cpp
+          ShowCurrentEffectDescription(-1);
           ```
 - `RoundEnd` should do the opposite of `RoundStart`, which means it may unset any variables, remove the effects from the players, as well as kill any ongoing Timers.
 
