@@ -41,6 +41,7 @@ public void OnPluginStart() {
 	RegConsoleCmd("sm_roundabout_github", Command_Github, "Returns the Github link for the repository of this plugin.");
 	RegConsoleCmd("sm_roundabout_effectlist", Command_EffectList, "Returns the doc for every effect and their details.");
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");
+	RegConsoleCmd("sm_roundabout_effect", Command_Effect, "Shows the effect details on screen. Usage: !roundabout_effect <id>");
 
 	/* EVENT HOOKS */
 	HookEvent("teamplay_round_start", Event_RoundStart);

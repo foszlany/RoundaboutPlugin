@@ -169,6 +169,7 @@ Handle g_Effect50_SwapTimer;
 #include "commands/version.sp"
 #include "commands/enable.sp"
 #include "commands/effectlist.sp"
+#include "commands/effect.sp"
 
 /* EFFECTS */
 enum Effect {

@@ -14,21 +14,7 @@
 Read the effect details [here](./docs/effects.md).<br><br>
 
 ## Commands
-### User commands
-* **roundabout_github** - Links to the GitHub repository<br>
-* **roundabout_version** - Returns the version of the plugin<br>
-* **roundabout_effectlist** - Returns the effect doc.<br>
-
-### Admin commands
-* **roundabout_force \<id\>** - Forces a new round with a desired effect<br>
-     -  **id:** ID of the effect.<br>
-          - Chosen randomly when not given.
-          - When given, it ignores all conditions for certain effects. May cause unwanted effects.
-     -  Example usage: `!roundabout_force 1`<br>
-* **roundabout_enable \<arg\>** - Enables or disables the plugin effects<br>
-     -  **arg:** 1 or 0 (enable or disable) <br>
-     -  Enabling the effects will not restart the round.
-     -  Example usage: `!roundabout_enable 0`
+Read the command details [here](./docs/commands.md).<br><br>
 
 ### ConVars
 * **sm_roundabout_toggle \<arg\>** - Enables or disables the plugin effects<br>
