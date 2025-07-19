@@ -23,6 +23,7 @@ ConVar g_CVAR_EnablePlugin = null;
 int g_CurrentEffect = -1;
 int g_ForceRoundEffect = -1;
 bool g_WasForceRandom = false;
+bool g_HasSpawned[MAXPLAYERS + 1];
 
 Handle g_hudSync;
 Handle g_RestartGameHandle;

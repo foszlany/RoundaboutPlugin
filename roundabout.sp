@@ -59,10 +59,19 @@ public void OnPluginStart() {
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
+
+	/* INITIALIZE SPAWNER ARRAY */
+	for(int i = 1; i <= MAXPLAYERS; i++) {
+		g_HasSpawned[i] = false;
+	}
 }
 
 public void OnPluginEnd() {
 	DisablePluginFeatures();
+}
+
+public void OnClientPutInServer(int client) {
+	g_HasSpawned[client] = false;
 }
 
 public void EnablePluginFeatures() {
@@ -135,6 +144,12 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 
 /* REAPPLIES EFFECTS IF NEEDED */
 public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcast) {
+	int client = GetClientOfUserId(event.GetInt("userid"));
+	if(!g_HasSpawned[client] && g_CurrentEffect != -1) {
+		g_HasSpawned[client] = true;
+		ShowCurrentEffectDescription(g_CurrentEffect);
+	}
+
 	CallEventFunction(g_OnPlayerUpdateFuncPtr, event, name, dontBroadcast);
 }
 
