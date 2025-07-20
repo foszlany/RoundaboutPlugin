@@ -67,7 +67,7 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
                }
                
                TF2Attrib_RemoveByName(i, "move speed penalty");
-               TF2Attrib_SetByName(i, "voice pitch scale", 1.0);
+               TF2Attrib_RemoveByName(i, "voice pitch scale");
           }
      }
 }

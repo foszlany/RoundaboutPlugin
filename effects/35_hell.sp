@@ -38,6 +38,8 @@ public void Event_RoundEnd_35_Hell(Event event, const char[] name, bool dontBroa
                if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
                     TF2Attrib_RemoveByName(meleeWeapon, "damage bonus");
                }
+
+               TF2Attrib_RemoveByName(i, "voice pitch scale");
           }
      }
 }
@@ -64,4 +66,6 @@ public void SetHellAttributes(int client) {
      if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
           TF2Attrib_SetByName(meleeWeapon, "damage bonus", 1.25);
      }
+
+     TF2Attrib_SetByName(client, "voice pitch scale", 0.5);
 }

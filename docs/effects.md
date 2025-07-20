@@ -208,6 +208,7 @@
                - Primary weapon firing rate is increased by `100%`.
                - Airblast force is increased by `75%`.
          - Secondary and melee weapons deal `25%` increased damage.
+          - Voice pitch is changed to `0.5`.
 
 * **Social Distancing**
      - ID: `36`
