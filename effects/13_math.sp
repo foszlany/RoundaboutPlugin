@@ -40,7 +40,7 @@ public void Event_RoundEnd_13_Math(Event event, const char[] name, bool dontBroa
 
 // CHAT MESSAGE EVENT
 public Action Event_ChatMessage(int client, const char[] command, int argc) {
-     if(g_CurrentEffect == view_as<int>(EFFECT_MATH)) {
+     if(g_CurrentEffect == EFFECT_MATH) {
           if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
                checkMathResponse(client, command, argc);
                return Plugin_Handled;

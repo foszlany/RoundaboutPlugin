@@ -1,11 +1,11 @@
 #pragma semicolon 1
 
-public int setEffect(int id) {
-     bool isForced = id >= 0 && id < view_as<int>(EFFECT_MAXCOUNT);
+public Effect setEffect(Effect id) {
+     bool isForced = id >= EFFECT_PURE && id < EFFECT_MAXCOUNT;
      int activePlayers = CountActivePlayers();
 
-     if(!(id >= 0 && id < view_as<int>(EFFECT_MAXCOUNT))) {
-          id = GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
+     if(!(id >= EFFECT_PURE && id < EFFECT_MAXCOUNT)) {
+          id = view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
      }
 
      switch(id) {
@@ -27,7 +27,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Low Gravity effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -181,7 +181,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Frontier Justice effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -199,7 +199,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Infection effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -217,7 +217,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Duelies effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -243,7 +243,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -285,7 +285,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Bodycount effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -319,7 +319,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Balanced effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 
@@ -377,7 +377,7 @@ public int setEffect(int id) {
                     }
                     else {
                          PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                         return setEffect(-1);
+                         return setEffect(EFFECT_INVALID);
                     }
                }
 

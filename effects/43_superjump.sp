@@ -19,8 +19,9 @@ public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool don
 }
 
 public void Effect43_OnDuck(int client) {
-     if(g_CurrentEffect != 43) {
+     if(g_CurrentEffect != EFFECT_SUPERJUMP) {
           SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
+          return;
      }
 
      bool isDucked = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucked"));

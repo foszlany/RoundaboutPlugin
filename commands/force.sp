@@ -8,7 +8,7 @@ public Action Command_ForceRound(int client, int args) {
 	}
 
 	if(args <= 0) {
-		g_ForceRoundEffect = GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
+		g_ForceRoundEffect = view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
 		g_WasForceRandom = true;
 
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect with id %d has been applied. Round is restarting.", g_ForceRoundEffect);
@@ -32,7 +32,7 @@ public Action Command_ForceRound(int client, int args) {
 			return Plugin_Handled;
 		}
 
-		g_ForceRoundEffect = id;
+		g_ForceRoundEffect = view_as<Effect>(id);
 
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect with id %d has been applied. Round is restarting.", id);
 		ServerCommand("mp_restartgame 1");

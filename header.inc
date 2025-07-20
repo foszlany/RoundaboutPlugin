@@ -20,8 +20,8 @@
 ConVar g_CVAR_EnablePlugin = null;
 
 /* GLOBAL VARIABLES */
-int g_CurrentEffect = -1;
-int g_ForceRoundEffect = -1;
+Effect g_CurrentEffect = EFFECT_INVALID;
+Effect g_ForceRoundEffect = EFFECT_INVALID;
 bool g_WasForceRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -175,6 +175,7 @@ Handle g_Effect50_SwapTimer;
 
 /* EFFECTS */
 enum Effect {
+	EFFECT_INVALID			=	-1,
 	EFFECT_PURE			=	0,
 	EFFECT_LOWGRAVITY		=	1,
 	EFFECT_MINICRIT		=	2,

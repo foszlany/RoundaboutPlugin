@@ -108,7 +108,7 @@ public void DisablePluginFeatures() {
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
 	if(GameRules_GetProp("m_bInWaitingForPlayers") != 1) {
-		if(g_CurrentEffect != -1) {
+		if(g_CurrentEffect != EFFECT_INVALID) {
 			CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
 		}
 
@@ -118,12 +118,12 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
 		g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
-		if(g_ForceRoundEffect == -1) {
-			g_CurrentEffect = setEffect(-1);
+		if(g_ForceRoundEffect == EFFECT_INVALID) {
+			g_CurrentEffect = setEffect(EFFECT_INVALID);
 		}
 		else {
 			g_CurrentEffect = setEffect(g_ForceRoundEffect);
-			g_ForceRoundEffect = -1;
+			g_ForceRoundEffect = EFFECT_INVALID;
 			g_WasForceRandom = false;
 		}
 
@@ -136,7 +136,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 /* REAPPLIES EFFECTS IF NEEDED */
 public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcast) {
 	int client = GetClientOfUserId(event.GetInt("userid"));
-	if(!g_HasSpawned[client] && g_CurrentEffect != -1) {
+	if(!g_HasSpawned[client] && g_CurrentEffect != EFFECT_INVALID) {
 		g_HasSpawned[client] = true;
 		ShowCurrentEffectDescription(g_CurrentEffect);
 	}
@@ -161,7 +161,7 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
 	CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
-	g_CurrentEffect = -1;
+	g_CurrentEffect = EFFECT_INVALID;
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */
