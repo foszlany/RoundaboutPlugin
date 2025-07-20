@@ -5,7 +5,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
           g_Effect13_MathAnswer[i] = -1;
           g_Effect13_MathQuestionTimers[i] = null;
 
-          if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i)) {
+          if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i) && !IsFakeClient(i)) {
                g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, i);
           }
      }
@@ -19,7 +19,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
 public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     if(client <= MaxClients && IsClientInGame(client) && IsPlayerAlive(client) && g_Effect13_MathQuestionTimers[client] == null) {
+     if(client <= MaxClients && IsClientInGame(client) && IsPlayerAlive(client) && !IsFakeClient(client) && g_Effect13_MathQuestionTimers[client] == null) {
           g_Effect13_MathQuestionTimers[client] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, client);
      }
 }
