@@ -164,6 +164,7 @@
 
 * **Balanced**<br>
      - ID: `30`
+     - **CONDITIONAL EFFECT:** If the playercount is lower than `3`, the gamemode cannot be `Arena`.
      - Each death will contribute towards a universal indicator of team balance.
           - This indicator keeps track of which team has a higher killcount.
                - If the indicator is positive, `RED` has a higher killcount, `BLU` will be favored.

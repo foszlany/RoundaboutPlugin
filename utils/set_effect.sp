@@ -313,6 +313,16 @@ public int setEffect(int id) {
           }
 
           case EFFECT_BALANCED: {
+               if(activePlayers < 3 && IsGamemodeArena()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Balanced effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Balanced effect condition not met, reshuffled.");
+                         return setEffect(-1);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_30_Balanced;
                g_OnRoundEndFuncPtr = Event_RoundEnd_30_Balanced;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_30_Balanced;
