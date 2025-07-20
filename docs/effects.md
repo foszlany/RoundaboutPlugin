@@ -183,6 +183,7 @@
           - Reload, firing, holster, deploy and projectile speed is reduced by `50%`.
                - Does not apply to some projectiles.
           - Gravity lowered to `350`.
+          - Voice pitch is changed to `0.7`.
 
 * **Invis**
      - ID: `33`
