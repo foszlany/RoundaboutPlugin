@@ -279,6 +279,16 @@ public int setEffect(int id) {
           }
 
           case EFFECT_BODYCOUNT: {
+               if(activePlayers < 3 && IsGamemodeArena()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Bodycount effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Bodycount effect condition not met, reshuffled.");
+                         return setEffect(-1);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_27_Bodycount;
                g_OnRoundEndFuncPtr = Event_RoundEnd_27_Bodycount;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_27_Bodycount;

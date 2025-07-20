@@ -137,6 +137,7 @@
 
 * **Bodycount**<br>
      - ID: `27`
+     - **CONDITIONAL EFFECT:** If the playercount is lower than `3`, the gamemode cannot be `Arena`.
      - Killing a player grants the user `25` bonus max health.
           - The attacker also heals for this amount.
           - If a player disconnects and another joins in their place, they may get their health bonus.
