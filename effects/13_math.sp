@@ -10,6 +10,9 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
           }
      }
      
+	AddCommandListener(Event_ChatMessage, "say");
+	AddCommandListener(Event_ChatMessage, "say_team");
+     
      ShowCurrentEffectDescription(-1);
 }
 
@@ -27,9 +30,24 @@ public void Event_PlayerDeath_13_Math(Event event, const char[] name, bool dontB
 }
 
 public void Event_RoundEnd_13_Math(Event event, const char[] name, bool dontBroadcast) {
+	RemoveCommandListener(Event_ChatMessage, "say");
+	RemoveCommandListener(Event_ChatMessage, "say_team");
+
      for(int i = 1; i <= MAXPLAYERS; i++) {
           NullifyClientMathData(i);
      }
+}
+
+// CHAT MESSAGE EVENT
+public Action Event_ChatMessage(int client, const char[] command, int argc) {
+     if(g_CurrentEffect == view_as<int>(EFFECT_MATH)) {
+          if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
+               checkMathResponse(client, command, argc);
+               return Plugin_Handled;
+          }
+     }
+
+    return Plugin_Continue;
 }
 
 // GIVE A CUSTOM MATH PROBLEM

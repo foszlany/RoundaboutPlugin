@@ -52,9 +52,6 @@ public void OnPluginStart() {
 	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
 	HookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
 
-	AddCommandListener(Event_ChatMessage, "say");
-	AddCommandListener(Event_ChatMessage, "say_team");
-
 	g_RestartGameHandle = FindConVar("mp_restartgame");
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
@@ -85,9 +82,6 @@ public void EnablePluginFeatures() {
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
-
-	AddCommandListener(Event_ChatMessage, "say");
-	AddCommandListener(Event_ChatMessage, "say_team");
 }
 
 public void DisablePluginFeatures() {
@@ -109,9 +103,6 @@ public void DisablePluginFeatures() {
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		UnhookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
 	}
-
-	RemoveCommandListener(Event_ChatMessage, "say");
-	RemoveCommandListener(Event_ChatMessage, "say_team");
 }
 
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
@@ -161,16 +152,6 @@ public void Event_PlayerHit(Event event, const char[] name, bool dontBroadcast) 
 /* PLAYER DEATH EVENT */
 public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast) {
 	CallEventFunction(g_OnPlayerDeathFuncPtr, event, name, dontBroadcast);
-}
-
-/* CHAT MESSAGE EVENT */
-public Action Event_ChatMessage(int client, const char[] command, int argc) {
-	// not planning to do more chat related effects for now, so this should do
-	if(g_CurrentEffect == view_as<int>(EFFECT_MATH)) {
-		checkMathResponse(client, command, argc);
-	}
-
-	return Plugin_Handled;
 }
 
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE */
