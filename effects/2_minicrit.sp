@@ -7,7 +7,7 @@ public void Event_RoundStart_2_MiniCrit(Event event, const char[] name, bool don
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_2_MiniCrit(Event event, const char[] name, bool dontBroadcast) {

@@ -7,7 +7,7 @@ public void Event_RoundStart_5_ThirdPerson(Event event, const char[] name, bool 
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_5_ThirdPerson(Event event, const char[] name, bool dontBroadcast) {

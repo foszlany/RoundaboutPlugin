@@ -16,7 +16,7 @@ public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool do
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_24_Forceful(Event event, const char[] name, bool dontBroadcast) {

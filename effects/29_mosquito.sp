@@ -7,7 +7,7 @@ public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool do
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {

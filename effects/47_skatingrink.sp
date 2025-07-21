@@ -14,7 +14,7 @@ public void Event_RoundStart_47_SkatingRink(Event event, const char[] name, bool
           ServerCommand("sv_friction 0.1");
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_47_SkatingRink(Event event, const char[] name, bool dontBroadcast) {

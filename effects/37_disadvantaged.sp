@@ -6,7 +6,7 @@ public void Event_RoundStart_37_Disadvantaged(Event event, const char[] name, bo
           HandleSpecialAbilityRemoval(i);
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {

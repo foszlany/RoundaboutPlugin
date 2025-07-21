@@ -3,7 +3,7 @@
 public void Event_RoundStart_45_OnDemandGlassCannon(Event event, const char[] name, bool dontBroadcast) {
      HookEvent("player_healed", Event_PlayerHit_45_OnDemandGlassCannon, EventHookMode_Post);
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_45_OnDemandGlassCannon(Event event, const char[] name, bool dontBroadcast) {

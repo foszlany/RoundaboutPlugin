@@ -5,7 +5,7 @@ public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool d
           applyMiniCritVsBurning(i);
      }
      
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {

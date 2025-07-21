@@ -7,7 +7,7 @@ public void Event_RoundStart_39_InfiniteClip(Event event, const char[] name, boo
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_39_InfiniteClip(Event event, const char[] name, bool dontBroadcast) {

@@ -10,7 +10,7 @@ public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBro
      
      g_Effect0_FakePure_IsActive = false;
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_0_Pure(Event event, const char[] name, bool dontBroadcast) {

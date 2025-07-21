@@ -7,7 +7,7 @@ public void Event_RoundStart_31_PPerform(Event event, const char[] name, bool do
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_31_PPerform(Event event, const char[] name, bool dontBroadcast) {

@@ -8,7 +8,7 @@ public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool d
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_9_ForceMelee(Event event, const char[] name, bool dontBroadcast) {

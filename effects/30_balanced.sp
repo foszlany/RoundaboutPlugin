@@ -5,7 +5,7 @@
 public void Event_RoundStart_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
      g_Effect30_BalanceIndicator = 0;
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
