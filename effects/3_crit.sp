@@ -7,7 +7,7 @@ public void Event_RoundStart_3_Crit(Event event, const char[] name, bool dontBro
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_3_Crit(Event event, const char[] name, bool dontBroadcast) {

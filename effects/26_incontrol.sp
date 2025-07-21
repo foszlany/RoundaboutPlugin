@@ -26,7 +26,7 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
           }
      }
      
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {

@@ -10,7 +10,7 @@ public void Event_RoundStart_20_Infection(Event event, const char[] name, bool d
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool dontBroadcast) {

@@ -7,7 +7,7 @@ public void Event_RoundStart_33_Invis(Event event, const char[] name, bool dontB
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_33_Invis(Event event, const char[] name, bool dontBroadcast) {

@@ -11,7 +11,7 @@ public void Event_RoundStart_41_NoHud(Event event, const char[] name, bool dontB
           HideHUD(i);
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_41_NoHud(Event event, const char[] name, bool dontBroadcast) {

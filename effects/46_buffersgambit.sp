@@ -7,7 +7,7 @@ public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bo
           }
      }
     
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {

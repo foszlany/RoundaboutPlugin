@@ -5,7 +5,7 @@ public void Event_RoundStart_19_Justice(Event event, const char[] name, bool don
           g_Effect19_LastKiller[i] = 0;
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerDeath_19_Justice(Event event, const char[] name, bool dontBroadcast) {

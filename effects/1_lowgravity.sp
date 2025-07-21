@@ -23,7 +23,7 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
           ServerCommand("sv_gravity %d", randGravity);
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {

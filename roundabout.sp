@@ -138,7 +138,7 @@ public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcas
 	int client = GetClientOfUserId(event.GetInt("userid"));
 	if(!g_HasSpawned[client] && g_CurrentEffect != EFFECT_INVALID) {
 		g_HasSpawned[client] = true;
-		ShowCurrentEffectDescription(g_CurrentEffect);
+		ShowCurrentEffectDescription(client, g_CurrentEffect);
 	}
 
 	CallEventFunction(g_OnPlayerUpdateFuncPtr, event, name, dontBroadcast);

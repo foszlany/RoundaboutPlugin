@@ -13,7 +13,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
 	AddCommandListener(Event_ChatMessage, "say");
 	AddCommandListener(Event_ChatMessage, "say_team");
      
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dontBroadcast) {

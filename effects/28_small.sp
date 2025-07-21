@@ -15,7 +15,7 @@ public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontB
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_28_Small(Event event, const char[] name, bool dontBroadcast) {

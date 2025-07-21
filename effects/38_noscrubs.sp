@@ -8,7 +8,7 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
           TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {

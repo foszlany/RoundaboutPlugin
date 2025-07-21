@@ -7,7 +7,7 @@ public void Event_RoundStart_7_Swim(Event event, const char[] name, bool dontBro
           }
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_7_Swim(Event event, const char[] name, bool dontBroadcast) {

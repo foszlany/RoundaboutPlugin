@@ -12,7 +12,7 @@ public void Event_RoundStart_50_Quickswap(Event event, const char[] name, bool d
 
      g_Effect50_SwapTimer = CreateTimer(3.0, SwapPlayers);
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_50_Quickswap(Event event, const char[] name, bool dontBroadcast) {

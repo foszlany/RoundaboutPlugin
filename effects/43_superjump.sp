@@ -7,7 +7,7 @@ public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool d
           }
      }
     
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {

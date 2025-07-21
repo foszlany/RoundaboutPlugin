@@ -46,7 +46,7 @@
           ```
      - Example code inside the effect file itself (-1 can be replaced with effect ID):
           ```cpp
-          ShowCurrentEffectDescription(-1);
+          ShowCurrentEffectDescriptionToAll(-1);
           ```
 - `RoundEnd` should do the opposite of `RoundStart`, which means it may unset any variables, remove the effects from the players, as well as kill any ongoing Timers.
 

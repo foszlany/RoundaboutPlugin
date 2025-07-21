@@ -6,7 +6,7 @@ public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool d
           applyAssassinEffect(i);
      }
 
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool dontBroadcast) {

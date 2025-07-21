@@ -10,7 +10,7 @@ public void Event_RoundStart_21_Duelies(Event event, const char[] name, bool don
           }
      }
      
-     ShowCurrentEffectDescription(-1);
+     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_21_Duelies(Event event, const char[] name, bool dontBroadcast) {
