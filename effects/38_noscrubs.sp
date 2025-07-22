@@ -4,7 +4,11 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
      for(int i = 1; i <= MaxClients; i++) {
           forceClass(i, TFClass_Sniper);
 
-          TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
+          int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
+          if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
+               TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
+          }
+          
           TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
      }
 
