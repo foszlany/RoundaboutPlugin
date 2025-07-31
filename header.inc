@@ -151,6 +151,7 @@ int g_Effect51_OriginalUnbalanceLimit;
 #include "effects/50_quickswap.sp"
 #include "effects/51_mvm.sp"
 #include "effects/52_pmayhem.sp"
+#include "effects/53_shieldingmed.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -236,5 +237,6 @@ enum Effect {
 	EFFECT_QUICKSWAP		=	50,
 	EFFECT_MVM			=	51,
 	EFFECT_PMAYHEM			=	52,
+	EFFECT_SHIELDINGMED		=	53,
 	EFFECT_MAXCOUNT
 }

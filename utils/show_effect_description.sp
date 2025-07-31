@@ -282,6 +282,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Projectile Mayhem\n\nShoot random projectiles!");
           }
 
+          case EFFECT_SHIELDINGMED: {
+               PrintCenterText(client, "Shielding Medicine");
+               ShowHintToClient(client, "Shielding Medicine\n\nMedics can now use the shields from MvM.");
+          }
+
           default: {
                return;
           }

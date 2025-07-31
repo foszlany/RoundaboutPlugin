@@ -376,7 +376,7 @@ public Effect setEffect(Effect id) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Social Distancing effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
-                         PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
+                         PrintToServer("[Roundabout] Social Distancing effect condition not met, reshuffled.");
                          return setEffect(EFFECT_INVALID);
                     }
                }
@@ -532,6 +532,24 @@ public Effect setEffect(Effect id) {
                g_OnRoundStartFuncPtr = Event_RoundStart_52_ProjectileMayhem;
                g_OnRoundEndFuncPtr = Event_RoundEnd_52_ProjectileMayhem;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
+
+          case EFFECT_SHIELDINGMED: {
+               if(activePlayers < 3) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Shielding Medicine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Shielding Medicine effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_53_ShieldingMedicine;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_53_ShieldingMedicine;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_53_ShieldingMedicine;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }

@@ -330,7 +330,7 @@
 
 * **Projectile Mayhem**
      - ID: `52`
-     - **CONDITIONAL EFFECT:** In-game playercount must be `24` or less! 
+     - **CONDITIONAL EFFECT:** In-game playercount must be `24` or less. 
      - Every second a new projectile is assigned to primary and secondary weapons.
           - These projectiles can be:
                - Default
@@ -338,3 +338,8 @@
                - Syringe
                - Flare
                - Righteous Bison Particle
+
+* **Shielding Medicine**
+     - ID: `53`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `2` or higher. 
+     - Medics have the ability to use the `Level 1` Mann vs. Machine shield.
