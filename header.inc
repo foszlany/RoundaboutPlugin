@@ -95,6 +95,7 @@ Handle g_Effect50_SwapTimer;
 
 TFTeam g_Effect51_RealPlayerTeam;
 int g_Effect51_OriginalBotCount;
+int g_Effect51_OriginalUnbalanceLimit;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
