@@ -553,6 +553,24 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_PIERCINGBULL: {
+               if(activePlayers < 3) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Piercing Bullets effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Piercing Bullets effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_54_PiercingBullets;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_54_PiercingBullets;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_54_PiercingBullets;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

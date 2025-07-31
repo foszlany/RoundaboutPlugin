@@ -287,6 +287,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Shielding Medicine\n\nMedics can now use the shields from MvM.");
           }
 
+          case EFFECT_PIERCINGBULL: {
+               PrintCenterText(client, "Piercing Bullets");
+               ShowHintToClient(client, "Piercing Bullets\n\nBullets go through enemies.");
+          }
+
           default: {
                return;
           }

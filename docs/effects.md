@@ -343,3 +343,8 @@
      - ID: `53`
      - **CONDITIONAL EFFECT:** In-game playercount must be `2` or higher. 
      - Medics have the ability to use the `Level 1` Mann vs. Machine shield.
+
+* **Piercing Bullets**
+     - ID: `54`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `2` or higher. 
+     - Bullets go through enemy players.

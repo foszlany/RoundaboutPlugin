@@ -46,4 +46,3 @@ public Action AssignNewProjectiles(Handle timer) {
 
      return Plugin_Handled;
 }
-
