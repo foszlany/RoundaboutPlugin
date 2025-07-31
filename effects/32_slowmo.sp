@@ -56,6 +56,8 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
                     TF2Attrib_RemoveByName(secondaryWeapon, "Projectile speed decreased");
                     TF2Attrib_RemoveByName(secondaryWeapon, "single wep holster time increased");
                     TF2Attrib_RemoveByName(secondaryWeapon, "single wep deploy time increased");
+                    TF2Attrib_RemoveByName(secondaryWeapon, "heal rate bonus");
+                    TF2Attrib_RemoveByName(secondaryWeapon, "overheal fill rate reduced");
                }
                
                int meleeWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Melee);
@@ -89,6 +91,11 @@ public void SetSlowmoAttributes(int client) {
           TF2Attrib_SetByName(secondaryWeapon, "Projectile speed decreased", 0.50);
           TF2Attrib_SetByName(secondaryWeapon, "single wep holster time increased", 1.50);
           TF2Attrib_SetByName(secondaryWeapon, "single wep deploy time increased", 1.50);
+
+          if(TF2_GetPlayerClass(client) == TFClass_Medic) {
+               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", 1.5);
+               TF2Attrib_SetByName(secondaryWeapon, "overheal fill rate reduced", 0.5);
+          }
      }
      
      int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);

@@ -183,6 +183,7 @@
           - Player speed is multiplied by `0.8`.
           - Reload, firing, holster, deploy and projectile speed is reduced by `50%`.
                - Does not apply to some projectiles.
+          - Medic (over)healing speed is multipled by `0.5`.
           - Gravity lowered to `350`.
           - Voice pitch is changed to `0.7`.
 
