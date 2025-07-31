@@ -517,6 +517,24 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_PMAYHEM: {
+               if(MaxClients > 24) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Projectile Mayhem effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Projectile Mayhem effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_52_ProjectileMayhem;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_52_ProjectileMayhem;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

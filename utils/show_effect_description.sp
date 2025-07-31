@@ -277,6 +277,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Mann vs. Machine\n\nDefeat the bots.");
           }
 
+          case EFFECT_PMAYHEM: {
+               PrintCenterText(client, "Projectile Mayhem");
+               ShowHintToClient(client, "Projectile Mayhem\n\nShoot random projectiles!");
+          }
+
           default: {
                return;
           }

@@ -327,3 +327,14 @@
      - ID: `51`
      - **CONDITIONAL EFFECT:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh.
      - Players are assigned to a team at random. `10%` more bots are added to the other team. An additional bot is added if possible.
+
+* **Projectile Mayhem**
+     - ID: `52`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `24` or less! 
+     - Every second a new projectile is assigned to primary and secondary weapons.
+          - These projectiles can be:
+               - Default
+               - Rocket
+               - Syringe
+               - Flare
+               - Righteous Bison Particle
