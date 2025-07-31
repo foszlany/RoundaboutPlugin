@@ -235,8 +235,16 @@
 
 * **What's a Reload?**
      - ID: `39`
-     - Greatly increased clip size for every weapon.
-          - (Bit buggy and weird for now)
+     - Greatly increased clip size and reserve ammo for every weapon.
+          - Primary weapons:
+               - `+300%` clip size
+               - `+150%` reserve ammo
+          - Secondary weapons:
+               - `+250%` clip size
+               - `+200%` reserve ammo
+               - `+200%` maximum charges for throwables
+          - Melee weapons:
+               - `+300%` maximum charges for throwables
 
 * **Restriction**
      - ID: `40`
