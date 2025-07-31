@@ -313,3 +313,8 @@
      - Two players will swap places every `3-8` seconds. There's a `25` second grace period after the round starts.
           - Players have their own `15` second grace period after swapping places so they're not teleported around too often.
           - Swaps can happen with players from opposing teams.
+
+* **Mann vs. Machine**
+     - ID: `51`
+     - **CONDITIONAL EFFECT:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh.
+     - Players are assigned to a team at random. `10%` more bots are added to the other team. An additional bot is added if possible.

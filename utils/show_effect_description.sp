@@ -272,6 +272,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Quickswap\n\nYou may randomly swap places with other players.");
           }
 
+          case EFFECT_MVM: {
+               PrintCenterText(client, "Mann vs. Machine");
+               ShowHintToClient(client, "Mann vs. Machine\n\nDefeat the bots.");
+          }
+
           default: {
                return;
           }

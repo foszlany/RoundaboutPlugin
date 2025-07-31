@@ -93,6 +93,9 @@ Handle g_Effect49_Timer = null;
 bool g_Effect50_PlayersReadyToBeSwapped[MAXPLAYERS + 1];
 Handle g_Effect50_SwapTimer;
 
+TFTeam g_Effect51_RealPlayerTeam;
+int g_Effect51_OriginalBotCount;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -145,6 +148,7 @@ Handle g_Effect50_SwapTimer;
 #include "effects/48_stunningmetal.sp"
 #include "effects/49_deathstare.sp"
 #include "effects/50_quickswap.sp"
+#include "effects/51_mvm.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -154,12 +158,13 @@ Handle g_Effect50_SwapTimer;
 #include "utils/is_opposing_team.sp"
 #include "utils/explode_player.sp"
 #include "utils/class_to_string.sp"
-#include "utils/count_active_players.sp"
+#include "utils/count_players.sp"
 #include "utils/force_class.sp"
 #include "utils/calculate_dist.sp"
 #include "utils/is_arena.sp"
 #include "utils/create_particle_on_player.sp"
 #include "utils/show_effect_description.sp"
+#include "utils/has_nav_mesh.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
@@ -227,5 +232,6 @@ enum Effect {
 	EFFECT_STUNNINGMETAL	=	48,
 	EFFECT_DEATHSTARE		=	49,
 	EFFECT_QUICKSWAP		=	50,
+	EFFECT_MVM			=	51,
 	EFFECT_MAXCOUNT
 }

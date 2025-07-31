@@ -499,6 +499,24 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_MVM: {
+               if(activePlayers >= MaxClients * 0.4 || !HasNavMesh()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Mann vs. Machine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Mann vs. Machine effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_51_Mvm;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_51_Mvm;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_51_Mvm;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
