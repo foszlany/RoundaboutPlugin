@@ -292,6 +292,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Piercing Bullets\n\nBullets go through enemies.");
           }
 
+          case EFFECT_ACHIEVEMENT: {
+               PrintCenterText(client, "Achievement Hunter");
+               ShowHintToClient(client, "Achievement Hunter\n\nObtaining an achievement grants Powerplay.");
+          }
+
           default: {
                return;
           }

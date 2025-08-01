@@ -153,7 +153,7 @@ int g_Effect51_OriginalUnbalanceLimit;
 #include "effects/52_pmayhem.sp"
 #include "effects/53_shieldingmed.sp"
 #include "effects/54_piercingbull.sp"
-// #include "effects/55_ricochet.sp"
+#include "effects/55_achievement.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -241,6 +241,6 @@ enum Effect {
 	EFFECT_PMAYHEM			=	52,
 	EFFECT_SHIELDINGMED		=	53,
 	EFFECT_PIERCINGBULL		=	54,
-	EFFECT_RICOCHET		=	55,
+	EFFECT_ACHIEVEMENT		=	55,
 	EFFECT_MAXCOUNT
 }

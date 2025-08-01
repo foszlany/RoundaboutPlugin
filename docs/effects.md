@@ -349,3 +349,10 @@
      - ID: `54`
      - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
      - Bullets go through enemy players.
+
+* **Achievement Hunter**
+     - ID: `55`
+     - When a player earns an achievement, they gain Powerplay for `12 seconds`.
+          - Speed bonus
+          - Guaranteed Critical hits
+          - Ubercharged
