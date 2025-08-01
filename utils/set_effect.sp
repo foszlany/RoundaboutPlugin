@@ -599,6 +599,16 @@ public Effect setEffect(Effect id) {
           }
 
           case EFFECT_MEDICCALL: {
+               if(activePlayers < 3) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Called for me? effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Called for me? effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_57_MedicCall;
                g_OnRoundEndFuncPtr = Event_RoundEnd_57_MedicCall;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
