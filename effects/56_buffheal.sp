@@ -48,13 +48,12 @@ public void SetHealPenalty(int client) {
 }
 
 public void ApplyCrossBowHeal(Event event, const char[] name, bool dontBroadcast) {
-     PrintToChatAll("triggered");
-
      int target = GetClientOfUserId(event.GetInt("target"));
      int healer = GetClientOfUserId(event.GetInt("healer"));
+     int amount = event.GetInt("amount");
 
      if(target > 0 && IsClientInGame(target) && !IsOpposingTeam(target, healer)) {
-          TF2_AddCondition(target, TFCond_Buffed, 6.0);
+          TF2_AddCondition(target, TFCond_Buffed, 1.0 + float(amount) / 20.0);
      }
 }
 

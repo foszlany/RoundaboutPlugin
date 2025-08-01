@@ -361,3 +361,5 @@
      - ID: `56`
      - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
      - Medic healing rate is reduced to `33%`. Users healed will now gain `Mini-crits`.
+          - If any healing was done using the Crusader's Crossbow, then the buff is also granted.
+               - Formula (in seconds): `1.0 + healamount / 20.0`
