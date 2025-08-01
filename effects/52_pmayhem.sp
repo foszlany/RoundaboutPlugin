@@ -35,7 +35,7 @@ public Action AssignNewProjectiles(Handle timer) {
                     }
 
                     int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
-                    if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
+                    if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon) && TF2_GetPlayerClass(i) != TFClass_DemoMan) {
                          TF2Attrib_SetByName(secondaryWeapon, "override projectile type", g_SafeProjectiles[GetRandomInt(0, g_SafeProjectilesSize)]);
                     }
                }

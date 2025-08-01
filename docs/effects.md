@@ -160,7 +160,7 @@
           - Players deal `Mini-crits` while mid-air.
           - Secondary weapons deal `30%` more damage.
           - Players are faster by `120%`.
-          - Players size is multiplied by `0.75`.
+          - Player size is multiplied by `0.75`.
           - Voice pitch is changed to `2.0`.
 
 * **Balanced**<br>
