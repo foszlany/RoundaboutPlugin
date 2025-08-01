@@ -167,6 +167,16 @@ public Effect setEffect(Effect id) {
           }
 
           case EFFECT_SNOWBALL: {
+               if(activePlayers < 3) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Snowball effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Snowball effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_18_Snowball;
                g_OnRoundEndFuncPtr = Event_RoundEnd_18_Snowball;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;

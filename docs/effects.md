@@ -86,6 +86,7 @@
 
  * **Snowball Effect**<br>
      - ID: `18`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
      - Players receive increasingly better status effects upon chaining kills.
      - All effects last `8` seconds and they renew after getting a kill.
      - Effects can be obtained from the previous one in the following order:
@@ -341,10 +342,10 @@
 
 * **Shielding Medicine**
      - ID: `53`
-     - **CONDITIONAL EFFECT:** In-game playercount must be `2` or higher. 
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
      - Medics have the ability to use the `Level 1` Mann vs. Machine shield.
 
 * **Piercing Bullets**
      - ID: `54`
-     - **CONDITIONAL EFFECT:** In-game playercount must be `2` or higher. 
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
      - Bullets go through enemy players.
