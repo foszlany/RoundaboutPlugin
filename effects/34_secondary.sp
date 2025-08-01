@@ -2,7 +2,6 @@
 
 public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool dontBroadcast) {
      g_Effect34_IsSpecialRound = false;
-
      if(GetRandomInt(0, 100) <= 5) {
           g_Effect34_IsSpecialRound = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Melee weapons have been taken away too.", name);

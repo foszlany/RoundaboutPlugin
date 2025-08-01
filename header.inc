@@ -97,6 +97,8 @@ TFTeam g_Effect51_RealPlayerTeam;
 int g_Effect51_OriginalBotCount;
 int g_Effect51_OriginalUnbalanceLimit;
 
+bool g_Effect53_IsSpecialRound;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
