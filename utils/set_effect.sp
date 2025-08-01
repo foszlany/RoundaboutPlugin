@@ -597,6 +597,14 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_MEDICCALL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_57_MedicCall;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_57_MedicCall;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

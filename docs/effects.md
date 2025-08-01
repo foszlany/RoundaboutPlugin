@@ -365,3 +365,13 @@
      - Medic healing rate is reduced to `33%`. Users healed will now gain `Mini-crits`.
           - If any healing was done using the Crusader's Crossbow, then the buff is also granted.
                - Formula (in seconds): `1.0 + healamount / 20.0`
+
+* **Called for me?**
+     - ID: `57`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher.
+     - Calling for Medic will teleport one if there is a suitable candidate.
+          - There's a `6` second delay between attempts.
+          - Conditions for a Medic to be suitable:
+               - Must exist and be within the same team as the caller
+               - Must not already be healing someone
+               - Wasn't teleported in the past `8` seconds.

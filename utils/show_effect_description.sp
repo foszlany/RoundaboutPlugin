@@ -302,6 +302,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Buffing Heal\n\nMedigun healing is reduced, but they grant Mini-crits.");
           }
 
+          case EFFECT_MEDICCALL: {
+               PrintCenterText(client, "Called for me?");
+               ShowHintToClient(client, "Called for me?\n\nCall for a medic to aid you.");
+          }
+
           default: {
                return;
           }
