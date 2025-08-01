@@ -297,6 +297,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Achievement Hunter\n\nObtaining an achievement grants Powerplay.");
           }
 
+          case EFFECT_BUFFHEAL: {
+               PrintCenterText(client, "Buffing Heal");
+               ShowHintToClient(client, "Buffing Heal\n\nMedigun healing is reduced, but they grant Mini-crits.");
+          }
+
           default: {
                return;
           }

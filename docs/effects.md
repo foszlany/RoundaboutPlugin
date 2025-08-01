@@ -356,3 +356,8 @@
           - Speed bonus
           - Guaranteed Critical hits
           - Ubercharged
+
+* **Buffing Heal**
+     - ID: `56`
+     - **CONDITIONAL EFFECT:** In-game playercount must be `3` or higher. 
+     - Medic healing rate is reduced to `33%`. Users healed will now gain `Mini-crits`.

@@ -589,6 +589,14 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_BUFFHEAL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_56_BuffingHeal;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_56_BuffingHeal;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_56_BuffingHeal;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
