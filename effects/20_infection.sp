@@ -37,7 +37,6 @@ public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool 
 }
 
 public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool dontBroadcast) {
-     // TEMPORARY SCRAMBLE
      for(int i = 1; i <= MaxClients; i += 2) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                TFTeam clientTeam = TF2_GetClientTeam(i);

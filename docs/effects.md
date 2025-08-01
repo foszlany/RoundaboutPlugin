@@ -79,6 +79,15 @@
  * **Rolemodel**<br>
      - ID: `16`
      - Users are randomly assigned a class that they cannot swap from.
+     - An alternative effect has a `33%` chance to occur if the playercount can be associated with a common competitive format. The possible formats:
+          - `2v2` (Ultiduo)
+               - 1 Medic, 1 Soldier
+          - `4v4`
+               - 1 Medic, 1 Demoman, 1 Soldier, 1 Scout
+          - `6v6` (6s)
+               - 1 Medic, 1 Demoman, 2 Soldiers, 2 Scouts
+          - `9v9` (Highlander)
+               - 1 of each class
 
  * **Class Wars**<br>
      - ID: `17`
