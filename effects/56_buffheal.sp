@@ -2,9 +2,14 @@
 
 public void Event_RoundStart_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          SDKHook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
+          if(IsClientInGame(i)) {
+               SDKHook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
+          }
+          
           SetHealPenalty(i);
      }
+
+     HookEvent("crossbow_heal", ApplyCrossBowHeal, EventHookMode_Pre);
 
      ShowCurrentEffectDescriptionToAll(-1);
 }
@@ -16,16 +21,20 @@ public void Event_PlayerUpdate_56_BuffingHeal(Event event, const char[] name, bo
 }
 
 public void Event_RoundEnd_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {    
+     UnhookEvent("crossbow_heal", ApplyCrossBowHeal);
+     
      for(int i = 1; i <= MaxClients; i++) {
-          SDKUnhook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
+          if(IsClientInGame(i)) {
+               SDKUnhook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
 
-          if(IsClientInGame(i) && TF2_GetPlayerClass(i) == TFClass_Medic) {
-               int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
-               if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-                    TF2Attrib_RemoveByName(secondaryWeapon, "heal rate penalty");
-                    TF2Attrib_RemoveByName(secondaryWeapon, "overheal fill rate reduced");
+               if(TF2_GetPlayerClass(i) == TFClass_Medic) {
+                    int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
+                    if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
+                         TF2Attrib_RemoveByName(secondaryWeapon, "heal rate penalty");
+                    }
                }
-          }
+          }   
+
      }  
 }
 
@@ -33,9 +42,19 @@ public void SetHealPenalty(int client) {
      if(IsClientInGame(client) && TF2_GetPlayerClass(client) == TFClass_Medic) {
           int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
           if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", 1.66);
-               TF2Attrib_SetByName(secondaryWeapon, "overheal fill rate reduced", 0.33);
+               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", 0.33);
           }
+     }
+}
+
+public void ApplyCrossBowHeal(Event event, const char[] name, bool dontBroadcast) {
+     PrintToChatAll("triggered");
+
+     int target = GetClientOfUserId(event.GetInt("target"));
+     int healer = GetClientOfUserId(event.GetInt("healer"));
+
+     if(target > 0 && IsClientInGame(target) && !IsOpposingTeam(target, healer)) {
+          TF2_AddCondition(target, TFCond_Buffed, 6.0);
      }
 }
 
