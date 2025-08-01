@@ -333,6 +333,7 @@
      - ID: `52`
      - **CONDITIONAL EFFECT:** In-game playercount must be `24` or less. 
      - Every second a new projectile is assigned to primary and secondary weapons.
+          - The damage of the projectile deals as much damage as the original weapon would.
           - These projectiles can be:
                - Default
                - Rocket
