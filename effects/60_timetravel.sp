@@ -60,6 +60,8 @@ public Action ActivateSnapshot(Handle timer) {
                }
           }
                     
+          EmitSoundToAll("misc/halloween/spell_teleport.wav");
+          
           CreateTimer(GetRandomFloat(8.0, 32.0), CreateSnapshot);
      }
 
