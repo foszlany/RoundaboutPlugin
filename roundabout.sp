@@ -169,7 +169,9 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
-	CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
+	if(g_CurrentEffect != EFFECT_INVALID) {
+		CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
+	}
 	g_CurrentEffect = EFFECT_INVALID;
 }
 
