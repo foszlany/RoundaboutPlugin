@@ -51,7 +51,6 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
 }
 
 public void Event_RoundEnd_58_King(Event event, const char[] name, bool dontBroadcast) {
-     PrintToChatAll("triggered");
      UnhookEvent("player_disconnect", HandleKingDisconnect, EventHookMode_Pre);
 
      RemoveKingProperties();
