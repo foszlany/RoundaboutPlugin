@@ -398,4 +398,5 @@
 
 * **Identity Theft**
      - ID: `59`
+     - **CONDITIONAL EFFECT:** If the playercount is lower than `3`, the gamemode cannot be `Arena`.
      - Killing a player changes the attacker's class to their victim's.

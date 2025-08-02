@@ -635,6 +635,16 @@ public Effect setEffect(Effect id) {
           }
 
           case EFFECT_IDENTITYTHEFT: {
+               if(activePlayers < 3 && IsGamemodeArena()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Identity Theft effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Identity Theft effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
                g_OnRoundStartFuncPtr = Event_RoundStart_59_IdentityTheft;
                g_OnRoundEndFuncPtr = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
