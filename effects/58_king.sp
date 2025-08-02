@@ -6,7 +6,7 @@ public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBr
 
           if(IsClientInGame(g_Effect58_King)) {
                ApplyKingProperties();
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has been selected as the King!\x01", g_Effect58_King);
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has been selected as the King!", g_Effect58_King);
                break;
           }
      }
@@ -35,7 +35,7 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
                g_Effect58_King = attacker;
 
                ApplyKingProperties();
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 The King has been slain by %N!\x01", attacker);
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 The King has been slain by %N!", attacker);
           }
           else {
                for(;;) {
@@ -43,7 +43,7 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
 
                     if(IsClientInGame(g_Effect58_King)) {
                          ApplyKingProperties();
-                         PrintToChatAll("\x07B143F1[Roundabout]\x01 %N didn't feel like being a King. %N has been selected as the new one!\x01", victim, g_Effect58_King);
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 %N didn't feel like being a King. %N has been selected as the new one!", victim, g_Effect58_King);
                          break;
                     }
                }
@@ -67,7 +67,7 @@ public void HandleKingDisconnect(Event event, const char[] name, bool dontBroadc
                if(IsClientInGame(g_Effect58_King)) {
                     ApplyKingProperties();
 
-                    PrintToChatAll("\x07B143F1[Roundabout]\x01 The King disconnected, %N has been selected as the new King!\x01", g_Effect58_King);
+                    PrintToChatAll("\x07B143F1[Roundabout]\x01 The King disconnected, %N has been selected as the new King!", g_Effect58_King);
                     break;
                }
           }

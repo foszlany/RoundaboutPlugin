@@ -317,6 +317,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Identity Theft\n\nYou are what you kill.");
           }
 
+          case EFFECT_TIMETRAVEL: {
+               PrintCenterText(client, "Time Travel");
+               ShowHintToClient(client, "Time Travel\n\nYou may occasionally go back in time.");
+          }
+
           default: {
                return;
           }

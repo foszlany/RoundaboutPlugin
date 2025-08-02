@@ -400,3 +400,10 @@
      - ID: `59`
      - **CONDITIONAL EFFECT:** If the playercount is lower than `3`, the gamemode cannot be `Arena`.
      - Killing a player changes the attacker's class to their victim's.
+
+* **Time Travel**
+     - ID: `60`
+     - Every `8 - 32` seconds, a snapshot is created. After `1 - 24` seconds, all players will be rolled back into that snapshot. Snapshots keep the following:
+          - Position and viewangles
+          - Health
+          - Class

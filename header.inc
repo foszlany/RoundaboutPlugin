@@ -104,6 +104,11 @@ bool g_Effect57_HasRecentlyCalled[MAXPLAYERS + 1];
 
 int g_Effect58_King;
 
+int g_Effect60_PlayerHealth[MAXPLAYERS + 1];
+float g_Effect60_PlayerPosition[MAXPLAYERS + 1][3];
+float g_Effect60_PlayerAngle[MAXPLAYERS + 1][3];
+TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -165,6 +170,7 @@ int g_Effect58_King;
 #include "effects/57_mediccall.sp"
 #include "effects/58_king.sp"
 #include "effects/59_identitytheft.sp"
+#include "effects/60_timetravel.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -257,5 +263,6 @@ enum Effect {
 	EFFECT_MEDICCALL		=	57,
 	EFFECT_KING 			=	58,
 	EFFECT_IDENTITYTHEFT	=	59,
+	EFFECT_TIMETRAVEL		=	60,
 	EFFECT_MAXCOUNT
 }

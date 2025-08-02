@@ -652,6 +652,13 @@ public Effect setEffect(Effect id) {
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_59_IdentityTheft;
           }
           
+          case EFFECT_TIMETRAVEL: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_60_TimeTravel;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }
