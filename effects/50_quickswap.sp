@@ -60,8 +60,8 @@ public Action SwapPlayers(Handle timer, int client) {
 
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin1);
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin2);
-     CreateTeleportParticle(client1, TF2_GetClientTeam(client1) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5);
-     CreateTeleportParticle(client2, TF2_GetClientTeam(client2) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5);
+     CreateStaticParticle(client1, TF2_GetClientTeam(client1) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5, 2.0);
+     CreateStaticParticle(client2, TF2_GetClientTeam(client2) == TFTeam_Red ? "spell_cast_wheel_red" : "spell_cast_wheel_blue", 0.5, 2.0);
 
      return Plugin_Handled;
 }

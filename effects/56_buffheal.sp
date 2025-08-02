@@ -21,7 +21,7 @@ public void Event_PlayerUpdate_56_BuffingHeal(Event event, const char[] name, bo
 }
 
 public void Event_RoundEnd_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {    
-     UnhookEvent("crossbow_heal", ApplyCrossBowHeal);
+     UnhookEvent("crossbow_heal", ApplyCrossBowHeal, EventHookMode_Pre);
      
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {

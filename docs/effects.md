@@ -384,3 +384,14 @@
                - Must exist and be within the same team as the caller
                - Must not already be healing someone
                - Wasn't teleported in the past `8` seconds.
+
+* **King**
+     - ID: `58`
+     - **CONDITIONAL EFFECT:** Gamemode cannot be Arena.
+     - At the start of the round a King is randomly selected.
+          - Killing the King will give the title to the killer.
+          - The King has the following effects:
+               - `+50%` increased damage
+               - `+20%` larger player model
+               - `+300` max health
+               - `+6` health per second

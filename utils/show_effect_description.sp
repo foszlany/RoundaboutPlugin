@@ -307,6 +307,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Called for me?\n\nCall for a medic to aid you.");
           }
 
+          case EFFECT_KING: {
+               PrintCenterText(client, "King");
+               ShowHintToClient(client, "King\n\nOne player becomes especially powerful. Fight for the title.");
+          }
+
           default: {
                return;
           }

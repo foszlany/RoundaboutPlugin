@@ -1,10 +1,10 @@
-void CreateTeleportParticle(int client, const char[] particleName, float duration) {
+void CreateStaticParticle(int client, const char[] particleName, float duration, float yExtra) {
      float pos[3], ang[3];
 
      GetClientAbsOrigin(client, pos);
      GetClientAbsAngles(client, ang);
 
-     pos[2] += 2.0;
+     pos[2] += yExtra;
 
      int particle = CreateEntityByName("info_particle_system");
 
@@ -22,7 +22,7 @@ void CreateTeleportParticle(int client, const char[] particleName, float duratio
 
 public Action Timer_RemoveEntity(Handle timer, any entref) {
      int entity = EntRefToEntIndex(entref);
-     if (entity != INVALID_ENT_REFERENCE) {
+     if(entity != INVALID_ENT_REFERENCE) {
           RemoveEntity(entity);
      }
 

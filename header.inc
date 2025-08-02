@@ -102,6 +102,8 @@ bool g_Effect53_IsSpecialRound;
 bool g_Effect57_HasBeenTeleportedRecently[MAXPLAYERS + 1];
 bool g_Effect57_HasRecentlyCalled[MAXPLAYERS + 1];
 
+int g_Effect58_King;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -161,6 +163,7 @@ bool g_Effect57_HasRecentlyCalled[MAXPLAYERS + 1];
 #include "effects/55_achievement.sp"
 #include "effects/56_buffheal.sp"
 #include "effects/57_mediccall.sp"
+#include "effects/58_king.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -251,5 +254,6 @@ enum Effect {
 	EFFECT_ACHIEVEMENT		=	55,
 	EFFECT_BUFFHEAL		=	56,
 	EFFECT_MEDICCALL		=	57,
+	EFFECT_KING 			=	58,
 	EFFECT_MAXCOUNT
 }

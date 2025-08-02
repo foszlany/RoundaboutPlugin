@@ -615,6 +615,24 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_KING: {
+               if(IsGamemodeArena()) {
+                    if(isForced && !g_WasForceRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 King effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] King effect condition not met, reshuffled.");
+                         return setEffect(EFFECT_INVALID);
+                    }
+               }
+
+               g_OnRoundStartFuncPtr = Event_RoundStart_58_King;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_58_King;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_58_King;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_58_King;
+          }
      }
      return id;
 }
