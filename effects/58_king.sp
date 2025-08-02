@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBroadcast) {
-     while(true) {
+     for(;;) {
           g_Effect58_King = GetRandomInt(1, MaxClients);
 
           if(IsClientInGame(g_Effect58_King)) {
@@ -37,7 +37,7 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
                PrintToChatAll("\x07B143F1[Roundabout]\x01 The King has been slain by %N!\x01", attacker);
           }
           else {
-               while(true) {
+               for(;;) {
                     g_Effect58_King = GetRandomInt(1, MaxClients);
 
                     if(IsClientInGame(g_Effect58_King)) {
@@ -60,7 +60,7 @@ public void HandleKingDisconnect(Event event, const char[] name, bool dontBroadc
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(client == g_Effect58_King) {
-          while(true) { 
+          for(;;) { 
                g_Effect58_King = GetRandomInt(1, MaxClients);
 
                if(IsClientInGame(g_Effect58_King)) {
