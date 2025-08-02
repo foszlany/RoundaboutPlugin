@@ -633,6 +633,15 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = Event_PlayerDeath_58_King;
           }
+
+          case EFFECT_IDENTITYTHEFT: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_59_IdentityTheft;
+               g_OnRoundEndFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = Event_PlayerDeath_59_IdentityTheft;
+          }
+          
      }
      return id;
 }

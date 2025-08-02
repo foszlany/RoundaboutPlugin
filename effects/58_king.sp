@@ -33,6 +33,7 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
 
           if(attacker > 0 && IsClientInGame(attacker) && attacker != victim) {
                g_Effect58_King = attacker;
+
                ApplyKingProperties();
                PrintToChatAll("\x07B143F1[Roundabout]\x01 The King has been slain by %N!\x01", attacker);
           }

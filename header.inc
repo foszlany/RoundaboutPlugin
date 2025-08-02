@@ -164,6 +164,7 @@ int g_Effect58_King;
 #include "effects/56_buffheal.sp"
 #include "effects/57_mediccall.sp"
 #include "effects/58_king.sp"
+#include "effects/59_identitytheft.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -255,5 +256,6 @@ enum Effect {
 	EFFECT_BUFFHEAL		=	56,
 	EFFECT_MEDICCALL		=	57,
 	EFFECT_KING 			=	58,
+	EFFECT_IDENTITYTHEFT	=	59,
 	EFFECT_MAXCOUNT
 }

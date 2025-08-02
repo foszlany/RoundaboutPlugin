@@ -395,3 +395,7 @@
                - `+20%` larger player model
                - `+300` max health
                - `+6` health per second
+
+* **Identity Theft**
+     - ID: `59`
+     - Killing a player changes the attacker's class to their victim's.

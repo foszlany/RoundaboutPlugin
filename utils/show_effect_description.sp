@@ -312,6 +312,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "King\n\nOne player becomes especially powerful. Fight for the title.");
           }
 
+          case EFFECT_IDENTITYTHEFT: {
+               PrintCenterText(client, "Identity Theft");
+               ShowHintToClient(client, "Identity Theft\n\nYou are what you kill.");
+          }
+
           default: {
                return;
           }
