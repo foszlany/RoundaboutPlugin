@@ -659,6 +659,14 @@ public Effect setEffect(Effect id) {
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
+
+          case EFFECT_PARRY: {
+               g_OnRoundStartFuncPtr = Event_RoundStart_61_ParryIt;
+               g_OnRoundEndFuncPtr = Event_RoundEnd_61_ParryIt;
+               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+          }
      }
      return id;
 }

@@ -109,6 +109,11 @@ float g_Effect60_PlayerPosition[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerAngle[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
+bool g_Effect61_IsParrying[MAXPLAYERS + 1];
+bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
+float g_Effect61_fCooldownEndTime[MAXPLAYERS+1];
+Handle g_Effect61_hHUDTimer = null;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -171,6 +176,7 @@ TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 #include "effects/58_king.sp"
 #include "effects/59_identitytheft.sp"
 #include "effects/60_timetravel.sp"
+#include "effects/61_parry.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -264,5 +270,6 @@ enum Effect {
 	EFFECT_KING 			=	58,
 	EFFECT_IDENTITYTHEFT	=	59,
 	EFFECT_TIMETRAVEL		=	60,
+	EFFECT_PARRY 			=	61,
 	EFFECT_MAXCOUNT
 }

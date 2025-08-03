@@ -322,6 +322,11 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Time Travel\n\nYou may occasionally go back in time.");
           }
 
+          case EFFECT_PARRY: {
+               PrintCenterText(client, "Parry it!");
+               ShowHintToClient(client, "Parry it!\n\nYou can now attempt to parry damage by calling for a medic.");
+          }
+
           default: {
                return;
           }

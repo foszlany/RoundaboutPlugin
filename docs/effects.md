@@ -407,3 +407,12 @@
           - Position and viewangles
           - Health
           - Class
+
+* **Parry it!**
+     - ID: `61`
+     - All players gain the ability to parry.
+          - Calling for Medic will initiate the parry.
+          - Any incoming damage can be parried, but only one instance at a time.
+          - Parrying has a time window of `0.25` seconds with a `1.5` second cooldown.
+               - If the player didn't receive damage within the time window, they will take `2x` damage for `1` second.
+               - If the player did receive damage, the cooldown is reduced to `0.5` seconds and incoming damage is nullified.

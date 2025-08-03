@@ -16,6 +16,8 @@ public void OnMapStart() {
 	PrecacheSound("ambient/energy/zap3.wav", true);
 	PrecacheSound("player/taunt_scorchers_solo2.wav", true);
 	PrecacheSound("misc/halloween/spell_teleport.wav", true);
+	PrecacheSound("ui/vote_yes.wav", true);
+ 	PrecacheSound("player/recharged.wav", true);
 
 	// Ricochet effect
 	// g_BeamSprite = PrecacheModel("sprites/laserbeam.vmt");
