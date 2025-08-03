@@ -449,7 +449,7 @@ public Effect setEffect(Effect id) {
           case EFFECT_SUPERJUMP: {
                g_OnRoundStartFuncPtr = Event_RoundStart_43_SuperJump;
                g_OnRoundEndFuncPtr = Event_RoundEnd_43_SuperJump;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_43_SuperJump;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }

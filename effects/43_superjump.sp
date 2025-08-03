@@ -10,6 +10,14 @@ public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool d
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
+public void Event_PlayerUpdate_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
+     int client = GetClientOfUserId(event.GetInt("userid"));
+     
+     if(!SDKHookEx(client, SDKHook_PreThink, Effect43_OnDuck)) {
+          SDKHook(client, SDKHook_PreThink, Effect43_OnDuck);
+     }
+}
+
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
