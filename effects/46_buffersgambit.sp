@@ -111,6 +111,7 @@ public void Effect46_OnDuck(int client) {
 public Action Effect46_ReapplyHook(Handle timer, int client) {
      if(IsClientInGame(client)) {
           SDKHook(client, SDKHook_PreThink, Effect46_OnDuck);
+          EmitSoundToClient(client, "player/recharged.wav");
      }
 
      return Plugin_Handled;

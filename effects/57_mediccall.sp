@@ -96,5 +96,7 @@ public Action ResetMedicCooldown(Handle timer, int client) {
 
 public Action ResetCallerCooldown(Handle timer, int client) {
      g_Effect57_HasRecentlyCalled[client] = false;
+     EmitSoundToClient(client, "player/recharged.wav");
+
      return Plugin_Handled;
 }
