@@ -473,7 +473,7 @@ public Effect setEffect(Effect id) {
           case EFFECT_BUFFERSGAMBIT: {
                g_OnRoundStartFuncPtr = Event_RoundStart_46_BuffersGambit;
                g_OnRoundEndFuncPtr = Event_RoundEnd_46_BuffersGambit;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_46_BuffersGambit;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }

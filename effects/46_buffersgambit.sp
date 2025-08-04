@@ -10,6 +10,14 @@ public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bo
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
+public void Event_PlayerUpdate_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
+     int client = GetClientOfUserId(event.GetInt("userid"));
+     
+     if(!SDKHookEx(client, SDKHook_PreThink, Effect46_OnDuck)) {
+          SDKHook(client, SDKHook_PreThink, Effect46_OnDuck);
+     }
+}
+
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
