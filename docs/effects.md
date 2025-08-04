@@ -158,7 +158,7 @@
 
 * **Small**<br>
      - ID: `28`
-     - Player size is multiplied by a random value between `0.35` and `0.70`.
+     - Player size is multiplied by a random value between `0.35` and `0.70`. Voice pitch is multiplied by `1.4`.
           - Additionally, there's a `5%` chance of this value being `0.15`.
 
 * **Mosquito Infestation**<br>

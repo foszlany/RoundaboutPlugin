@@ -12,6 +12,7 @@ public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontB
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                SetEntPropFloat(i, Prop_Send, "m_flModelScale", g_Effect28_SizeMultiplier);
+               TF2Attrib_SetByName(i, "voice pitch scale", 1.4);
           }
      }
 
@@ -22,12 +23,14 @@ public void Event_PlayerUpdate_28_Small(Event event, const char[] name, bool don
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      SetEntPropFloat(client, Prop_Send, "m_flModelScale", g_Effect28_SizeMultiplier);
+     TF2Attrib_SetByName(client, "voice pitch scale", 1.4);
 }
 
 public void Event_RoundEnd_28_Small(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                SetEntPropFloat(i, Prop_Send, "m_flModelScale", 1.0);
+               TF2Attrib_RemoveByName(i, "voice pitch scale");
           }
      }
 }
