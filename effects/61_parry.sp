@@ -26,6 +26,34 @@ public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool don
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
+public void Event_PlayerUpdate_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
+     int client = GetClientOfUserId(event.GetInt("userid"));
+     
+     if(!SDKHookEx(client, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry)) {
+          SDKHook(client, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
+     }
+}
+
+public void Event_RoundEnd_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {    
+     RemoveCommandListener(Parry, "voicemenu");
+
+     for(int i = 1; i <= MAXPLAYERS; i++) {
+          SDKUnhook(i, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
+          g_Effect61_fCooldownEndTime[i] = 0.0;
+     }
+     
+     for(int client = 1; client <= MaxClients; client++) {
+          if(IsClientInGame(client)) {
+               ShowHudText(client, 6, "");
+          }
+     }
+     
+     if(g_Effect61_hHUDTimer != null) {
+          KillTimer(g_Effect61_hHUDTimer);
+          g_Effect61_hHUDTimer = null;
+     }
+}
+
 public Action Timer_UpdateParryHUD(Handle timer) {
      for(int client = 1; client <= MaxClients; client++) {
           if(IsClientInGame(client) && !IsFakeClient(client)) {
@@ -72,26 +100,6 @@ public Action Effect61_OnHitCheckParry(int victim, int &attacker, int &inflictor
      CreateTimer(E61_SUCCESSFULPARRYCOOLDOWN, ResetParryCooldown, victim);
 
      return Plugin_Handled;
-}
-
-public void Event_RoundEnd_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {    
-     RemoveCommandListener(Parry, "voicemenu");
-
-     for(int i = 1; i <= MAXPLAYERS; i++) {
-          SDKUnhook(i, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
-          g_Effect61_fCooldownEndTime[i] = 0.0;
-     }
-     
-     for(int client = 1; client <= MaxClients; client++) {
-          if(IsClientInGame(client)) {
-               ShowHudText(client, 6, "");
-          }
-     }
-     
-     if(g_Effect61_hHUDTimer != null) {
-          KillTimer(g_Effect61_hHUDTimer);
-          g_Effect61_hHUDTimer = null;
-     }
 }
 
 public Action Parry(client, const String:command[], argc) {    

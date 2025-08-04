@@ -663,7 +663,7 @@ public Effect setEffect(Effect id) {
           case EFFECT_PARRY: {
                g_OnRoundStartFuncPtr = Event_RoundStart_61_ParryIt;
                g_OnRoundEndFuncPtr = Event_RoundEnd_61_ParryIt;
-               g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
+               g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_61_ParryIt;
                g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
