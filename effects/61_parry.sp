@@ -119,7 +119,7 @@ public Action OnEndParryWindow(Handle timer, int client) {
 
      g_Effect61_IsParrying[client] = false;
 
-     TF2Attrib_SetByName(client, "dmg taken increased", 2.0);
+     TF2Attrib_SetByName(client, "dmg taken increased", 1.25);
      
      SetHudTextParams(-1.0, 0.74, 0.11, 255, 0, 0, 255);
      g_Effect61_fCooldownEndTime[client] = GetGameTime() + E61_BASEPARRYCOOLDOWN;
