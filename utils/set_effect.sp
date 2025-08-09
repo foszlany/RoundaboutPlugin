@@ -106,7 +106,7 @@ public Effect setEffect(Effect id) {
                g_OnRoundStartFuncPtr = Event_RoundStart_10_FireMelee;
                g_OnRoundEndFuncPtr = Event_RoundEnd_10_FireMelee;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_10_FireMelee;
-               g_OnPlayerHitFuncPtr = Event_PlayerHit_10_FireMelee;
+               g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
           }
 
