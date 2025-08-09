@@ -2,6 +2,10 @@
 
 public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBroadcast) {
      for(;;) {
+          if(CountActivePlayers() < 1) {
+               break;
+          }
+
           g_Effect58_King = GetRandomInt(1, MaxClients);
 
           if(IsClientInGame(g_Effect58_King)) {

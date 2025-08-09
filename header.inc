@@ -109,7 +109,6 @@ float g_Effect60_PlayerPosition[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerAngle[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerVelocity[MAXPLAYERS + 1][3];
 int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
-int g_Effect60_PlayerAmmo[MAXPLAYERS][3];
 int g_Effect60_PlayerClip[MAXPLAYERS][3]
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
