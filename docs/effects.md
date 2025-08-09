@@ -407,9 +407,11 @@
 * **Time Travel**
      - ID: `60`
      - Every `8 - 32` seconds, a snapshot is created. After `1 - 24` seconds, all players will be rolled back into that snapshot. Snapshots keep the following:
-          - Position and viewangles
+          - Position, viewangles and velocity
           - Health
           - Class
+          - Current Slot
+          - Clip sizes for each weapon
 
 * **Parry it!**
      - ID: `61`

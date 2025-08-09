@@ -19,6 +19,19 @@ public Action CreateSnapshot(Handle timer) {
                     GetClientAbsOrigin(i, g_Effect60_PlayerPosition[i]);
                     GetClientEyeAngles(i, g_Effect60_PlayerAngle[i]);
 
+                    GetEntPropVector(i, Prop_Data, "m_vecVelocity", g_Effect60_PlayerVelocity[i]);
+
+                    int weapon = GetEntPropEnt(i, Prop_Send, "m_hActiveWeapon");
+                    g_Effect60_PlayerSlot[i] = (IsValidEntity(weapon) ? EntIndexToEntRef(weapon) : INVALID_ENT_REFERENCE);
+
+                    for(int slot = 0; slot < 3; slot++) {
+                         int slotWeapon = GetPlayerWeaponSlot(i, slot);
+                         if(IsValidEntity(slotWeapon)) {
+                              // g_Effect60_PlayerAmmo[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iPrimaryAmmoCount");
+                              g_Effect60_PlayerClip[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iClip1");
+                         }
+                    }
+
                     g_Effect60_PlayerClass[i] = TF2_GetPlayerClass(i);
                }
                else {
@@ -48,7 +61,22 @@ public Action ActivateSnapshot(Handle timer) {
                               TF2_RespawnPlayer(i);
                          }
 
-                         TeleportEntity(i, g_Effect60_PlayerPosition[i], g_Effect60_PlayerAngle[i], NULL_VECTOR);
+                         TeleportEntity(i, g_Effect60_PlayerPosition[i], g_Effect60_PlayerAngle[i], g_Effect60_PlayerVelocity[i]);
+
+                         if(g_Effect60_PlayerSlot[i] != INVALID_ENT_REFERENCE) {
+                              int weapon = EntRefToEntIndex(g_Effect60_PlayerSlot[i]);
+                              if(IsValidEntity(weapon)) {
+                                   SetEntPropEnt(i, Prop_Send, "m_hActiveWeapon", weapon);
+                              }
+                         }
+
+                         for(int slot = 0; slot < 3; slot++) {
+                              int weapon = GetPlayerWeaponSlot(i, slot);
+                              if(IsValidEntity(weapon)) {
+                                   // SetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoCount", g_Effect60_PlayerAmmo[i][slot]);
+                                   SetEntProp(weapon, Prop_Send, "m_iClip1", g_Effect60_PlayerClip[i][slot]);
+                              }
+                         }
 
                          if(g_Effect60_PlayerClass[i] != TF2_GetPlayerClass(i)) {
                               TF2_SetPlayerClass(i, g_Effect60_PlayerClass[i]);
