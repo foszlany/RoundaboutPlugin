@@ -143,7 +143,7 @@
 
 * **In Control**<br>
      - ID: `26`
-     - Increases Air Control to `250`. All Soldier melee weapons crit while rocket jumping.
+     - Increases Air Control to `250`. All Soldier melee weapons crit while rocket jumping and primary weapons mini-crit airborne targets.
 
 * **Bodycount**<br>
      - ID: `27`
