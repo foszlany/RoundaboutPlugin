@@ -2,8 +2,9 @@
 
 public void ShowCurrentEffectDescriptionToAll(int id) {
      for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i) && !IsFakeClient(i)) {
+          if(IsClientInGame(i) && !IsFakeClient(i) && g_HasSpawned[i] == false) {
                ShowCurrentEffectDescription(i, id);
+               g_HasSpawned[i] = true;
           }
      }
 }
