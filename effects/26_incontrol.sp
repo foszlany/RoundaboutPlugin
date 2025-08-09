@@ -17,10 +17,10 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
 
      // WEAPON STAT
      for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i) && IsPlayerAlive(i)) {
+          if(IsClientInGame(i)) {
                int meleeWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Melee);
 
-               if(IsValidEntity(meleeWeapon)) {
+               if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
                     TF2Attrib_SetByName(meleeWeapon, "mod crit while airborne", 1.0);
                }
           }
@@ -31,7 +31,11 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     TF2Attrib_SetByName(client, "mod crit while airborne", 1.0);
+
+     int meleeWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Melee);
+     if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
+          TF2Attrib_SetByName(meleeWeapon, "mod crit while airborne", 1.0);
+     }
 }
 
 public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool dontBroadcast) {
