@@ -143,7 +143,10 @@
 
 * **In Control**<br>
      - ID: `26`
-     - Increases Air Control to `250`. All Soldier melee weapons crit while rocket jumping and primary weapons mini-crit airborne targets.
+     - All players are forced to play Soldier. The following are also in effect:
+          - Increases Air Control to `250`
+          - All Soldier melee weapons crit while rocket jumping
+          - Primary weapons mini-crit airborne targets.
 
 * **Bodycount**<br>
      - ID: `27`

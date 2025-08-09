@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.25"
+#define PLUGIN_VERSION "0.26"
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
