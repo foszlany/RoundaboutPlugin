@@ -60,7 +60,7 @@ void CreateExplosionUnderPlayer(int client) {
           GetClientAbsOrigin(client, pos);
           pos[2] -= 30.0;
 
-          EmitSoundToAll("weapons/explode3.wav", SOUND_FROM_WORLD, _, _, _, 1.0, _, _, pos);
+          EmitSoundToAll("weapons/explode3.wav", SOUND_FROM_WORLD, _, _, _, 0.7, _, _, pos);
 
           ApplyKnockbackToPlayer(client, pos);
      }
