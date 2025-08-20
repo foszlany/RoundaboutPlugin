@@ -30,7 +30,7 @@ public Action AssignNewProjectiles(Handle timer) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i)) {
                     int primaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Primary);
-                    if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
+                    if(primaryWeapon != -1 && IsValidEntity(primaryWeapon) && TF2_GetPlayerClass(i) != TFClass_Sniper) { // Admittedly not a very great fix to the huntsman crash
                          TF2Attrib_SetByName(primaryWeapon, "override projectile type", g_SafeProjectiles[GetRandomInt(0, g_SafeProjectilesSize)]);
                     }
 

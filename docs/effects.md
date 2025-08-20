@@ -344,7 +344,7 @@
 * **Projectile Mayhem**
      - ID: `52`
      - **CONDITIONAL EFFECT:** In-game playercount must be `24` or less. 
-     - Every second a new projectile is assigned to primary and non-demoman secondary weapons.
+     - Every second a new projectile is assigned to non-sniper rprimary and non-demoman secondary weapons.
           - The damage of the projectile deals as much damage as the original weapon would.
           - These projectiles can be:
                - Default
