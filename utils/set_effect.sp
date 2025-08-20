@@ -103,6 +103,8 @@ public Effect setEffect(Effect id) {
           }
 
           case EFFECT_FIREMELEE: {
+               return setEffect(EFFECT_INVALID); // TEMPORARY CHANGE UNTIL I FIX THIS
+
                g_OnRoundStartFuncPtr = Event_RoundStart_10_FireMelee;
                g_OnRoundEndFuncPtr = Event_RoundEnd_10_FireMelee;
                g_OnPlayerUpdateFuncPtr = Event_PlayerUpdate_10_FireMelee;
