@@ -410,7 +410,7 @@
           - Position, viewangles and velocity
           - Health
           - Class
-          - Current Slot
+          - Weapon slot
           - Clip sizes for each weapon
 
 * **Parry it!**

@@ -10,7 +10,7 @@
 ## **Step 2:** Adding the necessary functions to `set_effect`
 - Go inside `utils` and find the file `set_effect.sp`.
 - After the last effect, create a case matching yours.
-     - You will need to set all function pointers (see all in `header.sp: RoundEventFunc`). If you don't need one (e.g. for hitting a player), set it to `INVALID_FUNCTION`.
+     - You will need to set all function pointers (see all in `header.inc: RoundEventFunc`). If you don't need one (e.g. for hitting a player), set it to `INVALID_FUNCTION`.
           - Naming convention for the methods: `Event_EventName_ID_EffectName;`
           - If you don't yet know what you'll need, set everything to `INVALID_FUNCTION` and add it later.
                - `RoundStart` should always be present.
