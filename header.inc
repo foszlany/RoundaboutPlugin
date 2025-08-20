@@ -114,6 +114,7 @@ TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
+bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
 float g_Effect61_fCooldownEndTime[MAXPLAYERS+1];
 Handle g_Effect61_hHUDTimer = null;
 

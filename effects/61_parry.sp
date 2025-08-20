@@ -10,6 +10,7 @@ public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool don
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect61_IsParrying[i] = false;
           g_Effect61_HasRecentlyParried[i] = false;
+          g_Effect61_DidSuccessfullyParry[i] = false;
           g_Effect61_fCooldownEndTime[i] = 0.0;
 
           if(i <= MaxClients && IsClientInGame(i)) {
@@ -59,12 +60,18 @@ public Action Timer_UpdateParryHUD(Handle timer) {
           if(IsClientInGame(client) && !IsFakeClient(client)) {
                char hudText[32];
                hudText[0] = '\0';
+
+               SetHudTextParams(-1.0, 0.74, 0.11, 255, 0, 0, 255); // RED
                
                if(g_Effect61_IsParrying[client]) {
-                    SetHudTextParams(-1.0, 0.74, 0.11, 0, 34, 255, 255);
+                    SetHudTextParams(-1.0, 0.74, 0.11, 0, 34, 255, 255); // BLUE
                     Format(hudText, sizeof(hudText), "PARRYING");
                }
                else if(g_Effect61_HasRecentlyParried[client]) {
+                    if(g_Effect61_DidSuccessfullyParry[client]) {
+                         SetHudTextParams(-1.0, 0.74, 0.11, 0, 255, 0, 255); // GREEN
+                    } 
+
                     float timeLeft = g_Effect61_fCooldownEndTime[client] - GetGameTime();
                     if(timeLeft > 0.0) {
                          Format(hudText, sizeof(hudText), "Cooldown: %.1fs", timeLeft);
@@ -83,16 +90,14 @@ public Action Effect61_OnHitCheckParry(int victim, int &attacker, int &inflictor
      }
 
      g_Effect61_IsParrying[victim] = false;
+     g_Effect61_DidSuccessfullyParry[victim] = true;
 
-     SetHudTextParams(-1.0, 0.52, 0.11, 255, 215, 0, 255);
+     SetHudTextParams(-1.0, 0.52, 0.11, 255, 215, 0, 255); // GOLD
      ShowHudText(victim, -1, "PARRIED!");
-
-     SetHudTextParams(-1.0, 0.74, 0.11, 0, 255, 0, 255);
      
      float origin[3];
      GetClientAbsOrigin(victim, origin);
 
-     EmitAmbientSound("ui/vote_yes.wav", origin);
      EmitAmbientSound("ui/vote_yes.wav", origin);
      EmitAmbientSound("ui/vote_yes.wav", origin);
 
@@ -126,10 +131,10 @@ public Action OnEndParryWindow(Handle timer, int client) {
      }
 
      g_Effect61_IsParrying[client] = false;
+     g_Effect61_DidSuccessfullyParry[client] = false;
 
      TF2Attrib_SetByName(client, "dmg taken increased", 1.25);
      
-     SetHudTextParams(-1.0, 0.74, 0.11, 255, 0, 0, 255);
      g_Effect61_fCooldownEndTime[client] = GetGameTime() + E61_BASEPARRYCOOLDOWN;
 
      CreateTimer(E61_BASEPARRYCOOLDOWN, ResetParryCooldown, client);
