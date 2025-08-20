@@ -327,7 +327,7 @@
 * **Death Stare**
      - ID: `49`
      - When two players look at each other, they both explode.
-          - The check runs every `0.15s` (to avoid server overload) and is generally strict.
+          - The check runs every `0.15` seconds (to avoid server overload) and is generally strict.
           - Limit is `3000 Hammer Units`.
 
 * **Quickswap**
