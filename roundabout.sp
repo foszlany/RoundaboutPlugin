@@ -175,6 +175,10 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 		CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
 	}
 	g_CurrentEffect = EFFECT_INVALID;
+
+	for(int i = 1; i <= MAXPLAYERS; i++) {
+		g_HasSpawned[i] = false;
+	}
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */
