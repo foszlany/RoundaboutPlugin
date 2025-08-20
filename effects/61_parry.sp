@@ -120,9 +120,10 @@ public Action Parry(client, const String:command[], argc) {
           g_Effect61_IsParrying[client] = true;
 
           CreateTimer(E61_PARRYWINDOW, OnEndParryWindow, client);
+          return Plugin_Handled;
      }
      
-     return Plugin_Handled;
+     return Plugin_Continue;
 }
 
 public Action OnEndParryWindow(Handle timer, int client) {
