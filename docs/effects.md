@@ -45,7 +45,7 @@
      - ID: `9`
      - Every Players is stripped to melee.
 
-* **Fire Aspect**<br>
+* **Fire Aspect - DISABLED TEMPORARILY -**<br>
      - ID: `10`
      - Melee hits set the target on fire for `8` seconds.
      - Players already on fire will receive `Mini-crits`.
