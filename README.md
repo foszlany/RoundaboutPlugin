@@ -3,6 +3,10 @@
 
 **TF2Attributes** is required for this plugin to run on your server.<br>
 
+<div align="center">
+  <img src="./banner.gif" alt="Banner"/>
+</div>
+
 ## Effects
 #### Effects vary greatly in complexity.
 - Some may only appear under certain conditions, such as ample player count.<br>
