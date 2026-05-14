@@ -187,6 +187,7 @@ public void Event_PlayerDisconnect(Event event, const char[] name, bool dontBroa
 	int client = GetClientOfUserId(event.GetInt("userid"));
 	g_HasSpawned[client] = false;
 	g_voteSkip[client] = false;
+	g_voteSkipCount--;
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */
