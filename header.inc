@@ -4,7 +4,8 @@
 #define _RAHEADER
 
 /* VERSION */
-#define PLUGIN_VERSION "0.27"
+#define PLUGIN_VERSION "0.3"
+#define MAX_STACKED_EFFECTS 5
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -20,7 +21,8 @@
 ConVar g_CVAR_EnablePlugin = null;
 
 /* GLOBAL VARIABLES */
-Effect g_CurrentEffect = EFFECT_INVALID;
+int g_EffectCount = 1;
+Effect g_CurrentEffects[MAX_STACKED_EFFECTS] = {EFFECT_INVALID, ...};
 Effect g_ForceRoundEffect = EFFECT_INVALID;
 bool g_WasForceRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
@@ -28,16 +30,18 @@ bool g_HasSpawned[MAXPLAYERS + 1];
 bool g_voteSkip[MAXPLAYERS + 1];
 int g_voteSkipCount = 0;
 
+bool isStackedRound = false;
+
 Handle g_hudSync;
 Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
 
 typedef RoundEventFunc = function void(Event event, const char[] name, bool dontBroadcast);
-RoundEventFunc g_OnRoundStartFuncPtr;
-RoundEventFunc g_OnRoundEndFuncPtr;
-RoundEventFunc g_OnPlayerUpdateFuncPtr;
-RoundEventFunc g_OnPlayerHitFuncPtr;
-RoundEventFunc g_OnPlayerDeathFuncPtr;
+RoundEventFunc g_OnRoundStartFuncPtr[MAX_STACKED_EFFECTS + 1];
+RoundEventFunc g_OnRoundEndFuncPtr[MAX_STACKED_EFFECTS + 1];
+RoundEventFunc g_OnPlayerUpdateFuncPtr[MAX_STACKED_EFFECTS + 1];
+RoundEventFunc g_OnPlayerHitFuncPtr[MAX_STACKED_EFFECTS + 1];
+RoundEventFunc g_OnPlayerDeathFuncPtr[MAX_STACKED_EFFECTS + 1];
 
 /* EFFECT VARIABLES */
 Handle g_Effect0_FakePure_Timer;
@@ -201,6 +205,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/create_particle_on_player.sp"
 #include "utils/show_effect_description.sp"
 #include "utils/has_nav_mesh.sp"
+#include "utils/roll_effect_count.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"

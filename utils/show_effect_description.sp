@@ -10,8 +10,15 @@ public void ShowCurrentEffectDescriptionToAll(int id) {
 }
 
 public void ShowCurrentEffectDescription(int client, int id) {
+     // TODO
+     if(g_EffectCount > 1) {
+          PrintCenterText(client, "Multiple Effects");
+          ShowHintToClient(client, "Multiple Effects\n\nYou have multiple effects active!");
+          return;
+     }
+
      if(id == -1) {
-          id = g_CurrentEffect;
+          id = g_CurrentEffects[0];
      }
 
      switch(id) {

@@ -18,10 +18,8 @@
           - When given, it ignores all conditions for certain effects.
                - May cause unwanted effects. Generally this should just mean that no significant gameplay changes will take place.
      -  Example usage: `!roundabout_force 1`<br>
-* **roundabout_enable \<arg\>** - Enables or disables the plugin effects.<br>
-     -  **arg:** 1 or 0 (enable or disable) <br>
+* **roundabout_enable <0|1>** - Enables or disables the plugin effects.<br>
      -  Enabling the effects will not restart the round.
-     -  Example usage: `!roundabout_enable 0`
 
 ### ConVars
 * **sm_roundabout_toggle <0|1>** - Enables or disables the plugin effects<br>

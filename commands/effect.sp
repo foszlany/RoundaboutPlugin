@@ -8,7 +8,7 @@ public Action Command_Effect(int client, int args) {
 	}
 
 	if(args <= 0) {
-		ShowCurrentEffectDescription(client, g_CurrentEffect);
+		ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
 	}
 	else if(args >= 2) {
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_effect <id>");
