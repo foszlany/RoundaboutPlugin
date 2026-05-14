@@ -43,6 +43,12 @@ public void OnPluginStart() {
 	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
 	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
 
+	/* INITIALIZE GLOBAL ARRAYS */
+	for(int i = 1; i <= MAXPLAYERS; i++) {
+		g_HasSpawned[i] = false;
+		g_voteSkip[i] = false;
+	}
+
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");
@@ -51,6 +57,7 @@ public void OnPluginStart() {
 	RegConsoleCmd("sm_roundabout_effectlist", Command_EffectList, "Returns the doc for every effect and their details.");
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");
 	RegConsoleCmd("sm_roundabout_effect", Command_Effect, "Shows the effect details on screen. Usage: !roundabout_effect <id>");
+	RegConsoleCmd("sm_roundabout_voteskip", Command_VoteSkip, "Initiates a vote to skip the current effect.");
 
 	/* EVENT HOOKS */
 	HookEvent("teamplay_round_start", Event_RoundStart);
@@ -63,23 +70,16 @@ public void OnPluginStart() {
 	HookEvent("player_hurt", Event_PlayerHit, EventHookMode_Pre);
 	HookEvent("player_death", Event_PlayerDeath, EventHookMode_Pre);
 
+	HookEvent("player_disconnect", Event_PlayerDisconnect, EventHookMode_Pre);
+
 	g_RestartGameHandle = FindConVar("mp_restartgame");
 	if(g_RestartGameHandle != INVALID_HANDLE) {
 		HookConVarChange(g_RestartGameHandle, OnRestartGameChanged);
-	}
-
-	/* INITIALIZE SPAWNER ARRAY */
-	for(int i = 1; i <= MAXPLAYERS; i++) {
-		g_HasSpawned[i] = false;
 	}
 }
 
 public void OnPluginEnd() {
 	DisablePluginFeatures();
-}
-
-public void OnClientPutInServer(int client) {
-	g_HasSpawned[client] = false;
 }
 
 public void EnablePluginFeatures() {
@@ -178,7 +178,15 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 
 	for(int i = 1; i <= MAXPLAYERS; i++) {
 		g_HasSpawned[i] = false;
+		g_voteSkip[i] = false;
 	}
+}
+
+/* RESET PLAYER DATA UPON DISCONNECT */
+public void Event_PlayerDisconnect(Event event, const char[] name, bool dontBroadcast) {
+	int client = GetClientOfUserId(event.GetInt("userid"));
+	g_HasSpawned[client] = false;
+	g_voteSkip[client] = false;
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */

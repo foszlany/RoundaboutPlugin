@@ -3,6 +3,8 @@
 * **roundabout_help** - Returns the commands that can be used into the player's console.<br>
 * **roundabout_github** - Returns the link to the GitHub repository.<br>
 * **roundabout_version** - Returns the version of the plugin.<br>
+* **roundabout_voteskip** - Initiates a voteskipping process to force a new round.<br>
+     -  Requires at least half the players.<br>
 * **roundabout_effectlist** - Returns the effect doc.<br>
 * **roundabout_effect \<id\>** - Shows the effect details on the screen.<br>
      -  **id:** ID of the effect.<br>

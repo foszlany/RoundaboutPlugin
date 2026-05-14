@@ -25,6 +25,9 @@ Effect g_ForceRoundEffect = EFFECT_INVALID;
 bool g_WasForceRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
 
+bool g_voteSkip[MAXPLAYERS + 1];
+int g_voteSkipCount = 0;
+
 Handle g_hudSync;
 Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
@@ -36,6 +39,7 @@ RoundEventFunc g_OnPlayerUpdateFuncPtr;
 RoundEventFunc g_OnPlayerHitFuncPtr;
 RoundEventFunc g_OnPlayerDeathFuncPtr;
 
+/* EFFECT VARIABLES */
 Handle g_Effect0_FakePure_Timer;
 Handle g_Effect0_FakePure_ExplodeTimer;
 bool g_Effect0_FakePure_IsActive;
@@ -209,6 +213,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "commands/effectlist.sp"
 #include "commands/effect.sp"
 #include "commands/help.sp"
+#include "commands/voteskip.sp"
 
 /* EFFECTS */
 enum Effect {
