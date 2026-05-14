@@ -22,3 +22,7 @@
      -  **arg:** 1 or 0 (enable or disable) <br>
      -  Enabling the effects will not restart the round.
      -  Example usage: `!roundabout_enable 0`
+
+### ConVars
+* **sm_roundabout_toggle <0|1>** - Enables or disables the plugin effects<br>
+     -  Enabling the effects will not restart the round.<br><br>

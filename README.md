@@ -20,11 +20,6 @@ Read the effect details [here](./docs/effects.md).<br><br>
 ## Commands
 Read the command details [here](./docs/commands.md).<br><br>
 
-### ConVars
-* **sm_roundabout_toggle \<arg\>** - Enables or disables the plugin effects<br>
-     -  **arg:** 1 or 0 (enable or disable) <br>
-     -  Enabling the effects will not restart the round.<br><br>
-
 ## Compile
 The compiled plugin version `roundabout.smx` can be found inside the `plugin` folder.<br>
 
