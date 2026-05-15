@@ -1,5 +1,6 @@
 /*
-* These effects will never be rolled for a multieffect round, not even when forced.
+* These effects will never be rolled for a multieffect round.
+* This cannot be bypassed with !roundabout_force either.
 * This is to prevent unwanted effects.
 */
 void InitializeExcludedMultieffects() {

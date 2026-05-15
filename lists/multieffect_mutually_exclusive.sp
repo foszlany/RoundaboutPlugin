@@ -1,5 +1,6 @@
 /*
-* These effects may only be rolled at most once for a multieffect round, not even when forced.
+* These effects may only be rolled at most once for a multieffect round.
+* This cannot be bypassed with !roundabout_force either.
 * This is to prevent unwanted effects, most notably not being able to pick a class.
 */
 void InitializeMutuallyExclusiveMultieffects() {

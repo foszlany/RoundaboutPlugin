@@ -61,3 +61,6 @@
 ## **Step 4:** Testing
 - Use `!roundabout_force <effect_id>` to test your effect.
      - Make sure to watch out for errors in the server console.
+- Also make sure to test your effect with other effects using `!roundabout_force count <n>`
+     - If your effect restricts classes, include it in `lists/multieffect_mutually_exclusive.sp`
+     - If your effect is way too fragile, include it in `lists/multieffect_exclude.sp`
