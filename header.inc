@@ -23,14 +23,12 @@ ConVar g_CVAR_EnablePlugin = null;
 /* GLOBAL VARIABLES */
 int g_EffectCount = 1;
 Effect g_CurrentEffects[MAX_STACKED_EFFECTS] = {EFFECT_INVALID, ...};
-Effect g_ForceRoundEffect = EFFECT_INVALID;
-bool g_WasForceRandom = false;
+bool g_isForced = false;
+bool g_isForcedRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
 
 bool g_voteSkip[MAXPLAYERS + 1];
 int g_voteSkipCount = 0;
-
-bool isStackedRound = false;
 
 Handle g_hudSync;
 Handle g_RestartGameHandle;

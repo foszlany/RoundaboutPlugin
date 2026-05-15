@@ -1,12 +1,11 @@
 #pragma semicolon 1
 
-public void setEffect(Effect id, int effectIndex) {
-     bool isForced = id >= EFFECT_PURE && id < EFFECT_MAXCOUNT;
+public void setEffect(int effectIndex) {
      int activePlayers = CountActivePlayers();
 
-     if(!(id >= EFFECT_PURE && id < EFFECT_MAXCOUNT)) {
-          id = view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
-     }
+     Effect id = g_isForced ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
+
+     PrintToChatAll("rolled effect: %d, isForced: %s, g_CurrentEffects[0]: %d", id, g_isForced ? "true" : "false", g_CurrentEffects[0]);
 
      switch(id) {
           case EFFECT_PURE: {
@@ -22,12 +21,12 @@ public void setEffect(Effect id, int effectIndex) {
                int currentGravity = GetConVarInt(gravity);
 
                if(currentGravity <= 400) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Low Gravity effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Low Gravity effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -103,7 +102,7 @@ public void setEffect(Effect id, int effectIndex) {
           }
 
           case EFFECT_FIREMELEE: {
-               setEffect(EFFECT_INVALID, effectIndex); // TEMPORARY CHANGE UNTIL I FIX THIS
+               setEffect(effectIndex); // TEMPORARY CHANGE UNTIL I FIX THIS
 
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_10_FireMelee;
                g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_10_FireMelee;
@@ -170,12 +169,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_SNOWBALL: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Snowball effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Snowball effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -188,12 +187,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_JUSTICE: {
                if(IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Frontier Justice effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Frontier Justice effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -206,12 +205,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_INFECTION: {
                if(activePlayers < 4 || IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Infection effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Infection effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -224,12 +223,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_DUELIES: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Duelies effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Duelies effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -250,12 +249,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_HYPERHEAL: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -292,12 +291,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_BODYCOUNT: {
                if(activePlayers < 3 && IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Bodycount effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Bodycount effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -326,12 +325,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_BALANCED: {
                if(activePlayers < 3 && IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Balanced effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Balanced effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -384,12 +383,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_SOCIALDIST: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Social Distancing effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Social Distancing effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -514,12 +513,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_MVM: {
                if(activePlayers >= MaxClients * 0.4 || !HasNavMesh()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Mann vs. Machine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Mann vs. Machine effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -532,12 +531,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_PMAYHEM: {
                if(MaxClients > 24) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Projectile Mayhem effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Projectile Mayhem effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -550,12 +549,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_SHIELDINGMED: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Shielding Medicine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Shielding Medicine effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -568,12 +567,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_PIERCINGBULL: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Piercing Bullets effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Piercing Bullets effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -602,12 +601,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_MEDICCALL: {
                if(activePlayers < 3) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Called for me? effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Called for me? effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -620,12 +619,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_KING: {
                if(IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 King effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] King effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -638,12 +637,12 @@ public void setEffect(Effect id, int effectIndex) {
 
           case EFFECT_IDENTITYTHEFT: {
                if(activePlayers < 3 && IsGamemodeArena()) {
-                    if(isForced && !g_WasForceRandom) {
+                    if(g_isForced && !g_isForcedRandom) {
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 Identity Theft effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                     }
                     else {
                          PrintToServer("[Roundabout] Identity Theft effect condition not met, reshuffled.");
-                         setEffect(EFFECT_INVALID, effectIndex);
+                         setEffect(effectIndex);
                     }
                }
 
@@ -674,9 +673,11 @@ public void setEffect(Effect id, int effectIndex) {
      PrintToChatAll("Rolled effect: %d", id);
 
      if(effectIndex + 1 >= g_EffectCount) {
+          g_isForced = false;
+		g_isForcedRandom = false;
           return;
      }
      else {
-          setEffect(EFFECT_INVALID, effectIndex + 1);
+          setEffect(effectIndex + 1);
      }
 }

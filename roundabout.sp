@@ -131,17 +131,11 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
 		}
 
-		if(g_ForceRoundEffect == EFFECT_INVALID) {
+		if(!g_isForced) {
 			g_EffectCount = RollEffectCount();
-			setEffect(EFFECT_INVALID, 0);
 		}
-		else {
-			// TODO SET EFFECT COUNT
-			g_EffectCount = 1;
-			setEffect(g_ForceRoundEffect, 0);
-			g_ForceRoundEffect = EFFECT_INVALID;
-			g_WasForceRandom = false;
-		}
+
+		setEffect(0);
 
 		for(int i = 0; i < g_EffectCount; i++) {
 			CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
@@ -202,7 +196,6 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	for(int i = 0; i < g_EffectCount; i++) {
 		if(g_OnRoundEndFuncPtr[i] != INVALID_FUNCTION) {
 			CallEventFunction(g_OnRoundEndFuncPtr[i], event, name, dontBroadcast);
-			g_CurrentEffects[0] = EFFECT_INVALID;
 		}
 	}
 

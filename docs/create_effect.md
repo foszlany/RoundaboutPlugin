@@ -17,7 +17,7 @@
      - You can add conditions to your effects. Example code:
           ```cpp
           if(activePlayers < 3) { // If true, effect shouldn't appear unless forced.
-               if(isForced && !g_WasForceRandom) { // Do not change
+               if(isForced && !g_isForcedRandom) { // Do not change
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                }
                else {
