@@ -5,7 +5,7 @@
 public Plugin myinfo = {
 	name = "Roundabout",
 	author = "foszlany",
-	description = "Experience a new type of gimmick every round!",
+	description = "Random effects for roundwise chaos.",
 	version = PLUGIN_VERSION,
 	url = "https://github.com/foszlany/RoundaboutPlugin"
 };
@@ -98,7 +98,7 @@ public void DisablePluginFeatures() {
 	Event event = CreateEvent("teamplay_round_end");
 	Event_RoundEnd(event, "teamplay_round_end", false);
 
-	for(int i = 0; i < MAX_STACKED_EFFECTS; i++) {
+	for(int i = 0; i < MAX_MULTIEFFECT_COUNT; i++) {
 		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
 		g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;

@@ -5,7 +5,7 @@
 
 /* CONSTANTS */
 #define PLUGIN_VERSION "0.3"
-#define MAX_STACKED_EFFECTS 5
+#define MAX_MULTIEFFECT_COUNT 5
 
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
@@ -25,7 +25,7 @@ ConVar g_CVAR_EnablePlugin = null;
 
 /* GLOBAL VARIABLES */
 int g_EffectCount = 1;
-Effect g_CurrentEffects[MAX_STACKED_EFFECTS] = {EFFECT_INVALID, ...};
+Effect g_CurrentEffects[MAX_MULTIEFFECT_COUNT] = {EFFECT_INVALID, ...};
 bool g_isForced = false;
 bool g_isForcedRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
@@ -38,11 +38,11 @@ Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
 
 typedef RoundEventFunc = function void(Event event, const char[] name, bool dontBroadcast);
-RoundEventFunc g_OnRoundStartFuncPtr[MAX_STACKED_EFFECTS + 1];
-RoundEventFunc g_OnRoundEndFuncPtr[MAX_STACKED_EFFECTS + 1];
-RoundEventFunc g_OnPlayerUpdateFuncPtr[MAX_STACKED_EFFECTS + 1];
-RoundEventFunc g_OnPlayerHitFuncPtr[MAX_STACKED_EFFECTS + 1];
-RoundEventFunc g_OnPlayerDeathFuncPtr[MAX_STACKED_EFFECTS + 1];
+RoundEventFunc g_OnRoundStartFuncPtr[MAX_MULTIEFFECT_COUNT + 1];
+RoundEventFunc g_OnRoundEndFuncPtr[MAX_MULTIEFFECT_COUNT + 1];
+RoundEventFunc g_OnPlayerUpdateFuncPtr[MAX_MULTIEFFECT_COUNT + 1];
+RoundEventFunc g_OnPlayerHitFuncPtr[MAX_MULTIEFFECT_COUNT + 1];
+RoundEventFunc g_OnPlayerDeathFuncPtr[MAX_MULTIEFFECT_COUNT + 1];
 
 /* EFFECT VARIABLES */
 Handle g_Effect0_FakePure_Timer;
