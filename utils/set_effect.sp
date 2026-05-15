@@ -3,9 +3,7 @@
 public void setEffect(int effectIndex) {
      int activePlayers = CountActivePlayers();
 
-     Effect id = g_isForced ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
-
-     PrintToChatAll("rolled effect: %d, isForced: %s, g_CurrentEffects[0]: %d", id, g_isForced ? "true" : "false", g_CurrentEffects[0]);
+     Effect id = (g_isForced && !g_isForcedRandom) ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
 
      switch(id) {
           case EFFECT_PURE: {
@@ -669,8 +667,6 @@ public void setEffect(int effectIndex) {
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }
      }
-
-     PrintToChatAll("Rolled effect: %d", id);
 
      if(effectIndex + 1 >= g_EffectCount) {
           g_isForced = false;

@@ -5,6 +5,7 @@
 
 /* VERSION */
 #define PLUGIN_VERSION "0.3"
+
 #define MAX_STACKED_EFFECTS 5
 
 /* GENERIC INCLUDES */

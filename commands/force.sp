@@ -7,22 +7,64 @@ public Action Command_ForceRound(int client, int args) {
 		return Plugin_Handled;
 	}
 
+	char arg1[32];
+	char arg2[32];
+	if(args >= 2) {
+		GetCmdArg(1, arg1, sizeof(arg1));
+		GetCmdArg(2, arg2, sizeof(arg2));
+	}
+
+	// Force single random
 	if(args <= 0) {
 		g_CurrentEffects[0] = view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
+
 		g_isForced = true;
 		g_isForcedRandom = true;
 
-		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect with id %d has been applied. Round is restarting.", g_CurrentEffects[0]);
+		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect with id %d has been applied. Restarting round.", g_CurrentEffects[0]);
 		ServerCommand("mp_restartgame 1");
 	}
+
+	// Force multiple random
+	else if(args >= 2 && (StrEqual(arg1, "count", false) || StrEqual(arg1, "c", false))) {
+		if(args > 2) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_force count <n>");
+			return Plugin_Handled;
+		}
+
+		int n;
+		int parsed = StringToIntEx(arg2, n);
+
+		if(parsed <= 0 || parsed != strlen(arg2)) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 '%s' is not a valid integer.", arg2);
+			return Plugin_Handled;
+		}
+
+		if(n < 1 || n > MAX_STACKED_EFFECTS) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Count must be between 1 and %d.", MAX_STACKED_EFFECTS);
+			return Plugin_Handled;
+		}
+
+		// Generate random effects
+		g_EffectCount = n;
+		for(int i = 0; i < g_EffectCount; i++) {
+			g_CurrentEffects[i] = view_as<Effect>(GetRandomInt(0, view_as<int>(EFFECT_MAXCOUNT) - 1));
+		}
+
+		g_isForced = true;
+		g_isForcedRandom = true;
+
+		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated %d random effects. Restarting round.", n);
+		ServerCommand("mp_restartgame 1");
+	}
+
+	// Force multiple specific
 	else {
 		char arg[128];
 		GetCmdArgString(arg, sizeof(arg));
 
 		char parts[MAX_STACKED_EFFECTS + 1][16];
 		int count = ExplodeString(arg, " ", parts, sizeof(parts), sizeof(parts[]));
-
-		PrintToChatAll("Count: %d", count);
 
 		if(count > MAX_STACKED_EFFECTS) {
 			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 You must specify between 1 and %d effect IDs.", MAX_STACKED_EFFECTS);
@@ -41,7 +83,7 @@ public Action Command_ForceRound(int client, int args) {
 			}
 
 			if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
-				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID %d must be between 0 and %d.", id, view_as<int>(EFFECT_MAXCOUNT) - 1);
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d.", id, view_as<int>(EFFECT_MAXCOUNT) - 1);
 				return Plugin_Handled;
 			}
 
