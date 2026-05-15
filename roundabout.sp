@@ -44,6 +44,10 @@ public void OnPluginStart() {
 		g_voteSkip[i] = false;
 	}
 
+	/* INITIALIZE LISTS */
+	InitializeExcludedMultieffects();
+	InitializeMutuallyExclusiveMultieffects();
+
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");

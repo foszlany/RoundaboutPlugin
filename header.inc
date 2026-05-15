@@ -3,10 +3,12 @@
 #endif
 #define _RAHEADER
 
-/* VERSION */
+/* CONSTANTS */
 #define PLUGIN_VERSION "0.3"
-
 #define MAX_STACKED_EFFECTS 5
+
+ArrayList MULTIEFFECT_EXCLUDED;
+ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -205,6 +207,10 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/show_effect_description.sp"
 #include "utils/has_nav_mesh.sp"
 #include "utils/roll_effect_count.sp"
+
+/* LISTS */
+#include "lists/multieffect_exclude.sp"
+#include "lists/multieffect_mutually_exclusive.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
