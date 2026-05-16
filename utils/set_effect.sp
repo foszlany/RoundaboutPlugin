@@ -5,6 +5,27 @@ public void setEffect(int effectIndex) {
 
      Effect id = (g_isForced && !g_isForcedRandom) ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
 
+     if(g_EffectCount > 1 && (!g_isForced || g_isForcedRandom)) {
+          if(MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
+               setEffect(effectIndex);
+               return;
+          }
+
+          for(int i = 0; i < effectIndex; i++) {
+               if(g_CurrentEffects[i] == id) {
+                    setEffect(effectIndex);
+                    return;
+               }
+
+               if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(g_CurrentEffects[i]) != -1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+                    setEffect(effectIndex);
+                    return;
+               }
+          }
+     }
+
+     g_CurrentEffects[effectIndex] = id;
+
      switch(id) {
           case EFFECT_PURE: {
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_0_Pure;
@@ -671,7 +692,6 @@ public void setEffect(int effectIndex) {
      if(effectIndex + 1 >= g_EffectCount) {
           g_isForced = false;
 		g_isForcedRandom = false;
-          return;
      }
      else {
           setEffect(effectIndex + 1);
