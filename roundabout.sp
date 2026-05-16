@@ -47,6 +47,7 @@ public void OnPluginStart() {
 	/* INITIALIZE LISTS */
 	InitializeExcludedMultieffects();
 	InitializeMutuallyExclusiveMultieffects();
+	InitializeEffectCodenames();
 
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");

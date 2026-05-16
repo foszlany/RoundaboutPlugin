@@ -9,6 +9,7 @@
 
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
+StringMap EFFECT_CODENAME;
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -211,6 +212,7 @@ Handle g_Effect61_hHUDTimer = null;
 /* LISTS */
 #include "lists/multieffect_exclude.sp"
 #include "lists/multieffect_mutually_exclusive.sp"
+#include "lists/effect_codename.sp"
 
 /* CONVARS */
 #include "convars/enableplugin.sp"
