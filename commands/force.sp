@@ -85,7 +85,7 @@ public Action Command_ForceRound(int client, int args) {
 			}
 
 			if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
-				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d.", id, view_as<int>(EFFECT_MAXCOUNT) - 1);
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d.", view_as<int>(EFFECT_MAXCOUNT) - 1);
 				return Plugin_Handled;
 			}
 
