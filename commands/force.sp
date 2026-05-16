@@ -72,6 +72,8 @@ public Action Command_ForceRound(int client, int args) {
 		}
 
 		int ids[MAX_MULTIEFFECT_COUNT];
+		bool isMutuallyExclusivePresent = false;
+		int mutuallyExclusiveEffect = -1;
 
 		for(int i = 0; i < count; i++) {
 			int id;
@@ -85,6 +87,23 @@ public Action Command_ForceRound(int client, int args) {
 			if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
 				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d.", id, view_as<int>(EFFECT_MAXCOUNT) - 1);
 				return Plugin_Handled;
+			}
+
+			if(MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID %d cannot be forced with other effects.", id);
+				return Plugin_Handled;
+			}
+
+			if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+				PrintToChatAll("mutexcl: %d", id);
+				if(isMutuallyExclusivePresent) {
+					ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Mutually exclusive effects %d and %d cannot be forced.", mutuallyExclusiveEffect, id);
+					return Plugin_Handled;
+				}
+				else {
+					isMutuallyExclusivePresent = true;
+					mutuallyExclusiveEffect = id;
+				}
 			}
 
 			ids[i] = id;

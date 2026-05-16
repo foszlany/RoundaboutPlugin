@@ -5,8 +5,7 @@
 */
 void InitializeExcludedMultieffects() {
      MULTIEFFECT_EXCLUDED = new ArrayList();
-     MULTIEFFECT_EXCLUDED.PushArray({
-          EFFECT_PURE,    // No reason to include this
-          EFFECT_MVM      // Too fragile
-     });
+     
+     MULTIEFFECT_EXCLUDED.Push(EFFECT_PURE);    // No reason to include this
+     MULTIEFFECT_EXCLUDED.Push(EFFECT_MVM);     // Too fragile
 }
