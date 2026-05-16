@@ -71,7 +71,7 @@ public Action Command_ForceRound(int client, int args) {
 			return Plugin_Handled;
 		}
 
-		int ids[MAX_MULTIEFFECT_COUNT];
+		ArrayList ids = new ArrayList();
 		bool isMutuallyExclusivePresent = false;
 		int mutuallyExclusiveEffect = -1;
 
@@ -94,8 +94,12 @@ public Action Command_ForceRound(int client, int args) {
 				return Plugin_Handled;
 			}
 
+			if(ids.FindValue(id) != -1) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID %d is duplicate.", id);
+				return Plugin_Handled;
+			}
+
 			if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
-				PrintToChatAll("mutexcl: %d", id);
 				if(isMutuallyExclusivePresent) {
 					ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Mutually exclusive effects %d and %d cannot be forced.", mutuallyExclusiveEffect, id);
 					return Plugin_Handled;
@@ -106,12 +110,12 @@ public Action Command_ForceRound(int client, int args) {
 				}
 			}
 
-			ids[i] = id;
+			ids.Push(id);
 		}
 
 		g_EffectCount = count;
 		for(int i = 0; i < count; i++) {
-			g_CurrentEffects[i] = view_as<Effect>(ids[i]);
+			g_CurrentEffects[i] = view_as<Effect>(ids.Get(i));
 		}
 
 		if(g_EffectCount == 1) {
