@@ -1,9 +1,13 @@
-int RollEffectCount(){
-    int r = GetRandomInt(1, 10000);
+int RollEffectCount() {
+    float chance = g_CVAR_MultieffectBaseChance.FloatValue;
 
-    if (r <= 1)      return 1;
-    else if (r <= 9900) return 2;
-    else if (r <= 9950) return 3;
-    else if (r <= 9990) return 4;
-    else                return 5;
+    for(int i = 2; i <= g_CVAR_MultieffectMaxCount.IntValue; i++) {
+        if(GetRandomFloat(0.0, 1.0) <= chance) {
+            return i;
+        }
+
+        chance /= g_CVAR_MultieffectRarityMultiplier.FloatValue;
+    }
+
+    return 1;
 }

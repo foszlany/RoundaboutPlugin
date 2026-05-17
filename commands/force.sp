@@ -40,8 +40,8 @@ public Action Command_ForceRound(int client, int args) {
 			return Plugin_Handled;
 		}
 
-		if(n < 1 || n > MAX_MULTIEFFECT_COUNT) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Count must be between 1 and %d.", MAX_MULTIEFFECT_COUNT);
+		if(n < 1 || n > MULTIEFFECT_MAX_COUNT) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Count must be between 1 and %d.", MULTIEFFECT_MAX_COUNT);
 			return Plugin_Handled;
 		}
 
@@ -63,11 +63,11 @@ public Action Command_ForceRound(int client, int args) {
 		char arg[128];
 		GetCmdArgString(arg, sizeof(arg));
 
-		char parts[MAX_MULTIEFFECT_COUNT + 1][16];
+		char parts[MULTIEFFECT_MAX_COUNT + 1][16];
 		int count = ExplodeString(arg, " ", parts, sizeof(parts), sizeof(parts[]));
 
-		if(count > MAX_MULTIEFFECT_COUNT) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 You must specify between 1 and %d effect IDs.", MAX_MULTIEFFECT_COUNT);
+		if(count > MULTIEFFECT_MAX_COUNT) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 You must specify between 1 and %d effect IDs.", MULTIEFFECT_MAX_COUNT);
 			return Plugin_Handled;
 		}
 
