@@ -11,7 +11,7 @@ public void Event_RoundStart_60_TimeTravel(Event event, const char[] name, bool 
 }
 
 public Action CreateSnapshot(Handle timer) {
-     if(g_CurrentEffects[0] == EFFECT_TIMETRAVEL) {
+     if(isEffectLive(EFFECT_TIMETRAVEL)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i) && IsPlayerAlive(i)) {
                     g_Effect60_PlayerHealth[i] = GetClientHealth(i);
@@ -47,7 +47,7 @@ public Action CreateSnapshot(Handle timer) {
 }
 
 public Action ActivateSnapshot(Handle timer) {
-     if(g_CurrentEffects[0] == EFFECT_TIMETRAVEL) {
+     if(isEffectLive(EFFECT_TIMETRAVEL)) {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Snapshot activated.");
 
           for(int i = 1; i <= MaxClients; i++) {

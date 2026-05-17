@@ -208,6 +208,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/show_effect_description.sp"
 #include "utils/has_nav_mesh.sp"
 #include "utils/roll_effect_count.sp"
+#include "utils/is_effect_live.sp"
 
 /* LISTS */
 #include "lists/multieffect_exclude.sp"
