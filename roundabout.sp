@@ -25,9 +25,9 @@ public void OnPluginStart() {
 
 	/* CREATE CONVARS */
 	g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_toggle", "1", "Enables or disables the plugin", FCVAR_NOTIFY, true, 0.0, true, 1.0);
-	g_CVAR_MultieffectMaxCount = CreateConVar("sm_roundabout_MULTIEFFECT_MAX_COUNT", MULTIEFFECT_DEFAULT_MAX_COUNT, "Sets the maximum amount of effects that can be rolled in a round (minimum 1)", FCVAR_NOTIFY, true, 1.0, true, view_as<float>(MULTIEFFECT_MAX_COUNT));
-	g_CVAR_MultieffectRarityMultiplier = CreateConVar("sm_roundabout_multieffect_rarity_multiplier", MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER, "Sets the rarity multiplier for each additional effect rolled. Higher values make multiple effects less likely.", FCVAR_NOTIFY, true, 0.1);
+	g_CVAR_MultieffectMaxCount = CreateConVar("sm_roundabout_multieffect_max_count", MULTIEFFECT_DEFAULT_MAX_COUNT, "Sets the maximum amount of effects that can be rolled in a round (minimum 1)", FCVAR_NOTIFY, true, 1.0, true, view_as<float>(MULTIEFFECT_MAX_COUNT));
 	g_CVAR_MultieffectBaseChance = CreateConVar("sm_roundabout_multieffect_base_chance", MULTIEFFECT_DEFAULT_BASE_CHANCE, "Sets the base chance for rolling a second effect. Higher values make multiple effects more likely.", FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	g_CVAR_MultieffectRarityMultiplier = CreateConVar("sm_roundabout_multieffect_rarity_multiplier", MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER, "Sets the rarity multiplier for each additional effect rolled. Higher values make multiple effects less likely.", FCVAR_NOTIFY, true, 0.1);
 
 	HookConVarChange(g_CVAR_EnablePlugin, ConvarChange_EnablePlugin);
 
