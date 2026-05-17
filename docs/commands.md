@@ -40,7 +40,7 @@
 * **sm_roundabout_multieffect_base_chance <0-1>** - Base chance of a multieffect round
      - **Default:** `0.08`
      - Base chance is for a round with `2` effects
-* **sm_roundabout_multieffect_rarity_multiplier <0-1>** - Determines the rarity multiplier for a multieffect round
+* **sm_roundabout_multieffect_rarity_multiplier <0-100>** - Determines the rarity multiplier for a multieffect round
      - **Default:** `2`
      - An additional effect will be rarer by this much
      - For example if 2 effects has a probability of `0.08`, then 3 effects has `0.04` with a multiplier of `2`
