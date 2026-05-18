@@ -8,7 +8,7 @@ public Action Command_Effect(int client, int args) {
 	}
 
 	if(args <= 0) {
-		ShowCurrentEffectDescription(client, g_CurrentEffect);
+		ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
 	}
 	else if(args >= 2) {
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_effect <id>");
@@ -24,7 +24,7 @@ public Action Command_Effect(int client, int args) {
 			return Plugin_Handled;
 		}
 		else if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY);
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
 			return Plugin_Handled;
 		}
 

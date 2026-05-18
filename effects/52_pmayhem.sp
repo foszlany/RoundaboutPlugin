@@ -26,7 +26,7 @@ public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, b
 }
 
 public Action AssignNewProjectiles(Handle timer) {
-     if(g_CurrentEffect == EFFECT_PMAYHEM) {
+     if(isEffectLive(EFFECT_PMAYHEM)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i)) {
                     int primaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Primary);

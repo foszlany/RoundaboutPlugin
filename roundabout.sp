@@ -5,7 +5,7 @@
 public Plugin myinfo = {
 	name = "Roundabout",
 	author = "foszlany",
-	description = "Experience a new type of gimmick every round!",
+	description = "Random effects for roundwise chaos.",
 	version = PLUGIN_VERSION,
 	url = "https://github.com/foszlany/RoundaboutPlugin"
 };
@@ -18,11 +18,6 @@ public void OnMapStart() {
 	PrecacheSound("misc/halloween/spell_teleport.wav", true);
 	PrecacheSound("ui/vote_yes.wav", true);
  	PrecacheSound("player/recharged.wav", true);
-
-	// Ricochet effect
-	// g_BeamSprite = PrecacheModel("sprites/laserbeam.vmt");
-    	// g_HaloSprite = PrecacheModel("sprites/halo01.vmt");
-    	// g_ExplosionSprite = PrecacheModel("sprites/sprite_fire01.vmt");
 }
 
 public void OnPluginStart() {
@@ -30,6 +25,10 @@ public void OnPluginStart() {
 
 	/* CREATE CONVARS */
 	g_CVAR_EnablePlugin = CreateConVar("sm_roundabout_toggle", "1", "Enables or disables the plugin", FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	g_CVAR_MultieffectMaxCount = CreateConVar("sm_roundabout_multieffect_max_count", MULTIEFFECT_DEFAULT_MAX_COUNT, "Sets the maximum amount of effects that can be rolled in a round (minimum 1)", FCVAR_NOTIFY, true, 1.0, true, view_as<float>(MULTIEFFECT_MAX_COUNT));
+	g_CVAR_MultieffectBaseChance = CreateConVar("sm_roundabout_multieffect_base_chance", MULTIEFFECT_DEFAULT_BASE_CHANCE, "Sets the base chance for rolling a second effect. Higher values make multiple effects more likely.", FCVAR_NOTIFY, true, 0.0, true, 1.0);
+	g_CVAR_MultieffectRarityMultiplier = CreateConVar("sm_roundabout_multieffect_rarity_multiplier", MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER, "Sets the rarity multiplier for each additional effect rolled. Higher values make multiple effects less likely.", FCVAR_NOTIFY, true, 0.0, true, 100.0);
+
 	HookConVarChange(g_CVAR_EnablePlugin, ConvarChange_EnablePlugin);
 
 	/* INITIALIZE GLOBAL VARIABLES */
@@ -37,17 +36,22 @@ public void OnPluginStart() {
 	g_hudSync = CreateHudSynchronizer();
 
 	/* INITIALIZE FUNCTION POINTERS */
-	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
-	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+	g_OnRoundStartFuncPtr[0] = INVALID_FUNCTION;
+	g_OnRoundEndFuncPtr[0] = INVALID_FUNCTION;
+	g_OnPlayerUpdateFuncPtr[0] = INVALID_FUNCTION;
+	g_OnPlayerHitFuncPtr[0] = INVALID_FUNCTION;
+	g_OnPlayerDeathFuncPtr[0] = INVALID_FUNCTION;
 
 	/* INITIALIZE GLOBAL ARRAYS */
 	for(int i = 1; i <= MAXPLAYERS; i++) {
 		g_HasSpawned[i] = false;
 		g_voteSkip[i] = false;
 	}
+
+	/* INITIALIZE LISTS */
+	InitializeExcludedMultieffects();
+	InitializeMutuallyExclusiveMultieffects();
+	InitializeEffectTokens();
 
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
@@ -99,11 +103,13 @@ public void DisablePluginFeatures() {
 	Event event = CreateEvent("teamplay_round_end");
 	Event_RoundEnd(event, "teamplay_round_end", false);
 
-	g_OnRoundStartFuncPtr = INVALID_FUNCTION;
-	g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
+	for(int i = 0; i < g_CVAR_MultieffectMaxCount.IntValue; i++) {
+		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+		g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
+	}
 
 	UnhookEvent("teamplay_round_start", Event_RoundStart);
 	UnhookEvent("teamplay_round_win", Event_RoundEnd, EventHookMode_Pre);
@@ -119,62 +125,91 @@ public void DisablePluginFeatures() {
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
 	if(GameRules_GetProp("m_bInWaitingForPlayers") != 1) {
-		if(g_CurrentEffect != EFFECT_INVALID) {
-			CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
+		for(int i = 0; i < g_EffectCount; i++) {
+			if(g_OnRoundStartFuncPtr[i] != INVALID_FUNCTION) {
+				CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
+			}
 		}
 
-		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
-		g_OnRoundEndFuncPtr = INVALID_FUNCTION;
-		g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-		g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-		g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
-
-		if(g_ForceRoundEffect == EFFECT_INVALID) {
-			g_CurrentEffect = setEffect(EFFECT_INVALID);
-		}
-		else {
-			g_CurrentEffect = setEffect(g_ForceRoundEffect);
-			g_ForceRoundEffect = EFFECT_INVALID;
-			g_WasForceRandom = false;
+		for(int i = 0; i < g_EffectCount; i++) {
+			g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+			g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
+			g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
+			g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
+			g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
 		}
 
-		CallEventFunction(g_OnRoundStartFuncPtr, event, name, dontBroadcast);
+		if(!g_isForced) {
+			g_EffectCount = RollEffectCount();
+		}
 
-		g_OnRoundStartFuncPtr = INVALID_FUNCTION;
+		setEffect(0);
+
+		for(int i = 0; i < g_EffectCount; i++) {
+			CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
+		}
+
+		for(int i = 0; i < g_EffectCount; i++) {
+			g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+		}
 	}
 }
 
 /* REAPPLIES EFFECTS IF NEEDED */
 public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcast) {
 	int client = GetClientOfUserId(event.GetInt("userid"));
-	if(!g_HasSpawned[client] && g_CurrentEffect != EFFECT_INVALID) {
-		g_HasSpawned[client] = true;
-		ShowCurrentEffectDescription(client, g_CurrentEffect);
+
+	if(!g_HasSpawned[client]) {
+		for(int i = 0; i < g_EffectCount; i++) {
+			if(g_OnPlayerUpdateFuncPtr[i] != INVALID_FUNCTION) {
+				g_HasSpawned[client] = true;
+				ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
+			}
+		}
 	}
 
-	CallEventFunction(g_OnPlayerUpdateFuncPtr, event, name, dontBroadcast);
+	for(int i = 0; i < g_EffectCount; i++) {
+		if(g_OnPlayerUpdateFuncPtr[i] != INVALID_FUNCTION) {
+			CallEventFunction(g_OnPlayerUpdateFuncPtr[i], event, name, dontBroadcast);
+		}
+	}
 }
 
 /* PLAYER HIT EVENT */
 public void Event_PlayerHit(Event event, const char[] name, bool dontBroadcast) {
-	CallEventFunction(g_OnPlayerHitFuncPtr, event, name, dontBroadcast);
+	for(int i = 0; i < g_EffectCount; i++) {
+		if(g_OnPlayerHitFuncPtr[i] != INVALID_FUNCTION) {
+			CallEventFunction(g_OnPlayerHitFuncPtr[i], event, name, dontBroadcast);
+		}
+	}
 }
 
 /* PLAYER DEATH EVENT */
 public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast) {
-	CallEventFunction(g_OnPlayerDeathFuncPtr, event, name, dontBroadcast);
+	for(int i = 0; i < g_EffectCount; i++) {
+		if(g_OnPlayerDeathFuncPtr[i] != INVALID_FUNCTION) {
+			CallEventFunction(g_OnPlayerDeathFuncPtr[i], event, name, dontBroadcast);
+		}
+	}
 }
 
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
-	g_OnPlayerUpdateFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerHitFuncPtr = INVALID_FUNCTION;
-	g_OnPlayerDeathFuncPtr = INVALID_FUNCTION;
-
-	if(g_CurrentEffect != EFFECT_INVALID) {
-		CallEventFunction(g_OnRoundEndFuncPtr, event, name, dontBroadcast);
+	for(int i = 0; i < g_EffectCount; i++) {
+		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
 	}
-	g_CurrentEffect = EFFECT_INVALID;
+
+	for(int i = 0; i < g_EffectCount; i++) {
+		if(g_OnRoundEndFuncPtr[i] != INVALID_FUNCTION) {
+			CallEventFunction(g_OnRoundEndFuncPtr[i], event, name, dontBroadcast);
+		}
+	}
+
+	for(int i = 0; i < g_EffectCount; i++) {
+		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+	}
 
 	for(int i = 1; i <= MAXPLAYERS; i++) {
 		g_HasSpawned[i] = false;

@@ -17,12 +17,13 @@
      - You can add conditions to your effects. Example code:
           ```cpp
           if(activePlayers < 3) { // If true, effect shouldn't appear unless forced.
-               if(isForced && !g_WasForceRandom) { // Do not change
+               if(isForced && !g_isForcedRandom) { // Do not change
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                }
                else {
                     PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                    return setEffect(-1);
+                    setEffect(effectIndex);
+                    return;
                }
           }
 
@@ -61,3 +62,6 @@
 ## **Step 4:** Testing
 - Use `!roundabout_force <effect_id>` to test your effect.
      - Make sure to watch out for errors in the server console.
+- Also make sure to test your effect with other effects using `!roundabout_force count <n>`
+     - If your effect restricts classes, include it in `lists/multieffect_mutually_exclusive.sp`
+     - If your effect is way too fragile, include it in `lists/multieffect_exclude.sp`

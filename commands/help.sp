@@ -4,7 +4,7 @@ public Action Command_Help(int client, int args) {
      PrintToConsole(client, "\n################# ROUNDABOUT COMMAND LIST #################");
 
      PrintToConsole(client, "[Roundabout ADMIN] roundabout_enable <arg> - Enables or disables the plugin effects.");
-     PrintToConsole(client, "[Roundabout ADMIN] roundabout_force <id> - Forces a new round with a desired effect");
+     PrintToConsole(client, "[Roundabout ADMIN] roundabout_force [c|count <n> || <id...>] - Forces a new round with a desired effect");
      PrintToConsole(client, "[Roundabout USER] roundabout_help - Returns the commands that can be used into the player's console.");
      PrintToConsole(client, "[Roundabout USER] roundabout_github - Returns the link to the GitHub repository.");
      PrintToConsole(client, "[Roundabout USER] roundabout_version - Returns the version of the plugin.");

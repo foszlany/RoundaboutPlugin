@@ -3,8 +3,18 @@
 #endif
 #define _RAHEADER
 
-/* VERSION */
-#define PLUGIN_VERSION "0.27"
+/* CONSTANTS */
+#define PLUGIN_VERSION "0.3"
+
+#define MULTIEFFECT_MAX_COUNT 10
+
+#define MULTIEFFECT_DEFAULT_MAX_COUNT "5"
+#define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.08"
+#define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
+
+ArrayList MULTIEFFECT_EXCLUDED;
+ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
+StringMap EFFECT_TOKENS;
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -17,12 +27,17 @@
 #include <tf2attributes>
 
 /* CONVARS */
-ConVar g_CVAR_EnablePlugin = null;
+ConVar g_CVAR_EnablePlugin;
+ConVar g_CVAR_MultieffectMaxCount;
+ConVar g_CVAR_MultieffectBaseChance;
+ConVar g_CVAR_MultieffectRarityMultiplier;
 
 /* GLOBAL VARIABLES */
-Effect g_CurrentEffect = EFFECT_INVALID;
-Effect g_ForceRoundEffect = EFFECT_INVALID;
-bool g_WasForceRandom = false;
+Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
+
+int g_EffectCount = 1;
+bool g_isForced = false;
+bool g_isForcedRandom = false;
 bool g_HasSpawned[MAXPLAYERS + 1];
 
 bool g_voteSkip[MAXPLAYERS + 1];
@@ -33,11 +48,11 @@ Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
 
 typedef RoundEventFunc = function void(Event event, const char[] name, bool dontBroadcast);
-RoundEventFunc g_OnRoundStartFuncPtr;
-RoundEventFunc g_OnRoundEndFuncPtr;
-RoundEventFunc g_OnPlayerUpdateFuncPtr;
-RoundEventFunc g_OnPlayerHitFuncPtr;
-RoundEventFunc g_OnPlayerDeathFuncPtr;
+RoundEventFunc g_OnRoundStartFuncPtr[MULTIEFFECT_MAX_COUNT + 1];
+RoundEventFunc g_OnRoundEndFuncPtr[MULTIEFFECT_MAX_COUNT + 1];
+RoundEventFunc g_OnPlayerUpdateFuncPtr[MULTIEFFECT_MAX_COUNT + 1];
+RoundEventFunc g_OnPlayerHitFuncPtr[MULTIEFFECT_MAX_COUNT + 1];
+RoundEventFunc g_OnPlayerDeathFuncPtr[MULTIEFFECT_MAX_COUNT + 1];
 
 /* EFFECT VARIABLES */
 Handle g_Effect0_FakePure_Timer;
@@ -201,9 +216,16 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/create_particle_on_player.sp"
 #include "utils/show_effect_description.sp"
 #include "utils/has_nav_mesh.sp"
+#include "utils/roll_effect_count.sp"
+#include "utils/is_effect_live.sp"
+
+/* LISTS */
+#include "lists/multieffect_exclude.sp"
+#include "lists/multieffect_mutually_exclusive.sp"
+#include "lists/effect_codename.sp"
 
 /* CONVARS */
-#include "convars/enableplugin.sp"
+#include "convars/enable_plugin.sp"
 
 /* COMMANDS */
 #include "commands/force.sp"

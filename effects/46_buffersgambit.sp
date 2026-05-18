@@ -27,7 +27,7 @@ public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool
 }
 
 public void Effect46_OnDuck(int client) {
-     if(g_CurrentEffect != EFFECT_BUFFERSGAMBIT) {
+     if(!isEffectLive(EFFECT_BUFFERSGAMBIT)) {
           SDKUnhook(client, SDKHook_PreThink, Effect46_OnDuck);
           return;
      }
