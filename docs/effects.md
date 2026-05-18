@@ -282,7 +282,8 @@
 * **No Scrubs Allowed**<br>
      - ID: `38`
      - Token: `noscrubs`
-     - Players are forced to play Sniper with only their primary weapon. Bodyshots will instantly kill the attacker.
+     - Players are forced to play Sniper with only their primary and melee weapons.
+     - Bodyshots will instantly kill the attacker.
 
 * **What's a Reload?**<br>
      - ID: `39`

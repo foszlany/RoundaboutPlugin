@@ -8,8 +8,6 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
           if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
                TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
           }
-          
-          TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
      }
 
      ShowCurrentEffectDescriptionToAll(-1);
@@ -21,7 +19,6 @@ public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool 
      forceClass(client, TFClass_Sniper);
 
      TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
-     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Melee);
 }
 
 public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
