@@ -14,14 +14,14 @@ public Action Command_ForceRound(int client, int args) {
 		GetCmdArg(2, arg2, sizeof(arg2));
 	}
 
-	// Force single random
+	// Force random
 	if(args <= 0) {
 		g_isForced = true;
 		g_isForcedRandom = true;
 
-		g_EffectCount = 1;
+		g_EffectCount = RollEffectCount();
 
-		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated 1 random effect. Restarting round.");
+		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated %d random effects. Restarting round.", g_EffectCount);
 		ServerCommand("mp_restartgame 1");
 	}
 

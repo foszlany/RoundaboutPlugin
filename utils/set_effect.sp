@@ -26,8 +26,6 @@ public void setEffect(int effectIndex) {
 
      g_CurrentEffects[effectIndex] = id;
 
-     PrintToChatAll("\x07B143F1[Roundabout]\x01 Effect %d has been applied.", id);
-
      switch(id) {
           case EFFECT_PURE: {
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_0_Pure;
@@ -48,6 +46,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Low Gravity effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -124,6 +123,7 @@ public void setEffect(int effectIndex) {
 
           case EFFECT_FIREMELEE: {
                setEffect(effectIndex); // TEMPORARY CHANGE UNTIL I FIX THIS
+               return;
 
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_10_FireMelee;
                g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_10_FireMelee;
@@ -196,6 +196,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Snowball effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -214,6 +215,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Frontier Justice effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -232,6 +234,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Infection effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -250,6 +253,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Duelies effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -276,6 +280,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -318,6 +323,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Bodycount effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -352,6 +358,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Balanced effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -410,6 +417,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Social Distancing effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -540,6 +548,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Mann vs. Machine effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -558,6 +567,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Projectile Mayhem effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -576,6 +586,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Shielding Medicine effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -594,6 +605,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Piercing Bullets effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -628,6 +640,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Called for me? effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -646,6 +659,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] King effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 
@@ -664,6 +678,7 @@ public void setEffect(int effectIndex) {
                     else {
                          PrintToServer("[Roundabout] Identity Theft effect condition not met, reshuffled.");
                          setEffect(effectIndex);
+                         return;
                     }
                }
 

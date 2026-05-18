@@ -22,7 +22,8 @@
                }
                else {
                     PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                    return setEffect(-1);
+                    setEffect(effectIndex);
+                    return;
                }
           }
 
