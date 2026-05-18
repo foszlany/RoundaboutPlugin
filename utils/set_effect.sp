@@ -26,6 +26,8 @@ public void setEffect(int effectIndex) {
 
      g_CurrentEffects[effectIndex] = id;
 
+     PrintToChatAll("\x07B143F1[Roundabout]\x01 Effect %d has been applied.", id);
+
      switch(id) {
           case EFFECT_PURE: {
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_0_Pure;

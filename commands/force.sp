@@ -16,12 +16,12 @@ public Action Command_ForceRound(int client, int args) {
 
 	// Force single random
 	if(args <= 0) {
-		g_CurrentEffects[0] = view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
-
 		g_isForced = true;
 		g_isForcedRandom = true;
 
-		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect with id %d has been applied. Restarting round.", g_CurrentEffects[0]);
+		g_EffectCount = 1;
+
+		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated 1 random effect. Restarting round.");
 		ServerCommand("mp_restartgame 1");
 	}
 
