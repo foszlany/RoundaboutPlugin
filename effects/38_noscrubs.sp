@@ -37,7 +37,7 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
 
      int custom = event.GetInt("custom");
 
-     if(custom != TF_CUSTOM_HEADSHOT) {
+     if(custom != TF_CUSTOM_HEADSHOT && custom != TF_CUSTOM_BLEEDING) {
           SDKHooks_TakeDamage(
                attacker,
                attacker,
