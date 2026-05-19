@@ -63,6 +63,7 @@ int g_Effect1_OriginalGravity;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
+bool g_Effect13_isCommandListenerRegistered;
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
 Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
 
@@ -103,6 +104,7 @@ TFClassType g_Effect40_DisabledClasses[7];
 
 Handle g_Effect42_HorrorTimer;
 
+bool g_Effect46_isCommandListenerRegistered;
 Handle g_Effect46_BuffTimer[MAXPLAYERS + 1];
 
 float g_Effect47_OriginalFriction;
@@ -120,6 +122,7 @@ int g_Effect51_OriginalUnbalanceLimit;
 
 bool g_Effect53_IsSpecialRound;
 
+bool g_Effect57_isCommandListenerRegistered;
 bool g_Effect57_HasBeenTeleportedRecently[MAXPLAYERS + 1];
 bool g_Effect57_HasRecentlyCalled[MAXPLAYERS + 1];
 
@@ -133,6 +136,7 @@ int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
 int g_Effect60_PlayerClip[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
+bool g_Effect61_isCommandListenerRegistered;
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
 bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];

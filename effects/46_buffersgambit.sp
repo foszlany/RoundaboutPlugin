@@ -2,17 +2,21 @@
 
 public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
      AddCommandListener(Effect46_OnBuffActivate, "voicemenu");
+     g_Effect46_isCommandListenerRegistered = true;
     
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
-     RemoveCommandListener(Effect46_OnBuffActivate, "voicemenu");
+     if(g_Effect46_isCommandListenerRegistered) {
+          RemoveCommandListener(Effect46_OnBuffActivate, "voicemenu");
+          g_Effect46_isCommandListenerRegistered = false;
 
-     for(int i = 1; i <= MaxClients; i++) {
-          if(g_Effect46_BuffTimer[i] != null) {
-               KillTimer(g_Effect46_BuffTimer[i]);
-               g_Effect46_BuffTimer[i] = null;
+          for(int i = 1; i <= MaxClients; i++) {
+               if(g_Effect46_BuffTimer[i] != null) {
+                    KillTimer(g_Effect46_BuffTimer[i]);
+                    g_Effect46_BuffTimer[i] = null;
+               }
           }
      }
 }
