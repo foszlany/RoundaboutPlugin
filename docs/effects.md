@@ -199,6 +199,7 @@
           - Players can infinitely double jump.
           - Players deal `Mini-crits` while mid-air.
           - Secondary weapons deal `30%` more damage.
+          - Secondary weapons have `200%` more reserve ammo.
           - Players are faster by `120%`.
           - Player size is multiplied by `0.75`.
           - Voice pitch is changed to `2.0`.
