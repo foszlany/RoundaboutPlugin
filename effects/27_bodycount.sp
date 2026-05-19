@@ -29,12 +29,14 @@ public void Event_PlayerDeath_27_Bodycount(Event event, const char[] name, bool 
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      int killed = GetClientOfUserId(event.GetInt("userid"));
 
+     if(attacker == killed || attacker <= 0 || !IsClientInGame(attacker) || !IsPlayerAlive(attacker)) {
+          return;
+     }
+
      g_Effect27_Bodycount[attacker]++;
      SetEntityHealth(attacker, GetClientHealth(attacker) + 25);
 
-     if(attacker != killed && attacker > 0 && IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
-          TF2Attrib_SetByName(attacker, "max health additive bonus", g_Effect27_Bodycount[attacker] * 25);
-     }
+     TF2Attrib_SetByName(attacker, "max health additive bonus", g_Effect27_Bodycount[attacker] * 25);
 
      if(!g_Effect27_IsPersistent) {
           g_Effect27_Bodycount[killed] = 0.0;
