@@ -28,6 +28,10 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
           return;
      }
 
+     if(GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") == GetPlayerWeaponSlot(attacker, TFWeaponSlot_Melee)) {
+          return;
+     }
+
      char weapon[64];
      event.GetString("weapon", weapon, sizeof(weapon));
 
