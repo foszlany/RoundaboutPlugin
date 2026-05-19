@@ -322,7 +322,7 @@
      - ID: `43`
      - Token: `superjump`
      - Crouching will create a non-damaging explosion below the player that acts like a rocket jump.
-          - Delay: `4` seconds.
+          - Cooldown: `4` seconds.
 
 * **Pulley**<br>
      - ID: `44`
@@ -338,7 +338,7 @@
 * **Buffer's gambit**<br>
      - ID: `46`
      - Token: `buffersgambit`
-     - Crouching will apply a random (de)buff on the player.
+     - Calling for Medic will apply a random (de)buff on the player.
           - Delay: `16` seconds.
           - Effects last `8` seconds.
           - Buff list with their appropriate chances:

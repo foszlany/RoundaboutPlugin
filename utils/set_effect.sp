@@ -479,7 +479,7 @@ public void setEffect(int effectIndex) {
           case EFFECT_SUPERJUMP: {
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_43_SuperJump;
                g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_43_SuperJump;
-               g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_43_SuperJump;
+               g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }
@@ -503,7 +503,7 @@ public void setEffect(int effectIndex) {
           case EFFECT_BUFFERSGAMBIT: {
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_46_BuffersGambit;
                g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_46_BuffersGambit;
-               g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_46_BuffersGambit;
+               g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }

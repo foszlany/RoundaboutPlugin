@@ -103,6 +103,8 @@ TFClassType g_Effect40_DisabledClasses[7];
 
 Handle g_Effect42_HorrorTimer;
 
+Handle g_Effect46_BuffTimer[MAXPLAYERS + 1];
+
 float g_Effect47_OriginalFriction;
 
 bool g_Effect49_bIsLookingAt[MAXPLAYERS + 1][MAXPLAYERS + 1];
@@ -128,13 +130,13 @@ float g_Effect60_PlayerPosition[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerAngle[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerVelocity[MAXPLAYERS + 1][3];
 int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
-int g_Effect60_PlayerClip[MAXPLAYERS][3]
+int g_Effect60_PlayerClip[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
 bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
-float g_Effect61_fCooldownEndTime[MAXPLAYERS+1];
+float g_Effect61_fCooldownEndTime[MAXPLAYERS + 1];
 Handle g_Effect61_hHUDTimer = null;
 
 /* EFFECTS */
