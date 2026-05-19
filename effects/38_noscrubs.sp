@@ -24,7 +24,7 @@ public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool 
 public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
 
-     if(attacker <= 0) {
+     if(attacker <= 0 || !IsPlayerAlive(attacker)) {
           return;
      }
 
