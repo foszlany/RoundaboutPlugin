@@ -31,7 +31,7 @@ public void Event_RoundEnd_39_InfiniteClip(Event event, const char[] name, bool 
                int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
                if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
                     TF2Attrib_RemoveByName(secondaryWeapon, "clip size bonus");
-                    TF2Attrib_RemoveByName(secondaryWeapon, "maxammo primary increased");
+                    TF2Attrib_RemoveByName(secondaryWeapon, "maxammo secondary increased");
                     TF2Attrib_RemoveByName(secondaryWeapon, "maxammo grenades1 increased");
                }
                
