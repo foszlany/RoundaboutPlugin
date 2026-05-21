@@ -285,6 +285,7 @@
      - Token: `noscrubs`
      - Players are forced to play Sniper with only their primary and melee weapons.
      - Bodyshots will instantly kill the attacker.
+          - Taunt kills are allowed.
 
 * **What's a Reload?**<br>
      - ID: `39`
