@@ -1,4 +1,4 @@
-# Roundabout Commands
+# Roundabout Commands and ConVars
 ### User commands
 * **roundabout_help** - Returns the commands that can be used into the player's console.<br>
 * **roundabout_github** - Returns the link to the GitHub repository.<br>
@@ -37,9 +37,9 @@
 * **sm_roundabout_multieffect_max_count <1-10>** - Determines the max amount of effects that can naturally appear
      - **Default:** `5`
      - More effects can be forced.
-* **sm_roundabout_multieffect_base_chance <0-1>** - Base chance of a multieffect round
+* **sm_roundabout_multieffect_base_chance <0-1>** - Base chance of a double-effect round
      - **Default:** `0.08`
-     - Base chance is for a round with `2` effects
+     - The total chance of a multieffect round is roughly double this value.
 * **sm_roundabout_multieffect_rarity_multiplier <0-100>** - Determines the rarity multiplier for a multieffect round
      - **Default:** `2`
      - An additional effect will be rarer by this much
