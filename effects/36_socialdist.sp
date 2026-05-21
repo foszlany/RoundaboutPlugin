@@ -15,7 +15,9 @@ public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, 
      int damage = event.GetInt("damageamount");
 
      for(int i = 1; i <= MaxClients; i++) {
-          if(!IsClientInGame(i) || !IsPlayerAlive(i) || i == victim || TF2_GetClientTeam(attacker) == TF2_GetClientTeam(i)) {
+          int dmgtype = event.GetInt("damagebits");
+
+          if(dmgtype & DMG_SOCIALDIST || !IsClientInGame(i) || !IsPlayerAlive(i) || i == victim || TF2_GetClientTeam(attacker) == TF2_GetClientTeam(i)) {
                continue;
           }
 
@@ -31,7 +33,7 @@ public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, 
                     attacker,
                     attacker,
                     newDamage,
-                    DMG_GENERIC,
+                    DMG_GENERIC | DMG_SOCIALDIST,
                     -1,
                     NULL_VECTOR,
                     NULL_VECTOR
