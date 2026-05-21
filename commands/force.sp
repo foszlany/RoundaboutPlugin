@@ -54,6 +54,9 @@ public Action Command_ForceRound(int client, int args) {
 		g_isForced = true;
 		g_isForcedRandom = true;
 
+		if(n > 5) {
+			PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FB524FHigh effect counts can be unstable. You have been warned.\x01", client, n);
+		}
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated %d random effects. Restarting round.", n);
 		ServerCommand("mp_restartgame 1");
 	}
