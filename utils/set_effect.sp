@@ -122,13 +122,10 @@ public void setEffect(int effectIndex) {
           }
 
           case EFFECT_FIREMELEE: {
-               setEffect(effectIndex); // TEMPORARY CHANGE UNTIL I FIX THIS
-               return;
-
                g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_10_FireMelee;
                g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_10_FireMelee;
                g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_10_FireMelee;
-               g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+               g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_10_FireMelee;
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }
 

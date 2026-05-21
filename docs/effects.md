@@ -53,7 +53,7 @@
      - Token: `forcemelee`
      - Every Players is stripped to melee.
 
-* **Fire Aspect - DISABLED TEMPORARILY -**<br>
+* **Fire Aspect**<br>
      - ID: `10`
      - Token: `firemelee`
      - Melee hits set the target on fire for `8` seconds.
