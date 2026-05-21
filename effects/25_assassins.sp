@@ -2,7 +2,7 @@
 
 public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          forceClass(i, TFClass_Spy);
+          ForceClass(i, TFClass_Spy);
           applyAssassinEffect(i);
      }
 
@@ -12,7 +12,7 @@ public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool d
 public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     forceClass(client, TFClass_Spy);
+     ForceClass(client, TFClass_Spy);
      applyAssassinEffect(client);
 }
 

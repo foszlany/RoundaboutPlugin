@@ -2,12 +2,7 @@
 
 public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          forceClass(i, TFClass_Sniper);
-
-          int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
-          if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-               TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
-          }
+          SetNoScrubsAttributes(i);
      }
 
      ShowCurrentEffectDescriptionToAll(-1);
@@ -15,10 +10,7 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-
-     forceClass(client, TFClass_Sniper);
-
-     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
+     SetNoScrubsAttributes(client);
 }
 
 public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
@@ -50,5 +42,16 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
           );
 
           PrintToChatAll("\x07B143F1[Roundabout]\x01 %N is a scrub.", attacker);
+     }
+}
+
+public void SetNoScrubsAttributes(int client) {
+     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+          ForceClass(client, TFClass_Sniper);
+
+          int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
+          if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
+               TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
+          }
      }
 }

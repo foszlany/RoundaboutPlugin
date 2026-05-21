@@ -69,7 +69,7 @@ public void ForceUnrestrictedClass(int client) {
                          
                          // FORCE THEN EXIT
                          if(!isBanned) {
-                              forceClass(client, view_as<TFClassType>(newClass));
+                              ForceClass(client, view_as<TFClassType>(newClass));
                               return;
                          }
                     }

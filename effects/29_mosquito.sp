@@ -46,7 +46,7 @@ public void Event_RoundEnd_29_Mosquito(Event event, const char[] name, bool dont
 }
 
 public void SetMosquitoAttributes(int client) {
-     forceClass(client, TFClass_Scout);
+     ForceClass(client, TFClass_Scout);
 
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
      if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
