@@ -2,28 +2,29 @@
 
 * **Multieffect**<br>
      - Multieffect is a special round with multiple effects that can occasionally happen.
-     - By default, up to 5 effects can appear naturally and 10 can be forced.
+     - By default, up to `5` effects can appear naturally and `10` can be forced.
+     - Unplayable combinations may occur, in which case `!roundabout_voteskip` may be used.
      - **The following probabilities are in place:**
-          - **1 effect:**  85.69%
-          - **2 effects:** 7.45%
-          - **3 effects:** 3.88%
-          - **4 effects:** 1.98%
-          - **5 effects:** 1.00%
+          - **1 effect:**  `85.69%`
+          - **2 effects:** `7.45%`
+          - **3 effects:** `3.88%`
+          - **4 effects:** `1.98%`
+          - **5 effects:** `1.00%`
      - **Limitations**
-          - 10 is set as the hard limit of a multieffect round
-               - Anything above 5 can be highly chaotic and unstable.
+          - `10` is set as the hard limit of a multieffect round
+               - Anything above `5` can be highly chaotic and unstable.
           - The following effects can NOT appear during Multieffect:
-               - Pure
-               - Mann vs. Machine
+               - `Pure`
+               - `Mann vs. Machine`
           - At most one effect may be chosen from this pool:
-               - Rolemodel
-               - Class Wars
-               - Assassins Indeed
-               - In Control
-               - Mosquito Infestation
-               - Hell
-               - No Scrubs Allowed
-               - Restriction
+               - `Rolemodel`
+               - `Class Wars`
+               - `Assassins Indeed`
+               - `In Control`
+               - `Mosquito Infestation`
+               - `Hell`
+               - `No Scrubs Allowed`
+               - `Restriction`
 
 * **Pure**<br>
      - ID: `0`
