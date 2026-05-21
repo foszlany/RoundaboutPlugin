@@ -204,6 +204,7 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	for(int i = 0; i < g_EffectCount; i++) {
 		if(g_OnRoundEndFuncPtr[i] != INVALID_FUNCTION) {
 			CallEventFunction(g_OnRoundEndFuncPtr[i], event, name, dontBroadcast);
+			g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
 		}
 	}
 
