@@ -35,9 +35,9 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Low Gravity\n\nEnjoy Moon gravity!");
           }
 
-          case EFFECT_MINICRIT: {
-               PrintCenterText(client, "Mini-crits");
-               ShowHintToClient(client, "Mini-crits\n\nMini-crits for all your heart's desires.");
+          case EFFECT_MEDIEVAL: {
+               PrintCenterText(client, "Medieval");
+               ShowHintToClient(client, "Medieval\n\nEnjoy ye old times. Good sire!");
           }
 
           case EFFECT_CRIT: {

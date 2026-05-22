@@ -57,10 +57,23 @@ public void setEffect(int effectIndex) {
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }
 
-          case EFFECT_MINICRIT: {
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_2_MiniCrit;
-               g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_2_MiniCrit;
-               g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_2_MiniCrit;
+          case EFFECT_MEDIEVAL: {
+               int isMedieval = GameRules_GetProp("m_bPlayingMedieval", 1);
+
+               if(isMedieval) {
+                    if(g_isForced && !g_isForcedRandom) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 Medieval effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                    }
+                    else {
+                         PrintToServer("[Roundabout] Medieval effect condition not met, reshuffled.");
+                         setEffect(effectIndex);
+                         return;
+                    }
+               }
+
+               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_2_Medieval;
+               g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_2_Medieval;
+               g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
           }

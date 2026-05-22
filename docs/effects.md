@@ -39,15 +39,19 @@
      - Lowers the gravity to a random value between `100` and `400`.
           - Additionally, there's a `2%` chance of the gravity being `0`.
 
-* **Mini-crits**<br>
+* **Medieval**<br>
      - ID: `2`
-     - Token: `minicrit`
-     - Gives guaranteed `Mini-crits`.
+     - Token: `medieval`
+     - **CONDITIONAL EFFECT:** Medieval Mode must not be enabled.
+     - Enables Medieval Mode.
 
 * **Criticals**<br>
      - ID: `3`
      - Token: `crit`
-     - Gives guaranteed `Crits`.
+     - Gives guaranteed critical hits.
+     - This effect has two variants, each have a `50%` chance of occurring.
+     - **Variant 1:** Gives guaranteed `Mini-crits`.
+     - **Variant 2:** Gives guaranteed `Crits`.
 
 * **Speedboost**<br>
      - ID: `4`

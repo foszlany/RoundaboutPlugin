@@ -150,7 +150,7 @@ Handle g_Effect61_hHUDTimer = null;
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
-#include "effects/2_minicrit.sp"
+#include "effects/2_medieval.sp"
 #include "effects/3_crit.sp"
 #include "effects/4_speedboost.sp"
 #include "effects/5_thirdperson.sp"
@@ -252,7 +252,7 @@ enum Effect {
 	EFFECT_INVALID			=	-1,
 	EFFECT_PURE			=	0,
 	EFFECT_LOWGRAVITY		=	1,
-	EFFECT_MINICRIT		=	2,
+	EFFECT_MEDIEVAL		=	2,
 	EFFECT_CRIT			=	3,
 	EFFECT_SPEEDBOOST		=	4,
 	EFFECT_THIRDPERSON		=	5,

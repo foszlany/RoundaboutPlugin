@@ -3,7 +3,7 @@ void InitializeEffectTokens() {
 
     EFFECT_TOKENS.SetString("0",   "pure");
     EFFECT_TOKENS.SetString("1",   "lowgravity");
-    EFFECT_TOKENS.SetString("2",   "minicrit");
+    EFFECT_TOKENS.SetString("2",   "medieval");
     EFFECT_TOKENS.SetString("3",   "crit");
     EFFECT_TOKENS.SetString("4",   "speedboost");
     EFFECT_TOKENS.SetString("5",   "thirdperson");
