@@ -37,6 +37,7 @@ ConVar g_CVAR_MultieffectRarityMultiplier;
 /* GLOBAL VARIABLES */
 Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
 
+int g_PreviousEffectCount = 1;
 int g_EffectCount = 1;
 bool g_isForced = false;
 bool g_isForcedRandom = false;

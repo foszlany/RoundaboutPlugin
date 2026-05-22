@@ -152,6 +152,8 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		for(int i = 0; i < g_EffectCount; i++) {
 			g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
 		}
+
+		g_PreviousEffectCount = g_EffectCount;
 	}
 }
 
@@ -195,20 +197,20 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
 
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
-	for(int i = 0; i < g_EffectCount; i++) {
+	for(int i = 0; i < g_PreviousEffectCount; i++) {
 		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
 	}
 
-	for(int i = 0; i < g_EffectCount; i++) {
+	for(int i = 0; i < g_PreviousEffectCount; i++) {
 		if(g_OnRoundEndFuncPtr[i] != INVALID_FUNCTION) {
 			CallEventFunction(g_OnRoundEndFuncPtr[i], event, name, dontBroadcast);
 			g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
 		}
 	}
 
-	for(int i = 0; i < g_EffectCount; i++) {
+	for(int i = 0; i < g_PreviousEffectCount; i++) {
 		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
 	}
 
