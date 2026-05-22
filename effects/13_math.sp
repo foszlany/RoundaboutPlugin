@@ -1,6 +1,10 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBroadcast) {
+     AddCommandListener(Event_ChatMessage, "say");
+	AddCommandListener(Event_ChatMessage, "say_team");
+     g_Effect13_isCommandListenerRegistered = true;
+     
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect13_MathAnswer[i] = -1;
           g_Effect13_MathQuestionTimers[i] = null;
@@ -9,9 +13,7 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
                g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, i);
           }
      }
-     
-	AddCommandListener(Event_ChatMessage, "say");
-	AddCommandListener(Event_ChatMessage, "say_team");
+
      
      ShowCurrentEffectDescriptionToAll(-1);
 }
@@ -30,21 +32,22 @@ public void Event_PlayerDeath_13_Math(Event event, const char[] name, bool dontB
 }
 
 public void Event_RoundEnd_13_Math(Event event, const char[] name, bool dontBroadcast) {
-	RemoveCommandListener(Event_ChatMessage, "say");
-	RemoveCommandListener(Event_ChatMessage, "say_team");
+	if(g_Effect13_isCommandListenerRegistered) {
+          RemoveCommandListener(Event_ChatMessage, "say");
+          RemoveCommandListener(Event_ChatMessage, "say_team");
+          g_Effect13_isCommandListenerRegistered = false;
 
-     for(int i = 1; i <= MAXPLAYERS; i++) {
-          NullifyClientMathData(i);
+          for(int i = 1; i <= MAXPLAYERS; i++) {
+               NullifyClientMathData(i);
+          }
      }
 }
 
 // CHAT MESSAGE EVENT
 public Action Event_ChatMessage(int client, const char[] command, int argc) {
-     if(isEffectLive(EFFECT_MATH)) {
-          if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
-               checkMathResponse(client, command, argc);
-               return Plugin_Handled;
-          }
+     if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
+          checkMathResponse(client, command, argc);
+          return Plugin_Handled;
      }
 
     return Plugin_Continue;
@@ -52,7 +55,7 @@ public Action Event_ChatMessage(int client, const char[] command, int argc) {
 
 // GIVE A CUSTOM MATH PROBLEM
 public void GiveMathProblem(Handle timer, int client) {
-     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+     if(isEffectLive(EFFECT_MATH) && IsClientInGame(client) && IsPlayerAlive(client)) {
           float kills = float(GetClientFrags(client));
           float deaths = GetClientDeaths(client) == 0 ? 1.0 : float(GetClientDeaths(client));
           int extra = RoundToNearest(200.0 * kills / deaths);

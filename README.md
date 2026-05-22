@@ -13,12 +13,13 @@
 - Some may have multiple variants. These can take form in:
      - Randomness *(e.g. slightly randomized low gravity)*
      - Rare chance of great amplification *(e.g. extreme increase in knockback)*
-     - Custom modifications *(e.g. persistent or temporary additive buff upon killing someone)*<br><br>
+     - Custom modifications *(e.g. persistent or temporary additive buff upon killing someone)*
+- They may also appear together in the form of a multieffect round.<br><br>
 
 Read the effect details [here](./docs/effects.md).<br><br>
 
 ## Commands
-Read the command details [here](./docs/commands.md).<br><br>
+Read the command and ConVar details [here](./docs/commands.md).<br><br>
 
 ## Compile
 The compiled plugin version `roundabout.smx` can be found inside the `plugin` folder.<br>

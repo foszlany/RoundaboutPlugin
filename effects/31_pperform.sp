@@ -17,6 +17,12 @@ public void Event_PlayerUpdate_31_PPerform(Event event, const char[] name, bool 
 
 public void Event_PlayerDeath_31_PPerform(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
+     int victim = GetClientOfUserId(event.GetInt("userid"));
+
+     if(!IsClientInGame(attacker) || !IsPlayerAlive(attacker) || attacker <= 0 || attacker == victim) {
+          return;
+     }
+
      ApplyVulnerability(attacker);
 }
 

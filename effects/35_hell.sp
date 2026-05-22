@@ -45,7 +45,7 @@ public void Event_RoundEnd_35_Hell(Event event, const char[] name, bool dontBroa
 }
 
 public void SetHellAttributes(int client) {
-     forceClass(client, TFClass_Pyro);
+     ForceClass(client, TFClass_Pyro);
 
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
      if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {

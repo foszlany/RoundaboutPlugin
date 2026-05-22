@@ -1,3 +1,31 @@
+# Roundabout Effects
+
+* **Multieffect**<br>
+     - Multieffect is a special round with multiple effects that can occasionally happen.
+     - By default, up to `5` effects can appear naturally and `10` can be forced.
+     - Unplayable combinations may occur, in which case `!roundabout_voteskip` may be used.
+     - **The following probabilities are in place:**
+          - **1 effect:**  `85.69%`
+          - **2 effects:** `7.45%`
+          - **3 effects:** `3.88%`
+          - **4 effects:** `1.98%`
+          - **5 effects:** `1.00%`
+     - **Limitations**
+          - `10` is set as the hard limit of a multieffect round
+               - Anything above `5` can be highly chaotic and unstable.
+          - The following effects can NOT appear during Multieffect:
+               - `Pure`
+               - `Mann vs. Machine`
+          - At most one effect may be chosen from this pool:
+               - `Rolemodel`
+               - `Class Wars`
+               - `Assassins Indeed`
+               - `In Control`
+               - `Mosquito Infestation`
+               - `Hell`
+               - `No Scrubs Allowed`
+               - `Restriction`
+
 * **Pure**<br>
      - ID: `0`
      - Token: `pure`
@@ -11,15 +39,19 @@
      - Lowers the gravity to a random value between `100` and `400`.
           - Additionally, there's a `2%` chance of the gravity being `0`.
 
-* **Mini-crits**<br>
+* **Medieval**<br>
      - ID: `2`
-     - Token: `minicrit`
-     - Gives guaranteed `Mini-crits`.
+     - Token: `medieval`
+     - **CONDITIONAL EFFECT:** Medieval Mode must not be enabled.
+     - Enables Medieval Mode.
 
 * **Criticals**<br>
      - ID: `3`
      - Token: `crit`
-     - Gives guaranteed `Crits`.
+     - Gives guaranteed critical hits.
+     - This effect has two variants, each have a `50%` chance of occurring.
+     - **Variant 1:** Gives guaranteed `Mini-Crits`.
+     - **Variant 2:** Gives guaranteed `Crits`.
 
 * **Speedboost**<br>
      - ID: `4`
@@ -53,7 +85,7 @@
      - Token: `forcemelee`
      - Every Players is stripped to melee.
 
-* **Fire Aspect - DISABLED TEMPORARILY -**<br>
+* **Fire Aspect**<br>
      - ID: `10`
      - Token: `firemelee`
      - Melee hits set the target on fire for `8` seconds.
@@ -199,6 +231,7 @@
           - Players can infinitely double jump.
           - Players deal `Mini-crits` while mid-air.
           - Secondary weapons deal `30%` more damage.
+          - Secondary weapons have `200%` more reserve ammo.
           - Players are faster by `120%`.
           - Player size is multiplied by `0.75`.
           - Voice pitch is changed to `2.0`.
@@ -282,7 +315,9 @@
 * **No Scrubs Allowed**<br>
      - ID: `38`
      - Token: `noscrubs`
-     - Players are forced to play Sniper with only their primary weapon. Bodyshots will instantly kill the attacker.
+     - Players are forced to play Sniper with only their primary and melee weapons.
+     - Bodyshots will instantly kill the attacker.
+          - Taunt kills are allowed.
 
 * **What's a Reload?**<br>
      - ID: `39`
@@ -320,7 +355,7 @@
      - ID: `43`
      - Token: `superjump`
      - Crouching will create a non-damaging explosion below the player that acts like a rocket jump.
-          - Delay: `4` seconds.
+          - Cooldown: `4` seconds.
 
 * **Pulley**<br>
      - ID: `44`
@@ -336,7 +371,7 @@
 * **Buffer's gambit**<br>
      - ID: `46`
      - Token: `buffersgambit`
-     - Crouching will apply a random (de)buff on the player.
+     - Calling for Medic will apply a random (de)buff on the player.
           - Delay: `16` seconds.
           - Effects last `8` seconds.
           - Buff list with their appropriate chances:

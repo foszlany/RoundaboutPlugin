@@ -55,7 +55,7 @@ public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool don
 
 public void SetInControlAttributes(int client) {
      if(IsClientInGame(client)) {
-          forceClass(client, TFClass_Soldier);
+          ForceClass(client, TFClass_Soldier);
 
           int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
           if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {

@@ -2,14 +2,7 @@
 
 public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          forceClass(i, TFClass_Sniper);
-
-          int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
-          if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-               TF2_RemoveWeaponSlot(i, TFWeaponSlot_Secondary);
-          }
-          
-          TF2_RemoveWeaponSlot(i, TFWeaponSlot_Melee);
+          SetNoScrubsAttributes(i);
      }
 
      ShowCurrentEffectDescriptionToAll(-1);
@@ -17,17 +10,17 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-
-     forceClass(client, TFClass_Sniper);
-
-     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
-     TF2_RemoveWeaponSlot(client, TFWeaponSlot_Melee);
+     SetNoScrubsAttributes(client);
 }
 
 public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
 
-     if(attacker <= 0) {
+     if(attacker <= 0 || !IsPlayerAlive(attacker)) {
+          return;
+     }
+
+     if(GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") == GetPlayerWeaponSlot(attacker, TFWeaponSlot_Melee)) {
           return;
      }
 
@@ -36,7 +29,7 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
 
      int custom = event.GetInt("custom");
 
-     if(custom != TF_CUSTOM_HEADSHOT) {
+     if(custom != TF_CUSTOM_HEADSHOT && custom != TF_CUSTOM_BLEEDING && custom != TF_CUSTOM_TAUNT_ARROW_STAB) {
           SDKHooks_TakeDamage(
                attacker,
                attacker,
@@ -49,5 +42,16 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
           );
 
           PrintToChatAll("\x07B143F1[Roundabout]\x01 %N is a scrub.", attacker);
+     }
+}
+
+public void SetNoScrubsAttributes(int client) {
+     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+          ForceClass(client, TFClass_Sniper);
+
+          int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
+          if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
+               TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
+          }
      }
 }

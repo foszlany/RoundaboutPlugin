@@ -7,6 +7,9 @@
 forward Action Effect61_OnHitCheckParry(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom);
 
 public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
+     AddCommandListener(Parry, "voicemenu");
+     g_Effect61_isCommandListenerRegistered = true;
+     
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect61_IsParrying[i] = false;
           g_Effect61_HasRecentlyParried[i] = false;
@@ -22,8 +25,6 @@ public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool don
           g_Effect61_hHUDTimer = CreateTimer(0.1, Timer_UpdateParryHUD, _, TIMER_REPEAT);
      }
 
-     AddCommandListener(Parry, "voicemenu");
-
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
@@ -35,23 +36,26 @@ public void Event_PlayerUpdate_61_ParryIt(Event event, const char[] name, bool d
      }
 }
 
-public void Event_RoundEnd_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {    
-     RemoveCommandListener(Parry, "voicemenu");
+public void Event_RoundEnd_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
+     if(g_Effect61_isCommandListenerRegistered) {
+          RemoveCommandListener(Parry, "voicemenu");
+          g_Effect61_isCommandListenerRegistered = false;
 
-     for(int i = 1; i <= MAXPLAYERS; i++) {
-          SDKUnhook(i, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
-          g_Effect61_fCooldownEndTime[i] = 0.0;
-     }
-     
-     for(int client = 1; client <= MaxClients; client++) {
-          if(IsClientInGame(client)) {
-               ShowHudText(client, 6, "");
+          for(int i = 1; i <= MAXPLAYERS; i++) {
+               SDKUnhook(i, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
+               g_Effect61_fCooldownEndTime[i] = 0.0;
           }
-     }
-     
-     if(g_Effect61_hHUDTimer != null) {
-          KillTimer(g_Effect61_hHUDTimer);
-          g_Effect61_hHUDTimer = null;
+          
+          for(int client = 1; client <= MaxClients; client++) {
+               if(IsClientInGame(client)) {
+                    ShowHudText(client, 6, "");
+               }
+          }
+          
+          if(g_Effect61_hHUDTimer != null) {
+               KillTimer(g_Effect61_hHUDTimer);
+               g_Effect61_hHUDTimer = null;
+          }
      }
 }
 

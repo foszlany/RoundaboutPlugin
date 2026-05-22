@@ -12,8 +12,8 @@ public void ShowCurrentEffectDescriptionToAll(int id) {
 public void ShowCurrentEffectDescription(int client, int id) {
      // TODO
      if(g_EffectCount > 1) {
-          PrintCenterText(client, "Multiple Effects");
-          ShowHintToClient(client, "Multiple Effects\n\nYou have multiple effects active!");
+          PrintCenterText(client, "Multieffect");
+          ShowHintToClient(client, "Multieffect\n\nYou have multiple effects active!");
           return;
      }
 
@@ -35,9 +35,9 @@ public void ShowCurrentEffectDescription(int client, int id) {
                ShowHintToClient(client, "Low Gravity\n\nEnjoy Moon gravity!");
           }
 
-          case EFFECT_MINICRIT: {
-               PrintCenterText(client, "Mini-crits");
-               ShowHintToClient(client, "Mini-crits\n\nMini-crits for all your heart's desires.");
+          case EFFECT_MEDIEVAL: {
+               PrintCenterText(client, "Medieval");
+               ShowHintToClient(client, "Medieval\n\nEnjoy ye old times. Good sire!");
           }
 
           case EFFECT_CRIT: {
@@ -242,7 +242,7 @@ public void ShowCurrentEffectDescription(int client, int id) {
 
           case EFFECT_SUPERJUMP: {
                PrintCenterText(client, "Super Jump");
-               ShowHintToClient(client, "Super Jump\n\nCrouch to perform a big jump! (4.0s delay)");
+               ShowHintToClient(client, "Super Jump\n\nCrouch to perform a big jump! (4.0s cooldown)");
           }
 
           case EFFECT_PULLEY: {
@@ -257,7 +257,7 @@ public void ShowCurrentEffectDescription(int client, int id) {
 
           case EFFECT_BUFFERSGAMBIT: {
                PrintCenterText(client, "Buffer's Gambit");
-               ShowHintToClient(client, "Buffer's Gambit\n\nCrouch to receive a random (de)buff! (16.0s delay)");
+               ShowHintToClient(client, "Buffer's Gambit\n\nCall for medic to receive a random (de)buff! (16.0s cooldown)");
           }
 
           case EFFECT_SKATINGRINK: {

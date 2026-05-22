@@ -4,13 +4,15 @@
 #define _RAHEADER
 
 /* CONSTANTS */
-#define PLUGIN_VERSION "0.3"
+#define PLUGIN_VERSION "0.35"
 
 #define MULTIEFFECT_MAX_COUNT 10
 
 #define MULTIEFFECT_DEFAULT_MAX_COUNT "5"
 #define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.08"
 #define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
+
+#define DMG_SOCIALDIST (1 << 30)
 
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
@@ -35,6 +37,7 @@ ConVar g_CVAR_MultieffectRarityMultiplier;
 /* GLOBAL VARIABLES */
 Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
 
+int g_PreviousEffectCount = 1;
 int g_EffectCount = 1;
 bool g_isForced = false;
 bool g_isForcedRandom = false;
@@ -61,8 +64,11 @@ bool g_Effect0_FakePure_IsActive;
 
 int g_Effect1_OriginalGravity;
 
+TFCond g_Effect3_CritType;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
+bool g_Effect13_isCommandListenerRegistered;
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
 Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];
 
@@ -103,6 +109,9 @@ TFClassType g_Effect40_DisabledClasses[7];
 
 Handle g_Effect42_HorrorTimer;
 
+bool g_Effect46_isCommandListenerRegistered;
+Handle g_Effect46_BuffTimer[MAXPLAYERS + 1];
+
 float g_Effect47_OriginalFriction;
 
 bool g_Effect49_bIsLookingAt[MAXPLAYERS + 1][MAXPLAYERS + 1];
@@ -118,6 +127,7 @@ int g_Effect51_OriginalUnbalanceLimit;
 
 bool g_Effect53_IsSpecialRound;
 
+bool g_Effect57_isCommandListenerRegistered;
 bool g_Effect57_HasBeenTeleportedRecently[MAXPLAYERS + 1];
 bool g_Effect57_HasRecentlyCalled[MAXPLAYERS + 1];
 
@@ -128,19 +138,20 @@ float g_Effect60_PlayerPosition[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerAngle[MAXPLAYERS + 1][3];
 float g_Effect60_PlayerVelocity[MAXPLAYERS + 1][3];
 int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
-int g_Effect60_PlayerClip[MAXPLAYERS][3]
+int g_Effect60_PlayerClip[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
+bool g_Effect61_isCommandListenerRegistered;
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
 bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
-float g_Effect61_fCooldownEndTime[MAXPLAYERS+1];
+float g_Effect61_fCooldownEndTime[MAXPLAYERS + 1];
 Handle g_Effect61_hHUDTimer = null;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
-#include "effects/2_minicrit.sp"
+#include "effects/2_medieval.sp"
 #include "effects/3_crit.sp"
 #include "effects/4_speedboost.sp"
 #include "effects/5_thirdperson.sp"
@@ -242,7 +253,7 @@ enum Effect {
 	EFFECT_INVALID			=	-1,
 	EFFECT_PURE			=	0,
 	EFFECT_LOWGRAVITY		=	1,
-	EFFECT_MINICRIT		=	2,
+	EFFECT_MEDIEVAL		=	2,
 	EFFECT_CRIT			=	3,
 	EFFECT_SPEEDBOOST		=	4,
 	EFFECT_THIRDPERSON		=	5,

@@ -1,18 +1,22 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {
+     AddCommandListener(CalledForMedic, "voicemenu");
+     g_Effect57_isCommandListenerRegistered = true;
+     
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect57_HasBeenTeleportedRecently[i] = false;
           g_Effect57_HasRecentlyCalled[i] = false;
      }
 
-     AddCommandListener(CalledForMedic, "voicemenu");
-
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {    
-     RemoveCommandListener(CalledForMedic, "voicemenu");
+     if(g_Effect57_isCommandListenerRegistered) {
+          RemoveCommandListener(CalledForMedic, "voicemenu");
+          g_Effect57_isCommandListenerRegistered = false;
+     }
 }
 
 public Action CalledForMedic(client, const String:command[], argc) {    

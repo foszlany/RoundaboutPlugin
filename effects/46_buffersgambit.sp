@@ -1,41 +1,31 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
-     for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SDKHook(i, SDKHook_PreThink, Effect46_OnDuck);
-          }
-     }
+     AddCommandListener(Effect46_OnBuffActivate, "voicemenu");
+     g_Effect46_isCommandListenerRegistered = true;
     
      ShowCurrentEffectDescriptionToAll(-1);
 }
 
-public void Event_PlayerUpdate_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
-     int client = GetClientOfUserId(event.GetInt("userid"));
-     
-     if(!SDKHookEx(client, SDKHook_PreThink, Effect46_OnDuck)) {
-          SDKHook(client, SDKHook_PreThink, Effect46_OnDuck);
-     }
-}
-
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
-     for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i)) {
-               SDKUnhook(i, SDKHook_PreThink, Effect46_OnDuck);
+     if(g_Effect46_isCommandListenerRegistered) {
+          RemoveCommandListener(Effect46_OnBuffActivate, "voicemenu");
+          g_Effect46_isCommandListenerRegistered = false;
+
+          for(int i = 1; i <= MaxClients; i++) {
+               if(g_Effect46_BuffTimer[i] != null) {
+                    KillTimer(g_Effect46_BuffTimer[i]);
+                    g_Effect46_BuffTimer[i] = null;
+               }
           }
      }
 }
 
-public void Effect46_OnDuck(int client) {
-     if(!isEffectLive(EFFECT_BUFFERSGAMBIT)) {
-          SDKUnhook(client, SDKHook_PreThink, Effect46_OnDuck);
-          return;
-     }
+public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
+     char arguments[4];
+     GetCmdArgString(arguments, sizeof(arguments));
 
-     bool isDucked = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucked"));
-     bool isDucking = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucking"));
-
-     if((isDucked || isDucking) && (IsClientInGame(client) && IsPlayerAlive(client))) {
+     if(StrEqual(arguments, "0 0") && isEffectLive(EFFECT_BUFFERSGAMBIT) && g_Effect46_BuffTimer[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
           int randVal = GetRandomInt(1, 100);
 
           if(randVal <= 2) {
@@ -111,15 +101,16 @@ public void Effect46_OnDuck(int client) {
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your effect: \x07FF4500Explosion\x01"); // Orange-Red
           }
 
-          SDKUnhook(client, SDKHook_PreThink, Effect46_OnDuck);
-          CreateTimer(16.0, Effect46_ReapplyHook, client);
+          g_Effect46_BuffTimer[client] = CreateTimer(16.0, Effect46_ResetCooldown, client);
+          return Plugin_Handled;
      }
+
+     return Plugin_Continue;
 }
 
-public Action Effect46_ReapplyHook(Handle timer, int client) {
+public Action Effect46_ResetCooldown(Handle timer, int client) {
      if(IsClientInGame(client)) {
-          SDKHook(client, SDKHook_PreThink, Effect46_OnDuck);
-          EmitSoundToClient(client, "player/recharged.wav");
+          g_Effect46_BuffTimer[client] = null;
      }
 
      return Plugin_Handled;

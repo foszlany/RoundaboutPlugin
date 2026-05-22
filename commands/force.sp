@@ -54,6 +54,9 @@ public Action Command_ForceRound(int client, int args) {
 		g_isForced = true;
 		g_isForcedRandom = true;
 
+		if(g_EffectCount > 5) {
+			PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FB524FHigh effect counts can be unstable. You have been warned.\x01", client, n);
+		}
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Generated %d random effects. Restarting round.", n);
 		ServerCommand("mp_restartgame 1");
 	}
@@ -116,6 +119,10 @@ public Action Command_ForceRound(int client, int args) {
 		g_EffectCount = count;
 		for(int i = 0; i < count; i++) {
 			g_CurrentEffects[i] = view_as<Effect>(ids.Get(i));
+		}
+
+		if(g_EffectCount > 5) {
+			PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FB524FHigh effect counts can be unstable. You have been warned.\x01", client, g_EffectCount);
 		}
 
 		if(g_EffectCount == 1) {
