@@ -41,16 +41,13 @@ public void Event_RoundEnd_13_Math(Event event, const char[] name, bool dontBroa
                NullifyClientMathData(i);
           }
      }
-
 }
 
 // CHAT MESSAGE EVENT
 public Action Event_ChatMessage(int client, const char[] command, int argc) {
-     if(isEffectLive(EFFECT_MATH)) {
-          if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
-               checkMathResponse(client, command, argc);
-               return Plugin_Handled;
-          }
+     if(g_Effect13_MathQuestionTimers[client] != null && g_Effect13_MathAnswer[client] != -1) {
+          checkMathResponse(client, command, argc);
+          return Plugin_Handled;
      }
 
     return Plugin_Continue;
@@ -58,7 +55,7 @@ public Action Event_ChatMessage(int client, const char[] command, int argc) {
 
 // GIVE A CUSTOM MATH PROBLEM
 public void GiveMathProblem(Handle timer, int client) {
-     if(IsClientInGame(client) && IsPlayerAlive(client)) {
+     if(isEffectLive(EFFECT_MATH) && IsClientInGame(client) && IsPlayerAlive(client)) {
           float kills = float(GetClientFrags(client));
           float deaths = GetClientDeaths(client) == 0 ? 1.0 : float(GetClientDeaths(client));
           int extra = RoundToNearest(200.0 * kills / deaths);
