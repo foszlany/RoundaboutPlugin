@@ -50,7 +50,7 @@
      - Token: `crit`
      - Gives guaranteed critical hits.
      - This effect has two variants, each have a `50%` chance of occurring.
-     - **Variant 1:** Gives guaranteed `Mini-crits`.
+     - **Variant 1:** Gives guaranteed `Mini-Crits`.
      - **Variant 2:** Gives guaranteed `Crits`.
 
 * **Speedboost**<br>
