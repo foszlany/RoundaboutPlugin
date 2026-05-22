@@ -63,6 +63,8 @@ bool g_Effect0_FakePure_IsActive;
 
 int g_Effect1_OriginalGravity;
 
+TFCond g_Effect3_CritType;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
 bool g_Effect13_isCommandListenerRegistered;
