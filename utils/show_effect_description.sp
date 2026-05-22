@@ -12,8 +12,8 @@ public void ShowCurrentEffectDescriptionToAll(int id) {
 public void ShowCurrentEffectDescription(int client, int id) {
      // TODO
      if(g_EffectCount > 1) {
-          PrintCenterText(client, "Multiple Effects");
-          ShowHintToClient(client, "Multiple Effects\n\nYou have multiple effects active!");
+          PrintCenterText(client, "Multieffect");
+          ShowHintToClient(client, "Multieffect\n\nYou have multiple effects active!");
           return;
      }
 
