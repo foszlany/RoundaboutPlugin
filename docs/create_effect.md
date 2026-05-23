@@ -17,10 +17,10 @@
      - You can add conditions to your effects. Example code:
           ```cpp
           if(activePlayers < 3) { // If true, effect shouldn't appear unless forced.
-               if(isForced && !g_isForcedRandom) { // Do not change
+               if(isForced && !g_isForcedRandom) { // Forced on purpose, so run it
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                }
-               else {
+               else { // Roll another effect
                     PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
                     setEffect(effectIndex);
                     return;
@@ -39,6 +39,7 @@
 - You can copy-paste code from one of the already existing effects to get a headstart.<br><br>
 - `RoundStart` is the only necessary component for an effect.
      - It presents the effect details to the players, as well as initialize any variables.
+     - Add a token inside `lists/effect_codename.sp` with the ID and a shortform string that should be the same as the filename of your effect,
      - You will need to create the description for your effect inside `utils/show_effect_description.sp` following the same structure as the others.
      - Example code inside `show_effect_description`:
           ```cpp
@@ -60,8 +61,8 @@
 - You can add other listeners either directly as a function pointer or as a HookEvent that would get unhooked at the end of the round. If you only need the hook for 1 effect, the latter is better.
 
 ## **Step 4:** Testing
-- Use `!roundabout_force <effect_id>` to test your effect.
+- Use `!roundabout_force <id>` to test your effect.
      - Make sure to watch out for errors in the server console.
-- Also make sure to test your effect with other effects using `!roundabout_force count <n>`
+- Also make sure to test your effect with other effects using `!roundabout_force <ids...>`
      - If your effect restricts classes, include it in `lists/multieffect_mutually_exclusive.sp`
      - If your effect is way too fragile, include it in `lists/multieffect_exclude.sp`

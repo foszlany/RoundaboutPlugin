@@ -3,7 +3,7 @@
 * **Multieffect**<br>
      - Multieffect is a special round with multiple effects that can occasionally happen.
      - By default, up to `5` effects can appear naturally and `10` can be forced.
-     - Unplayable combinations may occur, in which case `!roundabout_voteskip` may be used.
+     - Bad combinations may occur, in which case `!roundabout_voteskip` may be used.
      - **The following probabilities are in place:**
           - **1 effect:**  `85.69%`
           - **2 effects:** `7.45%`
