@@ -107,7 +107,7 @@ public Action Command_ForceRound(int client, int args) {
 				return Plugin_Handled;
 			}
 
-			if(MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
+			if(count > 1 && MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
 				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID %d cannot be forced with other effects.", id);
 				return Plugin_Handled;
 			}
@@ -117,7 +117,7 @@ public Action Command_ForceRound(int client, int args) {
 				return Plugin_Handled;
 			}
 
-			if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+			if(count > 1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
 				if(isMutuallyExclusivePresent) {
 					ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Mutually exclusive effects %d and %d cannot be forced.", mutuallyExclusiveEffect, id);
 					return Plugin_Handled;
@@ -135,8 +135,6 @@ public Action Command_ForceRound(int client, int args) {
 		for(int i = 0; i < count; i++) {
 			g_IsForcedRare[i] = isRare.Get(i);
 			g_CurrentEffects[i] = view_as<Effect>(ids.Get(i));
-
-			PrintToChatAll("%d is %d", g_CurrentEffects[i], g_IsForcedRare[i]);
 		}
 
 		if(g_EffectCount > 5) {

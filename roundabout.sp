@@ -155,6 +155,9 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 
 		g_PreviousEffectCount = g_EffectCount;
 		ShowCurrentEffectDescriptionToAll(-1);
+
+		g_isForced = false;
+		g_isForcedRandom = false;
 	}
 }
 

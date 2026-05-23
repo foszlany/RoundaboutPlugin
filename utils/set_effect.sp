@@ -716,11 +716,7 @@ public void setEffect(int effectIndex) {
           }
      }
 
-     if(effectIndex + 1 >= g_EffectCount) {
-          g_isForced = false;
-		g_isForcedRandom = false;
-     }
-     else {
+     if(effectIndex + 1 < g_EffectCount) {
           setEffect(effectIndex + 1);
      }
 }

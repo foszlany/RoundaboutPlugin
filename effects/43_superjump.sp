@@ -17,7 +17,7 @@ public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool don
 }
 
 public void Effect43_OnDuck(int client) {
-     if(!isEffectLive(EFFECT_SUPERJUMP)) {
+     if(!IsEffectLive(EFFECT_SUPERJUMP)) {
           SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
           return;
      }

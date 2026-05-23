@@ -23,7 +23,7 @@ public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
      char arguments[4];
      GetCmdArgString(arguments, sizeof(arguments));
 
-     if(StrEqual(arguments, "0 0") && isEffectLive(EFFECT_BUFFERSGAMBIT) && g_Effect46_BuffTimer[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
+     if(StrEqual(arguments, "0 0") && IsEffectLive(EFFECT_BUFFERSGAMBIT) && g_Effect46_BuffTimer[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
           int randVal = GetRandomInt(1, 100);
 
           if(randVal <= 2) {
