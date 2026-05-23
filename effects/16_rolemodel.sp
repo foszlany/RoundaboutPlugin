@@ -10,7 +10,7 @@ public void Event_RoundStart_16_Rolemodel(Event event, const char[] name, bool d
 
      int activePlayers = CountActivePlayers();
 
-     if(GetRandomInt(1, 100) <= 33 && (activePlayers == 4 || activePlayers == 8 || activePlayers == 12 || activePlayers == 18)) {
+     if((IsRareEffectForced(EFFECT_ROLEMODEL) || GetRandomInt(1, 100) <= 33) && (activePlayers == 4 || activePlayers == 8 || activePlayers == 12 || activePlayers == 18)) {
           ArrayList bluClasses = new ArrayList();
           ArrayList redClasses = new ArrayList();
 

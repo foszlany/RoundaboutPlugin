@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool dontBroadcast) {
-     if(GetRandomInt(0, 100) <= 2) {
+     if(IsRareEffectForced(EFFECT_FORCEFUL) || GetRandomInt(0, 100) <= 2) {
           g_Effect24_KnockbackBonus = 10.0;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Knockback multiplier is now way stronger!", name);
      }
