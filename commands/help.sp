@@ -3,14 +3,14 @@
 public Action Command_Help(int client, int args) {
      PrintToConsole(client, "\n################# ROUNDABOUT COMMAND LIST #################");
 
-     PrintToConsole(client, "[Roundabout ADMIN] roundabout_enable <arg> - Enables or disables the plugin effects.");
-     PrintToConsole(client, "[Roundabout ADMIN] roundabout_force [c|count <n> || <id...>] - Forces a new round with a desired effect");
-     PrintToConsole(client, "[Roundabout USER] roundabout_help - Returns the commands that can be used into the player's console.");
-     PrintToConsole(client, "[Roundabout USER] roundabout_github - Returns the link to the GitHub repository.");
-     PrintToConsole(client, "[Roundabout USER] roundabout_version - Returns the version of the plugin.");
-     PrintToConsole(client, "[Roundabout USER] roundabout_effectlist - Returns the effect documentation.");
-     PrintToConsole(client, "[Roundabout USER] roundabout_voteskip - Initiates a vote to skip the current effect.");
-     PrintToConsole(client, "[Roundabout USER] roundabout_effect <id> - Shows the effect details on the screen.");
+     PrintToConsole(client, "[ROOT] roundabout_enable <arg> - Enables or disables the plugin effects.");
+     PrintToConsole(client, "[ADMIN] roundabout_force [c|count <n> || <id...>[r]] - Forces a new round with a desired effect");
+     PrintToConsole(client, "[USER] roundabout_help - Returns the commands that can be used into the player's console.");
+     PrintToConsole(client, "[USER] roundabout_github - Returns the link to the GitHub repository.");
+     PrintToConsole(client, "[USER] roundabout_version - Returns the version of the plugin.");
+     PrintToConsole(client, "[USER] roundabout_effectlist - Returns the effect documentation.");
+     PrintToConsole(client, "[USER] roundabout_voteskip - Initiates a vote to skip the current effect.");
+     PrintToConsole(client, "[USER] roundabout_effect <id> - Shows the effect details on the screen.");
      
      PrintToConsole(client, "################# ROUNDABOUT COMMAND LIST #################\n");
 
