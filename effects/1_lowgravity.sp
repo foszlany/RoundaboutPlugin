@@ -22,8 +22,6 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
      else {
           ServerCommand("sv_gravity %d", randGravity);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {

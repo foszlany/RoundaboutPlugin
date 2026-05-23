@@ -2,8 +2,6 @@
 
 public void Event_RoundStart_12_RNGDeath(Event event, const char[] name, bool dontBroadcast) {
      g_Util_OneSecondTimer = CreateTimer(1.0, Executioner, _, TIMER_REPEAT);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Executioner(Handle timer) {

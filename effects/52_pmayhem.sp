@@ -5,8 +5,6 @@ int g_SafeProjectilesSize = sizeof(g_SafeProjectiles) - 1;
 
 public void Event_RoundStart_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {
      CreateTimer(1.0, AssignNewProjectiles);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {

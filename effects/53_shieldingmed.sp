@@ -12,8 +12,6 @@ public void Event_RoundStart_53_ShieldingMedicine(Event event, const char[] name
                TF2Attrib_SetByName(i, "generate rage on heal", g_Effect53_IsSpecialRound ? 2.0 : 1.0);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_53_ShieldingMedicine(Event event, const char[] name, bool dontBroadcast) {

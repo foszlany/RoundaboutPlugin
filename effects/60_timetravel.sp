@@ -6,8 +6,6 @@ public void Event_RoundStart_60_TimeTravel(Event event, const char[] name, bool 
      }
 
      CreateTimer(GetRandomFloat(8.0, 32.0), CreateSnapshot);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public Action CreateSnapshot(Handle timer) {

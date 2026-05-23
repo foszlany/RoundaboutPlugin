@@ -15,8 +15,6 @@ public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool do
                TF2Attrib_SetByName(i, "airblast pushback scale", g_Effect24_KnockbackBonus);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_24_Forceful(Event event, const char[] name, bool dontBroadcast) {

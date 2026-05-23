@@ -19,8 +19,6 @@ public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dont
                SetSlowmoAttributes(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_32_Slowmo(Event event, const char[] name, bool dontBroadcast) {

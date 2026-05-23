@@ -7,8 +7,6 @@ public void Event_RoundStart_14_Weaklings(Event event, const char[] name, bool d
                TF2Attrib_SetByName(i, "dmg penalty vs buildings", 0.3333333);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_14_Weaklings(Event event, const char[] name, bool dontBroadcast) {

@@ -15,8 +15,6 @@ public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontB
                TF2Attrib_SetByName(i, "voice pitch scale", 1.4);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_28_Small(Event event, const char[] name, bool dontBroadcast) {

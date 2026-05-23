@@ -4,8 +4,6 @@ public void Event_RoundStart_15_BleedBuff(Event event, const char[] name, bool d
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect15_BleedCauserIndex[i] = -1;
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerHit_15_BleedBuff(Event event, const char[] name, bool dontBroadcast) {

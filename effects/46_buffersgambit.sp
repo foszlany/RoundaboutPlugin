@@ -3,8 +3,6 @@
 public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
      AddCommandListener(Effect46_OnBuffActivate, "voicemenu");
      g_Effect46_isCommandListenerRegistered = true;
-    
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {

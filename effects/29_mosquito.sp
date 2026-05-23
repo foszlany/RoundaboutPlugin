@@ -7,8 +7,6 @@ public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool do
                TF2_RegeneratePlayer(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {

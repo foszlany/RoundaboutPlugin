@@ -6,8 +6,6 @@ public void Event_RoundStart_5_ThirdPerson(Event event, const char[] name, bool 
                CreateTimer(0.2, SetViewOnSpawn, i); 
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_5_ThirdPerson(Event event, const char[] name, bool dontBroadcast) {

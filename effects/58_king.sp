@@ -16,8 +16,6 @@ public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBr
      }
 
      HookEvent("player_disconnect", HandleKingDisconnect, EventHookMode_Pre);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_58_King(Event event, const char[] name, bool dontBroadcast) {    

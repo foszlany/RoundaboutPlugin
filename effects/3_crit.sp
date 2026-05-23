@@ -15,9 +15,6 @@ public void Event_RoundStart_3_Crit(Event event, const char[] name, bool dontBro
      else {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Crit type is \x07CC2300Crits\x01.");
      }
-     
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_3_Crit(Event event, const char[] name, bool dontBroadcast) {

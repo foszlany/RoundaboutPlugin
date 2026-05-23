@@ -116,8 +116,6 @@ public void Event_RoundStart_16_Rolemodel(Event event, const char[] name, bool d
                }
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_16_Rolemodel(Event event, const char[] name, bool dontBroadcast) {

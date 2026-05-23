@@ -9,8 +9,6 @@ public void Event_RoundStart_20_Infection(Event event, const char[] name, bool d
                g_Effect20_CurrentTeam[i] = view_as<TFTeam>(GetRandomInt(2, 3));
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool dontBroadcast) {

@@ -12,8 +12,6 @@ public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool d
                CreateTimer(0.12, RemovePrimaryWeapon, i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_34_Secondary(Event event, const char[] name, bool dontBroadcast) {

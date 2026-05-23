@@ -13,9 +13,6 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
                g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, i);
           }
      }
-
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dontBroadcast) {

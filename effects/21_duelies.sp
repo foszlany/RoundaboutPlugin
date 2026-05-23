@@ -9,8 +9,6 @@ public void Event_RoundStart_21_Duelies(Event event, const char[] name, bool don
                g_Effect21_EffectTimer[i] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, i);
           }
      }
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_21_Duelies(Event event, const char[] name, bool dontBroadcast) {

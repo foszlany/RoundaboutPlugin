@@ -4,8 +4,6 @@ public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool d
      for(int i = 1; i <= MaxClients; i++) {
           applyMiniCritVsBurning(i);
      }
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {

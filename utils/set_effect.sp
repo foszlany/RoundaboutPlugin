@@ -103,7 +103,7 @@ public void setEffect(int effectIndex) {
           }
 
           case EFFECT_VAMPIRE: {
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_6_Vampire;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_6_Vampire;
@@ -143,7 +143,7 @@ public void setEffect(int effectIndex) {
           }
 
           case EFFECT_SCHADENFREUDE: {
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_11_Schadenfreude;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
@@ -431,7 +431,7 @@ public void setEffect(int effectIndex) {
                     }
                }
 
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_36_SocialDistancing;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_36_SocialDistancing;
@@ -495,7 +495,7 @@ public void setEffect(int effectIndex) {
           }
 
           case EFFECT_PULLEY: {
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_44_Pulley;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_44_Pulley;
@@ -527,7 +527,7 @@ public void setEffect(int effectIndex) {
           }
 
           case EFFECT_STUNNINGMETAL: {
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_48_StunningMetal;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_48_StunningMetal;
@@ -692,7 +692,7 @@ public void setEffect(int effectIndex) {
                     }
                }
 
-               g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_59_IdentityTheft;
+               g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;

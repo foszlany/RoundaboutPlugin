@@ -2,8 +2,6 @@
 
 public void Event_RoundStart_55_AchievementHunter(Event event, const char[] name, bool dontBroadcast) {
      HookEvent("achievement_earned", AchievementHunted, EventHookMode_Post);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_55_AchievementHunter(Event event, const char[] name, bool dontBroadcast) {    

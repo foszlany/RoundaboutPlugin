@@ -5,8 +5,6 @@ public void Event_RoundStart_37_Disadvantaged(Event event, const char[] name, bo
           g_Effect37_PreviousClass[i] = TFClass_Unknown;
           HandleSpecialAbilityRemoval(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {

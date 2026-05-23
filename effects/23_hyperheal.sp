@@ -6,8 +6,6 @@ public void Event_RoundStart_23_Hyperheal(Event event, const char[] name, bool d
                TF2Attrib_SetByName(i, "patient overheal penalty", 999.0);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_23_Hyperheal(Event event, const char[] name, bool dontBroadcast) {

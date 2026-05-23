@@ -8,8 +8,6 @@ public void Event_RoundStart_2_Medieval(Event event, const char[] name, bool don
                TF2_RegeneratePlayer(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_2_Medieval(Event event, const char[] name, bool dontBroadcast) {

@@ -5,8 +5,6 @@ public void Event_RoundStart_18_Snowball(Event event, const char[] name, bool do
           g_Effect18_EffectIndex[i] = 0;
           g_Effect18_EffectTimer[i] = null;
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool dontBroadcast) {

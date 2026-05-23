@@ -12,9 +12,7 @@ public void Event_RoundStart_49_DeathStare(Event event, const char[] name, bool 
      }
 
      g_Effect49_Timer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateLookMatrix, _, TIMER_REPEAT);
-    
-     ShowCurrentEffectDescriptionToAll(-1);
-}
+    }
 
 public void Event_RoundEnd_49_DeathStare(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect49_Timer != null) {

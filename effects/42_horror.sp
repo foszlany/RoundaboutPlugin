@@ -8,8 +8,6 @@ public void Event_RoundStart_42_HorrorFortress(Event event, const char[] name, b
      }
 
      g_Effect42_HorrorTimer = CreateTimer(0.5, BlindPlayerTimer);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_42_HorrorFortress(Event event, const char[] name, bool dontBroadcast) {

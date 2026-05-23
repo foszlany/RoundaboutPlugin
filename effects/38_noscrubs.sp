@@ -4,8 +4,6 @@ public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool do
      for(int i = 1; i <= MaxClients; i++) {
           SetNoScrubsAttributes(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {

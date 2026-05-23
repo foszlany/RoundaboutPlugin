@@ -24,8 +24,6 @@ public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool don
      if(g_Effect61_hHUDTimer == null) {
           g_Effect61_hHUDTimer = CreateTimer(0.1, Timer_UpdateParryHUD, _, TIMER_REPEAT);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {

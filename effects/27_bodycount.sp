@@ -13,8 +13,6 @@ public void Event_RoundStart_27_Bodycount(Event event, const char[] name, bool d
           g_Effect27_IsPersistent = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x07FF9D05persistent\x01.", name);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_27_Bodycount(Event event, const char[] name, bool dontBroadcast) {
