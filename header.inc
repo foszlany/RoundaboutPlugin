@@ -39,12 +39,15 @@ Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
 
 int g_PreviousEffectCount = 1;
 int g_EffectCount = 1;
+
 bool g_isForced = false;
 bool g_isForcedRandom = false;
-bool g_HasSpawned[MAXPLAYERS + 1];
+bool g_IsForcedRare[MULTIEFFECT_MAX_COUNT + 1] = {false, ...};
 
 bool g_voteSkip[MAXPLAYERS + 1];
 int g_voteSkipCount = 0;
+
+bool g_HasSpawned[MAXPLAYERS + 1];
 
 Handle g_hudSync;
 Handle g_RestartGameHandle;

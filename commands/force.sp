@@ -75,14 +75,29 @@ public Action Command_ForceRound(int client, int args) {
 		}
 
 		ArrayList ids = new ArrayList();
+		ArrayList isRare = new ArrayList();
 		bool isMutuallyExclusivePresent = false;
 		int mutuallyExclusiveEffect = -1;
 
 		for(int i = 0; i < count; i++) {
 			int id;
-			int parsed = StringToIntEx(parts[i], id);
+			int parsed;
+			int len = strlen(parts[i]);
+			isRare.Push(CharToLower(parts[i][len - 1]) == 'r');
+			
+			if(isRare.Get(i)) {
+				char trimmed[16];
+				
+				strcopy(trimmed, sizeof(trimmed), parts[i]);
+				trimmed[len - 1] = '\0';
 
-			if(parsed <= 0 || parsed != strlen(parts[i])) {
+				parsed = StringToIntEx(trimmed, id);
+			}
+			else {
+				parsed = StringToIntEx(parts[i], id);
+			}
+
+			if(!isRare.Get(i) && (parsed <= 0 || parsed != strlen(parts[i]))) {
 				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 '%s' is not a valid integer.", parts[i]);
 				return Plugin_Handled;
 			}
@@ -118,7 +133,10 @@ public Action Command_ForceRound(int client, int args) {
 
 		g_EffectCount = count;
 		for(int i = 0; i < count; i++) {
+			g_IsForcedRare[i] = isRare.Get(i);
 			g_CurrentEffects[i] = view_as<Effect>(ids.Get(i));
+
+			PrintToChatAll("%d is %d", g_CurrentEffects[i], g_IsForcedRare[i]);
 		}
 
 		if(g_EffectCount > 5) {
