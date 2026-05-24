@@ -16,8 +16,8 @@ public Action Command_ForceRound(int client, int args) {
 
 	// Force random
 	if(args <= 0) {
-		g_isForced = true;
-		g_isForcedRandom = true;
+		g_IsForced = true;
+		g_IsForcedRandom = true;
 
 		g_EffectCount = RollEffectCount();
 
@@ -51,8 +51,8 @@ public Action Command_ForceRound(int client, int args) {
 			g_CurrentEffects[i] = view_as<Effect>(GetRandomInt(0, view_as<int>(EFFECT_MAXCOUNT) - 1));
 		}
 
-		g_isForced = true;
-		g_isForcedRandom = true;
+		g_IsForced = true;
+		g_IsForcedRandom = true;
 
 		if(g_EffectCount > 5) {
 			PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FB524FHigh effect counts can be unstable. You have been warned.\x01", client, n);
@@ -148,7 +148,7 @@ public Action Command_ForceRound(int client, int args) {
 			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Applied %d effects. Restarting round.", g_EffectCount);
 		}
 
-		g_isForced = true;
+		g_IsForced = true;
 		ServerCommand("mp_restartgame 1");
 	}
 	

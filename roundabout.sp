@@ -33,7 +33,7 @@ public void OnPluginStart() {
 
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
-	g_hudSync = CreateHudSynchronizer();
+	g_HudSync = CreateHudSynchronizer();
 
 	/* INITIALIZE FUNCTION POINTERS */
 	g_OnRoundStartFuncPtr[0] = INVALID_FUNCTION;
@@ -45,7 +45,7 @@ public void OnPluginStart() {
 	/* INITIALIZE GLOBAL ARRAYS */
 	for(int i = 1; i <= MAXPLAYERS; i++) {
 		g_HasSpawned[i] = false;
-		g_voteSkip[i] = false;
+		g_VoteSkip[i] = false;
 	}
 
 	/* INITIALIZE LISTS */
@@ -139,7 +139,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
 		}
 
-		if(!g_isForced) {
+		if(!g_IsForced) {
 			g_EffectCount = RollEffectCount();
 		}
 
@@ -156,8 +156,8 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		g_PreviousEffectCount = g_EffectCount;
 		ShowCurrentEffectDescriptionToAll(-1);
 
-		g_isForced = false;
-		g_isForcedRandom = false;
+		g_IsForced = false;
+		g_IsForcedRandom = false;
 	}
 }
 
@@ -220,7 +220,7 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 
 	for(int i = 1; i <= MAXPLAYERS; i++) {
 		g_HasSpawned[i] = false;
-		g_voteSkip[i] = false;
+		g_VoteSkip[i] = false;
 	}
 }
 
@@ -228,8 +228,8 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 public void Event_PlayerDisconnect(Event event, const char[] name, bool dontBroadcast) {
 	int client = GetClientOfUserId(event.GetInt("userid"));
 	g_HasSpawned[client] = false;
-	g_voteSkip[client] = false;
-	g_voteSkipCount--;
+	g_VoteSkip[client] = false;
+	g_VoteSkipCount--;
 }
 
 /* REMOVE EFFECTS UPON RESTARTING THE ROUND */

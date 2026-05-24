@@ -25,7 +25,6 @@ public Action CreateSnapshot(Handle timer) {
                     for(int slot = 0; slot < 3; slot++) {
                          int slotWeapon = GetPlayerWeaponSlot(i, slot);
                          if(IsValidEntity(slotWeapon)) {
-                              // g_Effect60_PlayerAmmo[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iPrimaryAmmoCount");
                               g_Effect60_PlayerClip[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iClip1");
                          }
                     }
@@ -71,7 +70,6 @@ public Action ActivateSnapshot(Handle timer) {
                          for(int slot = 0; slot < 3; slot++) {
                               int weapon = GetPlayerWeaponSlot(i, slot);
                               if(IsValidEntity(weapon)) {
-                                   // SetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoCount", g_Effect60_PlayerAmmo[i][slot]);
                                    SetEntProp(weapon, Prop_Send, "m_iClip1", g_Effect60_PlayerClip[i][slot]);
                               }
                          }

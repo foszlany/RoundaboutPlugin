@@ -26,7 +26,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
      if(attacker != 0 && g_Effect21_Duelee[client] != 0) {
           // DUEL COMPLETED
           if(g_Effect21_Duelee[client] == attacker) {
-               ShowSyncHudText(attacker, g_hudSync, "");
+               ShowSyncHudText(attacker, g_HudSync, "");
                PrintToChatAll("\x07B143F1[Roundabout]\x01 %N duelled %N to the death!", attacker, client);
                TF2_AddCondition(attacker, TFCond_Buffed, 8.0);
 
@@ -44,7 +44,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
                     0,
                     2.0
                );
-               ShowSyncHudText(g_Effect21_Duelee[client], g_hudSync, "Your duelee has been killed.");
+               ShowSyncHudText(g_Effect21_Duelee[client], g_HudSync, "Your duelee has been killed.");
           }
 
           NullifyClientDuelData(client);
@@ -95,8 +95,8 @@ public Action AssignDuel(Handle timer, int client) {
                     0,
                     2.0
                );
-               ShowSyncHudText(client, g_hudSync, "You have 30 seconds to kill %N!", candidate);
-               ShowSyncHudText(candidate, g_hudSync, "You have 30 seconds to kill %N!", client);
+               ShowSyncHudText(client, g_HudSync, "You have 30 seconds to kill %N!", candidate);
+               ShowSyncHudText(candidate, g_HudSync, "You have 30 seconds to kill %N!", client);
 
                char classClient[9];
                GetClassString(TF2_GetPlayerClass(client), classClient, sizeof(classClient));
@@ -142,9 +142,9 @@ public void NullifyClientDuelData(int client) {
      g_Effect21_Duelee[duelee] = 0;
 
      if(duelee != 0 && IsClientInGame(duelee)) {
-          ShowSyncHudText(client, g_hudSync, "");
+          ShowSyncHudText(client, g_HudSync, "");
      }
      if(client != 0 && IsClientInGame(client)) {
-          ShowSyncHudText(client, g_hudSync, "");
+          ShowSyncHudText(client, g_HudSync, "");
      }
 }

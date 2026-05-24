@@ -71,7 +71,7 @@ public void GiveMathProblem(Handle timer, int client) {
                0,
                2.0
           );
-          ShowSyncHudText(client, g_hudSync, "%d + %d = ?", randomA, randomB);
+          ShowSyncHudText(client, g_HudSync, "%d + %d = ?", randomA, randomB);
 
           g_Effect13_MathAnswer[client] = randomA + randomB;
 
@@ -101,7 +101,7 @@ public void checkMathResponse(int client, const char[] command, int argc) {
                NullifyClientMathData(client);
           }
           else {
-               ShowSyncHudText(client, g_hudSync, "");
+               ShowSyncHudText(client, g_HudSync, "");
 
                int randomReassuranceTextIndex = GetRandomInt(0, 6);
                switch(randomReassuranceTextIndex) {
@@ -158,7 +158,7 @@ public void NullifyClientMathData(int client) {
 
           if(g_Effect13_MathAnswer[client] != -1) {
                g_Effect13_MathAnswer[client] = -1;
-               ShowSyncHudText(client, g_hudSync, "");
+               ShowSyncHudText(client, g_HudSync, "");
           }
      }
 }
