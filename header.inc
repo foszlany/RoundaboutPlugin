@@ -235,6 +235,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/roll_effect_count.sp"
 #include "utils/is_effect_live.sp"
 #include "utils/is_effect_forced_rare.sp"
+#include "utils/apply_powerplay.sp"
 
 /* LISTS */
 #include "lists/multieffect_exclude.sp"
