@@ -37,7 +37,7 @@
      - Token: `lowgravity`
      - **CONDITIONAL EFFECT:** Gravity must be higher than `400`.
      - Lowers the gravity to a random value between `100` and `400`.
-          - Additionally, there's a `2%` chance of the gravity being `0`.
+          - Additionally, there's a `2%` chance of the gravity being `5`.
 
 * **Medieval**<br>
      - ID: `2`
