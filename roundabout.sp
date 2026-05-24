@@ -158,6 +158,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 
 		g_IsForced = false;
 		g_IsForcedRandom = false;
+		g_IsMutuallyExclusiveEffectChosen = false;
 	}
 }
 

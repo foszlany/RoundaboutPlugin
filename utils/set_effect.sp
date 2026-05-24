@@ -17,7 +17,8 @@ public void setEffect(int effectIndex) {
                     return;
                }
 
-               if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(g_CurrentEffects[i]) != -1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+               if(!g_IsMutuallyExclusiveEffectChosen || MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(g_CurrentEffects[i]) != -1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+                    g_IsMutuallyExclusiveEffectChosen = true;
                     setEffect(effectIndex);
                     return;
                }
