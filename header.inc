@@ -145,7 +145,8 @@ int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
 int g_Effect60_PlayerClip[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
-bool g_Effect61_isCommandListenerRegistered;
+bool g_Effect61_IsRareVariant;
+bool g_Effect61_IsCommandListenerRegistered;
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
 bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];

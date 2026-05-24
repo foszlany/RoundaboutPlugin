@@ -516,3 +516,4 @@
           - Parrying has a time window of `0.25` seconds with a `1.5` second cooldown.
                - If the player didn't receive damage within the time window, they will take `1.25x` damage for `1.5` seconds.
                - If the player did receive damage, the cooldown is reduced to `0.5` seconds and incoming damage is nullified.
+     - Additionally, there's a `2%` chance of players being instantly killed when failing a parry.
