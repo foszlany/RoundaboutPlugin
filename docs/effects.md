@@ -5,11 +5,11 @@
      - By default, up to `5` effects can appear naturally and `10` can be forced.
      - Bad combinations may occur, in which case `!roundabout_voteskip` may be used.
      - **The following probabilities are in place:**
-          - **1 effect:**  `85.69%`
-          - **2 effects:** `7.45%`
-          - **3 effects:** `3.88%`
-          - **4 effects:** `1.98%`
-          - **5 effects:** `1.00%`
+          - **1 effect:**  `92.67%`
+          - **2 effects:** `3.86%`
+          - **3 effects:** `1.97%`
+          - **4 effects:** `1.00%`
+          - **5 effects:** `0.50%`
      - **Limitations**
           - `10` is set as the hard limit of a multieffect round
                - Anything above `5` can be highly chaotic and unstable.

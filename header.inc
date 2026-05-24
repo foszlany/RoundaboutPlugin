@@ -9,7 +9,7 @@
 #define MULTIEFFECT_MAX_COUNT 10
 
 #define MULTIEFFECT_DEFAULT_MAX_COUNT "5"
-#define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.08"
+#define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.04"
 #define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
 
 #define DMG_SOCIALDIST (1 << 30)
@@ -39,6 +39,7 @@ Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
 
 int g_PreviousEffectCount = 1;
 int g_EffectCount = 1;
+bool g_IsMutuallyExclusiveEffectChosen = false;
 
 bool g_IsForced = false;
 bool g_IsForcedRandom = false;
