@@ -4,7 +4,7 @@ public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool d
      g_Effect34_IsSpecialRound = false;
      if(IsRareEffectForced(EFFECT_SECONDARY) || GetRandomInt(0, 100) <= 5) {
           g_Effect34_IsSpecialRound = true;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Melee weapons have been taken away too.", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Melee weapons have been taken away too.");
      }
 
      for(int i = 1; i <= MaxClients; i++) {

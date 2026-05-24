@@ -4,7 +4,7 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
      int randGravity;
      if(IsRareEffectForced(EFFECT_LOWGRAVITY) || GetRandomInt(0, 100) <= 2) {
           randGravity = 5;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Enjoy zero gravity.", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Enjoy zero gravity.");
      }
      else {
           randGravity = GetRandomInt(100, 400);

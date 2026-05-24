@@ -145,7 +145,7 @@ public Action OnEndParryWindow(Handle timer, int client) {
      g_Effect61_DidSuccessfullyParry[client] = false;
 
      if(g_Effect61_IsRareVariant == true) {
-          SDKHooks_TakeDamage(client, client, client, 99999.0, DMG_GENERIC, -1 );
+          SDKHooks_TakeDamage(client, client, client, 99999.0, DMG_GENERIC, -1);
 
           PrintToChat(client, "\x07B143F1[Roundabout]\x01 You failed to parry anything.");
      }
