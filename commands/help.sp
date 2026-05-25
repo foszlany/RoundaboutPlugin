@@ -3,8 +3,13 @@
 public Action Command_Help(int client, int args) {
      PrintToConsole(client, "\n################# ROUNDABOUT COMMAND LIST #################");
 
-     PrintToConsole(client, "[ROOT] roundabout_enable <arg> - Enables or disables the plugin effects.");
-     PrintToConsole(client, "[ADMIN] roundabout_force [c|count <n> || <id...>[r]] - Forces a new round with a desired effect");
+     if(CheckCommandAccess(client, "roundabout_enable", ADMFLAG_ROOT | ADMFLAG_CHEATS)) {
+          PrintToConsole(client, "[ROOT] roundabout_enable <arg> - Enables or disables the plugin effects.");
+     }
+     if(CheckCommandAccess(client, "roundabout_force", ADMFLAG_GENERIC)) {
+          PrintToConsole(client, "[ADMIN] roundabout_force [c|count <n> || <id...>[r]] - Forces a new round with a desired effect");
+     }
+
      PrintToConsole(client, "[USER] roundabout_help - Returns the commands that can be used into the player's console.");
      PrintToConsole(client, "[USER] roundabout_github - Returns the link to the GitHub repository.");
      PrintToConsole(client, "[USER] roundabout_version - Returns the version of the plugin.");
