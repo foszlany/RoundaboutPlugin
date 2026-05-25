@@ -6,10 +6,12 @@
 * **roundabout_voteskip** - Initiates a voteskipping process to force a new round.<br>
      -  Requires at least half the players.<br>
 * **roundabout_effectlist** - Returns the effect doc.<br>
-* **roundabout_effect \<id\>** - Shows the effect details on the screen.<br>
-     -  **id:** ID of the effect.<br>
+* **roundabout_effect \<token\>** - Shows the effect details on the screen.<br>
+     -  **token:** ID or token of the effect.<br>
           - Current effect when not given.
-     -  Example usage: `!roundabout_effect 50`<br>
+     -  Example usages:
+          - `!roundabout_effect 50`
+          - `!roundabout_effect bleedbuffed`
 
 ### Admin commands
 * **roundabout_force [c|count \<n>  ||  \<token...>[r]]** - Forces a new round with a desired effect.<br>
