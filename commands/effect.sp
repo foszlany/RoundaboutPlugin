@@ -18,14 +18,21 @@ public Action Command_Effect(int client, int args) {
 		GetCmdArgString(arg, sizeof(arg));
 
 		int id;
-		int parseCount = StringToIntEx(arg, id);
-		if(parseCount <= 0 || parseCount != strlen(arg)) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be an integer");
-			return Plugin_Handled;
+
+		if(EFFECT_TOKENS.ContainsKey(arg)) {
+			EFFECT_TOKENS.GetValue(arg, id);
 		}
-		else if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
-			return Plugin_Handled;
+		else {
+			int parseCount = StringToIntEx(arg, id);
+
+			if(parseCount <= 0 || parseCount != strlen(arg)) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be an integer");
+				return Plugin_Handled;
+			}
+			else if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
+				return Plugin_Handled;
+			}
 		}
 
 		ShowCurrentEffectDescription(client, id);
