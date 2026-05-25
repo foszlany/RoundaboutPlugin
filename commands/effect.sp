@@ -8,6 +8,11 @@ public Action Command_Effect(int client, int args) {
 	}
 
 	if(args <= 0) {
+		if(g_CurrentEffects[0] == EFFECT_INVALID) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 There are no effects right now.");
+			return Plugin_Handled;
+		}
+
 		ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
 	}
 	else if(args >= 2) {
