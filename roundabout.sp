@@ -62,6 +62,7 @@ public void OnPluginStart() {
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");
 	RegConsoleCmd("sm_roundabout_effect", Command_Effect, "Shows the effect details on screen. Usage: !roundabout_effect <id>");
 	RegConsoleCmd("sm_roundabout_voteskip", Command_VoteSkip, "Initiates a vote to skip the current effect.");
+	RegConsoleCmd("sm_roundabout", Command_Roundabout, "Universal command. Same functionality as other commands, but without the need for an underscore.");
 
 	/* EVENT HOOKS */
 	HookEvent("teamplay_round_start", Event_RoundStart);

@@ -236,6 +236,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/is_effect_live.sp"
 #include "utils/is_effect_forced_rare.sp"
 #include "utils/apply_powerplay.sp"
+#include "utils/to_lower.sp"
 
 /* LISTS */
 #include "lists/multieffect_exclude.sp"
@@ -254,6 +255,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "commands/effect.sp"
 #include "commands/help.sp"
 #include "commands/voteskip.sp"
+#include "commands/roundabout.sp"
 
 /* EFFECTS */
 enum Effect {
