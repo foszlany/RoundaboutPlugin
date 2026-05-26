@@ -1,13 +1,30 @@
 # Roundabout Commands and ConVars
 ### User commands
-* **roundabout_help** - Returns the commands that can be used into the player's console.<br>
-* **roundabout_github** - Returns the link to the GitHub repository.<br>
-* **roundabout_version** - Returns the version of the plugin.<br>
-* **roundabout_voteskip** - Initiates a voteskipping process to force a new round.<br>
-     -  Requires at least half the players.<br>
-* **roundabout_effectlist** - Returns the effect doc.<br>
-* **roundabout_effect \<token\>** - Shows the effect details on the screen.<br>
-     -  **token:** ID or token of the effect.<br>
+* **roundabout <command>** - Universal command that can simulate every command without an underscore.
+     -  **command:** Command and its arguments.
+          - Available parameters
+               - User:
+                    - **roundabout_help**: help|h
+                    - **roundabout_github**: github|gh
+                    - **roundabout_version**: version|v
+                    - **roundabout_voteskip**: voteskip|vs
+                    - **roundabout_effectlist**: effectlist|el
+                    - **roundabout_effect**: effect|e
+               - Admin:
+                    - **roundabout_force**: force|f
+               - Root:
+                    - **roundabout_enable**: enable
+          - Example usages:
+               - `!roundabout help`
+               - `!roundabout e lowgravityr`
+* **roundabout_help** - Returns the commands that can be used into the player's console.
+* **roundabout_github** - Returns the link to the GitHub repository.
+* **roundabout_version** - Returns the version of the plugin.
+* **roundabout_voteskip** - Initiates a voteskipping process to force a new round.
+     -  Requires at least half the players.
+* **roundabout_effectlist** - Returns the effect doc.
+* **roundabout_effect \<token\>** - Shows the effect details on the screen.
+     -  **token:** ID or token of the effect.
           - Current effect when not given.
      -  Example usages:
           - `!roundabout_effect 50`
