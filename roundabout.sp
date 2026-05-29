@@ -145,7 +145,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 			g_EffectCount = RollEffectCount();
 		}
 
-		setEffect(0);
+		setEffect();
 
 		for(int i = 0; i < g_EffectCount; i++) {
 			CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
