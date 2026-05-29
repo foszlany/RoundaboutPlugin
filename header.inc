@@ -48,6 +48,8 @@ bool g_IsForcedRare[MULTIEFFECT_MAX_COUNT + 1] = {false, ...};
 bool g_VoteSkip[MAXPLAYERS + 1];
 int g_VoteSkipCount = 0;
 
+StringMap g_Blacklist;
+
 bool g_HasSpawned[MAXPLAYERS + 1];
 
 Handle g_HudSync;
@@ -256,6 +258,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "commands/help.sp"
 #include "commands/voteskip.sp"
 #include "commands/roundabout.sp"
+#include "commands/blacklist.sp"
 
 /* EFFECTS */
 enum Effect {

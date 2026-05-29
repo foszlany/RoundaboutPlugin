@@ -53,8 +53,11 @@ public void OnPluginStart() {
 	InitializeMutuallyExclusiveMultieffects();
 	InitializeEffectTokens();
 
+	LoadBlacklist();
+
 	/* COMMANDS */
 	RegAdminCmd("sm_roundabout_enable", Command_EnablePlugin, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Enables or disables the plugin. Usage: !roundabout_enable <1 | 0>");
+	RegAdminCmd("sm_roundabout_blacklist", Command_Blacklist, ADMFLAG_ROOT | ADMFLAG_CHEATS, "Add or remove effects from the blacklist from ingame. Usage: roundabout_blacklist <add|remove> <id>");
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force <id>");
 	RegConsoleCmd("sm_roundabout_help", Command_Help, "Prints the commands and their usages into the player's console.");
 	RegConsoleCmd("sm_roundabout_github", Command_Github, "Returns the Github link for the repository of this plugin.");

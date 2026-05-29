@@ -1,5 +1,4 @@
-void InitializeEffectTokens()
-{
+void InitializeEffectTokens() {
     EFFECT_TOKENS = new StringMap();
 
     EFFECT_TOKENS.SetValue("pure", 0);
