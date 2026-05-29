@@ -66,7 +66,7 @@ public Action Command_ForceRound(int client, int args) {
 		char arg[128];
 		GetCmdArgString(arg, sizeof(arg));
 
-		char parts[MULTIEFFECT_MAX_COUNT + 1][16];
+		char parts[MULTIEFFECT_MAX_COUNT + 1][32];
 		int count = ExplodeString(arg, " ", parts, sizeof(parts), sizeof(parts[]));
 
 		if(count > MULTIEFFECT_MAX_COUNT) {
