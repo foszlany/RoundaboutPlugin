@@ -3,7 +3,8 @@
 public Action Command_Blacklist(int client, int args) {
      if(args <= 0) {
           if(g_Blacklist.Size == 0) {
-               PrintToChat(client, "\x07B143F1[Roundabout]\x01 No blacklist was loaded.");
+               PrintToChat(client, "\x07B143F1[Roundabout]\x01 There are no blacklisted effects.");
+               return Plugin_Handled;
           }
 
           StringMapSnapshot snap = g_Blacklist.Snapshot();
@@ -12,13 +13,21 @@ public Action Command_Blacklist(int client, int args) {
 
           char buffer[256];
           buffer[0] = '\0';
+          bool isFirstElement = true;
 
           for(int i = 0; i < snap.Length; i++) {
                snap.GetKey(i, key, sizeof(key));
                g_Blacklist.GetValue(key, value);
 
-               if(i == 0) {
+               if(strlen(buffer) + strlen(key) >= sizeof(buffer) - 60) {
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklisted effects: %s", buffer);
+                    buffer[0] = '\0';
+                    isFirstElement = true;
+               }
+
+               if(isFirstElement) {
                     Format(buffer, sizeof(buffer), "%s", key);
+                    isFirstElement = false;
                }
                else {
                     Format(buffer, sizeof(buffer), "%s, %s", buffer, key);
