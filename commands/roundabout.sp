@@ -34,6 +34,9 @@ public Action Command_Roundabout(int client, int args) {
      else if(StrEqual(arg1, "enable")) {
           Format(newCommand, sizeof(newCommand), "sm_roundabout_enable");
      }
+     else if(StrEqual(arg1, "blacklist") || StrEqual(arg1, "bl")) {
+          Format(newCommand, sizeof(newCommand), "sm_roundabout_blacklist");
+     }
      else {
           ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Unknown parameter '%s'. Use 'help' for options.", arg1);
           return Plugin_Handled;
