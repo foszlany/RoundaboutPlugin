@@ -7,20 +7,33 @@ public void setEffect() {
      while(effectIndex < g_EffectCount) {
           Effect id = (g_IsForced && !g_IsForcedRandom) ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
 
-          if(g_EffectCount > 1 && (!g_IsForced || g_IsForcedRandom)) {
+          if(g_EffectCount > 1 && g_IsForcedRandom) {
+               bool doReroll = false;
+
+               // EXCLUDED
                if(MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
                     continue;
                }
 
+               // MUTEX
+               if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+                    if(!g_IsMutuallyExclusiveEffectChosen) {
+                         g_IsMutuallyExclusiveEffectChosen = true;
+                    }
+                    else {
+                         doReroll = true;
+                    }
+               }
+
+               // DUPLICATE
                for(int i = 0; i < effectIndex; i++) {
                     if(g_CurrentEffects[i] == id) {
-                         continue;
+                         doReroll = true;
                     }
+               }
 
-                    if(!g_IsMutuallyExclusiveEffectChosen || MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(g_CurrentEffects[i]) != -1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
-                         g_IsMutuallyExclusiveEffectChosen = true;
-                         continue;
-                    }
+               if(doReroll) {
+                    continue;
                }
           }
 
