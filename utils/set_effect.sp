@@ -7,6 +7,14 @@ public void setEffect() {
      while(effectIndex < g_EffectCount) {
           Effect id = (g_IsForced && !g_IsForcedRandom) ? g_CurrentEffects[effectIndex] : view_as<Effect>(GetRandomInt(0, EFFECT_MAXCOUNT - EFFECT_LOWGRAVITY));
 
+          // CHECK BLACKLIST
+          char token[32];
+          EFFECT_TOKENS.GetKeyFromInt(id, token, sizeof(token));
+          if(g_CVAR_EnableBlacklist.BoolValue && (!g_IsForced || g_IsForcedRandom) && g_Blacklist.ContainsKey(token)) {
+               continue;
+          }
+          
+          // MULTIEFFECT RESTRICTIONS
           if(g_EffectCount > 1 && g_IsForcedRandom) {
                bool doReroll = false;
 
@@ -37,6 +45,7 @@ public void setEffect() {
                }
           }
 
+          // EFFECT ROLLED
           g_CurrentEffects[effectIndex] = id;
 
           switch(id) {

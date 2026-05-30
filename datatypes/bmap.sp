@@ -34,6 +34,13 @@ enum struct BidirectionalMap {
         return this.ValueToKeyMap.GetString(value, out, maxlen);
     }
 
+    bool GetKeyFromInt(int value, char[] out, int maxlen) {
+        char buffer[32];
+        IntToString(value, buffer, sizeof(buffer));
+
+        return this.ValueToKeyMap.GetString(buffer, out, maxlen);
+    }
+
     bool ContainsKey(const char[] key) {
         return this.KeyToValueMap.ContainsKey(key);
     }
