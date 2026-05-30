@@ -1,6 +1,7 @@
 #pragma semicolon 1
 
 public Action Command_Blacklist(int client, int args) {
+     // SHOW BLACKLISTED EFFECTS
      if(args <= 0) {
           if(g_Blacklist.Size == 0) {
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 There are no blacklisted effects.");
@@ -36,6 +37,37 @@ public Action Command_Blacklist(int client, int args) {
           }
 
           PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklisted effects: %s", buffer);
+     }
+     // ON / OFF
+     else if(args == 1) {
+          char arg[128];
+          GetCmdArg(1, arg, sizeof(arg));
+          StringToLower(arg);
+
+          if(StrEqual(arg, "on")) {
+               if(!GetConVarBool(g_CVAR_EnableBlacklist)) {
+                    g_CVAR_EnableBlacklist.SetBool(true);
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklist is now on.");
+               }
+               else {
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklist is already on.");
+               }
+          }
+          else if(StrEqual(arg, "off")) {
+               if(GetConVarBool(g_CVAR_EnableBlacklist)) {
+                    g_CVAR_EnableBlacklist.SetBool(false);
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklist is now off.");
+               }
+               else {
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Blacklist is already off.");
+               }
+          }
+          else {
+               PrintToChat(client, "\x07B143F1[Roundabout]\x01 Usage: roundabout_blacklist [<on|off> || <add|remove> <id>]");
+          }
+     }
+     else if(args >= 1) {
+
      }
 
      return Plugin_Handled;

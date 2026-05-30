@@ -30,6 +30,7 @@ StringMap EFFECT_TOKENS;
 
 /* CONVARS */
 ConVar g_CVAR_EnablePlugin;
+ConVar g_CVAR_EnableBlacklist;
 ConVar g_CVAR_MultieffectMaxCount;
 ConVar g_CVAR_MultieffectBaseChance;
 ConVar g_CVAR_MultieffectRarityMultiplier;
