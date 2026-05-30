@@ -39,7 +39,8 @@
 - You can copy-paste code from one of the already existing effects to get a headstart.<br><br>
 - `RoundStart` is the only necessary component for an effect.
      - It presents the effect details to the players, as well as initialize any variables.
-     - Add a token inside `lists/effect_codename.sp` with the ID and a shortform string that should be the same as the filename of your effect,
+     - Add a token inside `lists/effect_codename.sp` with the ID and a shortform string that should be the same as the filename of your effect.
+          - Keep the token under `32` characters.
      - You will need to create the description for your effect inside `utils/show_effect_description.sp` following the same structure as the others.
      - Example code inside `show_effect_description`:
           ```cpp

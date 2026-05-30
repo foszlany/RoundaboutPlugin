@@ -1,3 +1,4 @@
+// KEEP EFFECT TOKENS BELOW 32 CHARACTERS
 void InitializeEffectTokens() {
     EFFECT_TOKENS.Init();
 
