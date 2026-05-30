@@ -107,7 +107,7 @@ public Action Command_ForceRound(int client, int args) {
 			}
 
 			if(!isInteger) {
-				EFFECT_TOKENS.GetValue(base, id);
+				EFFECT_TOKENS.GetIntValue(base, id);
 			}
 
 			isRare.Push(rare);

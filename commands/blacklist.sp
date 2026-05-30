@@ -114,7 +114,7 @@ public void LoadBlacklist() {
 void CreateDefaultBlacklistConfig() {
      KeyValues kv = new KeyValues("Blacklist");
 
-     StringMapSnapshot snap = EFFECT_TOKENS.Snapshot();
+     StringMapSnapshot snap = EFFECT_TOKENS.GetKeySnapshot();
      int count = snap.Length;
 
      char key[32];

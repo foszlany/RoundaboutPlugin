@@ -16,7 +16,7 @@
 
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
-StringMap EFFECT_TOKENS;
+BidirectionalMap EFFECT_TOKENS;
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -240,6 +240,9 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/is_effect_forced_rare.sp"
 #include "utils/apply_powerplay.sp"
 #include "utils/to_lower.sp"
+
+/* DATATYPES */
+#include "datatypes/bmap.sp"
 
 /* LISTS */
 #include "lists/multieffect_exclude.sp"

@@ -25,7 +25,7 @@ public Action Command_Effect(int client, int args) {
 		int id;
 
 		if(EFFECT_TOKENS.ContainsKey(arg)) {
-			EFFECT_TOKENS.GetValue(arg, id);
+			EFFECT_TOKENS.GetIntValue(arg, id);
 		}
 		else {
 			int parseCount = StringToIntEx(arg, id);
