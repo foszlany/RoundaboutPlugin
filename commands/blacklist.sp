@@ -67,7 +67,60 @@ public Action Command_Blacklist(int client, int args) {
           }
      }
      else if(args >= 1) {
+          char arg1[128];
+          GetCmdArg(1, arg1, sizeof(arg1));
+          StringToLower(arg1);
 
+          char arg2[128];
+          GetCmdArg(2, arg2, sizeof(arg2));
+          StringToLower(arg1);
+          
+          int id;
+          int parsed = StringToIntEx(arg2, id);
+		if(parsed <= 0 || parsed != strlen(arg2)) {
+               if(EFFECT_TOKENS.ContainsKey(arg2)) {
+                    EFFECT_TOKENS.GetIntValue(arg2, id);
+               }
+               else {
+			     ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 '%s' is not a valid integer or token.", arg2);
+                    return Plugin_Handled;
+               }
+		}
+
+          if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
+               ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
+               return Plugin_Handled;
+          }
+
+          char token[32];
+          EFFECT_TOKENS.GetKeyFromInt(id, token, sizeof(token));
+
+          if(StrEqual(arg1, "add")) {
+               if(g_Blacklist.ContainsKey(token)) {
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Effect is already in the blacklist.");
+               }
+               else {
+                    g_Blacklist.SetString(token, "1");
+                    UpdateBlacklistConfig(token, true);
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Effect has been added to the blacklist.");
+               }
+          }
+          else if(StrEqual(arg1, "remove")) {
+               if(!g_Blacklist.ContainsKey(token)) {
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Effect is not in the blacklist.");
+               }
+               else {
+                    g_Blacklist.Remove(token);
+                    UpdateBlacklistConfig(token, false);
+                    PrintToChat(client, "\x07B143F1[Roundabout]\x01 Effect has been removed from the blacklist.");
+               }
+          }
+          else {
+               PrintToChat(client, "\x07B143F1[Roundabout]\x01 Usage: roundabout_blacklist [<on|off> || <add|remove> <id>]");
+          }
+     }
+     else {
+          PrintToChat(client, "\x07B143F1[Roundabout]\x01 Usage: roundabout_blacklist [<on|off> || <add|remove> <id>]");
      }
 
      return Plugin_Handled;
@@ -133,6 +186,19 @@ void CreateDefaultBlacklistConfig() {
      delete kv;
 }
 
-void AddElementToConfig(bool isBlacklisted) {
-     
+void UpdateBlacklistConfig(const char[] token, bool enabled) {
+     KeyValues kv = new KeyValues("Blacklist");
+
+     if(!kv.ImportFromFile("addons/sourcemod/configs/roundabout_blacklist.cfg")) {
+          PrintToServer("[Roundabout] Failed to load blacklist config for writing!");
+          delete kv;
+          return;
+     }
+
+     kv.JumpToKey(token, true);
+     kv.SetNum(NULL_STRING, enabled ? 1 : 0);
+     kv.GoBack();
+
+     kv.ExportToFile("addons/sourcemod/configs/roundabout_blacklist.cfg");
+     delete kv;
 }
