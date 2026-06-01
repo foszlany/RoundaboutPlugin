@@ -52,6 +52,12 @@
           - Example usages:
                - `!roundabout_force count 2`
                - `!roundabout_force c 4`<br>
+* **roundabout_blacklist [\<on|off> || <add|remove> \<token>]** - Manages the blacklist.
+     -  **on|off:** Enable/disable the blacklist.
+          - Can be modified while off.
+     -  **add|remove \<token>:** Add/remove an effect from the blacklist.
+          - **token**: ID or token of the effect.
+          - Effects can be manually toggled inside `addons/sourcemod/configs/roundabout_blacklist.cfg`
 * **roundabout_enable <0|1>** - Enables or disables the plugin effects.<br>
      -  Enabling the effects will not restart the round.
 
