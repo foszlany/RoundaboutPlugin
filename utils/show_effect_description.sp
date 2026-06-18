@@ -17,7 +17,7 @@ public void ShowCurrentEffectDescription(int client) {
      PrintEffectChat(client, id);
 }
 
-public void ShowEffectDescription(int client, int id) {
+public void ShowEffectDescription(int client, Effect id) {
      PrintEffectChat(client, id);
 }
 
@@ -59,10 +59,10 @@ public void PrintEffectLine(int client, const char[] name, const char[] desc) {
           PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07F5BB27%s:\x01 %s", name, desc);
           
           if(g_EffectCount == 1) {
-               PrintToChat(client, "%s", name);
+               PrintCenterText(client, "%s", name);
           }
           else {
-               PrintToChat(client, "Multieffect");
+               PrintCenterText(client, "Multieffect");
           }
      }
 }
