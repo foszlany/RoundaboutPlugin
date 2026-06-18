@@ -45,7 +45,7 @@ public void OnPluginStart() {
 
 	/* INITIALIZE GLOBAL ARRAYS */
 	for(int i = 1; i <= MAXPLAYERS; i++) {
-		g_HasSpawned[i] = false;
+		g_HasSpawned[i] = true;
 		g_VoteSkip[i] = false;
 	}
 
@@ -131,42 +131,46 @@ public void DisablePluginFeatures() {
 
 /* ENABLES CURRENT ROUND EFFECT AND DISPLAYS IT ON THE SCREEN */
 public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast) {
-	if(GameRules_GetProp("m_bInWaitingForPlayers") != 1) {
-		for(int i = 0; i < g_EffectCount; i++) {
-			if(g_OnRoundStartFuncPtr[i] != INVALID_FUNCTION) {
-				CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
-			}
-		}
-
-		for(int i = 0; i < g_EffectCount; i++) {
-			g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
-			g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
-			g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
-			g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
-			g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
-		}
-
-		if(!g_IsForced) {
-			g_EffectCount = RollEffectCount();
-		}
-
-		setEffect();
-
-		for(int i = 0; i < g_EffectCount; i++) {
-			CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
-		}
-
-		for(int i = 0; i < g_EffectCount; i++) {
-			g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
-		}
-
-		g_PreviousEffectCount = g_EffectCount;
-		ShowCurrentEffectDescriptionToAll();
-
-		g_IsForced = false;
-		g_IsForcedRandom = false;
-		g_IsMutuallyExclusiveEffectChosen = false;
+	if(GameRules_GetProp("m_bInWaitingForPlayers") == 1) {
+		return;
 	}
+
+	for(int i = 0; i < g_EffectCount; i++) {
+		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+		g_OnRoundEndFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
+		g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
+	}
+
+	if(!g_IsForced) {
+		g_EffectCount = RollEffectCount();
+	}
+
+	setEffect();
+
+	for(int i = 1; i <= MaxClients; i++) {
+		g_VoteSkip[i] = false;
+
+		if(IsClientInGame(i) && IsPlayerAlive(i)) {
+			g_HasSpawned[i] = true;
+		}
+	}
+
+	for(int i = 0; i < g_EffectCount; i++) {
+		CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
+	}
+
+	for(int i = 0; i < g_EffectCount; i++) {
+		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+	}
+
+	g_PreviousEffectCount = g_EffectCount;
+	ShowCurrentEffectDescriptionToAll();
+
+	g_IsForced = false;
+	g_IsForcedRandom = false;
+	g_IsMutuallyExclusiveEffectChosen = false;
 }
 
 /* REAPPLIES EFFECTS IF NEEDED */
@@ -174,12 +178,8 @@ public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcas
 	int client = GetClientOfUserId(event.GetInt("userid"));
 
 	if(!g_HasSpawned[client]) {
-		for(int i = 0; i < g_EffectCount; i++) {
-			if(g_OnPlayerUpdateFuncPtr[i] != INVALID_FUNCTION) {
-				g_HasSpawned[client] = true;
-				ShowCurrentEffectDescription(client);
-			}
-		}
+		g_HasSpawned[client] = true;
+		ShowCurrentEffectDescription(client);
 	}
 
 	for(int i = 0; i < g_EffectCount; i++) {
@@ -224,11 +224,6 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 
 	for(int i = 0; i < g_PreviousEffectCount; i++) {
 		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
-	}
-
-	for(int i = 1; i <= MAXPLAYERS; i++) {
-		g_HasSpawned[i] = false;
-		g_VoteSkip[i] = false;
 	}
 }
 
