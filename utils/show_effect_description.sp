@@ -13,8 +13,11 @@ public void ShowCurrentEffectDescription(int client) {
           return;
      }
 
-     // Single effect
      Effect id = g_CurrentEffects[0];
+     PrintEffectChat(client, id);
+}
+
+public void ShowEffectDescription(int client, int id) {
      PrintEffectChat(client, id);
 }
 

@@ -40,7 +40,7 @@ public Action Command_Effect(int client, int args) {
 			}
 		}
 
-		ShowCurrentEffectDescription(client);
+		ShowEffectDescription(client, id);
 	}
 
 	return Plugin_Handled;
