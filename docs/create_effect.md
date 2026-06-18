@@ -47,9 +47,9 @@
           PrintCenterTextAll("Perfect Math Class");
           ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
           ```
-     - Example code inside the effect file itself (-1 can be replaced with effect ID):
+     - Example code inside the effect file itself:
           ```cpp
-          ShowCurrentEffectDescriptionToAll(-1);
+          ShowCurrentEffectDescriptionToAll();
           ```
 - `RoundEnd` should do the opposite of `RoundStart`, which means it may unset any variables, remove the effects from the players, as well as kill any ongoing Timers.
 

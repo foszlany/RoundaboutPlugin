@@ -24,6 +24,7 @@ BidirectionalMap EFFECT_TOKENS;
 
 #include <tf2>
 #include <tf2_stocks>
+#include <adt_trie>
 
 /* LIB */
 #include <tf2attributes>
@@ -50,6 +51,7 @@ bool g_VoteSkip[MAXPLAYERS + 1];
 int g_VoteSkipCount = 0;
 
 StringMap g_Blacklist;
+StringMap g_EffectInfo;
 
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -222,7 +224,6 @@ Handle g_Effect61_hHUDTimer = null;
 
 /* UTILS */
 #include "utils/set_effect.sp"
-#include "utils/show_description_hint.sp"
 #include "utils/apply_timed_condition.sp"
 #include "utils/force_win.sp"
 #include "utils/is_opposing_team.sp"
@@ -244,10 +245,11 @@ Handle g_Effect61_hHUDTimer = null;
 /* DATATYPES */
 #include "datatypes/bmap.sp"
 
-/* LISTS */
-#include "lists/multieffect_exclude.sp"
-#include "lists/multieffect_mutually_exclusive.sp"
-#include "lists/effect_codename.sp"
+/* DATA */
+#include "data/multieffect_exclude.sp"
+#include "data/multieffect_mutually_exclusive.sp"
+#include "data/effect_codename.sp"
+#include "data/effectinfo.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"

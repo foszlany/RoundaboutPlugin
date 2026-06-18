@@ -13,7 +13,7 @@ public Action Command_Effect(int client, int args) {
 			return Plugin_Handled;
 		}
 
-		ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
+		ShowCurrentEffectDescription(client);
 	}
 	else if(args >= 2) {
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_effect <id>");
@@ -40,7 +40,7 @@ public Action Command_Effect(int client, int args) {
 			}
 		}
 
-		ShowCurrentEffectDescription(client, id);
+		ShowCurrentEffectDescription(client);
 	}
 
 	return Plugin_Handled;

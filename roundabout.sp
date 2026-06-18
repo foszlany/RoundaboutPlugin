@@ -53,6 +53,7 @@ public void OnPluginStart() {
 	InitializeExcludedMultieffects();
 	InitializeMutuallyExclusiveMultieffects();
 	InitializeEffectTokens();
+	InitializeEffectInfo();
 
 	LoadBlacklist();
 
@@ -160,7 +161,7 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 		}
 
 		g_PreviousEffectCount = g_EffectCount;
-		ShowCurrentEffectDescriptionToAll(-1);
+		ShowCurrentEffectDescriptionToAll();
 
 		g_IsForced = false;
 		g_IsForcedRandom = false;
@@ -176,7 +177,7 @@ public void Event_PlayerUpdate(Event event, const char[] name, bool dontBroadcas
 		for(int i = 0; i < g_EffectCount; i++) {
 			if(g_OnPlayerUpdateFuncPtr[i] != INVALID_FUNCTION) {
 				g_HasSpawned[client] = true;
-				ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
+				ShowCurrentEffectDescription(client);
 			}
 		}
 	}
