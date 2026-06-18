@@ -10,6 +10,8 @@ public void ShowCurrentEffectDescription(int client) {
                Effect id = g_CurrentEffects[i];
                PrintEffectChat(client, id);
           }
+          
+          PrintEffectToCenter(client, "");
           return;
      }
 
@@ -33,6 +35,8 @@ public void PrintEffectChat(int client, Effect id) {
           return;
      }
 
+     PrintEffectToCenter(client, info.name);
+
      if(id == EFFECT_PURE) {
           char desc[64];
           Format(desc, sizeof(desc), info.description, (g_Effect0_FakePure_Timer == null) ? "." : "?");
@@ -47,7 +51,14 @@ public void PrintEffectChat(int client, Effect id) {
 public void PrintEffectLine(int client, const char[] name, const char[] desc) {
      if(client <= 0) {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07F5BB27%s:\x01 %s", name, desc);
+     }
+     else {
+          PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07F5BB27%s:\x01 %s", name, desc);
+     }
+}
 
+public void PrintEffectToCenter(int client, const char[] name) {
+     if(client <= 0) {
           if(g_EffectCount == 1) {
                PrintCenterTextAll("%s", name);
           }
@@ -55,9 +66,7 @@ public void PrintEffectLine(int client, const char[] name, const char[] desc) {
                PrintCenterTextAll("Multieffect");
           }
      }
-     else {
-          PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07F5BB27%s:\x01 %s", name, desc);
-          
+     else {          
           if(g_EffectCount == 1) {
                PrintCenterText(client, "%s", name);
           }
