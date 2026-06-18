@@ -41,16 +41,8 @@
      - It presents the effect details to the players, as well as initialize any variables.
      - Add a token inside `lists/effect_codename.sp` with the ID and a shortform string that should be the same as the filename of your effect.
           - Keep the token under `32` characters.
-     - You will need to create the description for your effect inside `utils/show_effect_description.sp` following the same structure as the others.
-     - Example code inside `show_effect_description`:
-          ```cpp
-          PrintCenterTextAll("Perfect Math Class");
-          ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
-          ```
-     - Example code inside the effect file itself:
-          ```cpp
-          ShowCurrentEffectDescriptionToAll();
-          ```
+     - You will need to create the description for your effect inside `data/effectinfo.sp` following the same structure as the others.
+
 - `RoundEnd` should do the opposite of `RoundStart`, which means it may unset any variables, remove the effects from the players, as well as kill any ongoing Timers.
 
 - `PlayerUpdate` occurs when a player changes its loadout in spawn or changes classes. The player may be able to bypass an effect by doing these actions, so this is sometimes needed.
