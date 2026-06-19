@@ -719,6 +719,30 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_GRAPPLINGHOOK: {
+                    ConVar grapplingHook = FindConVar("tf_grapplinghook_enable");
+                    bool isGrapplingHookEnabled = GetConVarBool(grapplingHook);
+
+                    ConVar spells = FindConVar("tf_spells_enabled");
+                    bool isSpellsEnabled = GetConVarBool(spells);
+
+                    if(isGrapplingHookEnabled || isSpellsEnabled) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Grappling Hook effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Identity Theft effect condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_62_Grapple;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_62_Grapple;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

@@ -64,4 +64,5 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("identitytheft", 59);
     EFFECT_TOKENS.SetPair("timetravel", 60);
     EFFECT_TOKENS.SetPair("parry", 61);
+    EFFECT_TOKENS.SetPair("grapple", 62);
 }

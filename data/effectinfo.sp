@@ -85,4 +85,5 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_IDENTITYTHEFT,     "Identity Theft",           "You are what you kill.");
     ADD_EFFECT(EFFECT_TIMETRAVEL,        "Time Travel",              "You may occasionally go back in time.");
     ADD_EFFECT(EFFECT_PARRY,             "Parry it!",                "You can now attempt to parry damage by calling for a medic.");
+    ADD_EFFECT(EFFECT_GRAPPLINGHOOK,     "Grappling Hook",           "You can now equip the grappling hook.");
 }
