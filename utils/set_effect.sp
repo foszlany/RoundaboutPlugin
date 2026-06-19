@@ -767,6 +767,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_MIST: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_64_Mist;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_64_Mist;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_64_Mist;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

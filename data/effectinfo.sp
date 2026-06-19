@@ -87,4 +87,5 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_PARRY,             "Parry it!",                "You can now attempt to parry damage by calling for a medic.");
     ADD_EFFECT(EFFECT_GRAPPLINGHOOK,     "Grappling Hook",           "You can now equip the grappling hook.");
     ADD_EFFECT(EFFECT_SPELLBOUND,        "Spellbound",               "The fallen occasionally drop spells.");
+    ADD_EFFECT(EFFECT_MIST,              "Mist",                     "A fog has descended upon the battlefield.");
 }

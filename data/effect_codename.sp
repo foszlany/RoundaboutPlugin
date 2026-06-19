@@ -66,4 +66,5 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("parry", 61);
     EFFECT_TOKENS.SetPair("grapple", 62);
     EFFECT_TOKENS.SetPair("spellbound", 63);
+    EFFECT_TOKENS.SetPair("mist", 64);
 }

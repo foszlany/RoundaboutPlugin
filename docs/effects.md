@@ -534,6 +534,18 @@
      - **Rare variant:** `2%` chance of guaranteed spell drops.
      - Dead players have a `20%` chance of dropping a spell.
 
+* **Mist**
+     - **ID:** `64`
+     - **Token:** `mist`
+     - **Rare variant:** `6%` chance of the fog to be colored.
+     - A fog takes over the map. The following properties are used:
+          - blend: `1`
+          - fogstart: `1`
+          - fogstart: `1`
+          - fogend: Between `400` and `800`
+          - fogmaxdensity: Between `0.4` and `0.7`
+          - (default) fogcolor: `216 207 194`
+
 
 
 

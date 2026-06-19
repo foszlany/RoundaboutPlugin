@@ -158,6 +158,8 @@ bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
 float g_Effect61_fCooldownEndTime[MAXPLAYERS + 1];
 Handle g_Effect61_hHUDTimer = null;
 
+int g_Effect64_Fog;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -223,6 +225,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "effects/61_parry.sp"
 #include "effects/62_grapple.sp"
 #include "effects/63_spellbound.sp"
+#include "effects/64_mist.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -335,5 +338,6 @@ enum Effect {
 	EFFECT_PARRY 			=	61,
 	EFFECT_GRAPPLINGHOOK	=	62,
 	EFFECT_SPELLBOUND		=	63,
+	EFFECT_MIST			=	64,
 	EFFECT_MAXCOUNT
 }
