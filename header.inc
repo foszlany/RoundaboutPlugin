@@ -222,6 +222,7 @@ Handle g_Effect61_hHUDTimer = null;
 #include "effects/60_timetravel.sp"
 #include "effects/61_parry.sp"
 #include "effects/62_grapple.sp"
+#include "effects/63_spellbound.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -333,5 +334,6 @@ enum Effect {
 	EFFECT_TIMETRAVEL		=	60,
 	EFFECT_PARRY 			=	61,
 	EFFECT_GRAPPLINGHOOK	=	62,
+	EFFECT_SPELLBOUND		=	63,
 	EFFECT_MAXCOUNT
 }

@@ -526,3 +526,17 @@
      - **Token:** `grapple`
      - **Conditional effect:** Grappling hook and spells must not be enabled.
      - Players can use the grappling hook.
+
+* **Spellbound**
+     - **ID:** `63`
+     - **Token:** `spellbound`
+     - **Conditional effect:** Grappling hook and spells must not be enabled.
+     - **Rare variant:** `2%` chance of guaranteed spell drops.
+     - Dead players have a `20%` chance of dropping a spell.
+
+
+
+
+
+
+          
