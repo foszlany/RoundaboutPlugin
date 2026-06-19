@@ -63,7 +63,7 @@ public void OnPluginStart() {
 	RegAdminCmd("sm_roundabout_force", Command_ForceRound, ADMFLAG_GENERIC, "Forces a specific round event. Usage: !roundabout_force [c|count <n> || <token...>[r]]");
 	RegConsoleCmd("sm_roundabout_help", Command_Help, "Prints the commands and their usages into the player's console.");
 	RegConsoleCmd("sm_roundabout_github", Command_Github, "Returns the Github link for the repository of this plugin.");
-	RegConsoleCmd("sm_roundabout_effectlist", Command_EffectList, "Returns the doc for every effect and their details.");
+	RegConsoleCmd("sm_roundabout_effectlist", Command_EffectList, "Opens a menu with all the effects.");
 	RegConsoleCmd("sm_roundabout_version", Command_Version, "Returns the version of the plugin.");
 	RegConsoleCmd("sm_roundabout_effect", Command_Effect, "Shows the effect details on screen. Usage: !roundabout_effect <id>");
 	RegConsoleCmd("sm_roundabout_voteskip", Command_VoteSkip, "Initiates a vote to skip the current effect.");

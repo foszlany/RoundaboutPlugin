@@ -23,7 +23,7 @@
 * **roundabout_version** - Returns the version of the plugin.
 * **roundabout_voteskip** - Initiates a voteskipping process to force a new round.
      -  Requires at least half the players.
-* **roundabout_effectlist** - Returns the effect doc.
+* **roundabout_effectlist** - Opens a menu with all the effects.
 * **roundabout_effect \<token\>** - Shows the effect details on the screen.
      -  **token:** ID or token of the effect.
           - Current effect when not given.
