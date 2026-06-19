@@ -2,7 +2,7 @@
 
 public void Event_RoundStart_53_ShieldingMedicine(Event event, const char[] name, bool dontBroadcast) {
      g_Effect53_IsSpecialRound = false;
-     if(GetRandomInt(1, 100) <= 15) {
+     if(IsRareEffectForced(EFFECT_SHIELDINGMED) || GetRandomInt(1, 100) <= 15) {
           g_Effect53_IsSpecialRound = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Shields are Level 2.");
      }
@@ -12,8 +12,6 @@ public void Event_RoundStart_53_ShieldingMedicine(Event event, const char[] name
                TF2Attrib_SetByName(i, "generate rage on heal", g_Effect53_IsSpecialRound ? 2.0 : 1.0);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_53_ShieldingMedicine(Event event, const char[] name, bool dontBroadcast) {

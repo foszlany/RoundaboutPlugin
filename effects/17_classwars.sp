@@ -15,8 +15,6 @@ public void Event_RoundStart_17_ClassWars(Event event, const char[] name, bool d
      GetClassString(g_Effect17_BluTeamClass, classBlu, sizeof(classBlu));
       
      PrintToChatAll("\x07B143F1[Roundabout]\x01 This round's matchup: %s vs. %s.", classRed, classBlu);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_17_ClassWars(Event event, const char[] name, bool dontBroadcast) {

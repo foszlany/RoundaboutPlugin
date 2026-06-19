@@ -2,9 +2,9 @@
 
 public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {
      int randGravity;
-     if(GetRandomInt(0, 100) <= 2) {
-          randGravity = 0;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Enjoy zero gravity.", name);
+     if(IsRareEffectForced(EFFECT_LOWGRAVITY) || GetRandomInt(0, 100) <= 2) {
+          randGravity = 5;
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Enjoy zero gravity.");
      }
      else {
           randGravity = GetRandomInt(100, 400);
@@ -22,8 +22,6 @@ public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool d
      else {
           ServerCommand("sv_gravity %d", randGravity);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {

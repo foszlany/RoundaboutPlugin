@@ -2,8 +2,6 @@
 
 public void Event_RoundStart_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
      g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), BurnAll);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {

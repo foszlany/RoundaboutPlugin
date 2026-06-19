@@ -8,8 +8,6 @@ public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool d
           g_Effect57_HasBeenTeleportedRecently[i] = false;
           g_Effect57_HasRecentlyCalled[i] = false;
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {    

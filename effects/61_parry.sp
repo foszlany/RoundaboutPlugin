@@ -7,8 +7,16 @@
 forward Action Effect61_OnHitCheckParry(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom);
 
 public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
+     if(IsRareEffectForced(EFFECT_PARRY) || GetRandomInt(0, 100) <= 2) {
+          g_Effect61_IsRareVariant = true;
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Failed parries instakill you.");
+     }
+     else {
+          g_Effect61_IsRareVariant = false;
+     }
+
      AddCommandListener(Parry, "voicemenu");
-     g_Effect61_isCommandListenerRegistered = true;
+     g_Effect61_IsCommandListenerRegistered = true;
      
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect61_IsParrying[i] = false;
@@ -24,8 +32,6 @@ public void Event_RoundStart_61_ParryIt(Event event, const char[] name, bool don
      if(g_Effect61_hHUDTimer == null) {
           g_Effect61_hHUDTimer = CreateTimer(0.1, Timer_UpdateParryHUD, _, TIMER_REPEAT);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
@@ -37,9 +43,9 @@ public void Event_PlayerUpdate_61_ParryIt(Event event, const char[] name, bool d
 }
 
 public void Event_RoundEnd_61_ParryIt(Event event, const char[] name, bool dontBroadcast) {
-     if(g_Effect61_isCommandListenerRegistered) {
+     if(g_Effect61_IsCommandListenerRegistered) {
           RemoveCommandListener(Parry, "voicemenu");
-          g_Effect61_isCommandListenerRegistered = false;
+          g_Effect61_IsCommandListenerRegistered = false;
 
           for(int i = 1; i <= MAXPLAYERS; i++) {
                SDKUnhook(i, SDKHook_OnTakeDamage, Effect61_OnHitCheckParry);
@@ -137,6 +143,12 @@ public Action OnEndParryWindow(Handle timer, int client) {
 
      g_Effect61_IsParrying[client] = false;
      g_Effect61_DidSuccessfullyParry[client] = false;
+
+     if(g_Effect61_IsRareVariant == true) {
+          SDKHooks_TakeDamage(client, client, client, 99999.0, DMG_GENERIC, -1);
+
+          PrintToChat(client, "\x07B143F1[Roundabout]\x01 You failed to parry anything.");
+     }
 
      TF2Attrib_SetByName(client, "dmg taken increased", 1.25);
      

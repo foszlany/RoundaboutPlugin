@@ -5,8 +5,6 @@ public void Event_RoundStart_37_Disadvantaged(Event event, const char[] name, bo
           g_Effect37_PreviousClass[i] = TFClass_Unknown;
           HandleSpecialAbilityRemoval(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {
@@ -83,6 +81,7 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
           case TFClass_Engineer: {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Grenade);
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Building);
+               TF2_RemoveWeaponSlot(client, TFWeaponSlot_PDA);
 
                if(isNewClass) {
                     PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Engineer\x01: Building has been disabled.");

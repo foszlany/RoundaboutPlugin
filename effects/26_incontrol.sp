@@ -19,8 +19,6 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
      for(int i = 1; i <= MaxClients; i++) {
           SetInControlAttributes(i);
      }
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {

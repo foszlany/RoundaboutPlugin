@@ -1,9 +1,5 @@
 #pragma semicolon 1
 
-public void Event_RoundStart_48_StunningMetal(Event event, const char[] name, bool dontBroadcast) {
-     ShowCurrentEffectDescriptionToAll(-1);
-}
-
 public void Event_PlayerHit_48_StunningMetal(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
      int attacker = GetClientOfUserId(event.GetInt("attacker"));

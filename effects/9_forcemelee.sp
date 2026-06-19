@@ -7,8 +7,6 @@ public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool d
                CreateTimer(0.12, ForceToMelee, i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_9_ForceMelee(Event event, const char[] name, bool dontBroadcast) {

@@ -6,8 +6,6 @@ public void Event_RoundStart_35_Hell(Event event, const char[] name, bool dontBr
                SetHellAttributes(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_35_Hell(Event event, const char[] name, bool dontBroadcast) {

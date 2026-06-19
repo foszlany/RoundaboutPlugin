@@ -7,8 +7,6 @@ public void Event_RoundStart_39_InfiniteClip(Event event, const char[] name, boo
                TF2_RegeneratePlayer(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_39_InfiniteClip(Event event, const char[] name, bool dontBroadcast) {

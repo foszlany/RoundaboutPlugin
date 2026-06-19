@@ -4,19 +4,19 @@
 #define _RAHEADER
 
 /* CONSTANTS */
-#define PLUGIN_VERSION "0.35"
+#define PLUGIN_VERSION "0.45"
 
 #define MULTIEFFECT_MAX_COUNT 10
 
 #define MULTIEFFECT_DEFAULT_MAX_COUNT "5"
-#define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.08"
+#define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.04"
 #define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
 
 #define DMG_SOCIALDIST (1 << 30)
 
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
-StringMap EFFECT_TOKENS;
+BidirectionalMap EFFECT_TOKENS;
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -24,12 +24,14 @@ StringMap EFFECT_TOKENS;
 
 #include <tf2>
 #include <tf2_stocks>
+#include <adt_trie>
 
 /* LIB */
 #include <tf2attributes>
 
 /* CONVARS */
 ConVar g_CVAR_EnablePlugin;
+ConVar g_CVAR_EnableBlacklist;
 ConVar g_CVAR_MultieffectMaxCount;
 ConVar g_CVAR_MultieffectBaseChance;
 ConVar g_CVAR_MultieffectRarityMultiplier;
@@ -39,14 +41,21 @@ Effect g_CurrentEffects[MULTIEFFECT_MAX_COUNT + 1] = {EFFECT_INVALID, ...};
 
 int g_PreviousEffectCount = 1;
 int g_EffectCount = 1;
-bool g_isForced = false;
-bool g_isForcedRandom = false;
+bool g_IsMutuallyExclusiveEffectChosen = false;
+
+bool g_IsForced = false;
+bool g_IsForcedRandom = false;
+bool g_IsForcedRare[MULTIEFFECT_MAX_COUNT + 1] = {false, ...};
+
+bool g_VoteSkip[MAXPLAYERS + 1];
+int g_VoteSkipCount = 0;
+
+StringMap g_Blacklist;
+StringMap g_EffectInfo;
+
 bool g_HasSpawned[MAXPLAYERS + 1];
 
-bool g_voteSkip[MAXPLAYERS + 1];
-int g_voteSkipCount = 0;
-
-Handle g_hudSync;
+Handle g_HudSync;
 Handle g_RestartGameHandle;
 Handle g_Util_OneSecondTimer;
 
@@ -141,7 +150,8 @@ int g_Effect60_PlayerSlot[MAXPLAYERS + 1];
 int g_Effect60_PlayerClip[MAXPLAYERS + 1][3];
 TFClassType g_Effect60_PlayerClass[MAXPLAYERS + 1];
 
-bool g_Effect61_isCommandListenerRegistered;
+bool g_Effect61_IsRareVariant;
+bool g_Effect61_IsCommandListenerRegistered;
 bool g_Effect61_IsParrying[MAXPLAYERS + 1];
 bool g_Effect61_HasRecentlyParried[MAXPLAYERS + 1];
 bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
@@ -214,7 +224,6 @@ Handle g_Effect61_hHUDTimer = null;
 
 /* UTILS */
 #include "utils/set_effect.sp"
-#include "utils/show_description_hint.sp"
 #include "utils/apply_timed_condition.sp"
 #include "utils/force_win.sp"
 #include "utils/is_opposing_team.sp"
@@ -229,11 +238,18 @@ Handle g_Effect61_hHUDTimer = null;
 #include "utils/has_nav_mesh.sp"
 #include "utils/roll_effect_count.sp"
 #include "utils/is_effect_live.sp"
+#include "utils/is_effect_forced_rare.sp"
+#include "utils/apply_powerplay.sp"
+#include "utils/to_lower.sp"
 
-/* LISTS */
-#include "lists/multieffect_exclude.sp"
-#include "lists/multieffect_mutually_exclusive.sp"
-#include "lists/effect_codename.sp"
+/* DATATYPES */
+#include "datatypes/bmap.sp"
+
+/* DATA */
+#include "data/multieffect_exclude.sp"
+#include "data/multieffect_mutually_exclusive.sp"
+#include "data/effect_codename.sp"
+#include "data/effectinfo.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"
@@ -247,6 +263,8 @@ Handle g_Effect61_hHUDTimer = null;
 #include "commands/effect.sp"
 #include "commands/help.sp"
 #include "commands/voteskip.sp"
+#include "commands/roundabout.sp"
+#include "commands/blacklist.sp"
 
 /* EFFECTS */
 enum Effect {

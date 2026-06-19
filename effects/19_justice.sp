@@ -4,8 +4,6 @@ public void Event_RoundStart_19_Justice(Event event, const char[] name, bool don
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect19_LastKiller[i] = 0;
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerDeath_19_Justice(Event event, const char[] name, bool dontBroadcast) {

@@ -1,9 +1,9 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontBroadcast) {
-     if(GetRandomInt(0, 100) <= 5) {
+     if(IsRareEffectForced(EFFECT_SMALL) || GetRandomInt(0, 100) <= 5) {
           g_Effect28_SizeMultiplier = 0.15;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Size multiplier is only 0.15!", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Size multiplier is only 0.15!");
      }
      else {
           g_Effect28_SizeMultiplier = GetRandomFloat(0.35, 0.7);
@@ -15,8 +15,6 @@ public void Event_RoundStart_28_Small(Event event, const char[] name, bool dontB
                TF2Attrib_SetByName(i, "voice pitch scale", 1.4);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_28_Small(Event event, const char[] name, bool dontBroadcast) {

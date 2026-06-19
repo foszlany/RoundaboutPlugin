@@ -5,8 +5,6 @@ public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool d
           ForceClass(i, TFClass_Spy);
           applyAssassinEffect(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool dontBroadcast) {

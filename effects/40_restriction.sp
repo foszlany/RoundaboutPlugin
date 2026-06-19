@@ -34,8 +34,6 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
      for(int i = 1; i <= MaxClients; i++) {
           ForceUnrestrictedClass(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_40_Restriction(Event event, const char[] name, bool dontBroadcast) {

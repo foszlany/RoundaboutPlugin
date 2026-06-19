@@ -13,9 +13,6 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
                g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), GiveMathProblem, i);
           }
      }
-
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dontBroadcast) {
@@ -55,7 +52,7 @@ public Action Event_ChatMessage(int client, const char[] command, int argc) {
 
 // GIVE A CUSTOM MATH PROBLEM
 public void GiveMathProblem(Handle timer, int client) {
-     if(isEffectLive(EFFECT_MATH) && IsClientInGame(client) && IsPlayerAlive(client)) {
+     if(IsEffectLive(EFFECT_MATH) && IsClientInGame(client) && IsPlayerAlive(client)) {
           float kills = float(GetClientFrags(client));
           float deaths = GetClientDeaths(client) == 0 ? 1.0 : float(GetClientDeaths(client));
           int extra = RoundToNearest(200.0 * kills / deaths);
@@ -74,7 +71,7 @@ public void GiveMathProblem(Handle timer, int client) {
                0,
                2.0
           );
-          ShowSyncHudText(client, g_hudSync, "%d + %d = ?", randomA, randomB);
+          ShowSyncHudText(client, g_HudSync, "%d + %d = ?", randomA, randomB);
 
           g_Effect13_MathAnswer[client] = randomA + randomB;
 
@@ -104,7 +101,7 @@ public void checkMathResponse(int client, const char[] command, int argc) {
                NullifyClientMathData(client);
           }
           else {
-               ShowSyncHudText(client, g_hudSync, "");
+               ShowSyncHudText(client, g_HudSync, "");
 
                int randomReassuranceTextIndex = GetRandomInt(0, 6);
                switch(randomReassuranceTextIndex) {
@@ -161,7 +158,7 @@ public void NullifyClientMathData(int client) {
 
           if(g_Effect13_MathAnswer[client] != -1) {
                g_Effect13_MathAnswer[client] = -1;
-               ShowSyncHudText(client, g_hudSync, "");
+               ShowSyncHudText(client, g_HudSync, "");
           }
      }
 }

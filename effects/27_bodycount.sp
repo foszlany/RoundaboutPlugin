@@ -7,14 +7,12 @@ public void Event_RoundStart_27_Bodycount(Event event, const char[] name, bool d
 
      if(GetRandomInt(0, 1) == 0) { // TEMPORARY HEALTH BONUS
           g_Effect27_IsPersistent = false;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x071BB0F6temporary\x01.", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x071BB0F6temporary\x01.");
      }
      else { // PERSISTENT
           g_Effect27_IsPersistent = true;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x07FF9D05persistent\x01.", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Variant: Max health bonus is \x07FF9D05persistent\x01.");
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_27_Bodycount(Event event, const char[] name, bool dontBroadcast) {

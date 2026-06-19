@@ -5,8 +5,6 @@ int g_SafeProjectilesSize = sizeof(g_SafeProjectiles) - 1;
 
 public void Event_RoundStart_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {
      CreateTimer(1.0, AssignNewProjectiles);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {
@@ -26,7 +24,7 @@ public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, b
 }
 
 public Action AssignNewProjectiles(Handle timer) {
-     if(isEffectLive(EFFECT_PMAYHEM)) {
+     if(IsEffectLive(EFFECT_PMAYHEM)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i)) {
                     int primaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Primary);

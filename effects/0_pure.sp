@@ -4,13 +4,11 @@ public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBro
      g_Effect0_FakePure_Timer = null;
      g_Effect0_FakePure_ExplodeTimer = null;
 
-     if(GetRandomInt(0, 100) <= 4) {
+     if(IsRareEffectForced(EFFECT_PURE) || GetRandomInt(0, 100) <= 4) {
           g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(60.0, 160.0), FakePureEvent);
      }
      
      g_Effect0_FakePure_IsActive = false;
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_0_Pure(Event event, const char[] name, bool dontBroadcast) {

@@ -6,8 +6,6 @@ public void Event_RoundStart_33_Invis(Event event, const char[] name, bool dontB
                CreateTimer(0.1, Timer_ApplyInvisibility, i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_33_Invis(Event event, const char[] name, bool dontBroadcast) {

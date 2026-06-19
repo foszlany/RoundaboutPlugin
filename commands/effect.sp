@@ -8,7 +8,12 @@ public Action Command_Effect(int client, int args) {
 	}
 
 	if(args <= 0) {
-		ShowCurrentEffectDescription(client, g_CurrentEffects[0]);
+		if(g_CurrentEffects[0] == EFFECT_INVALID) {
+			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 There are no effects right now.");
+			return Plugin_Handled;
+		}
+
+		ShowCurrentEffectDescription(client);
 	}
 	else if(args >= 2) {
 		ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_effect <id>");
@@ -18,17 +23,24 @@ public Action Command_Effect(int client, int args) {
 		GetCmdArgString(arg, sizeof(arg));
 
 		int id;
-		int parseCount = StringToIntEx(arg, id);
-		if(parseCount <= 0 || parseCount != strlen(arg)) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be an integer");
-			return Plugin_Handled;
+
+		if(EFFECT_TOKENS.ContainsKey(arg)) {
+			EFFECT_TOKENS.GetIntValue(arg, id);
 		}
-		else if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
-			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
-			return Plugin_Handled;
+		else {
+			int parseCount = StringToIntEx(arg, id);
+
+			if(parseCount <= 0 || parseCount != strlen(arg)) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be an integer");
+				return Plugin_Handled;
+			}
+			else if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d", view_as<int>(EFFECT_MAXCOUNT) - 1);
+				return Plugin_Handled;
+			}
 		}
 
-		ShowCurrentEffectDescription(client, id);
+		ShowEffectDescription(client, view_as<Effect>(id));
 	}
 
 	return Plugin_Handled;

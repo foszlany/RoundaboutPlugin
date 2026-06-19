@@ -10,8 +10,6 @@ public void Event_RoundStart_41_NoHud(Event event, const char[] name, bool dontB
      for(int i = 1; i <= MaxClients; i++) {
           HideHUD(i);
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_41_NoHud(Event event, const char[] name, bool dontBroadcast) {

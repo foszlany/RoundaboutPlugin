@@ -17,12 +17,12 @@
      - You can add conditions to your effects. Example code:
           ```cpp
           if(activePlayers < 3) { // If true, effect shouldn't appear unless forced.
-               if(isForced && !g_isForcedRandom) { // Do not change
+               if(g_IsForced && !g_IsForcedRandom) { // Forced on purpose, so run it
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 Hyperheal effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                }
-               else {
+               else { // Roll another effect
                     PrintToServer("[Roundabout] Hyperheal effect condition not met, reshuffled.");
-                    setEffect(effectIndex);
+                    setEffect();
                     return;
                }
           }
@@ -39,16 +39,10 @@
 - You can copy-paste code from one of the already existing effects to get a headstart.<br><br>
 - `RoundStart` is the only necessary component for an effect.
      - It presents the effect details to the players, as well as initialize any variables.
-     - You will need to create the description for your effect inside `utils/show_effect_description.sp` following the same structure as the others.
-     - Example code inside `show_effect_description`:
-          ```cpp
-          PrintCenterTextAll("Perfect Math Class");
-          ShowHintToAllClients("Perfect Math Class\n\nYou will sometimes receive a math question. Answer within 8 seconds or die.");
-          ```
-     - Example code inside the effect file itself (-1 can be replaced with effect ID):
-          ```cpp
-          ShowCurrentEffectDescriptionToAll(-1);
-          ```
+     - Add a token inside `lists/effect_codename.sp` with the ID and a shortform string that should be the same as the filename of your effect.
+          - Keep the token under `32` characters.
+     - You will need to create the description for your effect inside `data/effectinfo.sp` following the same structure as the others.
+
 - `RoundEnd` should do the opposite of `RoundStart`, which means it may unset any variables, remove the effects from the players, as well as kill any ongoing Timers.
 
 - `PlayerUpdate` occurs when a player changes its loadout in spawn or changes classes. The player may be able to bypass an effect by doing these actions, so this is sometimes needed.
@@ -60,8 +54,8 @@
 - You can add other listeners either directly as a function pointer or as a HookEvent that would get unhooked at the end of the round. If you only need the hook for 1 effect, the latter is better.
 
 ## **Step 4:** Testing
-- Use `!roundabout_force <effect_id>` to test your effect.
+- Use `!roundabout_force <id>` to test your effect.
      - Make sure to watch out for errors in the server console.
-- Also make sure to test your effect with other effects using `!roundabout_force count <n>`
+- Also make sure to test your effect with other effects using `!roundabout_force <ids...>`
      - If your effect restricts classes, include it in `lists/multieffect_mutually_exclusive.sp`
      - If your effect is way too fragile, include it in `lists/multieffect_exclude.sp`

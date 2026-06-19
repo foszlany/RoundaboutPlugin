@@ -6,12 +6,10 @@ public void Event_RoundStart_60_TimeTravel(Event event, const char[] name, bool 
      }
 
      CreateTimer(GetRandomFloat(8.0, 32.0), CreateSnapshot);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public Action CreateSnapshot(Handle timer) {
-     if(isEffectLive(EFFECT_TIMETRAVEL)) {
+     if(IsEffectLive(EFFECT_TIMETRAVEL)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i) && IsPlayerAlive(i)) {
                     g_Effect60_PlayerHealth[i] = GetClientHealth(i);
@@ -27,7 +25,6 @@ public Action CreateSnapshot(Handle timer) {
                     for(int slot = 0; slot < 3; slot++) {
                          int slotWeapon = GetPlayerWeaponSlot(i, slot);
                          if(IsValidEntity(slotWeapon)) {
-                              // g_Effect60_PlayerAmmo[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iPrimaryAmmoCount");
                               g_Effect60_PlayerClip[i][slot] = GetEntProp(slotWeapon, Prop_Send, "m_iClip1");
                          }
                     }
@@ -47,7 +44,7 @@ public Action CreateSnapshot(Handle timer) {
 }
 
 public Action ActivateSnapshot(Handle timer) {
-     if(isEffectLive(EFFECT_TIMETRAVEL)) {
+     if(IsEffectLive(EFFECT_TIMETRAVEL)) {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Snapshot activated.");
 
           for(int i = 1; i <= MaxClients; i++) {
@@ -73,7 +70,6 @@ public Action ActivateSnapshot(Handle timer) {
                          for(int slot = 0; slot < 3; slot++) {
                               int weapon = GetPlayerWeaponSlot(i, slot);
                               if(IsValidEntity(weapon)) {
-                                   // SetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoCount", g_Effect60_PlayerAmmo[i][slot]);
                                    SetEntProp(weapon, Prop_Send, "m_iClip1", g_Effect60_PlayerClip[i][slot]);
                               }
                          }

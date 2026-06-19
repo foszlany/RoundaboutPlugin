@@ -6,8 +6,6 @@ public void Event_RoundStart_7_Swim(Event event, const char[] name, bool dontBro
                TF2_AddCondition(i, TFCond_SwimmingNoEffects);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_7_Swim(Event event, const char[] name, bool dontBroadcast) {

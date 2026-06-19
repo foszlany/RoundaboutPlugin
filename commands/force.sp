@@ -14,10 +14,10 @@ public Action Command_ForceRound(int client, int args) {
 		GetCmdArg(2, arg2, sizeof(arg2));
 	}
 
-	// Force random
+	// FORCE RANDOM
 	if(args <= 0) {
-		g_isForced = true;
-		g_isForcedRandom = true;
+		g_IsForced = true;
+		g_IsForcedRandom = true;
 
 		g_EffectCount = RollEffectCount();
 
@@ -25,7 +25,7 @@ public Action Command_ForceRound(int client, int args) {
 		ServerCommand("mp_restartgame 1");
 	}
 
-	// Force multiple random
+	// FORCE MULTIPLE RANDOM
 	else if(args >= 2 && (StrEqual(arg1, "count", false) || StrEqual(arg1, "c", false))) {
 		if(args > 2) {
 			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Usage: !roundabout_force count <n>");
@@ -45,14 +45,14 @@ public Action Command_ForceRound(int client, int args) {
 			return Plugin_Handled;
 		}
 
-		// Generate random effects
+		// GENERATE RANDOM EFFECTS
 		g_EffectCount = n;
 		for(int i = 0; i < g_EffectCount; i++) {
 			g_CurrentEffects[i] = view_as<Effect>(GetRandomInt(0, view_as<int>(EFFECT_MAXCOUNT) - 1));
 		}
 
-		g_isForced = true;
-		g_isForcedRandom = true;
+		g_IsForced = true;
+		g_IsForcedRandom = true;
 
 		if(g_EffectCount > 5) {
 			PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FB524FHigh effect counts can be unstable. You have been warned.\x01", client, n);
@@ -61,12 +61,12 @@ public Action Command_ForceRound(int client, int args) {
 		ServerCommand("mp_restartgame 1");
 	}
 
-	// Force multiple specific
+	// FORCE MULTIPLE SPECIFIC
 	else {
 		char arg[128];
 		GetCmdArgString(arg, sizeof(arg));
 
-		char parts[MULTIEFFECT_MAX_COUNT + 1][16];
+		char parts[MULTIEFFECT_MAX_COUNT + 1][32];
 		int count = ExplodeString(arg, " ", parts, sizeof(parts), sizeof(parts[]));
 
 		if(count > MULTIEFFECT_MAX_COUNT) {
@@ -75,24 +75,49 @@ public Action Command_ForceRound(int client, int args) {
 		}
 
 		ArrayList ids = new ArrayList();
+		ArrayList isRare = new ArrayList();
 		bool isMutuallyExclusivePresent = false;
 		int mutuallyExclusiveEffect = -1;
 
 		for(int i = 0; i < count; i++) {
-			int id;
-			int parsed = StringToIntEx(parts[i], id);
+			char base[32];
+			bool rare = false;
 
-			if(parsed <= 0 || parsed != strlen(parts[i])) {
-				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 '%s' is not a valid integer.", parts[i]);
+			int len = strlen(parts[i]);
+
+			// RARE SUFFIX
+			if(len > 1 && CharToLower(parts[i][len - 1]) == 'r') {
+				rare = true;
+				strcopy(base, sizeof(base), parts[i]);
+				base[len - 1] = '\0';
+			}
+			else {
+				strcopy(base, sizeof(base), parts[i]);
+			}
+
+			int id;
+			int parsed = StringToIntEx(base, id);
+
+			bool isInteger = (parsed > 0 && parsed == strlen(base));
+			bool isToken = EFFECT_TOKENS.ContainsKey(base);
+
+			if(!isInteger && !isToken) {
+				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 '%s' is not a valid integer or token.", parts[i]);
 				return Plugin_Handled;
 			}
+
+			if(!isInteger) {
+				EFFECT_TOKENS.GetIntValue(base, id);
+			}
+
+			isRare.Push(rare);
 
 			if(id < 0 || id >= view_as<int>(EFFECT_MAXCOUNT)) {
 				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID must be between 0 and %d.", view_as<int>(EFFECT_MAXCOUNT) - 1);
 				return Plugin_Handled;
 			}
 
-			if(MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
+			if(count > 1 && MULTIEFFECT_EXCLUDED.FindValue(id) != -1) {
 				ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Effect ID %d cannot be forced with other effects.", id);
 				return Plugin_Handled;
 			}
@@ -102,7 +127,7 @@ public Action Command_ForceRound(int client, int args) {
 				return Plugin_Handled;
 			}
 
-			if(MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
+			if(count > 1 && MULTIEFFECT_MUTUALLY_EXCLUSIVE.FindValue(id) != -1) {
 				if(isMutuallyExclusivePresent) {
 					ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Mutually exclusive effects %d and %d cannot be forced.", mutuallyExclusiveEffect, id);
 					return Plugin_Handled;
@@ -118,6 +143,7 @@ public Action Command_ForceRound(int client, int args) {
 
 		g_EffectCount = count;
 		for(int i = 0; i < count; i++) {
+			g_IsForcedRare[i] = isRare.Get(i);
 			g_CurrentEffects[i] = view_as<Effect>(ids.Get(i));
 		}
 
@@ -132,7 +158,7 @@ public Action Command_ForceRound(int client, int args) {
 			ReplyToCommand(client, "\x07B143F1[Roundabout]\x01 Applied %d effects. Restarting round.", g_EffectCount);
 		}
 
-		g_isForced = true;
+		g_IsForced = true;
 		ServerCommand("mp_restartgame 1");
 	}
 	

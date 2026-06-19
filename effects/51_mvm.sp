@@ -32,8 +32,6 @@ public void Event_RoundStart_51_Mvm(Event event, const char[] name, bool dontBro
                }
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_51_Mvm(Event event, const char[] name, bool dontBroadcast) {

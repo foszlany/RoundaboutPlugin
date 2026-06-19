@@ -6,8 +6,6 @@ public void Event_RoundStart_31_PPerform(Event event, const char[] name, bool do
                ApplyVulnerability(i);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_31_PPerform(Event event, const char[] name, bool dontBroadcast) {

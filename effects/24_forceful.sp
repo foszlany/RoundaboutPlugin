@@ -1,9 +1,9 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool dontBroadcast) {
-     if(GetRandomInt(0, 100) <= 2) {
+     if(IsRareEffectForced(EFFECT_FORCEFUL) || GetRandomInt(0, 100) <= 2) {
           g_Effect24_KnockbackBonus = 10.0;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Knockback multiplier is now way stronger!", name);
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Knockback multiplier is now way stronger!");
      }
      else {
           g_Effect24_KnockbackBonus = 3.0;
@@ -15,8 +15,6 @@ public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool do
                TF2Attrib_SetByName(i, "airblast pushback scale", g_Effect24_KnockbackBonus);
           }
      }
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_24_Forceful(Event event, const char[] name, bool dontBroadcast) {

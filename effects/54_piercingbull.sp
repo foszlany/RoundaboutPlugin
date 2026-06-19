@@ -4,8 +4,6 @@ public void Event_RoundStart_54_PiercingBullets(Event event, const char[] name, 
      for(int i = 1; i <= MaxClients; i++) {
           SetPierceAttributes(i);
      }
-     
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_54_PiercingBullets(Event event, const char[] name, bool dontBroadcast) {

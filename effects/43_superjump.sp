@@ -6,8 +6,6 @@ public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool d
                SDKHook(i, SDKHook_PreThink, Effect43_OnDuck);
           }
      }
-    
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
@@ -19,7 +17,7 @@ public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool don
 }
 
 public void Effect43_OnDuck(int client) {
-     if(!isEffectLive(EFFECT_SUPERJUMP)) {
+     if(!IsEffectLive(EFFECT_SUPERJUMP)) {
           SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
           return;
      }

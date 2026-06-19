@@ -1,9 +1,5 @@
 #pragma semicolon 1
 
-public void Event_RoundStart_6_Vampire(Event event, const char[] name, bool dontBroadcast) {
-     ShowCurrentEffectDescriptionToAll(-1);
-}
-
 public void Event_PlayerHit_6_Vampire(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      int victim = GetClientOfUserId(event.GetInt("userid"));

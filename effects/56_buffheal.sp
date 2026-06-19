@@ -10,8 +10,6 @@ public void Event_RoundStart_56_BuffingHeal(Event event, const char[] name, bool
      }
 
      HookEvent("crossbow_heal", ApplyCrossBowHeal, EventHookMode_Pre);
-
-     ShowCurrentEffectDescriptionToAll(-1);
 }
 
 public void Event_PlayerUpdate_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {    
