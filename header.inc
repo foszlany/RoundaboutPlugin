@@ -160,6 +160,8 @@ Handle g_Effect61_hHUDTimer = null;
 
 int g_Effect64_Fog;
 
+bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -226,6 +228,7 @@ int g_Effect64_Fog;
 #include "effects/62_grapple.sp"
 #include "effects/63_spellbound.sp"
 #include "effects/64_mist.sp"
+#include "effects/65_cosplay.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -339,5 +342,6 @@ enum Effect {
 	EFFECT_GRAPPLINGHOOK	=	62,
 	EFFECT_SPELLBOUND		=	63,
 	EFFECT_MIST			=	64,
+	EFFECT_COSPLAY			=	65,
 	EFFECT_MAXCOUNT
 }

@@ -546,9 +546,7 @@
           - fogmaxdensity: Between `0.4` and `0.7`
           - (default) fogcolor: `216 207 194`
 
-
-
-
-
-
-          
+* **Cosplay**
+     - **ID:** `65`
+     - **Token:** `cosplay`
+     - Upon spawning, players keep their weapons but swap classes.
