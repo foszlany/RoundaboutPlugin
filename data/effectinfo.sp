@@ -23,7 +23,7 @@ void ADD_EFFECT(id, char name[32], char desc[128]) {
 void InitializeEffectInfo() {
     g_EffectInfo = new StringMap();
 
-    ADD_EFFECT(EFFECT_PURE,              "Pure",                     "The vanilla TF2 experience we all love%s");
+    ADD_EFFECT(EFFECT_PURE,              "Pure",                     "The vanilla TF2 experience we all love");
     ADD_EFFECT(EFFECT_LOWGRAVITY,        "Low Gravity",              "Enjoy Moon gravity!");
     ADD_EFFECT(EFFECT_MEDIEVAL,          "Medieval",                 "Enjoy ye old times. Good sire!");
     ADD_EFFECT(EFFECT_CRIT,              "Criticals",                "Guaranteed critical hits.");

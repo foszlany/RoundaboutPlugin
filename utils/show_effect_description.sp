@@ -39,7 +39,7 @@ public void PrintEffectChat(int client, Effect id) {
 
      if(id == EFFECT_PURE) {
           char desc[64];
-          Format(desc, sizeof(desc), info.description, (g_Effect0_FakePure_Timer == null) ? "." : "?");
+          Format(desc, sizeof(desc), "%s%s", info.description, (g_Effect0_FakePure_Timer == null) ? "." : "?");
 
           PrintEffectLine(client, info.name, desc);
           return;
