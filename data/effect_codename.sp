@@ -68,4 +68,5 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("spellbound", 63);
     EFFECT_TOKENS.SetPair("mist", 64);
     EFFECT_TOKENS.SetPair("cosplay", 65);
+    EFFECT_TOKENS.SetPair("wallhack", 66);
 }

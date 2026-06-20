@@ -783,6 +783,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_WALLHACK: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_66_Wallhack;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_66_Wallhack;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_66_Wallhack;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

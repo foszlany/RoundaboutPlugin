@@ -229,6 +229,7 @@ bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
 #include "effects/63_spellbound.sp"
 #include "effects/64_mist.sp"
 #include "effects/65_cosplay.sp"
+#include "effects/66_wallhack.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -343,5 +344,6 @@ enum Effect {
 	EFFECT_SPELLBOUND		=	63,
 	EFFECT_MIST			=	64,
 	EFFECT_COSPLAY			=	65,
+	EFFECT_WALLHACK		=	66,
 	EFFECT_MAXCOUNT
 }

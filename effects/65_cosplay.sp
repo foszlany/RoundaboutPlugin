@@ -46,12 +46,8 @@ public void ChangeModel(int client) {
      } while(newClass == current);
 
      SetEntityModel(client, g_ClassModels[newClass]);
-     
      TF2_RespawnPlayer(client);
-     
-     // Set class after respawn
      SetEntProp(client, Prop_Send, "m_iClass", newClass);
      
-     // Clear the flag
      g_Effect65_IsChangingClasses[client] = false;
 }
