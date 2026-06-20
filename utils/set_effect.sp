@@ -791,6 +791,24 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_REVIVEUBER: {
+                    if(activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Reviving Uber was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Reviving Uber condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_67_ReviveUber;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_67_ReviveUber;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

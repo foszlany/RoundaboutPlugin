@@ -550,3 +550,16 @@
      - **ID:** `65`
      - **Token:** `cosplay`
      - Upon spawning, players keep their weapons but swap classes.
+
+* **Wallhack**
+     - **ID:** `66`
+     - **Token:** `wallhack`
+     - All players are visible through walls.
+          - If it doesn't work, make sure that `glow_outline_effect_enable` is set to `1`
+
+* **Reviving Uber**
+     - **ID:** `67`
+     - **Token:** `reviveuber`
+     - **Conditional effect:** In-game playercount must be `3` or higher.
+     - Activating uber revives players in exchange of `25%` ubercharge.
+
