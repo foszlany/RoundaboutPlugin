@@ -170,6 +170,7 @@
      - **Token:** `infection`
      - **Conditional effect:** In-game playercount must be `4` or higher **AND** gamemode cannot be `Arena`
      - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team (or when the objective is completed).
+          - The last standing player receives guaranteed `Crits`
 
 * **Duelies**
      - **ID:** `21`
@@ -177,7 +178,7 @@
      - **Conditional effect:** In-game playercount must be `3` or higher.
      - Every `20 - 50` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
-          - Killing the duelee will give the attacker `8` seconds of Mini-crits.
+          - Killing the duelee will give the attacker `8` seconds of `Mini-crits`.
 
 * **Heatwave**
      - **ID:** `22`

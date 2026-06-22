@@ -1,6 +1,8 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_20_Infection(Event event, const char[] name, bool dontBroadcast) {
+     g_Effect20_BuffedPlayer = -1;
+
      for(int i = 1; i <= MAXPLAYERS; i++) {
           if(i <= MaxClients && IsClientInGame(i)) {
                g_Effect20_CurrentTeam[i] = TF2_GetClientTeam(i);
@@ -65,6 +67,34 @@ public void InfectionTeamCheck() {
      }
 
      if(redPlayers && bluPlayers > 0) {
+          if(redPlayers == 1) {
+               for(int i = 1; i <= MaxClients; i++) {
+                    if(IsClientInGame(i) && IsPlayerAlive(i) && TF2_GetClientTeam(i) == TFTeam_Red) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07B8383B%N\x01 is the last standing player, now with crits!", i);
+                         TF2_AddCondition(i, TFCond_CritOnWin, TFCondDuration_Infinite);
+                         g_Effect20_BuffedPlayer = i;
+                         break;
+                    }
+               }
+          }
+          else if(bluPlayers == 1) {
+               for(int i = 1; i <= MaxClients; i++) {
+                    if(IsClientInGame(i) && IsPlayerAlive(i) && TF2_GetClientTeam(i) == TFTeam_Blue) {
+                         PrintToChatAll("\x07B143F1[Roundabout]\x01 \x075885A2%N\x01 is the last standing player, now with crits!", i);
+                         TF2_AddCondition(i, TFCond_CritOnWin, TFCondDuration_Infinite);
+                         g_Effect20_BuffedPlayer = i;
+                         break;
+                    }
+               }
+          }
+          else if(g_Effect20_BuffedPlayer > 0) {
+               if(IsClientInGame(g_Effect20_BuffedPlayer) && IsPlayerAlive(g_Effect20_BuffedPlayer)) {
+                    TF2_RemoveCondition(g_Effect20_BuffedPlayer, TFCond_CritOnWin);
+               }
+
+               g_Effect20_BuffedPlayer = -1;
+          }
+
           return;
      }
      else if(redPlayers == 0) {

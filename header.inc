@@ -99,6 +99,7 @@ Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
 int g_Effect19_LastKiller[MAXPLAYERS + 1];
 
 TFTeam g_Effect20_CurrentTeam[MAXPLAYERS + 1];
+int g_Effect20_BuffedPlayer;
 
 int g_Effect21_Duelee[MAXPLAYERS + 1];
 Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
