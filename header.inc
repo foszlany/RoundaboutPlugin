@@ -52,6 +52,8 @@ int g_VoteSkipCount = 0;
 
 StringMap g_Blacklist;
 StringMap g_EffectInfo;
+StringMap g_WeaponInfo;
+StringMap g_ReskinInfo;
 
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -164,6 +166,9 @@ bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
 
 Handle g_Effect68_PingTimer;
 
+Handle g_Effect70_BountyTimer;
+int g_Effect70_BountyWeaponIndex;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -235,6 +240,7 @@ Handle g_Effect68_PingTimer;
 #include "effects/67_reviveuber.sp"
 #include "effects/68_ping.sp"
 #include "effects/69_airdrop.sp"
+#include "effects/70_bounty.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -263,7 +269,9 @@ Handle g_Effect68_PingTimer;
 #include "data/multieffect_exclude.sp"
 #include "data/multieffect_mutually_exclusive.sp"
 #include "data/effect_codename.sp"
-#include "data/effectinfo.sp"
+#include "data/effect_info.sp"
+#include "data/weapon_info.sp"
+#include "data/reskin_info.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"
@@ -353,5 +361,6 @@ enum Effect {
 	EFFECT_REVIVEUBER		=	67,
 	EFFECT_PING			=	68,
 	EFFECT_AIRDROP			=	69,
+	EFFECT_BOUNTY			=	70,
 	EFFECT_MAXCOUNT
 }

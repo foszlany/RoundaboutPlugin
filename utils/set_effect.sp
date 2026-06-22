@@ -835,6 +835,24 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_BOUNTY: {
+                    if(IsGamemodeArena()) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Bounty was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Bounty condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+                    
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_70_Bounty;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_70_Bounty;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_70_Bounty;
+               }
           }
 
           effectIndex++;

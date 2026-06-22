@@ -573,3 +573,12 @@
      - **Token:** `airdrop`
      - **Conditional effect:** In-game playercount must be `3` or higher **AND** gamemode cannot be `Arena`
      - Players respawn on whoever they are spectating.
+
+* **Bounty**
+     - **ID:** `70`
+     - **Token:** `bounty`
+     - **Conditional effect:** Gamemode cannot be `Arena`
+     - Every `45` seconds a new bounty appears.
+          - A bounty specifies a weapon that players need to kill someone with.
+               - Doing so grants `8` seconds of Powerplay.
+               - The bounty may only be claimed once.

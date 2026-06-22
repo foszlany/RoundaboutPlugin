@@ -93,4 +93,5 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_REVIVEUBER,        "Reviving Uber",            "Uber revives players at the cost of 25% charge per player.");
     ADD_EFFECT(EFFECT_PING,              "Continental Advantage",    "The higher your ping, the more you damage!");
     ADD_EFFECT(EFFECT_AIRDROP,           "Mercenary Airdrop",        "You spawn on the player you are spectating.");
+    ADD_EFFECT(EFFECT_BOUNTY,            "Bounty",                   "Kill with a weapon determined by the bounty to get Powerplay!");
 }

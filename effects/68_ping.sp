@@ -15,7 +15,7 @@ public void Event_RoundEnd_68_Ping(Event event, const char[] name, bool dontBroa
      g_Effect68_PingTimer = null;
 }
 
-Action ApplyPingDamageBonus(Handle timer) {
+public Action ApplyPingDamageBonus(Handle timer) {
      if(timer == null) {
           return Plugin_Handled;
      }
@@ -31,7 +31,7 @@ Action ApplyPingDamageBonus(Handle timer) {
      return Plugin_Handled;
 }
 
-float GetPingDamageMultiplier(int ping) {
+public float GetPingDamageMultiplier(int ping) {
      if(ping <= 1) {
           ping = 1;
      }
