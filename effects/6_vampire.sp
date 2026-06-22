@@ -3,7 +3,7 @@
 public void Event_RoundStart_6_Vampire(Event event, const char[] name, bool dontBroadcast) {
      if(IsRareEffectForced(EFFECT_VAMPIRE) || GetRandomInt(0, 100) <= 5) {
           g_Effect6_IsSpecialRound = true;
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! You heal back 100% of the damage dealt");
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! You heal back 100\\% of the damage dealt");
      }
      else {
           g_Effect6_IsSpecialRound = false;

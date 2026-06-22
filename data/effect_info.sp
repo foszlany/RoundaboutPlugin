@@ -29,7 +29,7 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_CRIT,              "Criticals",                "Guaranteed critical hits.");
     ADD_EFFECT(EFFECT_SPEEDBOOST,        "Speedboost",               "Move faster.");
     ADD_EFFECT(EFFECT_THIRDPERSON,       "Thirdperson",              "View yourself from outside.");
-    ADD_EFFECT(EFFECT_VAMPIRE,           "Vampire",                  "Heal back 60% of all your damage dealt when not overhealed.");
+    ADD_EFFECT(EFFECT_VAMPIRE,           "Vampire",                  "Convert some damage into health when not overhealed.");
     ADD_EFFECT(EFFECT_SWIM,              "Swim",                     "Swim like the whole map is underwater.");
     ADD_EFFECT(EFFECT_STRONGSUIT,        "Strong Suit",              "Every respawn you get a random invulnerability (Bullet, blast or fire)");
     ADD_EFFECT(EFFECT_FORCEMELEE,        "Force Melee",              "You only have your melee to protect you!");
