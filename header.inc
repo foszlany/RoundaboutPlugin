@@ -234,6 +234,7 @@ Handle g_Effect68_PingTimer;
 #include "effects/66_wallhack.sp"
 #include "effects/67_reviveuber.sp"
 #include "effects/68_ping.sp"
+#include "effects/69_airdrop.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -351,5 +352,6 @@ enum Effect {
 	EFFECT_WALLHACK		=	66,
 	EFFECT_REVIVEUBER		=	67,
 	EFFECT_PING			=	68,
+	EFFECT_AIRDROP			=	69,
 	EFFECT_MAXCOUNT
 }

@@ -817,6 +817,24 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_AIRDROP: {
+                    if(activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Mercenary Airdrop was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Mercenary Airdrop condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_69_Airdrop;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_69_Airdrop;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;
