@@ -130,7 +130,6 @@ void InitializeWeaponInfo() {
     g_WeaponInfo.SetString("402",  "The Bazaar Bargain");
     g_WeaponInfo.SetString("526",  "The Machina");
     g_WeaponInfo.SetString("752",  "The Hitman's Heatmaker");
-    g_WeaponInfo.SetString("1092", "The Fortified Compound");
     g_WeaponInfo.SetString("1098", "The Classic");
     g_WeaponInfo.SetString("16",   "SMG");
     g_WeaponInfo.SetString("751",  "The Cleaner's Carbine");

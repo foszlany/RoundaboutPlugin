@@ -18,17 +18,14 @@ public void Event_PlayerDeath_70_Bounty(Event event, const char[] name, bool don
           return;
      }
 
-     int weapon = GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon");
-     if(weapon <= MaxClients || !IsValidEntity(weapon)) {
-          return;
-     }
-   
-     int weaponIndex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+     int weaponIndex = event.GetInt("weapon_def_index");
+
      char weaponIndexString[8];
      IntToString(weaponIndex, weaponIndexString, sizeof(weaponIndexString));
 
-     int reskinIndex;
-     bool isReskin = g_ReskinInfo.GetValue(weaponIndexString, reskinIndex);
+     char reskinIndexString[8];
+     bool isReskin = g_ReskinInfo.GetString(weaponIndexString, reskinIndexString, sizeof(reskinIndexString));
+     int reskinIndex = StringToInt(reskinIndexString);
 
      if(g_Effect70_BountyWeaponIndex == weaponIndex || (isReskin && g_Effect70_BountyWeaponIndex == reskinIndex)) {
           ApplyPowerplay(attacker, 8.0);

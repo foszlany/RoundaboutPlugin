@@ -238,6 +238,7 @@ void InitializeReskinInfo() {
     g_ReskinInfo.SetString("957", "14");   // Silver Botkiller Sniper Rifle Mk.II
     g_ReskinInfo.SetString("966", "14");   // Gold Botkiller Sniper Rifle Mk.II
     g_ReskinInfo.SetString("1005", "56");  // Festive Huntsman
+    g_ReskinInfo.SetString("1092", "56");  // The Fortified Compound
     g_ReskinInfo.SetString("15000", "14"); // Night Owl
     g_ReskinInfo.SetString("15007", "14"); // Purple Range
     g_ReskinInfo.SetString("15019", "14"); // Lumber From Down Under
