@@ -534,7 +534,7 @@
      - **Rare variant:** `2%` chance of guaranteed spell drops.
      - Dead players have a `20%` chance of dropping a spell.
 
-* **Mist**
+* **Fog of War**
      - **ID:** `64`
      - **Token:** `mist`
      - **Rare variant:** `6%` chance of the fog to be colored.
