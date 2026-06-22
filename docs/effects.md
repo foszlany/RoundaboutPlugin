@@ -571,5 +571,5 @@
 * **Mercenary Airdrop**
      - **ID:** `69`
      - **Token:** `airdrop`
-     - **Conditional effect:** In-game playercount must be `3` or higher.
+     - **Conditional effect:** In-game playercount must be `3` or higher **AND** gamemode cannot be `Arena`
      - Players respawn on whoever they are spectating.
