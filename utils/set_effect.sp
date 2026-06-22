@@ -148,7 +148,7 @@ public void setEffect() {
 
                case EFFECT_FORCEMELEE: {
                     g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_9_ForceMelee;
-                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_9_ForceMelee;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_9_ForceMelee;
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;

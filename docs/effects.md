@@ -86,6 +86,7 @@
 * **Force Melee**
      - **ID:** `9`
      - **Token:** `forcemelee`
+     - **Rare variant:** `2%` chance of weapons dealing `1000%` more damage
      - Every Players is stripped to melee.
 
 * **Fire Aspect**

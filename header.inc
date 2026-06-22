@@ -79,6 +79,8 @@ TFCond g_Effect3_CritType;
 
 bool g_Effect6_IsSpecialRound;
 
+bool g_Effect9_IsSpecialRound;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
 bool g_Effect13_isCommandListenerRegistered;
