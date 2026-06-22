@@ -308,11 +308,12 @@
 * **Disadvantaged**
      - **ID:** `37`
      - **Token:** `disadvantaged`
-     - One special ability has been taken away from each class (except heavy, who doesn't have one).
+     - One special ability has been taken away from each class.
           - Scout can no longer double jump
           - Soldier can no longer rocket jump.
           - Pyro can no longer airblast.
           - Demoman can no longer use their secondary weapon.
+          - Heavy can no longer use their secondary weapon.
           - Engineer can no longer build.
           - Medic can no longer use their medigun.
           - Sniper can no longer headshot.
