@@ -91,4 +91,5 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_COSPLAY,           "Cosplay",                  "You look like a different class!");
     ADD_EFFECT(EFFECT_WALLHACK,          "Wallhack",                 "I hope you didn't already have it enabled.");
     ADD_EFFECT(EFFECT_REVIVEUBER,        "Reviving Uber",            "Uber revives players at the cost of 25% charge per player.");
+    ADD_EFFECT(EFFECT_PING,              "Continental Advantage",    "The higher your ping, the more you damage!");
 }

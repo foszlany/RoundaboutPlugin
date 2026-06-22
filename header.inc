@@ -162,6 +162,8 @@ int g_Effect64_Fog;
 
 bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
 
+Handle g_Effect68_PingTimer;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -231,6 +233,7 @@ bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
 #include "effects/65_cosplay.sp"
 #include "effects/66_wallhack.sp"
 #include "effects/67_reviveuber.sp"
+#include "effects/68_ping.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -347,5 +350,6 @@ enum Effect {
 	EFFECT_COSPLAY			=	65,
 	EFFECT_WALLHACK		=	66,
 	EFFECT_REVIVEUBER		=	67,
+	EFFECT_PING			=	68,
 	EFFECT_MAXCOUNT
 }

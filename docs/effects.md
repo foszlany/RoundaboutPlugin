@@ -563,3 +563,7 @@
      - **Conditional effect:** In-game playercount must be `3` or higher.
      - Activating uber revives players in exchange of `25%` ubercharge.
 
+* **Continental Advantage**
+     - **ID:** `68`
+     - **Token:** `ping`
+     - Damage scales based on ping between `50%` and `500%`
