@@ -530,7 +530,7 @@
 * **Spellbound**
      - **ID:** `63`
      - **Token:** `spellbound`
-     - **Conditional effect:** Grappling hook and spells must not be enabled.
+     - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`. Grappling hook and spells must not be enabled.
      - **Rare variant:** `2%` chance of guaranteed spell drops.
      - Dead players have a `20%` chance of dropping a spell.
 

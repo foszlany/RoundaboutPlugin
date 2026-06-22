@@ -751,7 +751,7 @@ public void setEffect() {
                     ConVar spells = FindConVar("tf_spells_enabled");
                     bool isSpellsEnabled = GetConVarBool(spells);
 
-                    if(isGrapplingHookEnabled || isSpellsEnabled) {
+                    if((activePlayers < 3 && IsGamemodeArena()) || isGrapplingHookEnabled || isSpellsEnabled) {
                          if(g_IsForced && !g_IsForcedRandom) {
                               PrintToChatAll("\x07B143F1[Roundabout]\x01 Spellbound effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                          }
