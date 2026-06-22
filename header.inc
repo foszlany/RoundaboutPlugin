@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* CONSTANTS */
-#define PLUGIN_VERSION "0.45"
+#define PLUGIN_VERSION "0.50"
 
 #define MULTIEFFECT_MAX_COUNT 10
 
@@ -52,6 +52,8 @@ int g_VoteSkipCount = 0;
 
 StringMap g_Blacklist;
 StringMap g_EffectInfo;
+StringMap g_WeaponInfo;
+StringMap g_ReskinInfo;
 
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -158,6 +160,15 @@ bool g_Effect61_DidSuccessfullyParry[MAXPLAYERS + 1];
 float g_Effect61_fCooldownEndTime[MAXPLAYERS + 1];
 Handle g_Effect61_hHUDTimer = null;
 
+int g_Effect64_Fog;
+
+bool g_Effect65_IsChangingClasses[MAXPLAYERS + 1];
+
+Handle g_Effect68_PingTimer;
+
+Handle g_Effect70_BountyTimer;
+int g_Effect70_BountyWeaponIndex;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -221,6 +232,15 @@ Handle g_Effect61_hHUDTimer = null;
 #include "effects/59_identitytheft.sp"
 #include "effects/60_timetravel.sp"
 #include "effects/61_parry.sp"
+#include "effects/62_grapple.sp"
+#include "effects/63_spellbound.sp"
+#include "effects/64_mist.sp"
+#include "effects/65_cosplay.sp"
+#include "effects/66_wallhack.sp"
+#include "effects/67_reviveuber.sp"
+#include "effects/68_ping.sp"
+#include "effects/69_airdrop.sp"
+#include "effects/70_bounty.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -249,7 +269,9 @@ Handle g_Effect61_hHUDTimer = null;
 #include "data/multieffect_exclude.sp"
 #include "data/multieffect_mutually_exclusive.sp"
 #include "data/effect_codename.sp"
-#include "data/effectinfo.sp"
+#include "data/effect_info.sp"
+#include "data/weapon_info.sp"
+#include "data/reskin_info.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"
@@ -331,5 +353,14 @@ enum Effect {
 	EFFECT_IDENTITYTHEFT	=	59,
 	EFFECT_TIMETRAVEL		=	60,
 	EFFECT_PARRY 			=	61,
+	EFFECT_GRAPPLINGHOOK	=	62,
+	EFFECT_SPELLBOUND		=	63,
+	EFFECT_MIST			=	64,
+	EFFECT_COSPLAY			=	65,
+	EFFECT_WALLHACK		=	66,
+	EFFECT_REVIVEUBER		=	67,
+	EFFECT_PING			=	68,
+	EFFECT_AIRDROP			=	69,
+	EFFECT_BOUNTY			=	70,
 	EFFECT_MAXCOUNT
 }

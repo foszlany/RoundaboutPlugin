@@ -719,6 +719,140 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_GRAPPLINGHOOK: {
+                    ConVar grapplingHook = FindConVar("tf_grapplinghook_enable");
+                    bool isGrapplingHookEnabled = GetConVarBool(grapplingHook);
+
+                    ConVar spells = FindConVar("tf_spells_enabled");
+                    bool isSpellsEnabled = GetConVarBool(spells);
+
+                    if(isGrapplingHookEnabled || isSpellsEnabled) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Grappling Hook effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Grappling Hook effect condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_62_Grapple;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_62_Grapple;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_SPELLBOUND: {
+                    ConVar grapplingHook = FindConVar("tf_grapplinghook_enable");
+                    bool isGrapplingHookEnabled = GetConVarBool(grapplingHook);
+
+                    ConVar spells = FindConVar("tf_spells_enabled");
+                    bool isSpellsEnabled = GetConVarBool(spells);
+
+                    if((activePlayers < 3 && IsGamemodeArena()) || isGrapplingHookEnabled || isSpellsEnabled) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Spellbound effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Spellbound effect condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_63_Spellbound;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_63_Spellbound;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_MIST: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_64_Mist;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_64_Mist;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_64_Mist;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_COSPLAY: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_65_Cosplay;
+                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_65_Cosplay;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_WALLHACK: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_66_Wallhack;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_66_Wallhack;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_66_Wallhack;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_REVIVEUBER: {
+                    if(activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Reviving Uber was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Reviving Uber condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_67_ReviveUber;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_67_ReviveUber;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_PING: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_68_Ping;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_68_Ping;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_AIRDROP: {
+                    if(IsGamemodeArena() || activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Mercenary Airdrop was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Mercenary Airdrop condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_69_Airdrop;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_69_Airdrop;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_BOUNTY: {
+                    if(IsGamemodeArena()) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Bounty was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Bounty condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+                    
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_70_Bounty;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_70_Bounty;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_70_Bounty;
+               }
           }
 
           effectIndex++;

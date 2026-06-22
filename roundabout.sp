@@ -54,6 +54,8 @@ public void OnPluginStart() {
 	InitializeMutuallyExclusiveMultieffects();
 	InitializeEffectTokens();
 	InitializeEffectInfo();
+	InitializeWeaponInfo();
+	InitializeReskinInfo();
 
 	LoadBlacklist();
 

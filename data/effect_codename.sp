@@ -64,4 +64,13 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("identitytheft", 59);
     EFFECT_TOKENS.SetPair("timetravel", 60);
     EFFECT_TOKENS.SetPair("parry", 61);
+    EFFECT_TOKENS.SetPair("grapple", 62);
+    EFFECT_TOKENS.SetPair("spellbound", 63);
+    EFFECT_TOKENS.SetPair("mist", 64);
+    EFFECT_TOKENS.SetPair("cosplay", 65);
+    EFFECT_TOKENS.SetPair("wallhack", 66);
+    EFFECT_TOKENS.SetPair("reviveuber", 67);
+    EFFECT_TOKENS.SetPair("ping", 68);
+    EFFECT_TOKENS.SetPair("airdrop", 69);
+    EFFECT_TOKENS.SetPair("bounty", 70);
 }

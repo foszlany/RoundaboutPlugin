@@ -520,3 +520,65 @@
           - Parrying has a time window of `0.25` seconds with a `1.5` second cooldown.
                - If the player didn't receive damage within the time window, they will take `1.25x` damage for `1.5` seconds.
                - If the player did receive damage, the cooldown is reduced to `0.5` seconds and incoming damage is nullified.
+
+* **Grappling Hook**
+     - **ID:** `62`
+     - **Token:** `grapple`
+     - **Conditional effect:** Grappling hook and spells must not be enabled.
+     - Players can use the grappling hook.
+
+* **Spellbound**
+     - **ID:** `63`
+     - **Token:** `spellbound`
+     - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`. Grappling hook and spells must not be enabled.
+     - **Rare variant:** `2%` chance of guaranteed spell drops.
+     - Dead players have a `20%` chance of dropping a spell.
+
+* **Fog of War**
+     - **ID:** `64`
+     - **Token:** `mist`
+     - **Rare variant:** `6%` chance of the fog to be colored.
+     - A fog takes over the map. The following properties are used:
+          - blend: `1`
+          - fogstart: `1`
+          - fogstart: `1`
+          - fogend: Between `400` and `800`
+          - fogmaxdensity: Between `0.4` and `0.7`
+          - (default) fogcolor: `216 207 194`
+
+* **Cosplay**
+     - **ID:** `65`
+     - **Token:** `cosplay`
+     - Upon spawning, players keep their weapons but swap classes.
+
+* **Wallhack**
+     - **ID:** `66`
+     - **Token:** `wallhack`
+     - All players are visible through walls.
+          - If it doesn't work, make sure that `glow_outline_effect_enable` is set to `1`
+
+* **Reviving Uber**
+     - **ID:** `67`
+     - **Token:** `reviveuber`
+     - **Conditional effect:** In-game playercount must be `3` or higher.
+     - Activating uber revives players in exchange of `25%` ubercharge.
+
+* **Continental Advantage**
+     - **ID:** `68`
+     - **Token:** `ping`
+     - Damage scales based on ping between `50%` and `500%`
+
+* **Mercenary Airdrop**
+     - **ID:** `69`
+     - **Token:** `airdrop`
+     - **Conditional effect:** In-game playercount must be `3` or higher **AND** gamemode cannot be `Arena`
+     - Players respawn on whoever they are spectating.
+
+* **Bounty**
+     - **ID:** `70`
+     - **Token:** `bounty`
+     - **Conditional effect:** Gamemode cannot be `Arena`
+     - Every `45` seconds a new bounty appears.
+          - A bounty specifies a weapon that players need to kill someone with.
+               - Doing so grants `8` seconds of Powerplay.
+               - The bounty may only be claimed once.
