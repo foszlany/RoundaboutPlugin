@@ -123,7 +123,7 @@ public void setEffect() {
                }
 
                case EFFECT_VAMPIRE: {
-                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_6_Vampire;
                     g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_6_Vampire;

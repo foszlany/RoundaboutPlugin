@@ -77,6 +77,8 @@ int g_Effect1_OriginalGravity;
 
 TFCond g_Effect3_CritType;
 
+bool g_Effect6_IsSpecialRound;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
 bool g_Effect13_isCommandListenerRegistered;
