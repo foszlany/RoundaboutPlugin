@@ -152,11 +152,14 @@
      - **Conditional effect:** In-game playercount must be `3` or higher.
      - Players receive increasingly better status effects upon chaining kills.
      - All effects last `8` seconds and they renew after getting a kill.
+          - Once a player obtains the final effect, they can no longer renew them.
      - Effects can be obtained from the previous one in the following order:
           - (None)
           - Speedboost
           - Mini-crit
-          - Defense buff
+          - 75% Fire resistance
+          - 75% Blast resistance
+          - 75% Bullet resistance
           - Crits
           - Uber
 
