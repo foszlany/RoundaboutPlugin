@@ -434,7 +434,7 @@
 * **Mann vs. Machine**
      - **ID:** `51`
      - **Token:** `mvm`
-     - **Conditional effect:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh.
+     - **Conditional effect:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh **AND** there must be no pre-existing bots.
      - Players are assigned to a team at random. `10%` more bots are added to the other team. An additional bot is added if possible.
 
 * **Projectile Mayhem**

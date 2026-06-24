@@ -19,7 +19,7 @@ public void Event_RoundStart_51_Mvm(Event event, const char[] name, bool dontBro
           if(IsClientInGame(i) && !IsFakeClient(i) && TF2_GetClientTeam(i) != g_Effect51_RealPlayerTeam) {
                ChangeClientTeam(i, g_Effect51_RealPlayerTeam);
           }
-     }bots
+     }
 }
 
 public void Event_PlayerUpdate_51_Mvm(Event event, const char[] name, bool dontBroadcast) {

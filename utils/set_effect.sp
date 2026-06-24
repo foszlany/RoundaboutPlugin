@@ -563,7 +563,16 @@ public void setEffect() {
                }
 
                case EFFECT_MVM: {
-                    if(activePlayers >= MaxClients * 0.4 || !HasNavMesh()) {
+                    bool doesServerHaveBots = false;
+
+                    for(int i = 1; i <= MaxClients; i++) {
+                         if(IsClientInGame(i) && IsFakeClient(i)) {
+                              doesServerHaveBots = true;
+                              return;
+                         }
+                    }
+
+                    if(activePlayers >= MaxClients * 0.4 || doesServerHaveBots || !HasNavMesh()) {
                          if(g_IsForced && !g_IsForcedRandom) {
                               PrintToChatAll("\x07B143F1[Roundabout]\x01 Mann vs. Machine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                          }
