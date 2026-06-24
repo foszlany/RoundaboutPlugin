@@ -83,6 +83,8 @@ bool g_Effect9_IsSpecialRound;
 
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
 
+bool g_Effect11_IsSpecialRound;
+
 bool g_Effect13_isCommandListenerRegistered;
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
 Handle g_Effect13_MathQuestionTimers[MAXPLAYERS + 1];

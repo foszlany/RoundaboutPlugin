@@ -163,7 +163,7 @@ public void setEffect() {
                }
 
                case EFFECT_SCHADENFREUDE: {
-                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_11_Schadenfreude;
                     g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;

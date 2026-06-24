@@ -98,6 +98,7 @@
 * **Schadenfreude**
      - **ID:** `11`
      - **Token:** `schadenfreude`
+     - **Rare variant:** `2%` chance of guaranteed taunt.
      - Players have a `33%` chance each kill to forcibly taunt.
 
 * **Spontaneous Combustion**
