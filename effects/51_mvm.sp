@@ -1,37 +1,25 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_51_Mvm(Event event, const char[] name, bool dontBroadcast) {
-     ConVar unbalanceLimit = FindConVar("mp_teams_unbalance_limit");
-     g_Effect51_OriginalUnbalanceLimit = GetConVarInt(unbalanceLimit);
+     ConVar quota = FindConVar("tf_bot_quota");
+     ConVar quotaMode = FindConVar("tf_bot_quota_mode");
 
-     if(unbalanceLimit != null) {
-          int originalFlags = GetConVarFlags(unbalanceLimit);
-          SetConVarFlags(unbalanceLimit, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
+     g_Effect51_OriginalBotCount = quota.IntValue;
 
-          SetConVarInt(unbalanceLimit, 0, true, false);
-     }
-     else {
-          ServerCommand("mp_teams_unbalance_limit 0");
-     }
-     
-     g_Effect51_RealPlayerTeam = view_as<TFTeam>(GetRandomInt(2, 3));
+     quotaMode.SetString("normal", true, false);
 
      int playerCount = CountActivePlayers();
-     g_Effect51_OriginalBotCount = CountActiveFakePlayers();
+     int newBotCount = RoundToFloor(playerCount * 1.1) + 1;
 
-     int newBotcount = RoundToFloor(playerCount * 1.1) + 1;
-     
-     ServerCommand("tf_bot_kick all");
+     quota.SetInt(newBotCount, true, false);
 
-     ServerCommand("tf_bot_add %d %s", newBotcount - g_Effect51_OriginalBotCount, g_Effect51_RealPlayerTeam == TFTeam_Red ? "blu" : "red");
+     g_Effect51_RealPlayerTeam = view_as<TFTeam>(GetRandomInt(2, 3));
 
      for(int i = 1; i <= MaxClients; i++) {
-          if(IsClientInGame(i)) {
-               if(!IsFakeClient(i) && TF2_GetClientTeam(i) != g_Effect51_RealPlayerTeam) {
-                    ChangeClientTeam(i, g_Effect51_RealPlayerTeam);
-               }
+          if(IsClientInGame(i) && !IsFakeClient(i) && TF2_GetClientTeam(i) != g_Effect51_RealPlayerTeam) {
+               ChangeClientTeam(i, g_Effect51_RealPlayerTeam);
           }
-     }
+     }bots
 }
 
 public void Event_PlayerUpdate_51_Mvm(Event event, const char[] name, bool dontBroadcast) {
@@ -43,30 +31,6 @@ public void Event_PlayerUpdate_51_Mvm(Event event, const char[] name, bool dontB
 }
 
 public void Event_RoundEnd_51_Mvm(Event event, const char[] name, bool dontBroadcast) {
-     ConVar unbalanceLimit = FindConVar("mp_teams_unbalance_limit");
-
-     if(unbalanceLimit != null) {
-          int originalFlags = GetConVarFlags(unbalanceLimit);
-          SetConVarFlags(unbalanceLimit, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
-
-          SetConVarInt(unbalanceLimit, g_Effect51_OriginalUnbalanceLimit, true, false);
-     }
-     else {
-          ServerCommand("mp_teams_unbalance_limit %d", g_Effect51_OriginalUnbalanceLimit);
-     }
-     
-     int currentBotCount = CountActiveFakePlayers();
-
-     for(int i = 1; i <= MaxClients; i++) {
-          if(currentBotCount > g_Effect51_OriginalBotCount && IsClientInGame(i) && IsFakeClient(i)) {
-               ServerCommand("tf_bot_kick %N", i);
-               currentBotCount--;
-          }
-     }
-
-     currentBotCount = CountActiveFakePlayers();
-     if(currentBotCount < g_Effect51_OriginalBotCount) {
-          ServerCommand("tf_bot_add %d", g_Effect51_OriginalBotCount - currentBotCount);
-          currentBotCount++;
-     }
+     ConVar quota = FindConVar("tf_bot_quota");
+     quota.SetInt(g_Effect51_OriginalBotCount, true, false);
 }

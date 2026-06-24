@@ -141,7 +141,6 @@ Handle g_Effect50_SwapTimer;
 
 TFTeam g_Effect51_RealPlayerTeam;
 int g_Effect51_OriginalBotCount;
-int g_Effect51_OriginalUnbalanceLimit;
 
 bool g_Effect53_IsSpecialRound;
 
