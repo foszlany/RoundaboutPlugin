@@ -590,3 +590,4 @@
           - A bounty specifies a weapon that players need to kill someone with.
                - Doing so grants `8` seconds of Powerplay.
                - The bounty may only be claimed once.
+               - Reskins can be used.
