@@ -123,7 +123,7 @@ public void setEffect() {
                }
 
                case EFFECT_VAMPIRE: {
-                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_6_Vampire;
                     g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_6_Vampire;
@@ -148,7 +148,7 @@ public void setEffect() {
 
                case EFFECT_FORCEMELEE: {
                     g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_9_ForceMelee;
-                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_9_ForceMelee;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_9_ForceMelee;
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
@@ -163,7 +163,7 @@ public void setEffect() {
                }
 
                case EFFECT_SCHADENFREUDE: {
-                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_11_Schadenfreude;
                     g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
@@ -563,7 +563,16 @@ public void setEffect() {
                }
 
                case EFFECT_MVM: {
-                    if(activePlayers >= MaxClients * 0.4 || !HasNavMesh()) {
+                    bool doesServerHaveBots = false;
+
+                    for(int i = 1; i <= MaxClients; i++) {
+                         if(IsClientInGame(i) && IsFakeClient(i)) {
+                              doesServerHaveBots = true;
+                              return;
+                         }
+                    }
+
+                    if(activePlayers >= MaxClients * 0.4 || doesServerHaveBots || !HasNavMesh()) {
                          if(g_IsForced && !g_IsForcedRandom) {
                               PrintToChatAll("\x07B143F1[Roundabout]\x01 Mann vs. Machine effect was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
                          }

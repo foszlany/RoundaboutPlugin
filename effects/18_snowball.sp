@@ -15,14 +15,21 @@ public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool d
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      
      if(attacker > 0 && IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
-          SnowballKillTimer(attacker);
+          if(g_Effect18_EffectIndex[attacker] < 7) {
+               SnowballKillTimer(attacker);
+          }
           
           switch(++g_Effect18_EffectIndex[attacker]) {
                case 1: TF2_AddCondition(attacker, TFCond_SpeedBuffAlly);
                case 2: TF2_AddCondition(attacker, TFCond_Buffed);
-               case 3: TF2_AddCondition(attacker, TFCond_DefenseBuffed);
-               case 4: TF2_AddCondition(attacker, TFCond_CritOnWin);
-               case 5: TF2_AddCondition(attacker, TFCond_UberchargedCanteen);
+               case 3: TF2_AddCondition(attacker, TFCond_UberFireResist);
+               case 4: TF2_AddCondition(attacker, TFCond_UberBlastResist);
+               case 5: TF2_AddCondition(attacker, TFCond_UberBulletResist);
+               case 6: TF2_AddCondition(attacker, TFCond_CritOnWin);
+               case 7: {
+                    TF2_AddCondition(attacker, TFCond_UberchargedCanteen);
+                    PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has achieved perfection!", attacker);
+               }
           }
 
           g_Effect18_EffectTimer[attacker] = CreateTimer(8.0, SnowballRemoveEffectsTimer, attacker);
@@ -48,7 +55,9 @@ public void SnowballRemoveEffects(int client) {
      if(IsClientInGame(client)) {
           TF2_RemoveCondition(client, TFCond_SpeedBuffAlly);
           TF2_RemoveCondition(client, TFCond_Buffed);
-          TF2_RemoveCondition(client, TFCond_DefenseBuffed);
+          TF2_RemoveCondition(client, TFCond_UberFireResist);
+          TF2_RemoveCondition(client, TFCond_UberBlastResist);
+          TF2_RemoveCondition(client, TFCond_UberBulletResist);
           TF2_RemoveCondition(client, TFCond_CritOnWin);
           TF2_RemoveCondition(client, TFCond_UberchargedCanteen);
      }

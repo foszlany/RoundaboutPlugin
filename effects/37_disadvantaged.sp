@@ -74,8 +74,10 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
                }
           }
           case TFClass_Heavy: {
+               TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
+
                if(isNewClass) {
-                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Heavy\x01: No special effect. Play something less boring.");
+                    PrintToChat(client, "\x07B143F1[Roundabout] \x07D5D5D5Heavy\x01: Secondary weapon has been removed.");
                }
           }
           case TFClass_Engineer: {

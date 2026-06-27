@@ -68,6 +68,7 @@
 * **Vampire**
      - **ID:** `6`
      - **Token:** `vampire`
+     - **Rare variant:** `5%` chance of `100%` heal.
      - Heals back `60%` of the damage dealt when not overhealed.
 
 * **Swim**
@@ -85,6 +86,7 @@
 * **Force Melee**
      - **ID:** `9`
      - **Token:** `forcemelee`
+     - **Rare variant:** `2%` chance of weapons dealing `1000%` more damage
      - Every Players is stripped to melee.
 
 * **Fire Aspect**
@@ -96,6 +98,7 @@
 * **Schadenfreude**
      - **ID:** `11`
      - **Token:** `schadenfreude`
+     - **Rare variant:** `2%` chance of guaranteed taunt.
      - Players have a `33%` chance each kill to forcibly taunt.
 
 * **Spontaneous Combustion**
@@ -149,11 +152,14 @@
      - **Conditional effect:** In-game playercount must be `3` or higher.
      - Players receive increasingly better status effects upon chaining kills.
      - All effects last `8` seconds and they renew after getting a kill.
+          - Once a player obtains the final effect, they can no longer renew them.
      - Effects can be obtained from the previous one in the following order:
           - (None)
           - Speedboost
           - Mini-crit
-          - Defense buff
+          - 75% Fire resistance
+          - 75% Blast resistance
+          - 75% Bullet resistance
           - Crits
           - Uber
 
@@ -168,6 +174,7 @@
      - **Token:** `infection`
      - **Conditional effect:** In-game playercount must be `4` or higher **AND** gamemode cannot be `Arena`
      - Killing a player will force them into the opposing team. The round is over when all players belong in 1 team (or when the objective is completed).
+          - The last standing player receives guaranteed `Crits`
 
 * **Duelies**
      - **ID:** `21`
@@ -175,7 +182,7 @@
      - **Conditional effect:** In-game playercount must be `3` or higher.
      - Every `20 - 50` seconds, users will randomly receive a duel partner that they need to defeat.
           - If neither party dies, both users will explode violently.
-          - Killing the duelee will give the attacker `8` seconds of Mini-crits.
+          - Killing the duelee will give the attacker `8` seconds of `Mini-crits`.
 
 * **Heatwave**
      - **ID:** `22`
@@ -305,11 +312,12 @@
 * **Disadvantaged**
      - **ID:** `37`
      - **Token:** `disadvantaged`
-     - One special ability has been taken away from each class (except heavy, who doesn't have one).
+     - One special ability has been taken away from each class.
           - Scout can no longer double jump
           - Soldier can no longer rocket jump.
           - Pyro can no longer airblast.
           - Demoman can no longer use their secondary weapon.
+          - Heavy can no longer use their secondary weapon.
           - Engineer can no longer build.
           - Medic can no longer use their medigun.
           - Sniper can no longer headshot.
@@ -426,7 +434,7 @@
 * **Mann vs. Machine**
      - **ID:** `51`
      - **Token:** `mvm`
-     - **Conditional effect:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh.
+     - **Conditional effect:** In-game playercount must be at most `40%` of the server's capacity **AND** the map must have a generated navigation mesh **AND** there must be no pre-existing bots.
      - Players are assigned to a team at random. `10%` more bots are added to the other team. An additional bot is added if possible.
 
 * **Projectile Mayhem**
@@ -582,3 +590,4 @@
           - A bounty specifies a weapon that players need to kill someone with.
                - Doing so grants `8` seconds of Powerplay.
                - The bounty may only be claimed once.
+               - Reskins can be used.

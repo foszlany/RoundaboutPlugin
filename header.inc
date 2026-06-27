@@ -77,7 +77,13 @@ int g_Effect1_OriginalGravity;
 
 TFCond g_Effect3_CritType;
 
+bool g_Effect6_IsSpecialRound;
+
+bool g_Effect9_IsSpecialRound;
+
 int g_Effect8_InvulnIndex[MAXPLAYERS + 1];
+
+bool g_Effect11_IsSpecialRound;
 
 bool g_Effect13_isCommandListenerRegistered;
 int g_Effect13_MathAnswer[MAXPLAYERS + 1];
@@ -95,6 +101,7 @@ Handle g_Effect18_EffectTimer[MAXPLAYERS + 1];
 int g_Effect19_LastKiller[MAXPLAYERS + 1];
 
 TFTeam g_Effect20_CurrentTeam[MAXPLAYERS + 1];
+int g_Effect20_BuffedPlayer;
 
 int g_Effect21_Duelee[MAXPLAYERS + 1];
 Handle g_Effect21_EffectTimer[MAXPLAYERS + 1];
@@ -134,7 +141,6 @@ Handle g_Effect50_SwapTimer;
 
 TFTeam g_Effect51_RealPlayerTeam;
 int g_Effect51_OriginalBotCount;
-int g_Effect51_OriginalUnbalanceLimit;
 
 bool g_Effect53_IsSpecialRound;
 
