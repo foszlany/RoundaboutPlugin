@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* CONSTANTS */
-#define PLUGIN_VERSION "0.50"
+#define PLUGIN_VERSION "0.60"
 
 #define MULTIEFFECT_MAX_COUNT 10
 
