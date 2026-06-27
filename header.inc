@@ -175,6 +175,11 @@ Handle g_Effect68_PingTimer;
 Handle g_Effect70_BountyTimer;
 int g_Effect70_BountyWeaponIndex;
 
+Handle g_Effect72_RespawnTimer[MAXPLAYERS + 1];
+Handle g_Effect72_HudTimer[MAXPLAYERS + 1];
+TFTeam g_Effect72_PreviousTeam[MAXPLAYERS + 1];
+float g_Effect72_RespawnTime[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -247,6 +252,8 @@ int g_Effect70_BountyWeaponIndex;
 #include "effects/68_ping.sp"
 #include "effects/69_airdrop.sp"
 #include "effects/70_bounty.sp"
+#include "effects/71_veteran.sp"
+#include "effects/72_freerespawn.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -368,5 +375,7 @@ enum Effect {
 	EFFECT_PING			=	68,
 	EFFECT_AIRDROP			=	69,
 	EFFECT_BOUNTY			=	70,
+	EFFECT_VETERAN			=	71,
+	EFFECT_FREERESPAWN		=	72,
 	EFFECT_MAXCOUNT
 }

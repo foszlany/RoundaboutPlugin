@@ -591,3 +591,13 @@
                - Doing so grants `8` seconds of Powerplay.
                - The bounty may only be claimed once.
                - Reskins can be used.
+
+* **2007**
+     - **ID:** `71`
+     - **Token:** `veteran`
+     - Hats and unusual effects are removed.
+
+* **Freeform Respawn**
+     - **ID:** `71`
+     - **Token:** `freerespawn`
+     - Hats and unusual effects are removed.

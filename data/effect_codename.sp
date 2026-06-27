@@ -73,4 +73,6 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("ping", 68);
     EFFECT_TOKENS.SetPair("airdrop", 69);
     EFFECT_TOKENS.SetPair("bounty", 70);
+    EFFECT_TOKENS.SetPair("veteran", 71);
+    EFFECT_TOKENS.SetPair("freerespawn", 72);
 }

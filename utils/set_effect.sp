@@ -862,6 +862,22 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_70_Bounty;
                }
+
+               case EFFECT_VETERAN: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_71_Veteran;
+                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_71_Veteran;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_FREERESPAWN: {
+                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_72_FreeRespawn;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_72_FreeRespawn;
+               }
           }
 
           effectIndex++;

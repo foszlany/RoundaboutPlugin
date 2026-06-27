@@ -94,4 +94,6 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_PING,              "Continental Advantage",    "The higher your ping, the more you damage!");
     ADD_EFFECT(EFFECT_AIRDROP,           "Mercenary Airdrop",        "You spawn on the player you are spectating.");
     ADD_EFFECT(EFFECT_BOUNTY,            "Bounty",                   "Kill with a weapon specified by the bounty to get Powerplay!");
+    ADD_EFFECT(EFFECT_VETERAN,           "2007",                     "No hats, no unusual effects.");
+    ADD_EFFECT(EFFECT_FREERESPAWN,       "Freeform Respawn",         "You get to choose where to respawn!");
 }
