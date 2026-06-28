@@ -179,6 +179,8 @@ Handle g_Effect72_RespawnTimer[MAXPLAYERS + 1];
 Handle g_Effect72_HudTimer[MAXPLAYERS + 1];
 TFTeam g_Effect72_PreviousTeam[MAXPLAYERS + 1];
 float g_Effect72_RespawnTime[MAXPLAYERS + 1];
+float g_Effect72_DeathPos[MAXPLAYERS + 1][3];
+float g_Effect72_DeathAng[MAXPLAYERS + 1][3];
 
 /* EFFECTS */
 #include "effects/0_pure.sp"

@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E72_RESPAWN_TIME 10.0
+
 public void Event_RoundEnd_72_FreeRespawn(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           NullifyClientRespawnData(i);
@@ -7,29 +9,33 @@ public void Event_RoundEnd_72_FreeRespawn(Event event, const char[] name, bool d
           if(IsClientInGame(i) && !IsPlayerAlive(i) && g_Effect72_PreviousTeam[i] != TFTeam_Unassigned) {
                TF2_ChangeClientTeam(i, g_Effect72_PreviousTeam[i]);
                TF2_RespawnPlayer(i);
+               TF2_RemoveCondition(i, TFCond_HalloweenGhostMode);
           }
      }
 }
 
 public void Event_PlayerDeath_72_FreeRespawn(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-
-     if(!IsClientInGame(client) || IsFakeClient(client) || event.GetInt("death_flags") & 32) {
+     if(!IsClientInGame(client) || IsFakeClient(client) || (event.GetInt("death_flags") & 32)) {
           return;
      }
 
-     float respawnTime = 10.0;
+     g_Effect72_RespawnTime[client] = GetGameTime() + E72_RESPAWN_TIME;
 
-     g_Effect72_PreviousTeam[client] = TF2_GetClientTeam(client);
-     g_Effect72_RespawnTime[client] = GetGameTime() + respawnTime;
-
-     TF2_ChangeClientTeam(client, TFTeam_Spectator);
-
-     SetEntPropEnt(client, Prop_Send, "m_hObserverTarget", -1);
-     SetEntProp(client, Prop_Send, "m_iObserverMode", 4);
+     GetClientAbsOrigin(client, g_Effect72_DeathPos[client]);
+     GetClientAbsAngles(client, g_Effect72_DeathAng[client]);
 
      g_Effect72_HudTimer[client] = CreateTimer(1.0, RespawnHudTick, client, TIMER_REPEAT);
-     g_Effect72_RespawnTimer[client] = CreateTimer(respawnTime, FreeRespawnPlayer, client);
+     g_Effect72_RespawnTimer[client] = CreateTimer(E72_RESPAWN_TIME, FreeRespawnPlayer, client);
+     CreateTimer(0.1, RespawnPlayerGhost, client);
+}
+
+public Action RespawnPlayerGhost(Handle timer, int client) {
+     TF2_RespawnPlayer(client);
+     TeleportEntity(client, g_Effect72_DeathPos[client], g_Effect72_DeathAng[client], NULL_VECTOR);
+     TF2_AddCondition(client, TFCond_HalloweenGhostMode, TFCondDuration_Infinite);
+
+     return Plugin_Handled;
 }
 
 public Action RespawnHudTick(Handle timer, int client) {
@@ -38,7 +44,6 @@ public Action RespawnHudTick(Handle timer, int client) {
      }
 
      float remaining = g_Effect72_RespawnTime[client] - GetGameTime();
-
      if(remaining <= 0.0) {
           return Plugin_Continue;
      }
@@ -46,7 +51,7 @@ public Action RespawnHudTick(Handle timer, int client) {
      char msg[64];
      Format(msg, sizeof(msg), "Respawning in %.0f seconds...", remaining);
 
-     SetHudTextParams(-1.0, 0.2, 5.0, 255, 255, 255, 255);
+     SetHudTextParams(-1.0, 0.2, 3.0, 255, 255, 255, 255);
      ShowHudText(client, 1, msg);
 
      return Plugin_Continue;
@@ -57,19 +62,7 @@ public Action FreeRespawnPlayer(Handle timer, int client) {
           return Plugin_Handled;
      }
 
-     float pos[3], ang[3];
-     GetClientAbsOrigin(client, pos);
-     GetClientAbsAngles(client, ang);
-
-     TF2_ChangeClientTeam(client, g_Effect72_PreviousTeam[client]);
-     TF2_RespawnPlayer(client);
-     TeleportEntity(client, pos, ang, NULL_VECTOR);
-
-     float currentPos[3];
-     GetClientAbsOrigin(client, currentPos);
-     if(GetVectorDistance(currentPos, pos) > 0.1) {
-          PrintToChat(client, "\x07B143F1[Roundabout]\x01 Invalid target.");
-     }
+     TF2_RemoveCondition(client, TFCond_HalloweenGhostMode);
 
      NullifyClientRespawnData(client);
      return Plugin_Handled;
@@ -81,5 +74,8 @@ public void NullifyClientRespawnData(int client) {
           KillTimer(g_Effect72_RespawnTimer[client]);
           g_Effect72_HudTimer[client] = null;
           g_Effect72_RespawnTimer[client] = null;
+
+          SetHudTextParams(-1.0, 0.2, 0.0, 0, 0, 0, 0);
+          ShowHudText(client, 1, "");
      }
 }

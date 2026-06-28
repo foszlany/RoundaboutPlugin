@@ -598,6 +598,7 @@
      - Hats and unusual effects are removed.
 
 * **Freeform Respawn**
-     - **ID:** `71`
+     - **ID:** `72`
      - **Token:** `freerespawn`
-     - Hats and unusual effects are removed.
+     - After dying, players are sent into a ghost state, in which they can choose where they wish to respawn.
+          - Classes must be changed while alive.
