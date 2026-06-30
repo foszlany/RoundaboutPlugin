@@ -186,6 +186,7 @@ int g_Effect73_MaxAmmoCount[MAXPLAYERS + 1][3];
 bool g_Effect73_PickupStatus[2048];
 
 Handle g_Effect74_PumpkinTimers[MAXPLAYERS + 1];
+bool g_Effect74_IsSpecialRound;
 
 /* EFFECTS */
 #include "effects/0_pure.sp"

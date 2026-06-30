@@ -611,5 +611,6 @@
 * **Pumpkin bomber**
      - **ID:** `74`
      - **Token:** `pumpkin`
+     - **Rare variant:** `3%` chance of the cooldown being `8` seconds.
      - Players can call for a medic to spawn pumpkin bombs.
           - Cooldown: `24` seconds.
