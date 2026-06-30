@@ -69,12 +69,12 @@ public Action E74_SpawnPumpkinBomb(int client) {
 }
 
 public bool E74_TraceEntityFilterPlayers(int entity, int contentsMask) {
-    return (entity > MaxClients);
+    return entity > MaxClients;
 }
-
 
 public Action E74_ResetCooldown(Handle timer, int client) {
      g_Effect74_PumpkinTimers[client] = null;
+     EmitSoundToClient(client, "player/recharged.wav");
      return Plugin_Handled;
 }
 

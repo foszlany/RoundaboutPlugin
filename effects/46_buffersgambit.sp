@@ -105,9 +105,9 @@ public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
 
      return Plugin_Continue;
 }
-
+Pum
 public Action Effect46_ResetCooldown(Handle timer, int client) {
      g_Effect46_BuffTimer[client] = null;
-
+     EmitSoundToClient(client, "player/recharged.wav");
      return Plugin_Handled;
 }
