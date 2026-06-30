@@ -152,6 +152,7 @@ public void SimulateHealthPack(int client, float multiplier) {
      float newHealth = totalNewHealth >= clientMaxHealth ? float(clientMaxHealth) : totalNewHealth;
 
      SetEntityHealth(client, RoundToNearest(newHealth));
+     EmitSoundToClient(client, "items/smallmedkit1.wav");
 }
 
 public void SimulateAmmoPack(int client, float multiplier) {

@@ -18,6 +18,7 @@ public void OnMapStart() {
 	PrecacheSound("misc/halloween/spell_teleport.wav", true);
 	PrecacheSound("ui/vote_yes.wav", true);
  	PrecacheSound("player/recharged.wav", true);
+	PrecacheSound("items/smallmedkit1.wav", true);
 }
 
 public void OnPluginStart() {
