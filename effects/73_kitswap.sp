@@ -25,8 +25,24 @@ public void StoreMaxAmmoCount(int client) {
      }
 }
 
+public void OnEntityCreated(int entity, const char[] classname) {
+     if(!IsEffectLive(EFFECT_KITSWAP)) {
+          return;
+     }
+
+     if(StrEqual(classname, "item_healthkit_small", false)
+     || StrEqual(classname, "item_healthkit_medium", false)
+     || StrEqual(classname, "item_healthkit_full", false)
+     || StrEqual(classname, "item_ammopack_small", false)
+     || StrEqual(classname, "item_ammopack_medium", false)
+     || StrEqual(classname, "item_ammopack_full", false)
+     || StrEqual(classname, "tf_ammo_pack", false)) {
+          SDKHook(entity, SDKHook_Touch, OnItemTouch);
+     }
+}
+
 public Action OnItemTouch(int entity, int client) {
-     if(!IsClientInGame(client) || client <= 0 || client > MaxClients || !IsPlayerAlive(client)) {
+     if(client <= 0 || client > MaxClients || !IsClientInGame(client) || !IsPlayerAlive(client)) {
           return Plugin_Continue;
      }
 
@@ -62,6 +78,11 @@ public Action OnItemTouch(int entity, int client) {
           HandlePickupRespawn(entity, true);
           return Plugin_Handled;
      }
+     else if(StrEqual(classname, "tf_ammo_pack", false)) {
+          SimulateHealthPack(client, 0.5);
+          AcceptEntityInput(entity, "Kill");
+          return Plugin_Handled;
+     }
      else if(StrEqual(classname, "item_ammopack_full", false)) {
           SimulateHealthPack(client, 1.0);
           HandlePickupRespawn(entity, true);
@@ -70,7 +91,6 @@ public Action OnItemTouch(int entity, int client) {
 
      return Plugin_Continue;
 }
-
 
 public void HandlePickupRespawn(int entity, bool isAmmoPack) {
      g_Effect73_PickupStatus[entity] = true;
