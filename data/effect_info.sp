@@ -97,5 +97,6 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_VETERAN,           "2007",                     "No hats, no unusual effects.");
     ADD_EFFECT(EFFECT_FREERESPAWN,       "Freeform Respawn",         "You get to choose where to respawn!");
     ADD_EFFECT(EFFECT_KITSWAP,           "Kitswap",                  "Health and ammopack functionalities are swapped.");
-    ADD_EFFECT(EFFECT_PUMPKIN,           "Pumpkin bomber",           "You can now spawn pumpkin bombs by calling for a medic.");
+    ADD_EFFECT(EFFECT_PUMPKIN,           "Pumpkin Bomber",           "You can now spawn pumpkin bombs by calling for a medic.");
+    ADD_EFFECT(EFFECT_BOMBER,            "Suicide Bomber",           "Suiciding causes an explosion that damages nearby enemies.");
 }

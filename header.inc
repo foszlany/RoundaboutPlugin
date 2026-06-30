@@ -12,8 +12,6 @@
 #define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.04"
 #define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
 
-#define DMG_SOCIALDIST (1 << 30)
-
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
 BidirectionalMap EFFECT_TOKENS;
@@ -264,6 +262,7 @@ bool g_Effect74_IsSpecialRound;
 #include "effects/72_freerespawn.sp"
 #include "effects/73_kitswap.sp"
 #include "effects/74_pumpkin.sp"
+#include "effects/75_bomber.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -389,5 +388,6 @@ enum Effect {
 	EFFECT_FREERESPAWN		=	72,
 	EFFECT_KITSWAP			=	73,
 	EFFECT_PUMPKIN			=	74,
+	EFFECT_BOMBER			=	75,
 	EFFECT_MAXCOUNT
 }

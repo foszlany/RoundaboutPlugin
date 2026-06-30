@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define DMG_SOCIALDIST (1 << 30)
+
 public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      int victim = GetClientOfUserId(event.GetInt("userid"));

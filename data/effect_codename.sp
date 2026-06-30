@@ -77,4 +77,5 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("freerespawn", 72);
     EFFECT_TOKENS.SetPair("kitswap", 73);
     EFFECT_TOKENS.SetPair("pumpkin", 74);
+    EFFECT_TOKENS.SetPair("bomber", 75);
 }
