@@ -25,7 +25,7 @@ public void Event_PlayerDeath_72_FreeRespawn(Event event, const char[] name, boo
      GetClientAbsOrigin(client, g_Effect72_DeathPos[client]);
      GetClientAbsAngles(client, g_Effect72_DeathAng[client]);
 
-     g_Effect72_HudTimer[client] = CreateTimer(1.0, RespawnHudTick, client, TIMER_REPEAT);
+     g_Effect72_HudTimer[client] = CreateTimer(0.5, RespawnHudTick, client, TIMER_REPEAT);
      g_Effect72_RespawnTimer[client] = CreateTimer(E72_RESPAWN_TIME, FreeRespawnPlayer, client);
      CreateTimer(0.1, RespawnPlayerGhost, client);
 }

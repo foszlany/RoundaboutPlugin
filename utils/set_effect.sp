@@ -878,6 +878,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_72_FreeRespawn;
                }
+
+               case EFFECT_KITSWAP: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_73_KitSwap;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_73_KitSwap;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_73_KitSwap;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

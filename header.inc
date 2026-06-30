@@ -182,6 +182,9 @@ float g_Effect72_RespawnTime[MAXPLAYERS + 1];
 float g_Effect72_DeathPos[MAXPLAYERS + 1][3];
 float g_Effect72_DeathAng[MAXPLAYERS + 1][3];
 
+int g_Effect73_MaxAmmoCount[MAXPLAYERS + 1][3];
+bool g_Effect73_PickupStatus[2048];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -256,6 +259,7 @@ float g_Effect72_DeathAng[MAXPLAYERS + 1][3];
 #include "effects/70_bounty.sp"
 #include "effects/71_veteran.sp"
 #include "effects/72_freerespawn.sp"
+#include "effects/73_kitswap.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -379,5 +383,6 @@ enum Effect {
 	EFFECT_BOUNTY			=	70,
 	EFFECT_VETERAN			=	71,
 	EFFECT_FREERESPAWN		=	72,
+	EFFECT_KITSWAP			=	73,
 	EFFECT_MAXCOUNT
 }

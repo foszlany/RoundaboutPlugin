@@ -602,3 +602,8 @@
      - **Token:** `freerespawn`
      - After dying, players are sent into a ghost state, in which they can choose where they wish to respawn.
           - Classes must be changed while alive.
+
+* **Kitswap**
+     - **ID:** `73`
+     - **Token:** `kitswap`
+     - Ammo and health pickups have swapped functionality.

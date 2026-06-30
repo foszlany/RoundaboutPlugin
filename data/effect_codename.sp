@@ -75,4 +75,5 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("bounty", 70);
     EFFECT_TOKENS.SetPair("veteran", 71);
     EFFECT_TOKENS.SetPair("freerespawn", 72);
+    EFFECT_TOKENS.SetPair("kitswap", 73);
 }
