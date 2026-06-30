@@ -107,9 +107,7 @@ public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
 }
 
 public Action Effect46_ResetCooldown(Handle timer, int client) {
-     if(IsClientInGame(client)) {
-          g_Effect46_BuffTimer[client] = null;
-     }
+     g_Effect46_BuffTimer[client] = null;
 
      return Plugin_Handled;
 }

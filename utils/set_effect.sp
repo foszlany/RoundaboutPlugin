@@ -886,6 +886,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_PUMPKIN: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_74_PumpkinBomb;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_74_PumpkinBomb;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

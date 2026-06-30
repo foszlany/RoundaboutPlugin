@@ -607,3 +607,9 @@
      - **ID:** `73`
      - **Token:** `kitswap`
      - Ammo and health pickups have swapped functionality.
+
+* **Pumpkin bomber**
+     - **ID:** `74`
+     - **Token:** `pumpkin`
+     - Players can call for a medic to spawn pumpkin bombs.
+          - Cooldown: `24` seconds.

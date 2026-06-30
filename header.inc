@@ -185,6 +185,8 @@ float g_Effect72_DeathAng[MAXPLAYERS + 1][3];
 int g_Effect73_MaxAmmoCount[MAXPLAYERS + 1][3];
 bool g_Effect73_PickupStatus[2048];
 
+Handle g_Effect74_PumpkinTimers[MAXPLAYERS + 1];
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -260,6 +262,7 @@ bool g_Effect73_PickupStatus[2048];
 #include "effects/71_veteran.sp"
 #include "effects/72_freerespawn.sp"
 #include "effects/73_kitswap.sp"
+#include "effects/74_pumpkin.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -384,5 +387,6 @@ enum Effect {
 	EFFECT_VETERAN			=	71,
 	EFFECT_FREERESPAWN		=	72,
 	EFFECT_KITSWAP			=	73,
+	EFFECT_PUMPKIN			=	74,
 	EFFECT_MAXCOUNT
 }
