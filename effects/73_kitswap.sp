@@ -54,42 +54,93 @@ public Action OnItemTouch(int entity, int client) {
      GetEntityClassname(entity, classname, sizeof(classname));
 
      if(StrEqual(classname, "item_healthkit_small", false)) {
+          if(!IsAmmoObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateAmmoPack(client, 0.2);
           HandlePickupRespawn(entity, false);
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "item_healthkit_medium", false)) {
+          if(!IsAmmoObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateAmmoPack(client, 0.5);
           HandlePickupRespawn(entity, false);
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "item_healthkit_full", false)) {
+          if(!IsAmmoObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateAmmoPack(client, 1.0);
           HandlePickupRespawn(entity, false);
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "item_ammopack_small", false)) {
+          if(!IsHealthObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateHealthPack(client, 0.2);
           HandlePickupRespawn(entity, true);
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "item_ammopack_medium", false)) {
+          if(!IsHealthObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateHealthPack(client, 0.5);
           HandlePickupRespawn(entity, true);
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "tf_ammo_pack", false)) {
+          if(!IsHealthObtainable(client)) {
+               return Plugin_Handled;
+          }
+          
           SimulateHealthPack(client, 0.5);
           AcceptEntityInput(entity, "Kill");
           return Plugin_Handled;
      }
      else if(StrEqual(classname, "item_ammopack_full", false)) {
+          if(!IsHealthObtainable(client)) {
+               return Plugin_Handled;
+          }
+
           SimulateHealthPack(client, 1.0);
           HandlePickupRespawn(entity, true);
           return Plugin_Handled;
      }
 
      return Plugin_Continue;
+}
+
+public bool IsHealthObtainable(int client) {
+     int clientHealth = GetClientHealth(client);
+     int clientMaxHealth = GetEntData(client, FindDataMapInfo(client, "m_iMaxHealth"), 4);
+
+     return clientHealth != clientMaxHealth;
+}
+
+public bool IsAmmoObtainable(int client) {
+     bool hasMissingAmmo = false;
+
+     for(int slot = 0; slot < 3; slot++) {
+          int maxAmmo = g_Effect73_MaxAmmoCount[client][slot];
+          int currentAmmo = GetAmmo(client, slot);
+
+          if(currentAmmo != maxAmmo) {
+               hasMissingAmmo = true;
+               break;
+          }
+     }
+     
+     return hasMissingAmmo;
 }
 
 public void HandlePickupRespawn(int entity, bool isAmmoPack) {
