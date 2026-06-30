@@ -12,7 +12,7 @@ public void Event_RoundStart_74_PumpkinBomb(Event event, const char[] name, bool
           g_Effect74_IsSpecialRound = false;
      }
 
-     AddCommandListener(OnPumpkinSpawnAttempt, "voicemenu");
+     AddCommandListener(E74_OnPumpkinSpawnAttempt, "voicemenu");
 
      for(int i = 1; i <= MaxClients; i++) {
           g_Effect74_PumpkinTimers[i] = null;
@@ -21,16 +21,16 @@ public void Event_RoundStart_74_PumpkinBomb(Event event, const char[] name, bool
 
 public void Event_RoundEnd_74_PumpkinBomb(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          NullifyClientPumpkinData(i);
+          E74_NullifyClientPumpkinData(i);
      }
 }
 
-public Action OnPumpkinSpawnAttempt(client, const String:command[], argc) {
+public Action E74_OnPumpkinSpawnAttempt(client, const String:command[], argc) {
      char arguments[4];
      GetCmdArgString(arguments, sizeof(arguments));
 
      if(StrEqual(arguments, "0 0") && IsEffectLive(EFFECT_PUMPKIN) && g_Effect74_PumpkinTimers[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
-          SpawnPumpkinBomb(client);
+          E74_SpawnPumpkinBomb(client);
 
           g_Effect74_PumpkinTimers[client] = CreateTimer(g_Effect74_IsSpecialRound ? E74_RARECOOLDOWN : E74_COOLDOWN, E74_ResetCooldown, client);
           return Plugin_Handled;
@@ -39,7 +39,7 @@ public Action OnPumpkinSpawnAttempt(client, const String:command[], argc) {
      return Plugin_Continue;
 }
 
-public Action SpawnPumpkinBomb(int client) {
+public Action E74_SpawnPumpkinBomb(int client) {
      float eyePos[3];
      float eyeAng[3];
      float forwardVec[3];
@@ -54,7 +54,7 @@ public Action SpawnPumpkinBomb(int client) {
      endPos[1] = eyePos[1] + forwardVec[1] * 1000.0;
      endPos[2] = eyePos[2] + forwardVec[2] * 1000.0;
 
-     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, TraceEntityFilterPlayers);
+     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, E74_TraceEntityFilterPlayers);
 
      float hitPos[3];
      TR_GetEndPosition(hitPos);
@@ -68,7 +68,7 @@ public Action SpawnPumpkinBomb(int client) {
      return Plugin_Handled;
 }
 
-public bool TraceEntityFilterPlayers(int entity, int contentsMask) {
+public bool E74_TraceEntityFilterPlayers(int entity, int contentsMask) {
     return (entity > MaxClients);
 }
 
@@ -78,7 +78,7 @@ public Action E74_ResetCooldown(Handle timer, int client) {
      return Plugin_Handled;
 }
 
-public void NullifyClientPumpkinData(int client) {
+public void E74_NullifyClientPumpkinData(int client) {
      if(g_Effect74_PumpkinTimers[client] != null) {
           KillTimer(g_Effect74_PumpkinTimers[client]);
           g_Effect74_PumpkinTimers[client] = null;
