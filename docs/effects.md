@@ -621,5 +621,5 @@
      - **Token:** `bomber`
      - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
      - Suiciding causes an explosion that damages nearby enemies.
-          - Radius: `300` HU
+          - Radius: `300 HU`
           - Max damage: `200`

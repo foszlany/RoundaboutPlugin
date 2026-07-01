@@ -3,6 +3,11 @@
 #define E75_MAXDMG 200.0
 #define E75_RADIUS 300.0
 
+public void Event_RoundStart_75_SuicideBomber(Event event, const char[] name, bool dontBroadcast) {
+     AddCommandListener(E75_OnSuicide, "kill");
+     AddCommandListener(E75_OnSuicide, "explode");
+}
+
 public void Event_PlayerDeath_75_SuicideBomber(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
@@ -10,6 +15,16 @@ public void Event_PlayerDeath_75_SuicideBomber(Event event, const char[] name, b
      if(IsClientInGame(victim) && (attacker <= 0 || attacker > MaxClients || attacker == victim)) {
           E75_CreateExplosion(victim);
      }
+}
+
+public void Event_RoundEnd_75_SuicideBomber(Event event, const char[] name, bool dontBroadcast) {
+     RemoveCommandListener(E75_OnSuicide, "kill");
+     RemoveCommandListener(E75_OnSuicide, "explode");
+}
+
+public Action E75_OnSuicide(int client, const char[] command, int argc) {
+     E75_CreateExplosion(client);
+     return Plugin_Continue;
 }
 
 public void E75_CreateExplosion(int client) {
@@ -33,4 +48,6 @@ public void E75_CreateExplosion(int client) {
                SDKHooks_TakeDamage(i, client, client, scaled, DMG_BLAST);
           }
      }
+
+     EmitSoundToAll("weapons/explode3.wav", SNDCHAN_AUTO, SNDLEVEL_NORMAL, _, _, 0.7, _, _, origin);
 }

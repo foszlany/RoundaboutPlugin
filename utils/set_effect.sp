@@ -916,8 +916,8 @@ public void setEffect() {
                          }
                     }
 
-                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
-                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_75_SuicideBomber;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_75_SuicideBomber;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_75_SuicideBomber;
