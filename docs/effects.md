@@ -493,7 +493,7 @@
 * **King**
      - **ID:** `58`
      - **Token:** `king`
-     - **Conditional effect:** Gamemode cannot be Arena.
+     - **Conditional effect:** Gamemode cannot be `Arena`.
      - At the start of the round a King is randomly selected.
           - Killing the King will give the title to the killer.
           - The King has the following effects:
@@ -619,6 +619,7 @@
 * **Suicide Bomber**
      - **ID:** `75`
      - **Token:** `bomber`
+     - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
      - Suiciding causes an explosion that damages nearby enemies.
           - Radius: `300` HU
           - Max damage: `200`

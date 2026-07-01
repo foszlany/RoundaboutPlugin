@@ -906,6 +906,16 @@ public void setEffect() {
                }
 
                case EFFECT_BOMBER: {
+                    if(IsGamemodeArena() && activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Suicide Bomber was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Suicide Bomber condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
                     g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
