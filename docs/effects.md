@@ -600,6 +600,7 @@
 * **Freeform Respawn**
      - **ID:** `72`
      - **Token:** `freerespawn`
+     - **Conditional effect:** Gamemode cannot be `Arena`
      - After dying, players are sent into a ghost state, in which they can choose where they wish to respawn.
           - Classes must be changed while alive.
 
@@ -612,10 +613,12 @@
      - **ID:** `74`
      - **Token:** `pumpkin`
      - **Rare variant:** `3%` chance of the cooldown being `8` seconds.
-     - Players can call for a medic to spawn pumpkin bombs.
+     - Players can call for a medic to spawn a pumpkin bomb.
           - Cooldown: `24` seconds.
           
 * **Suicide Bomber**
      - **ID:** `75`
      - **Token:** `bomber`
      - Suiciding causes an explosion that damages nearby enemies.
+          - Radius: `300` HU
+          - Max damage: `200`

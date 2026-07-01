@@ -872,6 +872,16 @@ public void setEffect() {
                }
 
                case EFFECT_FREERESPAWN: {
+                    if(IsGamemodeArena()) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Freeform Respawn was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Freeform Respawn condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
                     g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_72_FreeRespawn;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
