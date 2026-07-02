@@ -6,7 +6,7 @@ public void Event_RoundStart_76_UniversalWear(Event event, const char[] name, bo
      StringMapSnapshot snap = g_WeaponInfo.Snapshot();
 
      int len = snap.Length;
-     char key[32];
+     char key[8];
 
      for(int i = 0; i < len; i++) {
           snap.GetKey(i, key, sizeof(key));
@@ -67,52 +67,48 @@ public void Event_PlayerDeath_76_UniversalWear(Event event, const char[] name, b
      E76_UpdateWeaponDamageAll(weaponIndex, currentValue + 1);
 }
 
-public void E76_UpdateWeaponDamageAll(int weaponIndex, int value)
-{
-    char key[16];
-    IntToString(weaponIndex, key, sizeof(key));
+public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
+     char key[8];
+     IntToString(weaponIndex, key, sizeof(key));
 
-    char reskinKey[16];
-    if (g_ReskinInfo.GetString(key, reskinKey, sizeof(reskinKey)))
-    {
-        strcopy(key, sizeof(key), reskinKey);
-    }
+     char reskinKey[8];
+     if(g_ReskinInfo.GetString(key, reskinKey, sizeof(reskinKey))) {
+          strcopy(key, sizeof(key), reskinKey);
+     }
 
-    int canonicalIndex = StringToInt(key);
+     int canonicalIndex = StringToInt(key);
 
-    float bonus = 1.0 - (value * 0.02);
+     float bonus = 1.0 - (value * 0.02);
 
-    for(int i = 1; i <= MaxClients; i++)
-    {
-        if (!IsClientInGame(i) || !IsPlayerAlive(i))
-            continue;
+     for(int i = 1; i <= MaxClients; i++) {
+          if(!IsClientInGame(i) || !IsPlayerAlive(i)) {
+               continue;
+          }
 
-        for(int s = 0; s < 3; s++)
-        {
-            int weapon = GetPlayerWeaponSlot(i, slots[s]);
-            if (weapon == -1 || !IsValidEntity(weapon))
-                continue;
+          for(int s = 0; s < 3; s++) {
+               int weapon = GetPlayerWeaponSlot(i, slots[s]);
+               if(weapon == -1 || !IsValidEntity(weapon)) {
+                    continue;
+               }
 
-            int defindex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+               int defindex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
 
-            char defKey[16];
-            IntToString(defindex, defKey, sizeof(defKey));
+               char defKey[8];
+               IntToString(defindex, defKey, sizeof(defKey));
 
-            char defReskinKey[16];
-            if (g_ReskinInfo.GetString(defKey, defReskinKey, sizeof(defReskinKey)))
-            {
-                strcopy(defKey, sizeof(defKey), defReskinKey);
-            }
+               char defReskinKey[8];
+               if(g_ReskinInfo.GetString(defKey, defReskinKey, sizeof(defReskinKey))) {
+                    strcopy(defKey, sizeof(defKey), defReskinKey);
+               }
 
-            int defCanonical = StringToInt(defKey);
+               int defCanonical = StringToInt(defKey);
 
-            if (defCanonical == canonicalIndex)
-            {
-                TF2Attrib_SetByName(weapon, "damage bonus", bonus);
-                break;
-            }
-        }
-    }
+               if(defCanonical == canonicalIndex) {
+                    TF2Attrib_SetByName(weapon, "damage bonus", bonus);
+                    break;
+               }
+          }
+     }
 }
 
 public void E76_UpdateWeaponDamage(int client) {
@@ -128,10 +124,10 @@ public void E76_UpdateWeaponDamage(int client) {
 
           int defindex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
 
-          char key[16];
+          char key[8];
           IntToString(defindex, key, sizeof(key));
 
-          char reskinKey[16];
+          char reskinKey[8];
           if(g_ReskinInfo.GetString(key, reskinKey, sizeof(reskinKey))) {
                strcopy(key, sizeof(key), reskinKey);
           }
