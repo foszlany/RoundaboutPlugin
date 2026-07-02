@@ -2,7 +2,7 @@
 
 public void Event_RoundStart_70_Bounty(Event event, const char[] name, bool dontBroadcast) {
      g_Effect70_BountyWeaponIndex = -1;
-     g_Effect70_BountyTimer = CreateTimer(45.0, GenerateBounty, _, TIMER_REPEAT);
+     g_Effect70_BountyTimer = CreateTimer(45.0, E70_GenerateBounty, _, TIMER_REPEAT);
 }
 
 public void Event_RoundEnd_70_Bounty(Event event, const char[] name, bool dontBroadcast) {
@@ -34,13 +34,13 @@ public void Event_PlayerDeath_70_Bounty(Event event, const char[] name, bool don
      }
 }
 
-public Action GenerateBounty(Handle timer) {
+public Action E70_GenerateBounty(Handle timer) {
      if(timer == null) {
           return Plugin_Handled;
      }
 
      char id[8], name[64];
-     if(!GetRandomWeapon(id, sizeof(id), name, sizeof(name))) {
+     if(!E70_GetRandomWeapon(id, sizeof(id), name, sizeof(name))) {
           PrintToServer("Someone went very wrong while generating a bounty weapon!");
           return Plugin_Handled;
      }
@@ -52,7 +52,7 @@ public Action GenerateBounty(Handle timer) {
      return Plugin_Handled;
 }
 
-bool GetRandomWeapon(char[] key, int keyLen, char[] value, int valueLen) {
+public bool E70_GetRandomWeapon(char[] key, int keyLen, char[] value, int valueLen) {
      StringMapSnapshot snap = g_WeaponInfo.Snapshot();
      int count = snap.Length;
 

@@ -14,10 +14,10 @@ public void Event_PlayerSpawn_Post(Event event, const char[] name, bool dontBroa
           return;
      }
 
-     CreateTimer(0.0, Timer_TeleportToSpectated, client);
+     CreateTimer(0.0, Timer_E69_TeleportToSpectated, client);
 }
 
-public Action Timer_TeleportToSpectated(Handle timer, any client) {
+public Action Timer_E69_TeleportToSpectated(Handle timer, any client) {
      if(IsClientInGame(client) && client > 1 && client <= MaxClients || !IsPlayerAlive(client)) {
           return Plugin_Handled;
      }

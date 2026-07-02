@@ -2,16 +2,16 @@
 
 public void Event_RoundStart_71_Veteran(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          KillWearables(i);
+          E72_KillWearables(i);
      }
 }
 
 public void Event_PlayerUpdate_71_Veteran(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     KillWearables(client);
+     E72_KillWearables(client);
 }
 
-void KillWearables(int client) {
+public void E72_KillWearables(int client) {
      if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
           return;    
      }
