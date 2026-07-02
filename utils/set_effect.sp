@@ -924,6 +924,16 @@ public void setEffect() {
                }
 
                case EFFECT_UNIVERSALWEAR: {
+                    if(IsGamemodeArena() && activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Universal Wear was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Universal Wear condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
                     g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_76_UniversalWear;
                     g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_76_UniversalWear;
                     g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_76_UniversalWear;
