@@ -1,5 +1,8 @@
 #pragma semicolon 1
 
+#define E76_DAMAGEPENALTY 0.02
+#define E76_MINDAMAGE 0.10
+
 public void Event_RoundStart_76_UniversalWear(Event event, const char[] name, bool dontBroadcast) {
      g_Effect76_KillCount = new StringMap();
 
@@ -38,9 +41,15 @@ public void Event_RoundEnd_76_UniversalWear(Event event, const char[] name, bool
 }
 
 public void Event_PlayerUpdate_76_UniversalWear(Event event, const char[] name, bool dontBroadcast) {
-     int client = GetClientOfUserId(event.GetInt("userid"));
-     E76_UpdateWeaponDamage(client);
+    int client = GetClientOfUserId(event.GetInt("userid"));
+
+    E76_UpdateWeaponDamage(client);
+
+    char msg[512];
+    E76_BuildWearString(client, msg, sizeof(msg));
+    E76_ShowWear(client, msg, 2.5);
 }
+
 
 public void Event_PlayerDeath_76_UniversalWear(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
@@ -78,7 +87,10 @@ public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
 
      int canonicalIndex = StringToInt(key);
 
-     float bonus = 1.0 - (value * 0.02);
+     float bonus = 1.0 - (value * E76_DAMAGEPENALTY);
+
+     char msg[256];
+     E76_BuildWearString_Notify(weaponIndex, msg, sizeof(msg));
 
      for(int i = 1; i <= MaxClients; i++) {
           if(!IsClientInGame(i) || !IsPlayerAlive(i)) {
@@ -105,6 +117,7 @@ public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
 
                if(defCanonical == canonicalIndex) {
                     TF2Attrib_SetByName(weapon, "damage bonus", bonus);
+                    E76_ShowWear(i, msg, 1.0);
                     break;
                }
           }
@@ -135,7 +148,73 @@ public void E76_UpdateWeaponDamage(int client) {
           int kills = 0;
           g_Effect76_KillCount.GetValue(key, kills);
 
-          float bonus = 1.0 - (kills * 0.02);
+          float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
           TF2Attrib_SetByName(weapon, "damage bonus", bonus);
      }
+}
+
+public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
+     buffer[0] = '\0';
+
+     for(int s = 0; s < 3; s++) {
+          int weapon = GetPlayerWeaponSlot(client, slots[s]);
+          if(weapon == -1 || !IsValidEntity(weapon)) {
+               continue;
+          }
+
+          int defindex = GetEntProp(weapon, Prop_Send, "m_iItemDefinitionIndex");
+
+          char key[8];
+          IntToString(defindex, key, sizeof(key));
+
+          char reskinKey[8];
+          if(g_ReskinInfo.GetString(key, reskinKey, sizeof(reskinKey))) {
+               strcopy(key, sizeof(key), reskinKey);
+          }
+
+          char weaponName[64];
+          if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
+               strcopy(weaponName, sizeof(weaponName), "Unknown Weapon");
+          }
+
+          int kills = 0;
+          g_Effect76_KillCount.GetValue(key, kills);
+
+          float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
+
+          if(bonus < E76_MINDAMAGE) {
+               bonus = E76_MINDAMAGE;
+          }
+
+          int percent = RoundToNearest(bonus * 100.0);
+
+          char line[128];
+          Format(line, sizeof(line), "%s: %d%%\n", weaponName, percent);
+
+          StrCat(buffer, maxlen, line);
+     }
+}
+
+public void E76_BuildWearString_Notify(int weaponIndex, char[] buffer, int maxlen) {
+     buffer[0] = '\0';
+
+     char key[8];
+     IntToString(weaponIndex, key, sizeof(key));
+
+     char reskinKey[8];
+     if(g_ReskinInfo.GetString(key, reskinKey, sizeof(reskinKey))) {
+          strcopy(key, sizeof(key), reskinKey);
+     }
+
+     char weaponName[64];
+     if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
+          strcopy(weaponName, sizeof(weaponName), "Unknown Weapon");
+     }
+
+     Format(buffer, maxlen, "↓↓ %s ↓↓", weaponName);
+}
+
+public void E76_ShowWear(int client, char[] msg, float delay) {
+     SetHudTextParams(-1.0, 0.8, delay, 255, 255, 255, 255);
+     ShowHudText(client, 1, msg);
 }
