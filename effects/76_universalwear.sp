@@ -47,7 +47,7 @@ public void Event_PlayerUpdate_76_UniversalWear(Event event, const char[] name, 
 
     char msg[512];
     E76_BuildWearString(client, msg, sizeof(msg));
-    E76_ShowWear(client, msg, 2.5);
+    E76_ShowWear(client, msg, 2.2);
 }
 
 
@@ -120,7 +120,7 @@ public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
 
                if(defCanonical == canonicalIndex) {
                     TF2Attrib_SetByName(weapon, "damage bonus", bonus);
-                    E76_ShowWear(i, msg, 1.0);
+                    E76_ShowWear(i, msg, 0.8);
                     break;
                }
           }
@@ -181,7 +181,8 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
 
           char weaponName[64];
           if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
-               strcopy(weaponName, sizeof(weaponName), "Unknown We");
+               // TODO: Melee reskin map, if not found, ignore
+               strcopy(weaponName, sizeof(weaponName), "Unknown Weapon");
           }
 
           int kills = 0;
