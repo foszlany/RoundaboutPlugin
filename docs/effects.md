@@ -632,3 +632,4 @@
      - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
      - When a player is killed with a certain weapon, said weapon will do `2%` less damage for every player on the server for the remainder of the round.
           - Damage of reskins is the same as the damage of their original counterpart.
+          - Minimum damage: `10%`or 

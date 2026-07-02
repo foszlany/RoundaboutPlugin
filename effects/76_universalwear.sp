@@ -88,6 +88,9 @@ public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
      int canonicalIndex = StringToInt(key);
 
      float bonus = 1.0 - (value * E76_DAMAGEPENALTY);
+     if(bonus < E76_MINDAMAGE) {
+          bonus = E76_MINDAMAGE;
+     }
 
      char msg[256];
      E76_BuildWearString_Notify(weaponIndex, msg, sizeof(msg));
@@ -149,6 +152,10 @@ public void E76_UpdateWeaponDamage(int client) {
           g_Effect76_KillCount.GetValue(key, kills);
 
           float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
+          if(bonus < E76_MINDAMAGE) {
+               bonus = E76_MINDAMAGE;
+          }
+
           TF2Attrib_SetByName(weapon, "damage bonus", bonus);
      }
 }
@@ -181,7 +188,6 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
           g_Effect76_KillCount.GetValue(key, kills);
 
           float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
-
           if(bonus < E76_MINDAMAGE) {
                bonus = E76_MINDAMAGE;
           }
