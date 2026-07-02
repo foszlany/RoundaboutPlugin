@@ -199,7 +199,7 @@
      - **ID:** `24`
      - **Token:** `forceful`
      - **Rare variant:** `2%` chance of the knockback being increased by `1000%`
-     - Increases the knockback by `300%`
+     - Increases knockback by `300%`
 
 * **Assassins Indeed**
      - **ID:** `25`
@@ -306,7 +306,8 @@
      - **ID:** `36`
      - **Token:** `socialdist`
      - **Conditional effect:** In-game playercount must be `3` or higher.
-     - Teammates too close to each other (within a `256 Hammer Unit` radius) receive `66%` of the damage taken by someone.
+     - Teammates too close to each other receive `66%` of the damage taken by someone.
+          - Radius: `256 Hammer Units`
           - This does not create a chain-reaction.
 
 * **Disadvantaged**
@@ -475,7 +476,8 @@
      - **ID:** `56`
      - **Token:** `buffheal`
      - **Conditional effect:** In-game playercount must be `3` or higher.
-     - Medic healing rate is reduced to `33%` Users healed will now gain `Mini-crits`
+     - Medic healing rate is reduced to `33%`
+     - Users healed will now gain `Mini-crits`
           - If any healing was done using the Crusader's Crossbow, then the buff is also granted.
                - Formula (in seconds): `1.0 + healamount / 20.0`
 
@@ -486,8 +488,8 @@
      - Calling for Medic will teleport one if there is a suitable candidate.
           - There's a `6` second delay between attempts.
           - Conditions for a Medic to be suitable:
-               - Must exist and be within the same team as the caller
-               - Must not already be healing someone
+               - Must exist and be within the same team as the caller.
+               - Must not already be healing someone.
                - Wasn't teleported in the past `8` seconds.
 
 * **King**
@@ -621,7 +623,7 @@
      - **Token:** `bomber`
      - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
      - Suiciding causes an explosion that damages nearby enemies.
-          - Radius: `300 HU`
+          - Radius: `300 Hammer Units`
           - Max damage: `200`
 
 * **Universal Wear**
