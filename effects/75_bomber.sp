@@ -50,4 +50,5 @@ public void E75_CreateExplosion(int client) {
      }
 
      EmitSoundToAll("weapons/explode3.wav", SNDCHAN_AUTO, SNDLEVEL_NORMAL, _, _, 0.7, _, _, origin);
+     CreateStaticParticle(client, "ExplosionCore_MidAir", 1.5, 0.0);
 }
