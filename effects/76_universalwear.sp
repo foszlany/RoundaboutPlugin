@@ -195,7 +195,7 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
           int percent = RoundToNearest(bonus * 100.0);
 
           char line[128];
-          Format(line, sizeof(line), "%s: %d%%\n", weaponName, percent);
+          Format(line, sizeof(line), "%s: %d%%%%\n", weaponName, percent);
 
           StrCat(buffer, maxlen, line);
      }
