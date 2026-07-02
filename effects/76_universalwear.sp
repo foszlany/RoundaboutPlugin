@@ -181,7 +181,7 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
 
           char weaponName[64];
           if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
-               strcopy(weaponName, sizeof(weaponName), "Default Melee");
+               strcopy(weaponName, sizeof(weaponName), "Unknown We");
           }
 
           int kills = 0;
