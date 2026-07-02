@@ -922,6 +922,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_75_SuicideBomber;
                }
+
+               case EFFECT_UNIVERSALWEAR: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_76_UniversalWear;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_76_UniversalWear;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_76_UniversalWear;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_76_UniversalWear;
+               }
           }
 
           effectIndex++;

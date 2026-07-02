@@ -623,3 +623,9 @@
      - Suiciding causes an explosion that damages nearby enemies.
           - Radius: `300 HU`
           - Max damage: `200`
+
+* **Universal Wear**
+     - **ID:** `76`
+     - **Token:** `universalwear`
+     - When a player is killed with a certain weapon, said weapon will do `2%` less damage for every player on the server.
+          - Damage of reskins is the same as the damage of their original counterpart.

@@ -16,6 +16,12 @@ ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
 BidirectionalMap EFFECT_TOKENS;
 
+int slots[3] = {
+	TFWeaponSlot_Primary,
+	TFWeaponSlot_Secondary,
+	TFWeaponSlot_Melee
+};
+
 /* GENERIC INCLUDES */
 #include <sourcemod>
 #include <sdkhooks>
@@ -186,6 +192,8 @@ bool g_Effect73_PickupStatus[2048];
 Handle g_Effect74_PumpkinTimers[MAXPLAYERS + 1];
 bool g_Effect74_IsSpecialRound;
 
+StringMap g_Effect76_KillCount;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -263,6 +271,7 @@ bool g_Effect74_IsSpecialRound;
 #include "effects/73_kitswap.sp"
 #include "effects/74_pumpkin.sp"
 #include "effects/75_bomber.sp"
+#include "effects/76_universalwear.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -389,5 +398,6 @@ enum Effect {
 	EFFECT_KITSWAP			=	73,
 	EFFECT_PUMPKIN			=	74,
 	EFFECT_BOMBER			=	75,
+	EFFECT_UNIVERSALWEAR	=	76,
 	EFFECT_MAXCOUNT
 }
