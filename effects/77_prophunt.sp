@@ -3,24 +3,16 @@
 #define E77_COOLDOWN 15.0
 #define UPDATE_INTERVAL 0.02
 
-bool g_Effect77_IsProp[MAXPLAYERS + 1];
-bool g_Effect77_PropCooldown[MAXPLAYERS + 1];
-float g_Effect77_NextPropTime[MAXPLAYERS + 1];
-Handle g_Effect77_ReloadTimer[MAXPLAYERS + 1];
-bool g_Effect77_ReloadHeld[MAXPLAYERS + 1];
-int g_Effect77_PropEntity[MAXPLAYERS + 1];
-Handle g_Effect77_UpdateTimer = null;
-
 public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect77_UpdateTimer == null) {
-        g_Effect77_UpdateTimer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateProps, _, TIMER_REPEAT);
-    }
+          g_Effect77_UpdateTimer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateProps, _, TIMER_REPEAT);
+     }
 
-    for(int i = 1; i <= MaxClients; i++) {
-        if(IsClientInGame(i)) {
-            E77_ResetPlayerState(i);
-        }
-    }
+     for(int i = 1; i <= MaxClients; i++) {
+          if(IsClientInGame(i)) {
+               E77_ResetPlayerState(i);
+          }
+     }
 }
 
 public void Event_RoundEnd_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {

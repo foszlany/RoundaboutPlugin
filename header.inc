@@ -221,6 +221,14 @@ bool g_Effect74_IsSpecialRound;
 
 StringMap g_Effect76_KillCount;
 
+bool g_Effect77_IsProp[MAXPLAYERS + 1];
+bool g_Effect77_PropCooldown[MAXPLAYERS + 1];
+float g_Effect77_NextPropTime[MAXPLAYERS + 1];
+Handle g_Effect77_ReloadTimer[MAXPLAYERS + 1];
+bool g_Effect77_ReloadHeld[MAXPLAYERS + 1];
+int g_Effect77_PropEntity[MAXPLAYERS + 1];
+Handle g_Effect77_UpdateTimer = null;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
