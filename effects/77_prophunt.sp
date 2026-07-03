@@ -1,11 +1,11 @@
 #pragma semicolon 1
 
 #define E77_COOLDOWN 1.0
-#define UPDATE_INTERVAL 0.02
+#define E77_UPDATE_INTERVAL 0.02
 
 public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect77_UpdateTimer == null) {
-          g_Effect77_UpdateTimer = CreateTimer(UPDATE_INTERVAL, E77_UpdatePropsTimer, _, TIMER_REPEAT);
+          g_Effect77_UpdateTimer = CreateTimer(E77_UPDATE_INTERVAL, E77_UpdatePropsTimer, _, TIMER_REPEAT);
      }
 
      for(int i = 1; i <= MaxClients; i++) {
@@ -68,6 +68,8 @@ public void E77_ApplyProp(int client) {
      char mdl[64];
      strcopy(mdl, sizeof(mdl), g_PropModels[idx]);
 
+     PrintToChatAll("%s", mdl);
+
      int prop = CreateEntityByName("prop_dynamic_override");
 
      DispatchKeyValue(prop, "model", mdl);
@@ -114,7 +116,7 @@ public void E77_RemoveProp(int client) {
      ApplyInvisibility(client, false);
      g_Effect77_IsProp[client] = false;
      g_Effect77_PropCooldown[client] = true;
-     g_Effect77_NextPropTime[client] = GetEngineTime() + 15.0;
+     g_Effect77_NextPropTime[client] = GetEngineTime() + E77_COOLDOWN;
 
      SetVariantInt(0);
      AcceptEntityInput(client, "SetForcedTauntCam");
@@ -189,7 +191,6 @@ public Action E77_UpdatePropsTimer(Handle timer) {
           float pos[3], ang[3];
           GetClientAbsOrigin(client, pos);
           GetClientAbsAngles(client, ang);
-          pos[2] += 20.0;
           ang[0] = 0.0;
           ang[2] = 0.0;
           
