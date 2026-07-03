@@ -138,16 +138,22 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
           return Plugin_Continue;
      }
 
-     bool reloadNow = (buttons & IN_RELOAD) != 0;
+     bool isShooting = (buttons & (IN_ATTACK | IN_ATTACK2 | IN_ATTACK3)) != 0;
+     bool isReloading = (buttons & IN_RELOAD) != 0;
 
-     if(reloadNow && !g_Effect77_ReloadHeld[client]) {
+     if(isShooting && g_Effect77_IsProp[client]) {
+          E77_RemoveProp(client);
+          return Plugin_Continue;
+     }
+
+     if(isReloading && !g_Effect77_ReloadHeld[client]) {
           g_Effect77_ReloadHeld[client] = true;
           if(g_Effect77_ReloadTimer[client] != null) {
                CloseHandle(g_Effect77_ReloadTimer[client]);
           }
           g_Effect77_ReloadTimer[client] = CreateTimer(0.5, E77_Timer_CheckReloadHold, client);
      }
-     else if(!reloadNow && g_Effect77_ReloadHeld[client]) {
+     else if(!isReloading && g_Effect77_ReloadHeld[client]) {
           g_Effect77_ReloadHeld[client] = false;
           if(g_Effect77_ReloadTimer[client] != null) {
                CloseHandle(g_Effect77_ReloadTimer[client]);
