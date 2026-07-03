@@ -180,9 +180,8 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
           }
 
           char weaponName[64];
-          if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
-               // TODO: Melee reskin map, if not found, ignore
-               strcopy(weaponName, sizeof(weaponName), "Unknown Weapon");
+          if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName)) && !g_MeleeReskinInfo.GetString(key, weaponName, sizeof(weaponName))) {
+               continue;
           }
 
           int kills = 0;
@@ -214,7 +213,7 @@ public void E76_BuildWearString_Notify(int weaponIndex, char[] buffer, int maxle
      }
 
      char weaponName[64];
-     if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName))) {
+     if(!g_WeaponInfo.GetString(key, weaponName, sizeof(weaponName)) && !g_MeleeReskinInfo.GetString(key, weaponName, sizeof(weaponName))) {
           strcopy(weaponName, sizeof(weaponName), "Unknown Weapon");
      }
 
