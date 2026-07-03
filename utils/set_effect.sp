@@ -940,6 +940,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_76_UniversalWear;
                }
+
+               case EFFECT_PROPHUNT: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_77_Prophunt;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_77_Prophunt;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_77_Prophunt;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_77_Prophunt;
+               }
           }
 
           effectIndex++;

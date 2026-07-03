@@ -19,6 +19,11 @@ public void OnMapStart() {
 	PrecacheSound("ui/vote_yes.wav", true);
  	PrecacheSound("player/recharged.wav", true);
 	PrecacheSound("items/smallmedkit1.wav", true);
+
+	/* PRECACHE MODELS */
+	for(int i = 0; i < sizeof(g_PropModels); i++) {
+		PrecacheModel(g_PropModels[i], true);
+	}
 }
 
 public void OnPluginStart() {

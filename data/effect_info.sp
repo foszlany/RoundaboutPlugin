@@ -100,4 +100,5 @@ public void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_PUMPKIN,           "Pumpkin Bomber",           "You can now spawn pumpkin bombs by calling for a medic.");
     ADD_EFFECT(EFFECT_BOMBER,            "Suicide Bomber",           "Suiciding causes an explosion that damages nearby enemies.");
     ADD_EFFECT(EFFECT_UNIVERSALWEAR,     "Universal Wear",           "Killing with a weapon nerfs the damage of it by 2% for everyone.");
+    ADD_EFFECT(EFFECT_PROPHUNT,          "Prophunt",                 "Hold your reload key to become a random prop.");
 }

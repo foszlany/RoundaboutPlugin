@@ -22,6 +22,32 @@ int slots[3] = {
 	TFWeaponSlot_Melee
 };
 
+char g_PropModels[][] = {
+    "models/props_farm/wood_pile.mdl",
+    "models/props_spytech/terminal_chair.mdl",
+    "models/props_hydro/barrel_crate.mdl",
+    "models/props_2fort/miningcrate001.mdl",
+    "models/props_2fort/miningcrate002.mdl",
+    "models/props_2fort/oildrum.mdl",
+    "models/props_2fort/tire001.mdl",
+    "models/props_2fort/wastebasket01.mdl",
+    "models/props_2fort/lantern001.mdl",
+    "models/props_2fort/coffeemachine.mdl",
+    "models/props_2fort/milkjug001.mdl",
+    "models/props_2fort/wagonwheel001.mdl",
+    "models/props_farm/wooden_barrel.mdl",
+    "models/props_farm/haypile001.mdl",
+    "models/props_farm/pallet001.mdl",
+    "models/props_farm/tools_shovel.mdl",
+    "models/props_forest/milk_crate.mdl",
+    "models/props_forest/wheelbarrow.mdl",
+    "models/props_swamp/crate_ref.mdl",
+    "models/props_swamp/bug_zapper.mdl",
+    "models/props_gameplay/orange_cone001.mdl",
+    "models/props_spytech/bench001a.mdl",
+    "models/props_medieval/anvil.mdl"
+};
+
 /* GENERIC INCLUDES */
 #include <sourcemod>
 #include <sdkhooks>
@@ -273,6 +299,7 @@ StringMap g_Effect76_KillCount;
 #include "effects/74_pumpkin.sp"
 #include "effects/75_bomber.sp"
 #include "effects/76_universalwear.sp"
+#include "effects/77_prophunt.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -293,6 +320,7 @@ StringMap g_Effect76_KillCount;
 #include "utils/is_effect_forced_rare.sp"
 #include "utils/apply_powerplay.sp"
 #include "utils/to_lower.sp"
+#include "utils/apply_invisibility.sp"
 
 /* DATATYPES */
 #include "datatypes/bmap.sp"
@@ -401,5 +429,6 @@ enum Effect {
 	EFFECT_PUMPKIN			=	74,
 	EFFECT_BOMBER			=	75,
 	EFFECT_UNIVERSALWEAR	=	76,
+	EFFECT_PROPHUNT		=	77,
 	EFFECT_MAXCOUNT
 }
