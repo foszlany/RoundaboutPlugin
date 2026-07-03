@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_64_Mist(Event event, const char[] name, bool dontBroadcast) {
-     g_Effect64_Fog = CreateFog();
+     g_Effect64_Fog = E64_CreateFog();
 
      for(int i = 1; i <= MaxClients; i++) {
 		if(IsClientInGame(i) && IsPlayerAlive(i)) {
@@ -22,7 +22,7 @@ public void Event_RoundEnd_64_Mist(Event event, const char[] name, bool dontBroa
      AcceptEntityInput(g_Effect64_Fog, "kill");
 }
 
-public int CreateFog() {
+public int E64_CreateFog() {
 	new fog = CreateEntityByName("env_fog_controller");
 
 	if(fog != -1) {

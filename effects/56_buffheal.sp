@@ -3,27 +3,27 @@
 public void Event_RoundStart_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               SDKHook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
+               SDKHook(i, SDKHook_PreThink, E56_HealedByMedicApplyMiniCrit);
           }
           
-          SetHealPenalty(i);
+          E56_SetHealPenalty(i);
      }
 
-     HookEvent("crossbow_heal", ApplyCrossBowHeal, EventHookMode_Pre);
+     HookEvent("crossbow_heal", E56_ApplyCrossBowHeal, EventHookMode_Pre);
 }
 
 public void Event_PlayerUpdate_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {    
      int client = GetClientOfUserId(event.GetInt("userid"));
      
-     SetHealPenalty(client);
+     E56_SetHealPenalty(client);
 }
 
 public void Event_RoundEnd_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {    
-     UnhookEvent("crossbow_heal", ApplyCrossBowHeal, EventHookMode_Pre);
+     UnhookEvent("crossbow_heal", E56_ApplyCrossBowHeal, EventHookMode_Pre);
      
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               SDKUnhook(i, SDKHook_PreThink, HealedByMedicApplyMiniCrit);
+               SDKUnhook(i, SDKHook_PreThink, E56_HealedByMedicApplyMiniCrit);
 
                if(TF2_GetPlayerClass(i) == TFClass_Medic) {
                     int secondaryWeapon = GetPlayerWeaponSlot(i, TFWeaponSlot_Secondary);
@@ -36,7 +36,7 @@ public void Event_RoundEnd_56_BuffingHeal(Event event, const char[] name, bool d
      }  
 }
 
-public void SetHealPenalty(int client) {
+public void E56_SetHealPenalty(int client) {
      if(IsClientInGame(client) && TF2_GetPlayerClass(client) == TFClass_Medic) {
           int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
           if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
@@ -45,7 +45,7 @@ public void SetHealPenalty(int client) {
      }
 }
 
-public void ApplyCrossBowHeal(Event event, const char[] name, bool dontBroadcast) {
+public void E56_ApplyCrossBowHeal(Event event, const char[] name, bool dontBroadcast) {
      int target = GetClientOfUserId(event.GetInt("target"));
      int healer = GetClientOfUserId(event.GetInt("healer"));
      int amount = event.GetInt("amount");
@@ -55,7 +55,7 @@ public void ApplyCrossBowHeal(Event event, const char[] name, bool dontBroadcast
      }
 }
 
-public void HealedByMedicApplyMiniCrit(int client) {    
+public void E56_HealedByMedicApplyMiniCrit(int client) {    
      if(client > 0 && IsClientInGame(client) && TF2_GetPlayerClass(client) == TFClass_Medic) {
           int medigun = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
           if(medigun != -1) {

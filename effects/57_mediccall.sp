@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {
-     AddCommandListener(CalledForMedic, "voicemenu");
+     AddCommandListener(E57_CalledForMedic, "voicemenu");
      g_Effect57_isCommandListenerRegistered = true;
      
      for(int i = 1; i <= MAXPLAYERS; i++) {
@@ -12,12 +12,12 @@ public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool d
 
 public void Event_RoundEnd_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {    
      if(g_Effect57_isCommandListenerRegistered) {
-          RemoveCommandListener(CalledForMedic, "voicemenu");
+          RemoveCommandListener(E57_CalledForMedic, "voicemenu");
           g_Effect57_isCommandListenerRegistered = false;
      }
 }
 
-public Action CalledForMedic(client, const String:command[], argc) {    
+public Action E57_CalledForMedic(client, const String:command[], argc) {    
      char arguments[4];
      GetCmdArgString(arguments, sizeof(arguments));
      
@@ -28,7 +28,7 @@ public Action CalledForMedic(client, const String:command[], argc) {
           }
 
           g_Effect57_HasRecentlyCalled[client] = true;
-          CreateTimer(6.0, ResetCallerCooldown, client);
+          CreateTimer(6.0, E57_ResetCallerCooldown, client);
 
           bool isMedicExisting = false;
           bool isMedicAlive = false;
@@ -56,7 +56,7 @@ public Action CalledForMedic(client, const String:command[], argc) {
                                         TeleportEntity(i, origin, angles, NULL_VECTOR);
 
                                         g_Effect57_HasBeenTeleportedRecently[i] = true;
-                                        CreateTimer(8.0, ResetMedicCooldown, i);
+                                        CreateTimer(8.0, E57_ResetMedicCooldown, i);
 
                                         PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x079EFF99Medic successfully teleported!\x01");
 
@@ -91,12 +91,12 @@ public Action CalledForMedic(client, const String:command[], argc) {
      return Plugin_Continue;
 }
 
-public Action ResetMedicCooldown(Handle timer, int client) {
+public Action E57_ResetMedicCooldown(Handle timer, int client) {
      g_Effect57_HasBeenTeleportedRecently[client] = false;
      return Plugin_Handled;
 }
 
-public Action ResetCallerCooldown(Handle timer, int client) {
+public Action E57_ResetCallerCooldown(Handle timer, int client) {
      g_Effect57_HasRecentlyCalled[client] = false;
      EmitSoundToClient(client, "player/recharged.wav");
 
