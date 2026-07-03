@@ -7,7 +7,6 @@ public void Event_RoundStart_16_Rolemodel(Event event, const char[] name, bool d
           g_Effect16_AssignedClass[i] = GetRandomInt(1, 9);
      }
 
-
      int activePlayers = CountActivePlayers();
 
      if((IsRareEffectForced(EFFECT_ROLEMODEL) || GetRandomInt(1, 100) <= 33) && (activePlayers == 4 || activePlayers == 8 || activePlayers == 12 || activePlayers == 18)) {

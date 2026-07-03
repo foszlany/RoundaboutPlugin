@@ -12,7 +12,7 @@ public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool d
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                EquipPlayerWeapon(i, GetPlayerWeaponSlot(i, TFWeaponSlot_Melee));
-               CreateTimer(0.12, ForceToMelee, i);
+               CreateTimer(0.12, E9_ForceToMelee, i);
 
                if(g_Effect9_IsSpecialRound) {
                     TF2Attrib_SetByName(i, "damage bonus", 10.0);
@@ -33,10 +33,10 @@ public void Event_RoundEnd_9_ForceMelee(Event event, const char[] name, bool don
 
 public void Event_PlayerUpdate_9_ForceMelee(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     CreateTimer(0.12, ForceToMelee, client);
+     CreateTimer(0.12, E9_ForceToMelee, client);
 }
 
-public Action ForceToMelee(Handle timer, int client) {
+public Action E9_ForceToMelee(Handle timer, int client) {
      TF2_RemoveWeaponSlot(client, TFWeaponSlot_Primary);
      TF2_RemoveWeaponSlot(client, TFWeaponSlot_Secondary);
 

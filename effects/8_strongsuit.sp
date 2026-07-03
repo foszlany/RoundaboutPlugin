@@ -3,7 +3,7 @@
 public void Event_RoundStart_8_StrongSuit(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
           if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i)) {
-               CreateTimer(0.2, GiveRandomInvuln_Timer, i);
+               CreateTimer(0.2, E8_E8_GiveRandomInvulnTimer, i);
           }
           else {
                g_Effect8_InvulnIndex[i] = -1;
@@ -30,7 +30,7 @@ public void Event_PlayerUpdate_8_StrongSuit(Event event, const char[] name, bool
           }
      }
      else {
-          CreateTimer(0.2, GiveRandomInvuln_Timer, client);
+          CreateTimer(0.2, E8_E8_GiveRandomInvulnTimer, client);
      }
 }
 
@@ -49,13 +49,13 @@ public void Event_RoundEnd_8_StrongSuit(Event event, const char[] name, bool don
      }
 }
 
-public Action GiveRandomInvuln_Timer(Handle timer, int client) {
-     GiveRandomInvuln(client);
+public Action E8_E8_GiveRandomInvulnTimer(Handle timer, int client) {
+     E8_GiveRandomInvuln(client);
 
      return Plugin_Handled;
 }
 
-public void GiveRandomInvuln(int client) {
+public void E8_GiveRandomInvuln(int client) {
      int effect = GetRandomInt(0, 2);
 
      switch(effect) {

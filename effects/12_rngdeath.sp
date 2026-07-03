@@ -1,10 +1,10 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_12_RNGDeath(Event event, const char[] name, bool dontBroadcast) {
-     g_Util_OneSecondTimer = CreateTimer(1.0, Executioner, _, TIMER_REPEAT);
+     g_Util_OneSecondTimer = CreateTimer(1.0, E12_Executioner, _, TIMER_REPEAT);
 }
 
-public void Executioner(Handle timer) {
+public void E12_Executioner(Handle timer) {
      if(GetRandomInt(1, 10000) == 1) {
           PrintToChatAll("\x07FFE800[Roundabout]\x01 \x07B143F1Everyone\x01 has spontaneously combusted!");
           EmitSoundToAll("weapons/explode3.wav");

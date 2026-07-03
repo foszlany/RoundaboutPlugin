@@ -5,7 +5,7 @@ public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBro
      g_Effect0_FakePure_ExplodeTimer = null;
 
      if(IsRareEffectForced(EFFECT_PURE) || GetRandomInt(0, 100) <= 4) {
-          g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(60.0, 160.0), FakePureEvent);
+          g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(60.0, 160.0), E0_FakePureEvent);
      }
      
      g_Effect0_FakePure_IsActive = false;
@@ -15,7 +15,7 @@ public void Event_PlayerUpdate_0_Pure(Event event, const char[] name, bool dontB
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(g_Effect0_FakePure_IsActive) {
-          CreateTimer(0.2, StunPlayerTimer, client);
+          CreateTimer(0.2, E0_StunPlayerTimer, client);
      }
 }
 
@@ -31,14 +31,14 @@ public void Event_RoundEnd_0_Pure(Event event, const char[] name, bool dontBroad
      }
 }
 
-public void StunPlayerTimer(Handle timer, int client) {
+public void E0_StunPlayerTimer(Handle timer, int client) {
      if(g_Effect0_FakePure_IsActive && IsClientInGame(client) && IsPlayerAlive(client)) {
           TF2_StunPlayer(client, 13.0, 1.0, TF_STUNFLAG_LIMITMOVEMENT | TF_STUNFLAG_SLOWDOWN);
           TF2_RemoveAllWeapons(client);
      }
 }
 
-public void FakePureEvent(Handle timer) {
+public void E0_FakePureEvent(Handle timer) {
      g_Effect0_FakePure_IsActive = true;
 
      for(int i = 1; i <= MaxClients; i++) {
@@ -58,10 +58,10 @@ public void FakePureEvent(Handle timer) {
           EmitSoundToAll("player/taunt_scorchers_solo2.wav");
      }
 
-     g_Effect0_FakePure_ExplodeTimer = CreateTimer(12.0, ExplodeAll);
+     g_Effect0_FakePure_ExplodeTimer = CreateTimer(12.0, E0_ExplodeAll);
 }
 
-public void ExplodeAll(Handle timer) {
+public void E0_ExplodeAll(Handle timer) {
      EmitSoundToAll("weapons/explode3.wav");
 
      for(int i = 1; i <= MaxClients; i++) {

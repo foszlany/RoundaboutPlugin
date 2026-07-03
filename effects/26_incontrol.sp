@@ -17,14 +17,14 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
 
      // WEAPON STAT
      for(int i = 1; i <= MaxClients; i++) {
-          SetInControlAttributes(i);
+          E26_SetInControlAttributes(i);
      }
 }
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetInControlAttributes(client);
+     E26_SetInControlAttributes(client);
 }
 
 public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool dontBroadcast) {
@@ -51,7 +51,7 @@ public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool don
      }
 }
 
-public void SetInControlAttributes(int client) {
+public void E26_SetInControlAttributes(int client) {
      if(IsClientInGame(client)) {
           ForceClass(client, TFClass_Soldier);
 

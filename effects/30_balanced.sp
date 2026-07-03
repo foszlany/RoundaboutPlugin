@@ -9,7 +9,7 @@ public void Event_RoundStart_30_Balanced(Event event, const char[] name, bool do
 public void Event_PlayerUpdate_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetHealthAdvantage(client, true);
+     E30_SetHealthAdvantage(client, true);
 }
 
 public void Event_PlayerDeath_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
@@ -25,7 +25,7 @@ public void Event_PlayerDeath_30_Balanced(Event event, const char[] name, bool d
      g_Effect30_BalanceIndicator += (attackerTeam == TFTeam_Red ? 1 : -1);
 
      for(int i = 1; i <= MaxClients; i++) {
-          SetHealthAdvantage(i, false);
+          E30_SetHealthAdvantage(i, false);
      }
 }
 
@@ -38,31 +38,11 @@ public void Event_RoundEnd_30_Balanced(Event event, const char[] name, bool dont
      }
 }
 
-public void SetHealthAdvantage(int client, bool isUpdate) {
+public void E30_SetHealthAdvantage(int client, bool isUpdate) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           int advantage = ((TF2_GetClientTeam(client) == TFTeam_Red) == (g_Effect30_BalanceIndicator > 0)) 
                               ? g_Effect30_BalanceIndicator 
                               : -g_Effect30_BalanceIndicator;
-
-          /* this is so broken
-               float clientMaxHealth = float(TF2_GetPlayerResourceData(client, TFResource_MaxHealth));
-               if(advantage < 0 && clientMaxHealth <= MIN_HEALTH) {
-                    if(isUpdate) {
-                         clientMaxHealth = float(TF2_GetPlayerResourceData(client, TFResource_MaxHealth));
-
-                         PrintToChatAll("mhealth: %f", clientMaxHealth);
-                         
-                         float offset = -1.0 * RoundToNearest((clientMaxHealth - MIN_HEALTH) / HEALTH_BONUS);
-
-                         PrintToChatAll("offset: %f", offset);
-
-                         TF2Attrib_SetByName(client, "max health additive bonus", offset * HEALTH_BONUS);
-                         SetEntityHealth(client, MIN_HEALTH);
-                    }
-
-                    return;
-               }
-          */
 
           float bonusHealth = float(advantage) * HEALTH_BONUS;
 

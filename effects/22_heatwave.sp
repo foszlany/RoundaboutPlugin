@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
-     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), BurnAll);
+     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), E22_BurnAll);
 }
 
 public void Event_RoundEnd_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
@@ -11,7 +11,7 @@ public void Event_RoundEnd_22_Heatwave(Event event, const char[] name, bool dont
      }
 }
 
-public Action BurnAll(Handle timer) {
+public Action E22_BurnAll(Handle timer) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
                TF2_IgnitePlayer(i, i, 9999.9);
@@ -19,7 +19,7 @@ public Action BurnAll(Handle timer) {
      }
 
      PrintToChatAll("\x07B143F1[Roundabout]\x01 A \x07FFA500heatwave\x01 has occured.");
-     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), BurnAll);
+     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), E22_BurnAll);
 
      return Plugin_Handled;
 }

@@ -3,7 +3,7 @@
 public void Event_RoundStart_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           ForceClass(i, TFClass_Spy);
-          applyAssassinEffect(i);
+          E25_ApplyAssassinEffect(i);
      }
 }
 
@@ -11,7 +11,7 @@ public void Event_PlayerUpdate_25_Assassins(Event event, const char[] name, bool
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      ForceClass(client, TFClass_Spy);
-     applyAssassinEffect(client);
+     E25_ApplyAssassinEffect(client);
 }
 
 public void Event_RoundEnd_25_Assassins(Event event, const char[] name, bool dontBroadcast) {
@@ -26,7 +26,7 @@ public void Event_RoundEnd_25_Assassins(Event event, const char[] name, bool don
      }
 }
 
-public void applyAssassinEffect(int client) {
+public void E25_ApplyAssassinEffect(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
 

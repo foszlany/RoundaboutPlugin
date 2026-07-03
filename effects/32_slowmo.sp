@@ -16,7 +16,7 @@ public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dont
 
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SetSlowmoAttributes(i);
+               E32_SetSlowmoAttributes(i);
           }
      }
 }
@@ -24,7 +24,7 @@ public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dont
 public void Event_PlayerUpdate_32_Slowmo(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetSlowmoAttributes(client);
+     E32_SetSlowmoAttributes(client);
 }
 
 public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBroadcast) {
@@ -71,7 +71,7 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
      }
 }
 
-public void SetSlowmoAttributes(int client) {
+public void E32_SetSlowmoAttributes(int client) {
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
      if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
           TF2Attrib_SetByName(primaryWeapon, "Reload time increased", 1.50);

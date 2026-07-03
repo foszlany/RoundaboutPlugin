@@ -3,14 +3,14 @@
 public void Event_RoundStart_31_PPerform(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               ApplyVulnerability(i);
+               E31_ApplyVulnerability(i);
           }
      }
 }
 
 public void Event_PlayerUpdate_31_PPerform(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     ApplyVulnerability(client);
+     E31_ApplyVulnerability(client);
 }
 
 public void Event_PlayerDeath_31_PPerform(Event event, const char[] name, bool dontBroadcast) {
@@ -21,7 +21,7 @@ public void Event_PlayerDeath_31_PPerform(Event event, const char[] name, bool d
           return;
      }
 
-     ApplyVulnerability(attacker);
+     E31_ApplyVulnerability(attacker);
 }
 
 
@@ -35,7 +35,7 @@ public void Event_RoundEnd_31_PPerform(Event event, const char[] name, bool dont
      }
 }
 
-void ApplyVulnerability(int client) {
+public void E31_ApplyVulnerability(int client) {
      float kills   = float(GetClientFrags(client));
      float deaths  = float(GetClientDeaths(client));
      float fDeaths = (deaths <= 0.0) ? 1.0 : deaths;

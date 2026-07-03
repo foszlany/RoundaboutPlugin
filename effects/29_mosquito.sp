@@ -3,7 +3,7 @@
 public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SetMosquitoAttributes(i);
+               E29_SetMosquitoAttributes(i);
                TF2_RegeneratePlayer(i);
           }
      }
@@ -12,7 +12,7 @@ public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool do
 public void Event_PlayerUpdate_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetMosquitoAttributes(client);
+     E29_SetMosquitoAttributes(client);
 }
 
 public void Event_RoundEnd_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {
@@ -43,7 +43,7 @@ public void Event_RoundEnd_29_Mosquito(Event event, const char[] name, bool dont
      }
 }
 
-public void SetMosquitoAttributes(int client) {
+public void E29_SetMosquitoAttributes(int client) {
      ForceClass(client, TFClass_Scout);
 
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);

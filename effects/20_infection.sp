@@ -33,7 +33,7 @@ public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool 
           g_Effect20_CurrentTeam[victim] = attackerTeam;
      }
 
-     InfectionTeamCheck();
+     E20_InfectionTeamCheck();
 }
 
 public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool dontBroadcast) {
@@ -49,7 +49,7 @@ public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool don
      }
 }
 
-public void InfectionTeamCheck() {
+public void E20_InfectionTeamCheck() {
      int redPlayers = 0;
      int bluPlayers = 0;
 

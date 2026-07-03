@@ -6,7 +6,7 @@ public void Event_RoundStart_21_Duelies(Event event, const char[] name, bool don
           g_Effect21_EffectTimer[i] = null;
 
           if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i)) {
-               g_Effect21_EffectTimer[i] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, i);
+               g_Effect21_EffectTimer[i] = CreateTimer(float(GetRandomInt(20, 50)), E21_AssignDuel, i);
           }
      }
 }
@@ -15,7 +15,7 @@ public void Event_PlayerUpdate_21_Duelies(Event event, const char[] name, bool d
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(client <= MaxClients && IsClientInGame(client) && IsPlayerAlive(client) && g_Effect21_EffectTimer[client] == null) {
-          g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(20, 50)), AssignDuel, client);
+          g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(20, 50)), E21_AssignDuel, client);
      }
 }
 
@@ -30,7 +30,7 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
                PrintToChatAll("\x07B143F1[Roundabout]\x01 %N duelled %N to the death!", attacker, client);
                TF2_AddCondition(attacker, TFCond_Buffed, 8.0);
 
-               g_Effect21_EffectTimer[attacker] = CreateTimer(float(GetRandomInt(20, 46)), AssignDuel, attacker);
+               g_Effect21_EffectTimer[attacker] = CreateTimer(float(GetRandomInt(20, 46)), E21_AssignDuel, attacker);
           }
           else {
                SetHudTextParams(
@@ -47,23 +47,23 @@ public void Event_PlayerDeath_21_Duelies(Event event, const char[] name, bool do
                ShowSyncHudText(g_Effect21_Duelee[client], g_HudSync, "Your duelee has been killed.");
           }
 
-          NullifyClientDuelData(client);
-          NullifyClientDuelData(g_Effect21_Duelee[client]);
+          E21_NullifyClientDuelData(client);
+          E21_NullifyClientDuelData(g_Effect21_Duelee[client]);
      }
 }
 
 public void Event_RoundEnd_21_Duelies(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          NullifyClientDuelData(i);
+          E21_NullifyClientDuelData(i);
      }
 }
 
 // ASSIGN DUEL
-public Action AssignDuel(Handle timer, int client) {
+public Action E21_AssignDuel(Handle timer, int client) {
      int playerCount = CountActivePlayers();
 
      if(playerCount <= 1) {
-          g_Effect21_EffectTimer[client] = CreateTimer(GetRandomFloat(20.0, 50.0), AssignDuel, client);
+          g_Effect21_EffectTimer[client] = CreateTimer(GetRandomFloat(20.0, 50.0), E21_AssignDuel, client);
           return Plugin_Handled;
      }
 
@@ -77,7 +77,7 @@ public Action AssignDuel(Handle timer, int client) {
                g_Effect21_Duelee[candidate] = client;
 
                // USE ONE TIMER
-               g_Effect21_EffectTimer[client] = CreateTimer(30.0, ExplodeDuelingPlayers, client);
+               g_Effect21_EffectTimer[client] = CreateTimer(30.0, E21_ExplodeDuelingPlayers, client);
 
                if(g_Effect21_EffectTimer[candidate] != null) {
                     KillTimer(g_Effect21_EffectTimer[candidate]);
@@ -110,12 +110,12 @@ public Action AssignDuel(Handle timer, int client) {
           }
      }
 
-     g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(6, 12)), AssignDuel, client);
+     g_Effect21_EffectTimer[client] = CreateTimer(float(GetRandomInt(6, 12)), E21_AssignDuel, client);
      return Plugin_Handled;
 }
 
 // KILL USERS
-public Action ExplodeDuelingPlayers(Handle timer, int client1) {
+public Action E21_ExplodeDuelingPlayers(Handle timer, int client1) {
      int client2 = g_Effect21_Duelee[client1];
 
      if(client2 != 0 && IsClientInGame(client1) && IsPlayerAlive(client1) && IsClientInGame(client2) && IsPlayerAlive(client2)) {
@@ -125,13 +125,13 @@ public Action ExplodeDuelingPlayers(Handle timer, int client1) {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 %N and %N couldn't find each other!", client1, client2);
      }
      else {
-          NullifyClientDuelData(client1);
+          E21_NullifyClientDuelData(client1);
      }
 
      return Plugin_Handled;
 }
 
-public void NullifyClientDuelData(int client) {
+public void E21_NullifyClientDuelData(int client) {
      if(g_Effect21_EffectTimer[client] != null) {
           KillTimer(g_Effect21_EffectTimer[client]);
           g_Effect21_EffectTimer[client] = null;
