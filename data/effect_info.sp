@@ -10,7 +10,7 @@ EffectInfo CreateEffectInfo(const char name[32], const char desc[128]) {
     return info;
 }
 
-void ADD_EFFECT(id, char name[32], char desc[128]) {
+public void ADD_EFFECT(id, char name[32], char desc[128]) {
     EffectInfo info;
     info = CreateEffectInfo(name, desc);
 
@@ -20,7 +20,7 @@ void ADD_EFFECT(id, char name[32], char desc[128]) {
     g_EffectInfo.SetArray(idString, info, sizeof(info));
 }
 
-void InitializeEffectInfo() {
+public void InitializeEffectInfo() {
     g_EffectInfo = new StringMap();
 
     ADD_EFFECT(EFFECT_PURE,              "Pure",                     "The vanilla TF2 experience we all love");

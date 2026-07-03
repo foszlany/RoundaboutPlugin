@@ -3,7 +3,7 @@
 * This cannot be bypassed with !roundabout_force either.
 * This is to prevent unwanted effects, most notably not being able to pick a class.
 */
-void InitializeMutuallyExclusiveMultieffects() {
+public void InitializeMutuallyExclusiveMultieffects() {
     MULTIEFFECT_MUTUALLY_EXCLUSIVE = new ArrayList();
 
     MULTIEFFECT_MUTUALLY_EXCLUSIVE.Push(EFFECT_ROLEMODEL);

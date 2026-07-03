@@ -58,6 +58,7 @@ StringMap g_Blacklist;
 StringMap g_EffectInfo;
 StringMap g_WeaponInfo;
 StringMap g_ReskinInfo;
+StringMap g_MeleeReskinInfo;
 
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -303,6 +304,7 @@ StringMap g_Effect76_KillCount;
 #include "data/effect_info.sp"
 #include "data/weapon_info.sp"
 #include "data/reskin_info.sp"
+#include "data/melee_reskin_info.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"

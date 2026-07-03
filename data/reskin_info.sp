@@ -1,4 +1,4 @@
-void InitializeReskinInfo() {
+public void InitializeReskinInfo() {
     g_ReskinInfo = new StringMap();
 
     // --- SCOUT RESKINS ---

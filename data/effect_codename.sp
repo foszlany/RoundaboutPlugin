@@ -1,5 +1,5 @@
 // KEEP EFFECT TOKENS BELOW 32 CHARACTERS
-void InitializeEffectTokens() {
+public void InitializeEffectTokens() {
     EFFECT_TOKENS.Init();
 
     EFFECT_TOKENS.SetPair("pure", 0);

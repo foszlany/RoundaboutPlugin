@@ -57,6 +57,7 @@ public void OnPluginStart() {
 	InitializeEffectInfo();
 	InitializeWeaponInfo();
 	InitializeReskinInfo();
+	InitializeMeleeReskinInfo();
 
 	LoadBlacklist();
 

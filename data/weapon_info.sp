@@ -1,4 +1,4 @@
-void InitializeWeaponInfo() {
+public void InitializeWeaponInfo() {
     g_WeaponInfo = new StringMap();
 
     // --- SCOUT ---
