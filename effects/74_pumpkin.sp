@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
 #define E74_COOLDOWN 24.0
-#define E74_RARECOOLDOWN 8.0
+#define E74_RARE_COOLDOWN 8.0
 
 public void Event_RoundStart_74_PumpkinBomb(Event event, const char[] name, bool dontBroadcast) {
      if(IsRareEffectForced(EFFECT_PUMPKIN) || GetRandomInt(0, 100) <= 3) {
@@ -32,7 +32,7 @@ public Action E74_OnPumpkinSpawnAttempt(client, const String:command[], argc) {
      if(StrEqual(arguments, "0 0") && IsEffectLive(EFFECT_PUMPKIN) && g_Effect74_PumpkinTimers[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
           E74_SpawnPumpkinBomb(client);
 
-          g_Effect74_PumpkinTimers[client] = CreateTimer(g_Effect74_IsSpecialRound ? E74_RARECOOLDOWN : E74_COOLDOWN, E74_ResetCooldown, client);
+          g_Effect74_PumpkinTimers[client] = CreateTimer(g_Effect74_IsSpecialRound ? E74_RARE_COOLDOWN : E74_COOLDOWN, E74_ResetCooldown, client);
           return Plugin_Handled;
      }
 

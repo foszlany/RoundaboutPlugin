@@ -4,7 +4,7 @@ float g_SafeProjectiles[] = {0.0, 2.0, 5.0, 6.0, 13.0};
 int g_SafeProjectilesSize = sizeof(g_SafeProjectiles) - 1;
 
 public void Event_RoundStart_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {
-     CreateTimer(1.0, AssignNewProjectiles);
+     CreateTimer(1.0, E52_AssignNewProjectiles);
 }
 
 public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, bool dontBroadcast) {
@@ -23,7 +23,7 @@ public void Event_RoundEnd_52_ProjectileMayhem(Event event, const char[] name, b
      }
 }
 
-public Action AssignNewProjectiles(Handle timer) {
+public Action E52_AssignNewProjectiles(Handle timer) {
      if(IsEffectLive(EFFECT_PMAYHEM)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i)) {
@@ -39,7 +39,7 @@ public Action AssignNewProjectiles(Handle timer) {
                }
           }
           
-          CreateTimer(1.0, AssignNewProjectiles);
+          CreateTimer(1.0, E52_AssignNewProjectiles);
      }
 
      return Plugin_Handled;

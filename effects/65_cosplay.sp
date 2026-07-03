@@ -16,7 +16,7 @@ char g_ClassModels[][] = {
 public void Event_RoundStart_65_Cosplay(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               ChangeModel(i);
+               E65_ChangeModel(i);
           }
      }
 }
@@ -26,12 +26,12 @@ public void Event_PlayerUpdate_65_Cosplay(Event event, const char[] name, bool d
 
      if(client && IsClientInGame(client) && IsPlayerAlive(client)) {
           if(!g_Effect65_IsChangingClasses[client]) {
-               ChangeModel(client);
+               E65_ChangeModel(client);
           }
      }
 }
 
-public void ChangeModel(int client) {
+public void E65_ChangeModel(int client) {
      if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
           return;
      }

@@ -1,13 +1,13 @@
 #pragma semicolon 1
 
 public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
-     AddCommandListener(Effect46_OnBuffActivate, "voicemenu");
+     AddCommandListener(E46_OnBuffActivate, "voicemenu");
      g_Effect46_isCommandListenerRegistered = true;
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect46_isCommandListenerRegistered) {
-          RemoveCommandListener(Effect46_OnBuffActivate, "voicemenu");
+          RemoveCommandListener(E46_OnBuffActivate, "voicemenu");
           g_Effect46_isCommandListenerRegistered = false;
 
           for(int i = 1; i <= MaxClients; i++) {
@@ -19,7 +19,7 @@ public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool
      }
 }
 
-public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
+public Action E46_OnBuffActivate(client, const String:command[], argc) {
      char arguments[4];
      GetCmdArgString(arguments, sizeof(arguments));
 
@@ -99,14 +99,14 @@ public Action Effect46_OnBuffActivate(client, const String:command[], argc) {
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 Your effect: \x07FF4500Explosion\x01"); // Orange-Red
           }
 
-          g_Effect46_BuffTimer[client] = CreateTimer(16.0, Effect46_ResetCooldown, client);
+          g_Effect46_BuffTimer[client] = CreateTimer(16.0, E46_ResetCooldown, client);
           return Plugin_Handled;
      }
 
      return Plugin_Continue;
 }
 
-public Action Effect46_ResetCooldown(Handle timer, int client) {
+public Action E46_ResetCooldown(Handle timer, int client) {
      g_Effect46_BuffTimer[client] = null;
      EmitSoundToClient(client, "player/recharged.wav");
      return Plugin_Handled;

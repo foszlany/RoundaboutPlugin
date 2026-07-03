@@ -1,7 +1,7 @@
 #pragma semicolon 1
 
-#define E76_DAMAGEPENALTY 0.02
-#define E76_MINDAMAGE 0.10
+#define E76_DAMAGE_PENALTY 0.02
+#define E76_MIN_DAMAGE 0.10
 
 public void Event_RoundStart_76_UniversalWear(Event event, const char[] name, bool dontBroadcast) {
      g_Effect76_KillCount = new StringMap();
@@ -87,9 +87,9 @@ public void E76_UpdateWeaponDamageAll(int weaponIndex, int value) {
 
      int canonicalIndex = StringToInt(key);
 
-     float bonus = 1.0 - (value * E76_DAMAGEPENALTY);
-     if(bonus < E76_MINDAMAGE) {
-          bonus = E76_MINDAMAGE;
+     float bonus = 1.0 - (value * E76_DAMAGE_PENALTY);
+     if(bonus < E76_MIN_DAMAGE) {
+          bonus = E76_MIN_DAMAGE;
      }
 
      char msg[256];
@@ -151,9 +151,9 @@ public void E76_UpdateWeaponDamage(int client) {
           int kills = 0;
           g_Effect76_KillCount.GetValue(key, kills);
 
-          float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
-          if(bonus < E76_MINDAMAGE) {
-               bonus = E76_MINDAMAGE;
+          float bonus = 1.0 - (kills * E76_DAMAGE_PENALTY);
+          if(bonus < E76_MIN_DAMAGE) {
+               bonus = E76_MIN_DAMAGE;
           }
 
           TF2Attrib_SetByName(weapon, "damage bonus", bonus);
@@ -188,9 +188,9 @@ public void E76_BuildWearString(int client, char[] buffer, int maxlen) {
           int kills = 0;
           g_Effect76_KillCount.GetValue(key, kills);
 
-          float bonus = 1.0 - (kills * E76_DAMAGEPENALTY);
-          if(bonus < E76_MINDAMAGE) {
-               bonus = E76_MINDAMAGE;
+          float bonus = 1.0 - (kills * E76_DAMAGE_PENALTY);
+          if(bonus < E76_MIN_DAMAGE) {
+               bonus = E76_MIN_DAMAGE;
           }
 
           int percent = RoundToNearest(bonus * 100.0);

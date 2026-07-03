@@ -1,8 +1,8 @@
 #pragma semicolon 1
 
-#define UPDATE_INTERVAL 0.06
-#define PLAYERS_PER_UPDATE 8
-#define MAX_LOOK_DISTANCE 3000.0
+#define E49_UPDATE_INTERVAL 0.06
+#define E49_PLAYERS_PER_UPDATE 8
+#define E49_MAX_LOOK_DISTANCE 3000.0
 
 public void Event_RoundStart_49_DeathStare(Event event, const char[] name, bool dontBroadcast) {    
      for(int i = 0; i <= MAXPLAYERS; i++) {
@@ -11,8 +11,8 @@ public void Event_RoundStart_49_DeathStare(Event event, const char[] name, bool 
           }
      }
 
-     g_Effect49_Timer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateLookMatrix, _, TIMER_REPEAT);
-    }
+     g_Effect49_Timer = CreateTimer(E49_UPDATE_INTERVAL, E49_UpdateLookMatrix, _, TIMER_REPEAT);
+}
 
 public void Event_RoundEnd_49_DeathStare(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect49_Timer != null) {
@@ -21,13 +21,13 @@ public void Event_RoundEnd_49_DeathStare(Event event, const char[] name, bool do
      }
 }
 
-public Action Timer_UpdateLookMatrix(Handle timer) {
-     UpdateLookMatrixChunk();
-     CheckForMutualStares();
+public Action E49_UpdateLookMatrix(Handle timer) {
+     E49_UpdateLookMatrixChunk();
+     E49_CheckForMutualStares();
      return Plugin_Continue;
 }
 
-void CheckForMutualStares() {
+void E49_CheckForMutualStares() {
      bool[] explodedThisCycle = new bool[MAXPLAYERS+1];
 
      for(int i = 1; i <= MaxClients; i++) {
@@ -56,10 +56,10 @@ void CheckForMutualStares() {
      }
 }
 
-void UpdateLookMatrixChunk() {
+public void E49_UpdateLookMatrixChunk() {
      int playersProcessed;
      
-     for(int i = 1; i <= MaxClients && playersProcessed < PLAYERS_PER_UPDATE; i++) {
+     for(int i = 1; i <= MaxClients && playersProcessed < E49_PLAYERS_PER_UPDATE; i++) {
           int client = (g_Effect49_iCurrentPlayerIndex + i - 1) % MaxClients + 1;
           
           if(IsClientInGame(client) && IsPlayerAlive(client)) {
@@ -69,7 +69,7 @@ void UpdateLookMatrixChunk() {
                }
                
                // FIND NEW LOOK TARGET
-               int target = GetClientAimTargetPlayer(client, MAX_LOOK_DISTANCE);
+               int target = E49_GetClientAimTargetPlayer(client, E49_MAX_LOOK_DISTANCE);
                if(1 <= target <= MaxClients && IsPlayerAlive(target)) {
                     g_Effect49_bIsLookingAt[client][target] = true;
                }
@@ -79,10 +79,10 @@ void UpdateLookMatrixChunk() {
      }
      
      // UPDATE ROTATION INDEX
-     g_Effect49_iCurrentPlayerIndex = (g_Effect49_iCurrentPlayerIndex + PLAYERS_PER_UPDATE) % MaxClients;
+     g_Effect49_iCurrentPlayerIndex = (g_Effect49_iCurrentPlayerIndex + E49_PLAYERS_PER_UPDATE) % MaxClients;
 }
 
-public bool TraceFilter_Players(int entity, int mask, any data) {
+public bool E49_TraceFilter_Players(int entity, int mask, any data) {
      // SKIP THE TRACING PLAYER AND EVERYONE ELSE
      if(entity == data) {
           return false; // SKIP SELF
@@ -90,7 +90,7 @@ public bool TraceFilter_Players(int entity, int mask, any data) {
      return true; // HIT EVERYTHING ELSE
 }
 
-int GetClientAimTargetPlayer(int client, float maxDistance) {
+public int E49_GetClientAimTargetPlayer(int client, float maxDistance) {
      float eyePos[3], eyeAng[3], endPos[3];
      GetClientEyePosition(client, eyePos);
      GetClientEyeAngles(client, eyeAng);
@@ -102,7 +102,7 @@ int GetClientAimTargetPlayer(int client, float maxDistance) {
      AddVectors(eyePos, dir, endPos);
      
      // PERFORM FINITE RAY TRACE
-     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, TraceFilter_Players, client);
+     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, E49_TraceFilter_Players, client);
      
      if(TR_DidHit()) {
           int entity = TR_GetEntityIndex();
