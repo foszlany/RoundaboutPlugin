@@ -1,6 +1,6 @@
 #pragma semicolon 1
 
-#define E77_COOLDOWN 15.0
+#define E77_COOLDOWN 1.0
 #define UPDATE_INTERVAL 0.02
 
 public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
