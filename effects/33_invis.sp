@@ -3,33 +3,33 @@
 public void Event_RoundStart_33_Invis(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               CreateTimer(0.1, Timer_ApplyInvisibility, i);
+               CreateTimer(0.1, Timer_E33_ApplyInvisibility, i);
           }
      }
 }
 
 public void Event_PlayerUpdate_33_Invis(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     CreateTimer(0.1, Timer_ApplyInvisibility, client);
+     CreateTimer(0.1, Timer_E33_ApplyInvisibility, client);
 }
 
 public void Event_RoundEnd_33_Invis(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               ApplyInvisibility(i, false);
+               E33_ApplyInvisibility(i, false);
           }
      }
 }
 
-public Action Timer_ApplyInvisibility(Handle timer, int client) {
+public Action Timer_E33_ApplyInvisibility(Handle timer, int client) {
      if(client > 0 && IsClientInGame(client) && IsPlayerAlive(client)) {
-          ApplyInvisibility(client, true);
+          E33_ApplyInvisibility(client, true);
      }
 
      return Plugin_Handled;
 }
 
-void ApplyInvisibility(int client, bool mode) {
+public void E33_ApplyInvisibility(int client, bool mode) {
      int alpha = mode ? 0 : 255;
 
      // PLAYER

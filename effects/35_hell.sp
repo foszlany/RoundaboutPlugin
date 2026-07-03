@@ -3,7 +3,7 @@
 public void Event_RoundStart_35_Hell(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SetHellAttributes(i);
+               E35_SetHellAttributes(i);
           }
      }
 }
@@ -11,7 +11,7 @@ public void Event_RoundStart_35_Hell(Event event, const char[] name, bool dontBr
 public void Event_PlayerUpdate_35_Hell(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetHellAttributes(client);
+     E35_SetHellAttributes(client);
 }
 
 public void Event_RoundEnd_35_Hell(Event event, const char[] name, bool dontBroadcast) {
@@ -42,7 +42,7 @@ public void Event_RoundEnd_35_Hell(Event event, const char[] name, bool dontBroa
      }
 }
 
-public void SetHellAttributes(int client) {
+public void E35_SetHellAttributes(int client) {
      ForceClass(client, TFClass_Pyro);
 
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);

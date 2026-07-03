@@ -32,17 +32,17 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
      }
      
      for(int i = 1; i <= MaxClients; i++) {
-          ForceUnrestrictedClass(i);
+          E40_ForceUnrestrictedClass(i);
      }
 }
 
 public void Event_PlayerUpdate_40_Restriction(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     ForceUnrestrictedClass(client);
+     E40_ForceUnrestrictedClass(client);
 }
  
-public void ForceUnrestrictedClass(int client) {
+public void E40_ForceUnrestrictedClass(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           TFClassType clientClass = TF2_GetPlayerClass(client);
 

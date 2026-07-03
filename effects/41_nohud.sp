@@ -8,32 +8,32 @@
 
 public void Event_RoundStart_41_NoHud(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          HideHUD(i);
+          E41_HideHUD(i);
      }
 }
 
 public void Event_PlayerUpdate_41_NoHud(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     HideHUD(client);
+     E41_HideHUD(client);
 }
 
 public void Event_RoundEnd_41_NoHud(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          RestoreHUD(i);
+          E41_RestoreHUD(i);
      }
 }
 
-void HideHUD(int client) {
+public void E41_HideHUD(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
-          int hudFlags = GetEntProp(client, Prop_Send, "m_iHideHUD");
-          SetEntProp(client, Prop_Send, "m_iHideHUD", hudFlags | HIDEHUD_EFFECT);
+          int hudFlags = GetEntProp(client, Prop_Send, "m_iE41_HideHUD");
+          SetEntProp(client, Prop_Send, "m_iE41_HideHUD", hudFlags | HIDEHUD_EFFECT);
      }
 }
 
-void RestoreHUD(int client) {
+public void E41_RestoreHUD(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
-          int hudFlags = GetEntProp(client, Prop_Send, "m_iHideHUD");
-          SetEntProp(client, Prop_Send, "m_iHideHUD", hudFlags & ~HIDEHUD_EFFECT);
+          int hudFlags = GetEntProp(client, Prop_Send, "m_iE41_HideHUD");
+          SetEntProp(client, Prop_Send, "m_iE41_HideHUD", hudFlags & ~HIDEHUD_EFFECT);
      }
 }

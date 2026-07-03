@@ -2,13 +2,13 @@
 
 public void Event_RoundStart_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          SetNoScrubsAttributes(i);
+          E38_SetNoScrubsAttributes(i);
      }
 }
 
 public void Event_PlayerUpdate_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     SetNoScrubsAttributes(client);
+     E38_SetNoScrubsAttributes(client);
 }
 
 public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool dontBroadcast) {
@@ -43,7 +43,7 @@ public void Event_PlayerHit_38_NoScrubs(Event event, const char[] name, bool don
      }
 }
 
-public void SetNoScrubsAttributes(int client) {
+public void E38_SetNoScrubsAttributes(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           ForceClass(client, TFClass_Sniper);
 

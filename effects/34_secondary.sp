@@ -9,7 +9,7 @@ public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool d
 
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               CreateTimer(0.12, RemovePrimaryWeapon, i);
+               CreateTimer(0.12, E34_RemovePrimaryWeapon, i);
           }
      }
 }
@@ -17,10 +17,10 @@ public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool d
 public void Event_PlayerUpdate_34_Secondary(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     CreateTimer(0.12, RemovePrimaryWeapon, client);
+     CreateTimer(0.12, E34_RemovePrimaryWeapon, client);
 }
 
-public Action RemovePrimaryWeapon(Handle timer, int client) {
+public Action E34_RemovePrimaryWeapon(Handle timer, int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           if(TF2_GetPlayerClass(client) != TFClass_Spy) {
                TF2_RemoveWeaponSlot(client, TFWeaponSlot_Primary);

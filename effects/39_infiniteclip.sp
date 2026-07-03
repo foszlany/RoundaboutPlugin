@@ -3,7 +3,7 @@
 public void Event_RoundStart_39_InfiniteClip(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SetHighWeaponClip(i);
+               E39_SetHighWeaponClip(i);
                TF2_RegeneratePlayer(i);
           }
      }
@@ -13,7 +13,7 @@ public void Event_PlayerUpdate_39_InfiniteClip(Event event, const char[] name, b
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
-          SetHighWeaponClip(client);
+          E39_SetHighWeaponClip(client);
      }
 }
 
@@ -41,7 +41,7 @@ public void Event_RoundEnd_39_InfiniteClip(Event event, const char[] name, bool 
      }
 }
 
-public void SetHighWeaponClip(int client) {
+public void E39_SetHighWeaponClip(int client) {
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
      if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
           TF2Attrib_SetByName(primaryWeapon, "clip size bonus", 4.0);
