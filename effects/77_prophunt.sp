@@ -5,7 +5,7 @@
 
 public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
      if(g_Effect77_UpdateTimer == null) {
-          g_Effect77_UpdateTimer = CreateTimer(UPDATE_INTERVAL, Timer_UpdateProps, _, TIMER_REPEAT);
+          g_Effect77_UpdateTimer = CreateTimer(UPDATE_INTERVAL, E77_UpdatePropsTimer, _, TIMER_REPEAT);
      }
 
      for(int i = 1; i <= MaxClients; i++) {
@@ -97,42 +97,8 @@ public void E77_ApplyProp(int client) {
 
      ApplyInvisibility(client, true);
 
-     PrintToChat(client, "You are now a prop!");
-}
-
-public Action Timer_UpdateProps(Handle timer) {
-     for(int client = 1; client <= MaxClients; client++) {
-          if(!g_Effect77_IsProp[client]) {
-               continue;
-          }
-
-          if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
-               if(g_Effect77_PropEntity[client] != -1 && IsValidEntity(g_Effect77_PropEntity[client])) {
-                    RemoveEntity(g_Effect77_PropEntity[client]);
-               }
-
-               g_Effect77_PropEntity[client] = -1;
-               g_Effect77_IsProp[client] = false;
-
-               continue;
-          }
-          
-          int prop = g_Effect77_PropEntity[client];
-          if(prop == -1 || !IsValidEntity(prop)) {
-               continue;
-          }
-          
-          float pos[3], ang[3];
-          GetClientAbsOrigin(client, pos);
-          GetClientAbsAngles(client, ang);
-          pos[2] += 20.0;
-          ang[0] = 0.0;
-          ang[2] = 0.0;
-          
-          TeleportEntity(prop, pos, ang, NULL_VECTOR);
-     }
-
-     return Plugin_Continue;
+     SetVariantInt(1);
+     AcceptEntityInput(client, "SetForcedTauntCam");
 }
 
 public void E77_RemoveProp(int client) {
@@ -150,7 +116,8 @@ public void E77_RemoveProp(int client) {
      g_Effect77_PropCooldown[client] = true;
      g_Effect77_NextPropTime[client] = GetEngineTime() + 15.0;
 
-     PrintToChat(client, "You are no longer a prop!");
+     SetVariantInt(0);
+     AcceptEntityInput(client, "SetForcedTauntCam");
 }
 
 public void E77_ResetPlayerState(int client) {
@@ -191,6 +158,41 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
      return Plugin_Continue;
 }
 
+public Action E77_UpdatePropsTimer(Handle timer) {
+     for(int client = 1; client <= MaxClients; client++) {
+          if(!g_Effect77_IsProp[client]) {
+               continue;
+          }
+
+          if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
+               if(g_Effect77_PropEntity[client] != -1 && IsValidEntity(g_Effect77_PropEntity[client])) {
+                    RemoveEntity(g_Effect77_PropEntity[client]);
+               }
+
+               g_Effect77_PropEntity[client] = -1;
+               g_Effect77_IsProp[client] = false;
+
+               continue;
+          }
+          
+          int prop = g_Effect77_PropEntity[client];
+          if(prop == -1 || !IsValidEntity(prop)) {
+               continue;
+          }
+          
+          float pos[3], ang[3];
+          GetClientAbsOrigin(client, pos);
+          GetClientAbsAngles(client, ang);
+          pos[2] += 20.0;
+          ang[0] = 0.0;
+          ang[2] = 0.0;
+          
+          TeleportEntity(prop, pos, ang, NULL_VECTOR);
+     }
+
+     return Plugin_Continue;
+}
+
 public Action E77_Timer_CheckReloadHold(Handle timer, any client) {
      g_Effect77_ReloadTimer[client] = null;
      if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
@@ -215,9 +217,5 @@ public void E77_OnReloadHeld(int client) {
 
      if(E77_CanBecomeProp(client)) {
           E77_ApplyProp(client);
-     }
-     else {
-          float remaining = g_Effect77_NextPropTime[client] - GetEngineTime();
-          PrintToChat(client, "[PH] You must wait %.1f seconds before becoming a prop again!", remaining);
      }
 }
