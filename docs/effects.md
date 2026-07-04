@@ -430,6 +430,7 @@
      - **Token:** `quickswap`
      - Two players will swap places every `3-8` seconds. There's a `25` second grace period after the round starts.
           - Players have their own `15` second grace period after swapping places so they're not teleported around too often.
+               - Players also cannot be teleported while during Warmup.
           - Swaps can happen with players from opposing teams.
 
 * **Mann vs. Machine**
