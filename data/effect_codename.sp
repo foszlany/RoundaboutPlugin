@@ -80,4 +80,5 @@ public void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("bomber", 75);
     EFFECT_TOKENS.SetPair("universalwear", 76);
     EFFECT_TOKENS.SetPair("prophunt", 77);
+    EFFECT_TOKENS.SetPair("phase", 78);
 }

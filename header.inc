@@ -332,6 +332,7 @@ Handle g_Effect77_UpdateTimer = null;
 #include "effects/75_bomber.sp"
 #include "effects/76_universalwear.sp"
 #include "effects/77_prophunt.sp"
+#include "effects/78_phase.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -463,5 +464,6 @@ enum Effect {
 	EFFECT_BOMBER			=	75,
 	EFFECT_UNIVERSALWEAR	=	76,
 	EFFECT_PROPHUNT		=	77,
+	EFFECT_PHASE			=	78,
 	EFFECT_MAXCOUNT
 }

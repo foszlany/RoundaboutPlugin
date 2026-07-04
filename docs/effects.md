@@ -641,3 +641,11 @@
           - This effect comes with thirdperson.
           - Effect wears off when the player shoots or gets shot.
           - Cooldown: `15` seconds.
+
+* **Phase**
+     - **ID:** `78`
+     - **Token:** `phase`
+     - Holding Reload for `0.5` seconds causes the player to transfer into a random prop.
+          - This effect comes with thirdperson.
+          - Effect wears off when the player shoots or gets shot.
+          - Cooldown: `15` seconds.

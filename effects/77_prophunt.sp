@@ -131,7 +131,7 @@ public void E77_OnPlayerHurtOrShoot(int client) {
      }
 }
 
-public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon) {
+public Action E77_OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon) {
      if(!IsEffectLive(EFFECT_PROPHUNT) || !IsClientInGame(client) || !IsPlayerAlive(client)) {
           return Plugin_Continue;
      }

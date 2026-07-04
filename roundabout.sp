@@ -274,3 +274,15 @@ public void CallEventFunction(RoundEventFunc funcPointer, Event event, const cha
 		Call_Finish();
 	}
 }
+
+/* INPUT CHECKS */
+public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon) {
+     if(IsEffectLive(EFFECT_PROPHUNT)) {
+		E77_OnPlayerRunCmd(client, buttons, impulse, vel, angles, weapon);
+	}
+	if(IsEffectLive(EFFECT_PHASE)) {
+		E78_OnPlayerRunCmd(client, buttons, impulse, vel, angles, weapon);
+	}
+
+     return Plugin_Continue;
+}
