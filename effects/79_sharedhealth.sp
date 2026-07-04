@@ -12,6 +12,7 @@ public void Event_RoundStart_79_SharedHealth(Event event, const char[] name, boo
                continue;
           }
 
+          E79_CheckAndSwapFromSpy(i);
           CreateTimer(0.1, E79_SetSharedHealth, i);
      }
 }
@@ -30,6 +31,7 @@ public void Event_PlayerUpdate_79_SharedHealth(Event event, const char[] name, b
           return;
      }
 
+     E79_CheckAndSwapFromSpy(client);
      CreateTimer(0.1, E79_SetSharedHealth, client);
 }
 
@@ -119,5 +121,13 @@ public void E79_CalculateTeamHealth(TFTeam team) {
      }
      else if(team == TFTeam_Blue) {
           g_Effect79_BluHealth = E79_MIN_HEALTH + teamCount * E79_HEALTH_PER_PLAYER;
+     }
+}
+
+public void E79_CheckAndSwapFromSpy(int client) {
+     if(TF2_GetPlayerClass(client) == TFClass_Spy) {
+          TF2_SetPlayerClass(client, TFClass_Scout);
+          TF2_RegeneratePlayer(client);
+          PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07D5D5D5Spy\x01 is not allowed for this round.");
      }
 }

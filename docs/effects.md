@@ -656,6 +656,7 @@
      - **Token:** `sharedhealth`
      - Teams have a shared pool of health.
           - If the pool runs out, all players of that team die.
+          - Spy is not allowed.
           - Formula: `500 + TeamPlayerCount * 200`
           - The following don't affect the current pool:
                - Environmental damage
