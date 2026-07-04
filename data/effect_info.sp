@@ -69,7 +69,7 @@ public void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_SUPERJUMP,         "Super Jump",               "Crouch to perform a big jump! (4.0s cooldown)");
     ADD_EFFECT(EFFECT_PULLEY,            "Pulley",                   "Damaging a player will pull them towards you.");
     ADD_EFFECT(EFFECT_ODGLASSCANNON,     "On Demand Glass Cannon",   "The lower your health, the more you damage!");
-    ADD_EFFECT(EFFECT_BUFFERSGAMBIT,     "Buffer's Gambit",          "Call for medic to receive a random (de)buff! (16.0s cooldown)");
+    ADD_EFFECT(EFFECT_BUFFERSGAMBIT,     "Buffer's Gambit",          "Call for medic to receive a random (de)buff!");
     ADD_EFFECT(EFFECT_SKATINGRINK,       "Skating Rink",             "Slide around like you're ice skating!");
     ADD_EFFECT(EFFECT_STUNNINGMETAL,     "Stunning Metal",           "Greater instances of damage causes slowdown or stun.");
     ADD_EFFECT(EFFECT_DEATHSTARE,        "Death Stare",              "Look each other in the eye and you'll both die.");
