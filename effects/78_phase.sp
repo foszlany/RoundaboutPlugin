@@ -159,5 +159,7 @@ public bool E78_TryTeleport(int client) {
      }
           
      TeleportEntity(client, exitPos, NULL_VECTOR, NULL_VECTOR);
+     EmitSoundToClient(client, "misc/halloween/spell_teleport.wav");
+
      return true;
 }

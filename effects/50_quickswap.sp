@@ -21,10 +21,8 @@ public void Event_RoundEnd_50_Quickswap(Event event, const char[] name, bool don
 }
 
 public Action E50_SwapPlayers(Handle timer, int client) {
-     PrintToChatAll("attempt");
      if(IsWarmup()) {
           g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), E50_SwapPlayers);
-          PrintToChatAll("warmup");
           return Plugin_Handled;
      }
 

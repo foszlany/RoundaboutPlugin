@@ -647,4 +647,5 @@
      - **ID:** `78`
      - **Token:** `phase`
      - Holding Reload and walking straight towards walls allows the player to phase through them.
+          - Players can phase into areas they shouldn't be, but they can't go into the void.
           - Limit: `256 Hammer Units`
