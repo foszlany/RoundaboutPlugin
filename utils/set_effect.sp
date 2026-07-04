@@ -956,6 +956,14 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
                }
+
+               case EFFECT_SHAREDHEALTH: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_79_SharedHealth;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_79_SharedHealth;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_79_SharedHealth;
+                    g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_79_SharedHealth;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

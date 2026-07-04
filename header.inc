@@ -253,6 +253,9 @@ bool g_Effect77_ReloadHeld[MAXPLAYERS + 1];
 int g_Effect77_PropEntity[MAXPLAYERS + 1];
 Handle g_Effect77_UpdateTimer = null;
 
+int g_Effect79_RedHealth;
+int g_Effect79_BluHealth;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -333,6 +336,7 @@ Handle g_Effect77_UpdateTimer = null;
 #include "effects/76_universalwear.sp"
 #include "effects/77_prophunt.sp"
 #include "effects/78_phase.sp"
+#include "effects/79_sharedhealth.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -467,5 +471,6 @@ enum Effect {
 	EFFECT_UNIVERSALWEAR	=	76,
 	EFFECT_PROPHUNT		=	77,
 	EFFECT_PHASE			=	78,
+	EFFECT_SHAREDHEALTH		=	79,
 	EFFECT_MAXCOUNT
 }

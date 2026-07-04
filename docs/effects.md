@@ -650,3 +650,16 @@
      - Holding Reload and walking straight towards walls allows the player to phase through them.
           - Players can phase into areas they shouldn't be, but they can't go into the void.
           - Limit: `256 Hammer Units`
+
+* **Shared Health**
+     - **ID:** `79`
+     - **Token:** `sharedhealth`
+     - Teams have a shared pool of health.
+          - If the pool runs out, all players of that team die.
+          - Formula: `500 + TeamPlayerCount * 200`
+          - The following don't affect the current pool:
+               - Environmental damage
+               - Self-damage
+               - Player join
+               - Player disconnect
+          

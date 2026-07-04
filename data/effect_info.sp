@@ -102,4 +102,5 @@ public void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_UNIVERSALWEAR,     "Universal Wear",           "Killing with a weapon nerfs the damage of it by 2% for everyone.");
     ADD_EFFECT(EFFECT_PROPHUNT,          "Prophunt",                 "Hold your reload key to become a random prop.");
     ADD_EFFECT(EFFECT_PHASE,             "Phase",                    "You can phase through solid walls you're walking towards head on while holding your reload key.");
+    ADD_EFFECT(EFFECT_SHAREDHEALTH,      "Shared Health",            "Everyone in your team shares the same health.");
 }

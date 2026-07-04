@@ -81,4 +81,5 @@ public void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("universalwear", 76);
     EFFECT_TOKENS.SetPair("prophunt", 77);
     EFFECT_TOKENS.SetPair("phase", 78);
+    EFFECT_TOKENS.SetPair("sharedhealth", 79);
 }
