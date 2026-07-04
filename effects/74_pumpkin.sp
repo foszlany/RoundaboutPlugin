@@ -59,7 +59,7 @@ public Action E74_SpawnPumpkinBomb(int client) {
      endPos[1] = eyePos[1] + forwardVec[1] * 1000.0;
      endPos[2] = eyePos[2] + forwardVec[2] * 1000.0;
 
-     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, E74_TraceEntityFilterPlayers);
+     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, TraceFilter_EntityPlayers);
 
      float hitPos[3];
      TR_GetEndPosition(hitPos);
@@ -71,10 +71,6 @@ public Action E74_SpawnPumpkinBomb(int client) {
      }
 
      return Plugin_Handled;
-}
-
-public bool E74_TraceEntityFilterPlayers(int entity, int contentsMask) {
-    return entity > MaxClients;
 }
 
 public Action E74_ResetCooldown(Handle timer, int client) {

@@ -82,14 +82,6 @@ public void E49_UpdateLookMatrixChunk() {
      g_Effect49_iCurrentPlayerIndex = (g_Effect49_iCurrentPlayerIndex + E49_PLAYERS_PER_UPDATE) % MaxClients;
 }
 
-public bool E49_TraceFilter_Players(int entity, int mask, any data) {
-     // SKIP THE TRACING PLAYER AND EVERYONE ELSE
-     if(entity == data) {
-          return false; // SKIP SELF
-     }
-     return true; // HIT EVERYTHING ELSE
-}
-
 public int E49_GetClientAimTargetPlayer(int client, float maxDistance) {
      float eyePos[3], eyeAng[3], endPos[3];
      GetClientEyePosition(client, eyePos);
@@ -102,7 +94,7 @@ public int E49_GetClientAimTargetPlayer(int client, float maxDistance) {
      AddVectors(eyePos, dir, endPos);
      
      // PERFORM FINITE RAY TRACE
-     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, E49_TraceFilter_Players, client);
+     TR_TraceRayFilter(eyePos, endPos, MASK_SOLID, RayType_EndPoint, TraceFilter_Players, client);
      
      if(TR_DidHit()) {
           int entity = TR_GetEntityIndex();

@@ -355,6 +355,7 @@ Handle g_Effect77_UpdateTimer = null;
 #include "utils/to_lower.sp"
 #include "utils/apply_invisibility.sp"
 #include "utils/handle_cooldown.sp"
+#include "utils/tracefilter.sp"
 
 /* DATATYPES */
 #include "datatypes/bmap.sp"

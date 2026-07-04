@@ -6,10 +6,6 @@
 static const float E78_HULL_MIN[3] = {-24.0, -24.0, 0.0};
 static const float E78_HULL_MAX[3] = {24.0, 24.0, 82.0};
 
-public bool TraceFilter_WorldOnly(int entity, int contentsMask) {
-     return (entity == 0);
-}
-
 public Action E78_OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon) {
      if(buttons & IN_FORWARD && buttons & IN_RELOAD) {
           E78_TryTeleport(client);
