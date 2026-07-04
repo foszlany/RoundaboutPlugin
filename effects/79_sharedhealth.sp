@@ -128,6 +128,6 @@ public void E79_CheckAndSwapFromSpy(int client) {
      if(TF2_GetPlayerClass(client) == TFClass_Spy) {
           TF2_SetPlayerClass(client, TFClass_Scout);
           TF2_RegeneratePlayer(client);
-          PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07D5D5D5Spy\x01 is not allowed for this round.");
+          PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07EB2E2ESpy is not allowed for this round.\x01");
      }
 }
