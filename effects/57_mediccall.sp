@@ -25,7 +25,6 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
      
      if(StrEqual(arguments, "0 0")) {
           if(g_Effect57_HasRecentlyCalled[client]) {
-               PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07FF9999Calling for medic is on cooldown.\x01");
                return Plugin_Handled;
           }
 
