@@ -606,6 +606,7 @@
      - **Conditional effect:** Gamemode cannot be `Arena`
      - After dying, players are sent into a ghost state, in which they can choose where they wish to respawn.
           - Classes must be changed while alive.
+          - Respawn time is a universal value of `10` seconds.
 
 * **Kitswap**
      - **ID:** `73`
