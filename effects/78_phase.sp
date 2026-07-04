@@ -1,6 +1,7 @@
 #pragma semicolon 1
 
 #define E78_MAX_WALL_THICKNESS 256.0
+#define E78_MAX_GROUND_DISTANCE 60.0 
 #define E78_STEP_SIZE 8.0 
 
 static const float E78_HULL_MIN[3] = {-24.0, -24.0, 0.0};
@@ -25,17 +26,9 @@ public bool E78_IsBlockedForward(int client) {
      endPos[1] = pos[1] + dir[1] * checkDist;
      endPos[2] = pos[2] + dir[2] * checkDist;
      
-     TR_TraceRayFilter(
-          pos,
-          endPos,
-          MASK_PLAYERSOLID,
-          RayType_EndPoint,
-          TraceFilter_WorldOnly
-     );
+     TR_TraceRayFilter(pos, endPos, MASK_PLAYERSOLID, RayType_EndPoint, TraceFilter_WorldOnly);
      
-     bool hit = TR_DidHit();
-     
-     return hit;
+     return TR_DidHit();
 }
 
 public bool E78_FindExit(int client, float exitPos[3]) {
@@ -48,19 +41,12 @@ public bool E78_FindExit(int client, float exitPos[3]) {
      bool foundExit = false;
      
      while(depth < E78_MAX_WALL_THICKNESS) {
-          float test[3];
-          test[0] = eye[0] + dir[0] * depth;
-          test[1] = eye[1] + dir[1] * depth;
-          test[2] = eye[2] + dir[2] * depth;
+          float testPos[3];
+          testPos[0] = eye[0] + dir[0] * depth;
+          testPos[1] = eye[1] + dir[1] * depth;
+          testPos[2] = eye[2] + dir[2] * depth;
           
-          TR_TraceHullFilter(
-               test,
-               test,
-               E78_HULL_MIN,
-               E78_HULL_MAX,
-               MASK_PLAYERSOLID,
-               TraceFilter_WorldOnly
-          );
+          TR_TraceHullFilter(testPos, testPos, E78_HULL_MIN, E78_HULL_MAX, MASK_PLAYERSOLID, TraceFilter_WorldOnly);
           
           if(TR_StartSolid()) {
                foundExit = true;
@@ -75,19 +61,12 @@ public bool E78_FindExit(int client, float exitPos[3]) {
      }
      
      while(depth < E78_MAX_WALL_THICKNESS) {
-          float test[3];
-          test[0] = eye[0] + dir[0] * depth;
-          test[1] = eye[1] + dir[1] * depth;
-          test[2] = eye[2] + dir[2] * depth;
+          float testPos[3];
+          testPos[0] = eye[0] + dir[0] * depth;
+          testPos[1] = eye[1] + dir[1] * depth;
+          testPos[2] = eye[2] + dir[2] * depth;
           
-          TR_TraceHullFilter(
-               test,
-               test,
-               E78_HULL_MIN,
-               E78_HULL_MAX,
-               MASK_PLAYERSOLID,
-               TraceFilter_WorldOnly
-          );
+          TR_TraceHullFilter(testPos, testPos, E78_HULL_MIN, E78_HULL_MAX, MASK_PLAYERSOLID, TraceFilter_WorldOnly);
           
           if(!TR_StartSolid()) {
                break;
@@ -109,14 +88,7 @@ public bool E78_FindExit(int client, float exitPos[3]) {
           return false;
      }
      
-     TR_TraceHullFilter(
-          exitPos,
-          exitPos,
-          E78_HULL_MIN,
-          E78_HULL_MAX,
-          MASK_PLAYERSOLID,
-          TraceFilter_WorldOnly
-     );
+     TR_TraceHullFilter(exitPos,exitPos,E78_HULL_MIN, E78_HULL_MAX, MASK_PLAYERSOLID, TraceFilter_WorldOnly);
      
      if(TR_StartSolid()) {
           return false;
@@ -142,18 +114,11 @@ public bool E78_TryTeleport(int client) {
      float groundPos[3];
      groundPos[0] = exitPos[0];
      groundPos[1] = exitPos[1];
-     groundPos[2] = exitPos[2] - 100.0;
+     groundPos[2] = exitPos[2] - E78_MAX_GROUND_DISTANCE;
      
-     TR_TraceRayFilter(
-          exitPos,
-          groundPos,
-          MASK_PLAYERSOLID,
-          RayType_EndPoint,
-          TraceFilter_WorldOnly
-     );
+     TR_TraceRayFilter(exitPos, groundPos, MASK_PLAYERSOLID, RayType_EndPoint, TraceFilter_WorldOnly);
      
-     float groundDist = TR_GetFraction() * 100.0;
-     
+     float groundDist = TR_GetFraction() * E78_MAX_GROUND_DISTANCE;
      if(groundDist > 80.0 || groundDist < 10.0) {
           return false;
      }
