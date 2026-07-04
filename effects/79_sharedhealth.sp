@@ -50,7 +50,7 @@ public void Event_PlayerHit_79_SharedHealth(Event event, const char[] name, bool
           if(g_Effect79_RedHealth <= 0) {
                E79_KillTeam(TFTeam_Red);
                E79_CalculateTeamHealth(TFTeam_Red);
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07B8383BRED\x01 has fallen!");
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FF4040RED\x01 has fallen!");
                return;
           }
 
@@ -66,7 +66,7 @@ public void Event_PlayerHit_79_SharedHealth(Event event, const char[] name, bool
           if(g_Effect79_BluHealth <= 0) {
                E79_KillTeam(TFTeam_Blue);
                E79_CalculateTeamHealth(TFTeam_Blue);
-               PrintToChatAll("\x07B143F1[Roundabout]\x01 \x075885A2BLU\x01 has fallen!");
+               PrintToChatAll("\x07B143F1[Roundabout]\x01 \x0766C0FABLU\x01 has fallen!");
                return;
           }
 

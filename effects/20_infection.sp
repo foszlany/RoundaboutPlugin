@@ -99,10 +99,10 @@ public void E20_InfectionTeamCheck() {
      }
      else if(redPlayers == 0) {
           ForceWin(TFTeam_Blue);
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x075885A2BLU\x01 has infected all players and won!");
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x0766C0FABLU\x01 has infected all players and won!");
      }
      else {
           ForceWin(TFTeam_Red);
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07B8383BRED\x01 has infected all players and won!");
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FF4040RED\x01 has infected all players and won!");
      }
 }
