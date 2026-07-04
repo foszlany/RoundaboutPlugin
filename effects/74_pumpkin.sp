@@ -17,6 +17,8 @@ public void Event_RoundStart_74_PumpkinBomb(Event event, const char[] name, bool
      for(int i = 1; i <= MaxClients; i++) {
           g_Effect74_PumpkinTimers[i] = null;
      }
+
+     SignalCooldown(EFFECT_PUMPKIN, 255, 117, 24);
 }
 
 public void Event_RoundEnd_74_PumpkinBomb(Event event, const char[] name, bool dontBroadcast) {
@@ -32,7 +34,10 @@ public Action E74_OnPumpkinSpawnAttempt(client, const String:command[], argc) {
      if(StrEqual(arguments, "0 0") && IsEffectLive(EFFECT_PUMPKIN) && g_Effect74_PumpkinTimers[client] == null && IsClientInGame(client) && IsPlayerAlive(client)) {
           E74_SpawnPumpkinBomb(client);
 
-          g_Effect74_PumpkinTimers[client] = CreateTimer(g_Effect74_IsSpecialRound ? E74_RARE_COOLDOWN : E74_COOLDOWN, E74_ResetCooldown, client);
+          float cooldown = g_Effect74_IsSpecialRound ? E74_RARE_COOLDOWN : E74_COOLDOWN;
+          g_Effect74_PumpkinTimers[client] = CreateTimer(cooldown, E74_ResetCooldown, client);
+          AddCooldown(EFFECT_PUMPKIN, client, cooldown);
+
           return Plugin_Handled;
      }
 

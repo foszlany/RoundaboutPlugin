@@ -96,6 +96,14 @@ bool g_IsForcedRare[MULTIEFFECT_MAX_COUNT + 1] = {false, ...};
 bool g_VoteSkip[MAXPLAYERS + 1];
 int g_VoteSkipCount = 0;
 
+Handle g_CooldownTimer;
+Effect g_CooldownEffects[MULTIEFFECT_MAX_COUNT];
+float g_CooldownTimes[MULTIEFFECT_MAX_COUNT][MAXPLAYERS];
+int g_CooldownCount;
+int g_CooldownColorR[MULTIEFFECT_MAX_COUNT];
+int g_CooldownColorG[MULTIEFFECT_MAX_COUNT];
+int g_CooldownColorB[MULTIEFFECT_MAX_COUNT];
+
 StringMap g_Blacklist;
 StringMap g_EffectInfo;
 StringMap g_WeaponInfo;
@@ -345,6 +353,7 @@ Handle g_Effect77_UpdateTimer = null;
 #include "utils/apply_powerplay.sp"
 #include "utils/to_lower.sp"
 #include "utils/apply_invisibility.sp"
+#include "utils/handle_cooldown.sp"
 
 /* DATATYPES */
 #include "datatypes/bmap.sp"

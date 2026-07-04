@@ -1,6 +1,6 @@
 #pragma semicolon 1
 
-#define E77_COOLDOWN 1.0
+#define E77_COOLDOWN 15.0
 #define E77_UPDATE_INTERVAL 0.02
 
 public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
@@ -13,6 +13,8 @@ public void Event_RoundStart_77_Prophunt(Event event, const char[] name, bool do
                E77_ResetPlayerState(i);
           }
      }
+
+     SignalCooldown(EFFECT_PROPHUNT, 61, 87, 105);
 }
 
 public void Event_RoundEnd_77_Prophunt(Event event, const char[] name, bool dontBroadcast) {
@@ -44,11 +46,6 @@ public bool E77_CanBecomeProp(int client) {
      return !(g_Effect77_PropCooldown[client] && GetEngineTime() < g_Effect77_NextPropTime[client]);
 }
 
-public void E77_StartCooldown(int client) {
-     g_Effect77_PropCooldown[client] = true;
-     g_Effect77_NextPropTime[client] = GetEngineTime() + E77_COOLDOWN;
-}
-
 public void E77_ClearCooldown(int client) {
      g_Effect77_PropCooldown[client] = false;
      g_Effect77_NextPropTime[client] = 0.0;
@@ -67,8 +64,6 @@ public void E77_ApplyProp(int client) {
      int idx = GetRandomInt(0, sizeof(g_PropModels) - 1);
      char mdl[64];
      strcopy(mdl, sizeof(mdl), g_PropModels[idx]);
-
-     PrintToChatAll("%s", mdl);
 
      int prop = CreateEntityByName("prop_dynamic_override");
 
@@ -117,6 +112,7 @@ public void E77_RemoveProp(int client) {
      g_Effect77_IsProp[client] = false;
      g_Effect77_PropCooldown[client] = true;
      g_Effect77_NextPropTime[client] = GetEngineTime() + E77_COOLDOWN;
+     AddCooldown(EFFECT_PROPHUNT, client, E77_COOLDOWN);
 
      SetVariantInt(0);
      AcceptEntityInput(client, "SetForcedTauntCam");
