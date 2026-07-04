@@ -8,6 +8,8 @@ public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool d
           g_Effect57_HasBeenTeleportedRecently[i] = false;
           g_Effect57_HasRecentlyCalled[i] = false;
      }
+
+     SignalCooldown(EFFECT_MEDICCALL, 255, 66, 66);
 }
 
 public void Event_RoundEnd_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {    
@@ -29,6 +31,7 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
 
           g_Effect57_HasRecentlyCalled[client] = true;
           CreateTimer(6.0, E57_ResetCallerCooldown, client);
+          AddCooldown(EFFECT_MEDICCALL, client, 6.0);
 
           bool isMedicExisting = false;
           bool isMedicAlive = false;
@@ -57,6 +60,7 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
 
                                         g_Effect57_HasBeenTeleportedRecently[i] = true;
                                         CreateTimer(8.0, E57_ResetMedicCooldown, i);
+                                        AddCooldown(EFFECT_MEDICCALL, i, 8.0);
 
                                         PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x079EFF99Medic successfully teleported!\x01");
 

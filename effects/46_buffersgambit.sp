@@ -3,6 +3,7 @@
 public void Event_RoundStart_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
      AddCommandListener(E46_OnBuffActivate, "voicemenu");
      g_Effect46_isCommandListenerRegistered = true;
+     SignalCooldown(EFFECT_BUFFERSGAMBIT, 245, 207, 39);
 }
 
 public void Event_RoundEnd_46_BuffersGambit(Event event, const char[] name, bool dontBroadcast) {
@@ -100,6 +101,8 @@ public Action E46_OnBuffActivate(client, const String:command[], argc) {
           }
 
           g_Effect46_BuffTimer[client] = CreateTimer(16.0, E46_ResetCooldown, client);
+          AddCooldown(EFFECT_BUFFERSGAMBIT, client, 16.0);
+
           return Plugin_Handled;
      }
 
