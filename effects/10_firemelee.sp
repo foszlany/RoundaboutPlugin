@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E10_IGNITE_DURATION 8.0
+
 public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           E10_ApplyMiniCritVsBurning(i);
@@ -20,7 +22,7 @@ public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool do
      }
      
      if(GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") == GetPlayerWeaponSlot(attacker, TFWeaponSlot_Melee)) {
-          TF2_IgnitePlayer(victim, attacker, 8.0);
+          TF2_IgnitePlayer(victim, attacker, E10_IGNITE_DURATION);
      }
 }
 

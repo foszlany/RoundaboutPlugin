@@ -1,11 +1,16 @@
 #pragma semicolon 1
 
+#define E0_RARE_CHANCE 4
+#define E0_RARE_MIN_TIME 60.0
+#define E0_RARE_MAX_TIME 160.0
+
 public void Event_RoundStart_0_Pure(Event event, const char[] name, bool dontBroadcast) {
      g_Effect0_FakePure_Timer = null;
      g_Effect0_FakePure_ExplodeTimer = null;
 
-     if(IsRareEffectForced(EFFECT_PURE) || GetRandomInt(0, 100) <= 4) {
-          g_Effect0_FakePure_Timer = CreateTimer(GetRandomFloat(60.0, 160.0), E0_FakePureEvent);
+     if(IsRareEffectForced(EFFECT_PURE) || GetRandomInt(0, 100) <= E0_RARE_CHANCE) {
+          float randomTime = GetRandomFloat(E0_RARE_MIN_TIME, E0_RARE_MAX_TIME);
+          g_Effect0_FakePure_Timer = CreateTimer(randomTime, E0_FakePureEvent);
      }
      
      g_Effect0_FakePure_IsActive = false;

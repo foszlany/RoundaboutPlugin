@@ -1,7 +1,10 @@
 #pragma semicolon 1
 
+#define E9_RARE_CHANCE 2
+#define E9_RARE_DMG_BONUS 10.0
+
 public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool dontBroadcast) {
-     if(IsRareEffectForced(EFFECT_FORCEMELEE) || GetRandomInt(0, 100) <= 2) {
+     if(IsRareEffectForced(EFFECT_FORCEMELEE) || GetRandomInt(0, 100) <= E9_RARE_CHANCE) {
           g_Effect9_IsSpecialRound = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Melee hits instakill.");
      }
@@ -15,7 +18,7 @@ public void Event_RoundStart_9_ForceMelee(Event event, const char[] name, bool d
                CreateTimer(0.12, E9_ForceToMelee, i);
 
                if(g_Effect9_IsSpecialRound) {
-                    TF2Attrib_SetByName(i, "damage bonus", 10.0);
+                    TF2Attrib_SetByName(i, "damage bonus", E9_RARE_DMG_BONUS);
                }
           }
      }
@@ -52,7 +55,7 @@ public Action E9_ForceToMelee(Handle timer, int client) {
      }
 
      if(g_Effect9_IsSpecialRound) {
-          TF2Attrib_SetByName(client, "damage bonus", 10.0);
+          TF2Attrib_SetByName(client, "damage bonus", E9_RARE_DMG_BONUS);
      }
 
      return Plugin_Handled;

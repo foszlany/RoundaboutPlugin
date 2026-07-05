@@ -69,7 +69,7 @@
      - **ID:** `6`
      - **Token:** `vampire`
      - **Rare variant:** `5%` chance of `100%` heal.
-     - Heals back `60%` of the damage dealt when not overhealed.
+     - Heals back `50%` of the damage dealt when not overhealed.
 
 * **Swim**
      - **ID:** `7`
