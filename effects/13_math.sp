@@ -1,5 +1,11 @@
 #pragma semicolon 1
 
+#define E13_MIN_ASSIGNMENT_TIMER 12.0
+#define E13_MAX_ASSIGNMENT_TIMER 36.0
+#define E13_MAX_ANSWER_MULTIPLIER 200.0
+#define E13_MINIMUM_MAX_ANSWER_PART 50
+#define E13_ANSWER_TIME 8.0
+
 public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBroadcast) {
      AddCommandListener(E13_OnChatMessage, "say");
 	AddCommandListener(E13_OnChatMessage, "say_team");
@@ -10,7 +16,8 @@ public void Event_RoundStart_13_Math(Event event, const char[] name, bool dontBr
           g_Effect13_MathQuestionTimers[i] = null;
 
           if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i) && !IsFakeClient(i)) {
-               g_Effect13_MathQuestionTimers[i] = CreateTimer(float(GetRandomInt(12, 36)), E13_GiveMathProblem, i);
+               float randomTime = GetRandomFloat(E13_MIN_ASSIGNMENT_TIMER, E13_MAX_ASSIGNMENT_TIMER);
+               g_Effect13_MathQuestionTimers[i] = CreateTimer(randomTime, E13_GiveMathProblem, i);
           }
      }
 }
@@ -19,7 +26,8 @@ public void Event_PlayerUpdate_13_Math(Event event, const char[] name, bool dont
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(client <= MaxClients && IsClientInGame(client) && IsPlayerAlive(client) && !IsFakeClient(client) && g_Effect13_MathQuestionTimers[client] == null) {
-          g_Effect13_MathQuestionTimers[client] = CreateTimer(float(GetRandomInt(12, 36)), E13_GiveMathProblem, client);
+          float randomTime = GetRandomFloat(E13_MIN_ASSIGNMENT_TIMER, E13_MAX_ASSIGNMENT_TIMER);
+          g_Effect13_MathQuestionTimers[client] = CreateTimer(randomTime, E13_GiveMathProblem, client);
      }
 }
 
@@ -53,27 +61,17 @@ public void E13_GiveMathProblem(Handle timer, int client) {
      if(IsEffectLive(EFFECT_MATH) && IsClientInGame(client) && IsPlayerAlive(client)) {
           float kills = float(GetClientFrags(client));
           float deaths = GetClientDeaths(client) == 0 ? 1.0 : float(GetClientDeaths(client));
-          int extra = RoundToNearest(200.0 * kills / deaths);
+          int extra = RoundToNearest(E13_MAX_ANSWER_MULTIPLIER * kills / deaths);
 
-          int randomA = GetRandomInt(1, 50 + extra);
-          int randomB = GetRandomInt(1, 50 + extra);
+          int randomA = GetRandomInt(1, E13_MINIMUM_MAX_ANSWER_PART + extra);
+          int randomB = GetRandomInt(1, E13_MINIMUM_MAX_ANSWER_PART + extra);
 
-          SetHudTextParams(
-               -1.0,
-               0.2,
-               8.0,
-               255,
-               GetRandomInt(0, 255),
-               GetRandomInt(0, 255),
-               GetRandomInt(0, 255),
-               0,
-               2.0
-          );
+          SetHudTextParams(-1.0, 0.2, 8.0, 255, GetRandomInt(0, 255), GetRandomInt(0, 255), GetRandomInt(0, 255), 0, 2.0);
           ShowSyncHudText(client, g_HudSync, "%d + %d = ?", randomA, randomB);
 
           g_Effect13_MathAnswer[client] = randomA + randomB;
 
-          g_Effect13_MathQuestionTimers[client] = CreateTimer(8.0, E13_MathExplode, client);
+          g_Effect13_MathQuestionTimers[client] = CreateTimer(E13_ANSWER_TIME, E13_MathExplode, client);
      }
      else {
           E13_NullifyClientMathData(client);
@@ -131,7 +129,8 @@ public void E13_CheckMathResponse(int client, const char[] command, int argc) {
                }
                E13_NullifyClientMathData(client);
 
-               g_Effect13_MathQuestionTimers[client] = CreateTimer(float(GetRandomInt(12, 36)), E13_GiveMathProblem, client);
+               float randomTime = GetRandomFloat(E13_MIN_ASSIGNMENT_TIMER, E13_MAX_ASSIGNMENT_TIMER);
+               g_Effect13_MathQuestionTimers[client] = CreateTimer(randomTime, E13_GiveMathProblem, client);
           }
      }
 }
