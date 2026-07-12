@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E18_EFFECT_DURATION 8.0
+
 public void Event_RoundStart_18_Snowball(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           g_Effect18_EffectIndex[i] = 0;
@@ -32,7 +34,7 @@ public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool d
                }
           }
 
-          g_Effect18_EffectTimer[attacker] = CreateTimer(8.0, E18_E18_SnowballRemoveEffectsTimer, attacker);
+          g_Effect18_EffectTimer[attacker] = CreateTimer(E18_EFFECT_DURATION, E18_E18_SnowballRemoveEffectsTimer, attacker);
      }
 }
 
