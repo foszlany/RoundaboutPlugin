@@ -1,8 +1,10 @@
 #pragma semicolon 1
 
+#define E34_RARE_CHANCE 5
+
 public void Event_RoundStart_34_Secondary(Event event, const char[] name, bool dontBroadcast) {
      g_Effect34_IsSpecialRound = false;
-     if(IsRareEffectForced(EFFECT_SECONDARY) || GetRandomInt(0, 100) <= 5) {
+     if(IsRareEffectForced(EFFECT_SECONDARY) || GetRandomInt(0, 100) <= E34_RARE_CHANCE) {
           g_Effect34_IsSpecialRound = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Melee weapons have been taken away too.");
      }

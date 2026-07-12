@@ -1,5 +1,11 @@
 #pragma semicolon 1
 
+#define E29_VOICE_PITCH_MULTIPLIER 2.0
+#define E29_MODEL_SIZE_MULTIPLIER 0.75
+#define E29_MOVE_SPEED_MULTIPLIER 1.2
+#define E29_SECONDARY_DAMAGE_MULTIPLIER 1.3
+#define E29_SECONDARY_AMMO_MULTIPLIER 2.0
+
 public void Event_RoundStart_29_Mosquito(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
@@ -54,8 +60,8 @@ public void E29_SetMosquitoAttributes(int client) {
      int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
      if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
           TF2Attrib_SetByName(secondaryWeapon, "air dash count", 999.0);
-          TF2Attrib_SetByName(secondaryWeapon, "maxammo secondary increased", 2.0);
-          TF2Attrib_SetByName(secondaryWeapon, "damage bonus", 1.3);
+          TF2Attrib_SetByName(secondaryWeapon, "maxammo secondary increased", E29_SECONDARY_AMMO_MULTIPLIER);
+          TF2Attrib_SetByName(secondaryWeapon, "damage bonus", E29_SECONDARY_DAMAGE_MULTIPLIER);
      }
      
      int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
@@ -63,8 +69,8 @@ public void E29_SetMosquitoAttributes(int client) {
           TF2Attrib_SetByName(meleeWeapon, "air dash count", 999.0);
      }
 
-     TF2Attrib_SetByName(client, "voice pitch scale", 2.0);
-     TF2Attrib_SetByName(client, "move speed penalty", 1.2);
+     TF2Attrib_SetByName(client, "voice pitch scale", E29_VOICE_PITCH_MULTIPLIER);
+     TF2Attrib_SetByName(client, "move speed penalty", E29_MOVE_SPEED_MULTIPLIER);
 
-     SetEntPropFloat(client, Prop_Send, "m_flModelScale", 0.75);
+     SetEntPropFloat(client, Prop_Send, "m_flModelScale", E29_MODEL_SIZE_MULTIPLIER);
 }

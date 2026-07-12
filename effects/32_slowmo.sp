@@ -1,5 +1,15 @@
 #pragma semicolon 1
 
+#define E32_GRAVITY_SCALE 350
+#define E32_RELOAD_TIME_INCREASED 1.50
+#define E32_FIRE_RATE_PENALTY 1.50
+#define E32_PROJECTILE_SPEED_DECREASED 0.50
+#define E32_HOLSTER_TIME_INCREASED 1.50
+#define E32_DEPLOY_TIME_INCREASED 1.50
+#define E32_HEAL_RATE_PENALTY 0.5
+#define E32_MOVE_SPEED_PENALTY 0.80
+#define E32_VOICE_PITCH_MULTIPLIER 0.7
+
 public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dontBroadcast) {
      ConVar gravity = FindConVar("sv_gravity");
      g_Effect1_OriginalGravity = GetConVarInt(gravity);
@@ -8,10 +18,10 @@ public void Event_RoundStart_32_Slowmo(Event event, const char[] name, bool dont
           int originalFlags = GetConVarFlags(gravity);
           SetConVarFlags(gravity, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
 
-          SetConVarInt(gravity, 350, true, false);
+          SetConVarInt(gravity, E32_GRAVITY_SCALE, true, false);
      }
      else {
-          ServerCommand("sv_gravity 350");
+          ServerCommand("sv_gravity %d", E32_GRAVITY_SCALE);
      }
 
      for(int i = 1; i <= MaxClients; i++) {
@@ -74,34 +84,34 @@ public void Event_RoundEnd_32_Slowmo(Event event, const char[] name, bool dontBr
 public void E32_SetSlowmoAttributes(int client) {
      int primaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Primary);
      if(primaryWeapon != -1 && IsValidEntity(primaryWeapon)) {
-          TF2Attrib_SetByName(primaryWeapon, "Reload time increased", 1.50);
-          TF2Attrib_SetByName(primaryWeapon, "fire rate penalty", 1.50);
-          TF2Attrib_SetByName(primaryWeapon, "Projectile speed decreased", 0.50);
-          TF2Attrib_SetByName(primaryWeapon, "single wep holster time increased", 1.50);
-          TF2Attrib_SetByName(primaryWeapon, "single wep deploy time increased", 1.50);
+          TF2Attrib_SetByName(primaryWeapon, "Reload time increased", E32_RELOAD_TIME_INCREASED);
+          TF2Attrib_SetByName(primaryWeapon, "fire rate penalty", E32_FIRE_RATE_PENALTY);
+          TF2Attrib_SetByName(primaryWeapon, "Projectile speed decreased", E32_PROJECTILE_SPEED_DECREASED);
+          TF2Attrib_SetByName(primaryWeapon, "single wep holster time increased", E32_HOLSTER_TIME_INCREASED);
+          TF2Attrib_SetByName(primaryWeapon, "single wep deploy time increased", E32_DEPLOY_TIME_INCREASED);
      }
 
      int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
      if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-          TF2Attrib_SetByName(secondaryWeapon, "Reload time increased", 1.50);
-          TF2Attrib_SetByName(secondaryWeapon, "fire rate penalty", 1.50);
-          TF2Attrib_SetByName(secondaryWeapon, "Projectile speed decreased", 0.50);
-          TF2Attrib_SetByName(secondaryWeapon, "single wep holster time increased", 1.50);
-          TF2Attrib_SetByName(secondaryWeapon, "single wep deploy time increased", 1.50);
+          TF2Attrib_SetByName(secondaryWeapon, "Reload time increased", E32_RELOAD_TIME_INCREASED);
+          TF2Attrib_SetByName(secondaryWeapon, "fire rate penalty", E32_FIRE_RATE_PENALTY);
+          TF2Attrib_SetByName(secondaryWeapon, "Projectile speed decreased", E32_PROJECTILE_SPEED_DECREASED);
+          TF2Attrib_SetByName(secondaryWeapon, "single wep holster time increased", E32_HOLSTER_TIME_INCREASED);
+          TF2Attrib_SetByName(secondaryWeapon, "single wep deploy time increased", E32_DEPLOY_TIME_INCREASED);
 
           if(TF2_GetPlayerClass(client) == TFClass_Medic) {
-               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", 0.5);
+               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", E32_HEAL_RATE_PENALTY);
           }
      }
      
      int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
      if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {
-          TF2Attrib_SetByName(meleeWeapon, "fire rate penalty", 1.50);
-          TF2Attrib_SetByName(meleeWeapon, "Projectile speed decreased", 0.50);
-          TF2Attrib_SetByName(meleeWeapon, "single wep holster time increased", 1.50);
-          TF2Attrib_SetByName(meleeWeapon, "single wep deploy time increased", 1.50);
+          TF2Attrib_SetByName(meleeWeapon, "fire rate penalty", E32_FIRE_RATE_PENALTY);
+          TF2Attrib_SetByName(meleeWeapon, "Projectile speed decreased", E32_PROJECTILE_SPEED_DECREASED);
+          TF2Attrib_SetByName(meleeWeapon, "single wep holster time increased", E32_HOLSTER_TIME_INCREASED);
+          TF2Attrib_SetByName(meleeWeapon, "single wep deploy time increased", E32_DEPLOY_TIME_INCREASED);
      }
 
-     TF2Attrib_SetByName(client, "move speed penalty", 0.80);
-     TF2Attrib_SetByName(client, "voice pitch scale", 0.7);
+     TF2Attrib_SetByName(client, "move speed penalty", E32_MOVE_SPEED_PENALTY);
+     TF2Attrib_SetByName(client, "voice pitch scale", E32_VOICE_PITCH_MULTIPLIER);
 }

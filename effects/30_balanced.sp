@@ -1,6 +1,6 @@
 #pragma semicolon 1
 
-#define HEALTH_BONUS 2
+#define E30_HEALTH_BONUS 2
 
 public void Event_RoundStart_30_Balanced(Event event, const char[] name, bool dontBroadcast) {
      g_Effect30_BalanceIndicator = 0;
@@ -44,7 +44,7 @@ public void E30_SetHealthAdvantage(int client, bool isUpdate) {
                               ? g_Effect30_BalanceIndicator 
                               : -g_Effect30_BalanceIndicator;
 
-          float bonusHealth = float(advantage) * HEALTH_BONUS;
+          float bonusHealth = float(advantage) * E30_HEALTH_BONUS;
 
           TF2Attrib_SetByName(client, "max health additive bonus", bonusHealth);
      }
