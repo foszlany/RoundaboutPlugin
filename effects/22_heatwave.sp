@@ -1,7 +1,11 @@
 #pragma semicolon 1
 
+#define E22_MIN_BURN_TIMER 36.0
+#define E22_MAX_BURN_TIMER 72.0
+
 public void Event_RoundStart_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
-     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), E22_BurnAll);
+     float burnTime = GetRandomFloat(E22_MIN_BURN_TIMER, E22_MAX_BURN_TIMER);
+     g_Effect22_HeatwaveTimer = CreateTimer(burnTime, E22_BurnAll);
 }
 
 public void Event_RoundEnd_22_Heatwave(Event event, const char[] name, bool dontBroadcast) {
@@ -19,7 +23,8 @@ public Action E22_BurnAll(Handle timer) {
      }
 
      PrintToChatAll("\x07B143F1[Roundabout]\x01 A \x07FFA500heatwave\x01 has occured.");
-     g_Effect22_HeatwaveTimer = CreateTimer(float(GetRandomInt(36, 72)), E22_BurnAll);
+     float burnTime = GetRandomFloat(E22_MIN_BURN_TIMER, E22_MAX_BURN_TIMER);
+     g_Effect22_HeatwaveTimer = CreateTimer(burnTime, E22_BurnAll);
 
      return Plugin_Handled;
 }
