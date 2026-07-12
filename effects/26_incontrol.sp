@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E26_AIRACCELERATE 250
+
 public void Event_RoundStart_26_InControl(Event event, const char[] name, bool dontBroadcast) {
      ConVar airAcceleration = FindConVar("sv_airaccelerate");
      g_Effect26_OriginalAirAcceleration = GetConVarInt(airAcceleration);
@@ -9,10 +11,10 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
           int originalFlags = GetConVarFlags(airAcceleration);
           SetConVarFlags(airAcceleration, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
 
-          SetConVarInt(airAcceleration, 250, true, false);
+          SetConVarInt(airAcceleration, E26_AIRACCELERATE, true, false);
      }
      else {
-          ServerCommand("sm_cvar sv_airaccelerate 250");
+          ServerCommand("sm_cvar sv_airaccelerate %d", E26_AIRACCELERATE);
      }
 
      // WEAPON STAT
