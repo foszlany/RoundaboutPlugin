@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E43_COOLDOWN 4.0
+
 public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
@@ -32,8 +34,8 @@ public void E43_OnDuck(int client) {
 
           // APPLY DELAY
           SDKUnhook(client, SDKHook_PreThink, E43_OnDuck);
-          CreateTimer(4.0, E43_ReapplyHook, client);
-          AddCooldown(EFFECT_SUPERJUMP, client, 4.0);
+          CreateTimer(E43_COOLDOWN, E43_ReapplyHook, client);
+          AddCooldown(EFFECT_SUPERJUMP, client, E43_COOLDOWN);
      }
 }
 
