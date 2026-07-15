@@ -1,5 +1,8 @@
 #pragma semicolon 1
 
+#define E44_BASE_PULL_FACTOR 38.0
+#define E44_DAMAGE_SCALE_FACTOR 12.0
+
 public void Event_PlayerHit_44_Pulley(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
@@ -19,7 +22,7 @@ public void Event_PlayerHit_44_Pulley(Event event, const char[] name, bool dontB
      float dir[3];
      SubtractVectors(attackerPos, victimPos, dir);
      NormalizeVector(dir, dir);
-     ScaleVector(dir, 38.0 + 12.0 * damage);
+     ScaleVector(dir, E44_BASE_PULL_FACTOR + E44_DAMAGE_SCALE_FACTOR * damage);
 
      // FORCE AIRBORNE STATE FOR GROUNDED PLAYERS
      if(GetEntityFlags(victim) & FL_ONGROUND) {
