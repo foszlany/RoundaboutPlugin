@@ -1,8 +1,9 @@
 #pragma semicolon 1
 
-#define E61_BASEPARRYCOOLDOWN 1.5
-#define E61_SUCCESSFULPARRYCOOLDOWN 0.5
-#define E61_PARRYWINDOW 0.25
+#define E61_PARRY_WINDOW 0.25
+#define E61_BASE_PARRY_COOLDOWN 1.5
+#define E61_SUCCESSFUL_PARRY_COOLDOWN 0.5
+#define E61_FAILED_PARRY_VULNERABILITY_MULTIPLIER 1.25
 
 forward Action E61_OnHitCheckParry(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom);
 
@@ -111,8 +112,8 @@ public Action E61_OnHitCheckParry(int victim, int &attacker, int &inflictor, flo
      EmitAmbientSound("ui/vote_yes.wav", origin);
      EmitAmbientSound("ui/vote_yes.wav", origin);
 
-     g_Effect61_fCooldownEndTime[victim] = GetGameTime() + E61_SUCCESSFULPARRYCOOLDOWN;
-     CreateTimer(E61_SUCCESSFULPARRYCOOLDOWN, E61_ResetParryCooldown, victim);
+     g_Effect61_fCooldownEndTime[victim] = GetGameTime() + E61_SUCCESSFUL_PARRY_COOLDOWN;
+     CreateTimer(E61_SUCCESSFUL_PARRY_COOLDOWN, E61_ResetParryCooldown, victim);
 
      return Plugin_Handled;
 }
@@ -129,7 +130,7 @@ public Action E61_Parry(client, const String:command[], argc) {
           g_Effect61_HasRecentlyParried[client] = true;
           g_Effect61_IsParrying[client] = true;
 
-          CreateTimer(E61_PARRYWINDOW, E61_OnEndParryWindow, client);
+          CreateTimer(E61_PARRY_WINDOW, E61_OnEndParryWindow, client);
           return Plugin_Handled;
      }
      
@@ -150,11 +151,11 @@ public Action E61_OnEndParryWindow(Handle timer, int client) {
           PrintToChat(client, "\x07B143F1[Roundabout]\x01 You failed to parry anything.");
      }
 
-     TF2Attrib_SetByName(client, "dmg taken increased", 1.25);
+     TF2Attrib_SetByName(client, "dmg taken increased", E61_FAILED_PARRY_VULNERABILITY_MULTIPLIER);
      
-     g_Effect61_fCooldownEndTime[client] = GetGameTime() + E61_BASEPARRYCOOLDOWN;
+     g_Effect61_fCooldownEndTime[client] = GetGameTime() + E61_BASE_PARRY_COOLDOWN;
 
-     CreateTimer(E61_BASEPARRYCOOLDOWN, E61_ResetParryCooldown, client);
+     CreateTimer(E61_BASE_PARRY_COOLDOWN, E61_ResetParryCooldown, client);
 
      return Plugin_Handled;
 }

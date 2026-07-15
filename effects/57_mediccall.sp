@@ -1,5 +1,8 @@
 #pragma semicolon 1
 
+#define E57_FAILED_COOLDOWN 6.0
+#define E57_SUCCESSFUL_COOLDOWN 8.0
+
 public void Event_RoundStart_57_MedicCall(Event event, const char[] name, bool dontBroadcast) {
      AddCommandListener(E57_CalledForMedic, "voicemenu");
      g_Effect57_isCommandListenerRegistered = true;
@@ -29,8 +32,6 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
           }
 
           g_Effect57_HasRecentlyCalled[client] = true;
-          CreateTimer(6.0, E57_ResetCallerCooldown, client);
-          AddCooldown(EFFECT_MEDICCALL, client, 6.0);
 
           bool isMedicExisting = false;
           bool isMedicAlive = false;
@@ -58,8 +59,8 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
                                         TeleportEntity(i, origin, angles, NULL_VECTOR);
 
                                         g_Effect57_HasBeenTeleportedRecently[i] = true;
-                                        CreateTimer(8.0, E57_ResetMedicCooldown, i);
-                                        AddCooldown(EFFECT_MEDICCALL, i, 8.0);
+                                        CreateTimer(E57_SUCCESSFUL_COOLDOWN, E57_ResetMedicCooldown, i);
+                                        AddCooldown(EFFECT_MEDICCALL, i, E57_SUCCESSFUL_COOLDOWN);
 
                                         PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x079EFF99Medic successfully teleported!\x01");
 
@@ -74,6 +75,9 @@ public Action E57_CalledForMedic(client, const String:command[], argc) {
                     } 
                }
           }
+
+          CreateTimer(E57_FAILED_COOLDOWN, E57_ResetCallerCooldown, client);
+          AddCooldown(EFFECT_MEDICCALL, client, E57_FAILED_COOLDOWN);
 
           if(!isMedicExisting) {
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 \x07FF9999There are no medics in your team. Try again later.\x01");
