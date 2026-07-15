@@ -1,8 +1,10 @@
 #pragma semicolon 1
 
+#define E53_RARE_CHANCE 15
+
 public void Event_RoundStart_53_ShieldingMedicine(Event event, const char[] name, bool dontBroadcast) {
      g_Effect53_IsSpecialRound = false;
-     if(IsRareEffectForced(EFFECT_SHIELDINGMED) || GetRandomInt(1, 100) <= 15) {
+     if(IsRareEffectForced(EFFECT_SHIELDINGMED) || GetRandomInt(1, 100) <= E53_RARE_CHANCE) {
           g_Effect53_IsSpecialRound = true;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Shields are Level 2.");
      }

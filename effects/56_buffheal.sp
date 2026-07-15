@@ -1,5 +1,10 @@
 #pragma semicolon 1
 
+#define E56_HEAL_RATE_MULTIPLIER 0.33
+#define E56_BUFF_ON_HEAL_DURATION 0.33
+#define E56_CROSSBOW_BASE_BUFF_DURATION 1.0
+#define E56_CROSSBOW_BUFF_DURATION_FACTOR 20.0
+
 public void Event_RoundStart_56_BuffingHeal(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
@@ -40,7 +45,7 @@ public void E56_SetHealPenalty(int client) {
      if(IsClientInGame(client) && TF2_GetPlayerClass(client) == TFClass_Medic) {
           int secondaryWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Secondary);
           if(secondaryWeapon != -1 && IsValidEntity(secondaryWeapon)) {
-               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", 0.33);
+               TF2Attrib_SetByName(secondaryWeapon, "heal rate penalty", E56_HEAL_RATE_MULTIPLIER);
           }
      }
 }
@@ -51,7 +56,7 @@ public void E56_ApplyCrossBowHeal(Event event, const char[] name, bool dontBroad
      int amount = event.GetInt("amount");
 
      if(target > 0 && IsClientInGame(target) && !IsOpposingTeam(target, healer)) {
-          TF2_AddCondition(target, TFCond_Buffed, 1.0 + float(amount) / 20.0);
+          TF2_AddCondition(target, TFCond_Buffed, E56_CROSSBOW_BASE_BUFF_DURATION + float(amount) / E56_CROSSBOW_BUFF_DURATION_FACTOR);
      }
 }
 
@@ -61,7 +66,7 @@ public void E56_HealedByMedicApplyMiniCrit(int client) {
           if(medigun != -1) {
                int target = GetEntDataEnt2(medigun, FindSendPropInfo("CWeaponMedigun", "m_hHealingTarget"));
                if(target > 0 && IsClientInGame(target)) {
-                    TF2_AddCondition(target, TFCond_Buffed, 0.33);
+                    TF2_AddCondition(target, TFCond_Buffed, E56_BUFF_ON_HEAL_DURATION);
                }
           }
      }
