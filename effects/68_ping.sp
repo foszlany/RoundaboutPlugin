@@ -1,5 +1,8 @@
 #pragma semicolon 1
 
+#define E68_MIN_DAMAGE_MULTIPLIER 0.5
+#define E68_MAX_DAMAGE_MULTIPLIER 5.0
+
 public void Event_RoundStart_68_Ping(Event event, const char[] name, bool dontBroadcast) {
      g_Effect68_PingTimer = CreateTimer(2.0, E68_ApplyPingDamageBonus, _, TIMER_REPEAT);
 }
@@ -39,6 +42,7 @@ public float E68_GetPingDamageMultiplier(int ping) {
           ping = 999;
      }
 
+     float maxBonusDamageMultiplier = E68_MAX_DAMAGE_MULTIPLIER - E68_MIN_DAMAGE_MULTIPLIER;
      float t = float(ping - 1) / 998.0;
-     return 0.5 + (t * 4.5);
+     return E68_MIN_DAMAGE_MULTIPLIER + (t * maxBonusDamageMultiplier);
 }

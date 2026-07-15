@@ -1,6 +1,6 @@
 #pragma semicolon 1
 
-#define E67_UBERPERCENT 0.25
+#define E67_UBER_PERCENT 0.25
 
 public void Event_RoundStart_67_ReviveUber(Event event, const char[] name, bool dontBroadcast) {
 	HookEvent("player_chargedeployed", E67_RevivePlayers, EventHookMode_Pre);
@@ -29,12 +29,12 @@ public void E67_RevivePlayers(Event event, const char[] name, bool dontBroadcast
                     playersRevived++;
                }
 
-               if(playersRevived * E67_UBERPERCENT >= 1) {
+               if(playersRevived * E67_UBER_PERCENT >= 1) {
                     break;
                }
           }
 
-          E67_SubtractUber(medic, playersRevived * E67_UBERPERCENT);
+          E67_SubtractUber(medic, playersRevived * E67_UBER_PERCENT);
      }
 }
 
