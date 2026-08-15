@@ -3,7 +3,7 @@
 public void Event_RoundStart_66_Wallhack(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               ApplyWallhack(i, true);
+               E66_ApplyWallhack(i, true);
           }
      }
 
@@ -12,18 +12,18 @@ public void Event_RoundStart_66_Wallhack(Event event, const char[] name, bool do
 
 public void Event_PlayerUpdate_66_Wallhack(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     ApplyWallhack(client, true);
+     E66_ApplyWallhack(client, true);
 }
 
 public void Event_RoundEnd_66_Wallhack(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               ApplyWallhack(i, false);
+               E66_ApplyWallhack(i, false);
           }
      }
 }
 
-public void ApplyWallhack(int client, bool on) {
+public void E66_ApplyWallhack(int client, bool on) {
      if(!IsClientInGame(client) || !IsPlayerAlive(client)) {
           return;
      }

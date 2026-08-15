@@ -1,14 +1,19 @@
 #pragma semicolon 1
 
+#define E60_MIN_CREATE_SNAPSHOT_TIME 8.0
+#define E60_MAX_CREATE_SNAPSHOT_TIME 32.0
+#define E60_MIN_ACTIVATE_SNAPSHOT_TIME 1.0
+#define E60_MAX_ACTIVATE_SNAPSHOT_TIME 24.0
+
 public void Event_RoundStart_60_TimeTravel(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          ResetTimeTravelEffects(i);
+          E60_ResetTimeTravelEffects(i);
      }
 
-     CreateTimer(GetRandomFloat(8.0, 32.0), CreateSnapshot);
+     CreateTimer(GetRandomFloat(E60_MIN_CREATE_SNAPSHOT_TIME, E60_MAX_CREATE_SNAPSHOT_TIME), E60_CreateSnapshot);
 }
 
-public Action CreateSnapshot(Handle timer) {
+public Action E60_CreateSnapshot(Handle timer) {
      if(IsEffectLive(EFFECT_TIMETRAVEL)) {
           for(int i = 1; i <= MaxClients; i++) {
                if(IsClientInGame(i) && IsPlayerAlive(i)) {
@@ -32,18 +37,18 @@ public Action CreateSnapshot(Handle timer) {
                     g_Effect60_PlayerClass[i] = TF2_GetPlayerClass(i);
                }
                else {
-                    ResetTimeTravelEffects(i);
+                    E60_ResetTimeTravelEffects(i);
                }
           }
           
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Snapshot created...");
-          CreateTimer(GetRandomFloat(1.0, 24.0), ActivateSnapshot);
+          CreateTimer(GetRandomFloat(E60_MIN_ACTIVATE_SNAPSHOT_TIME, E60_MAX_ACTIVATE_SNAPSHOT_TIME), E60_ActivateSnapshot);
      }
 
      return Plugin_Handled;
 }
 
-public Action ActivateSnapshot(Handle timer) {
+public Action E60_ActivateSnapshot(Handle timer) {
      if(IsEffectLive(EFFECT_TIMETRAVEL)) {
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Snapshot activated.");
 
@@ -86,13 +91,13 @@ public Action ActivateSnapshot(Handle timer) {
                     
           EmitSoundToAll("misc/halloween/spell_teleport.wav");
           
-          CreateTimer(GetRandomFloat(8.0, 32.0), CreateSnapshot);
+          CreateTimer(GetRandomFloat(E60_MIN_CREATE_SNAPSHOT_TIME, E60_MAX_CREATE_SNAPSHOT_TIME), E60_CreateSnapshot);
      }
 
      return Plugin_Handled;
 }
 
-public void ResetTimeTravelEffects(int client) {
+public void E60_ResetTimeTravelEffects(int client) {
      g_Effect60_PlayerHealth[client] = -1;
 
      g_Effect60_PlayerPosition[client][0] = -1.0;

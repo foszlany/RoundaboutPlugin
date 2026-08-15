@@ -10,7 +10,7 @@ EffectInfo CreateEffectInfo(const char name[32], const char desc[128]) {
     return info;
 }
 
-void ADD_EFFECT(id, char name[32], char desc[128]) {
+public void ADD_EFFECT(id, char name[32], char desc[128]) {
     EffectInfo info;
     info = CreateEffectInfo(name, desc);
 
@@ -20,7 +20,7 @@ void ADD_EFFECT(id, char name[32], char desc[128]) {
     g_EffectInfo.SetArray(idString, info, sizeof(info));
 }
 
-void InitializeEffectInfo() {
+public void InitializeEffectInfo() {
     g_EffectInfo = new StringMap();
 
     ADD_EFFECT(EFFECT_PURE,              "Pure",                     "The vanilla TF2 experience we all love");
@@ -69,7 +69,7 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_SUPERJUMP,         "Super Jump",               "Crouch to perform a big jump! (4.0s cooldown)");
     ADD_EFFECT(EFFECT_PULLEY,            "Pulley",                   "Damaging a player will pull them towards you.");
     ADD_EFFECT(EFFECT_ODGLASSCANNON,     "On Demand Glass Cannon",   "The lower your health, the more you damage!");
-    ADD_EFFECT(EFFECT_BUFFERSGAMBIT,     "Buffer's Gambit",          "Call for medic to receive a random (de)buff! (16.0s cooldown)");
+    ADD_EFFECT(EFFECT_BUFFERSGAMBIT,     "Buffer's Gambit",          "Call for medic to receive a random (de)buff!");
     ADD_EFFECT(EFFECT_SKATINGRINK,       "Skating Rink",             "Slide around like you're ice skating!");
     ADD_EFFECT(EFFECT_STUNNINGMETAL,     "Stunning Metal",           "Greater instances of damage causes slowdown or stun.");
     ADD_EFFECT(EFFECT_DEATHSTARE,        "Death Stare",              "Look each other in the eye and you'll both die.");
@@ -94,4 +94,13 @@ void InitializeEffectInfo() {
     ADD_EFFECT(EFFECT_PING,              "Continental Advantage",    "The higher your ping, the more you damage!");
     ADD_EFFECT(EFFECT_AIRDROP,           "Mercenary Airdrop",        "You spawn on the player you are spectating.");
     ADD_EFFECT(EFFECT_BOUNTY,            "Bounty",                   "Kill with a weapon specified by the bounty to get Powerplay!");
+    ADD_EFFECT(EFFECT_VETERAN,           "2007",                     "No hats, no unusual effects.");
+    ADD_EFFECT(EFFECT_FREERESPAWN,       "Freeform Respawn",         "You get to choose where to respawn!");
+    ADD_EFFECT(EFFECT_KITSWAP,           "Kitswap",                  "Health and ammopack functionalities are swapped.");
+    ADD_EFFECT(EFFECT_PUMPKIN,           "Pumpkin Bomber",           "You can now spawn pumpkin bombs by calling for a medic.");
+    ADD_EFFECT(EFFECT_BOMBER,            "Suicide Bomber",           "Suiciding causes an explosion that damages nearby enemies.");
+    ADD_EFFECT(EFFECT_UNIVERSALWEAR,     "Universal Wear",           "Killing with a weapon nerfs the damage of it by 2% for everyone.");
+    ADD_EFFECT(EFFECT_PROPHUNT,          "Prophunt",                 "Hold your reload key to become a random prop.");
+    ADD_EFFECT(EFFECT_PHASE,             "Phase",                    "You can phase through solid walls you're walking towards head on while holding your reload key.");
+    ADD_EFFECT(EFFECT_SHAREDHEALTH,      "Shared Health",            "Everyone in your team shares the same health.");
 }

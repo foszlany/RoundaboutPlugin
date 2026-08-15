@@ -18,6 +18,12 @@ public void OnMapStart() {
 	PrecacheSound("misc/halloween/spell_teleport.wav", true);
 	PrecacheSound("ui/vote_yes.wav", true);
  	PrecacheSound("player/recharged.wav", true);
+	PrecacheSound("items/smallmedkit1.wav", true);
+
+	/* PRECACHE MODELS */
+	for(int i = 0; i < sizeof(g_PropModels); i++) {
+		PrecacheModel(g_PropModels[i], true);
+	}
 }
 
 public void OnPluginStart() {
@@ -35,6 +41,7 @@ public void OnPluginStart() {
 	/* INITIALIZE GLOBAL VARIABLES */
 	g_RestartGameHandle = FindConVar("mp_restartgame");
 	g_HudSync = CreateHudSynchronizer();
+	g_CooldownCount = 0;
 
 	/* INITIALIZE FUNCTION POINTERS */
 	g_OnRoundStartFuncPtr[0] = INVALID_FUNCTION;
@@ -56,6 +63,7 @@ public void OnPluginStart() {
 	InitializeEffectInfo();
 	InitializeWeaponInfo();
 	InitializeReskinInfo();
+	InitializeMeleeReskinInfo();
 
 	LoadBlacklist();
 
@@ -161,9 +169,6 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 
 	for(int i = 0; i < g_EffectCount; i++) {
 		CallEventFunction(g_OnRoundStartFuncPtr[i], event, name, dontBroadcast);
-	}
-
-	for(int i = 0; i < g_EffectCount; i++) {
 		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
 	}
 
@@ -173,6 +178,16 @@ public void Event_RoundStart(Event event, const char[] name, bool dontBroadcast)
 	g_IsForced = false;
 	g_IsForcedRandom = false;
 	g_IsMutuallyExclusiveEffectChosen = false;
+
+	if(g_CooldownCount > 0) {
+		for(int i = 0; i < MULTIEFFECT_MAX_COUNT; i++) {
+			for(int j = 1; j <= MaxClients; j++) {
+				g_CooldownTimes[i][j] = 0.0;
+			}
+		}
+
+		g_CooldownTimer = CreateTimer(0.1, HandleCooldown, _, TIMER_REPEAT);
+	}
 }
 
 /* REAPPLIES EFFECTS IF NEEDED */
@@ -212,6 +227,7 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
 /* DISABLES CURRENT ROUND EFFECT AND ROLLS THE NEXT ONE */
 public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	for(int i = 0; i < g_PreviousEffectCount; i++) {
+		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerUpdateFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerHitFuncPtr[i] = INVALID_FUNCTION;
 		g_OnPlayerDeathFuncPtr[i] = INVALID_FUNCTION;
@@ -225,8 +241,14 @@ public void Event_RoundEnd(Event event, const char[] name, bool dontBroadcast) {
 	}
 
 	for(int i = 0; i < g_PreviousEffectCount; i++) {
-		g_OnRoundStartFuncPtr[i] = INVALID_FUNCTION;
+		g_CooldownEffects[i] = EFFECT_INVALID;
+
+		if(g_CooldownTimer != null) {
+			KillTimer(g_CooldownTimer);
+			g_CooldownTimer = null;
+		}
 	}
+	g_CooldownCount = 0;
 }
 
 /* RESET PLAYER DATA UPON DISCONNECT */
@@ -251,4 +273,16 @@ public void CallEventFunction(RoundEventFunc funcPointer, Event event, const cha
 		Call_PushCell(dontBroadcast);
 		Call_Finish();
 	}
+}
+
+/* INPUT CHECKS */
+public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon) {
+     if(IsEffectLive(EFFECT_PROPHUNT)) {
+		E77_OnPlayerRunCmd(client, buttons, impulse, vel, angles, weapon);
+	}
+	if(IsEffectLive(EFFECT_PHASE)) {
+		E78_OnPlayerRunCmd(client, buttons, impulse, vel, angles, weapon);
+	}
+
+     return Plugin_Continue;
 }

@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E27_HEALTH_BONUS 25.0
+
 public void Event_RoundStart_27_Bodycount(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect27_Bodycount[i] = 0.0;
@@ -19,7 +21,7 @@ public void Event_PlayerUpdate_27_Bodycount(Event event, const char[] name, bool
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(g_Effect27_Bodycount[client] > 0) {
-          TF2Attrib_SetByName(client, "max health additive bonus", g_Effect27_Bodycount[client] * 25.0);
+          TF2Attrib_SetByName(client, "max health additive bonus", g_Effect27_Bodycount[client] * E27_HEALTH_BONUS);
      }
 }
 
@@ -32,9 +34,9 @@ public void Event_PlayerDeath_27_Bodycount(Event event, const char[] name, bool 
      }
 
      g_Effect27_Bodycount[attacker]++;
-     SetEntityHealth(attacker, GetClientHealth(attacker) + 25);
+     SetEntityHealth(attacker, GetClientHealth(attacker) + RoundToNearest(E27_HEALTH_BONUS));
 
-     TF2Attrib_SetByName(attacker, "max health additive bonus", g_Effect27_Bodycount[attacker] * 25);
+     TF2Attrib_SetByName(attacker, "max health additive bonus", g_Effect27_Bodycount[attacker] * RoundToNearest(E27_HEALTH_BONUS));
 
      if(!g_Effect27_IsPersistent) {
           g_Effect27_Bodycount[killed] = 0.0;

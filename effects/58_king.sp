@@ -1,5 +1,11 @@
 #pragma semicolon 1
 
+#define E58_KING_DAMAGE_BONUS 1.5
+#define E58_KING_BONUS_HEALTH 300.0
+#define E58_KING_HEALTH_REGEN 6.0
+#define E58_KING_SCALE 1.2
+#define E58_KING_GIVEN_HEALTH 500
+
 public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBroadcast) {
      for(;;) {
           if(CountActivePlayers() < 1) {
@@ -9,20 +15,20 @@ public void Event_RoundStart_58_King(Event event, const char[] name, bool dontBr
           g_Effect58_King = GetRandomInt(1, MaxClients);
 
           if(IsClientInGame(g_Effect58_King)) {
-               ApplyKingProperties();
+               E58_ApplyKingProperties();
                PrintToChatAll("\x07B143F1[Roundabout]\x01 %N has been selected as the King!", g_Effect58_King);
                break;
           }
      }
 
-     HookEvent("player_disconnect", HandleKingDisconnect, EventHookMode_Pre);
+     HookEvent("player_disconnect", E58_HandleKingDisconnect, EventHookMode_Pre);
 }
 
 public void Event_PlayerUpdate_58_King(Event event, const char[] name, bool dontBroadcast) {    
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(client == g_Effect58_King) {
-          ApplyKingProperties();
+          E58_ApplyKingProperties();
      }
 }
 
@@ -31,12 +37,12 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
 
      if(victim == g_Effect58_King) {
           int attacker = GetClientOfUserId(event.GetInt("attacker"));
-          RemoveKingProperties();
+          E58_RemoveKingProperties();
 
           if(attacker > 0 && IsClientInGame(attacker) && attacker != victim) {
                g_Effect58_King = attacker;
 
-               ApplyKingProperties();
+               E58_ApplyKingProperties();
                PrintToChatAll("\x07B143F1[Roundabout]\x01 The King has been slain by %N!", attacker);
           }
           else {
@@ -44,7 +50,7 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
                     g_Effect58_King = GetRandomInt(1, MaxClients);
 
                     if(IsClientInGame(g_Effect58_King)) {
-                         ApplyKingProperties();
+                         E58_ApplyKingProperties();
                          PrintToChatAll("\x07B143F1[Roundabout]\x01 %N didn't feel like being a King. %N has been selected as the new one!", victim, g_Effect58_King);
                          break;
                     }
@@ -54,12 +60,12 @@ public void Event_PlayerDeath_58_King(Event event, const char[] name, bool dontB
 }
 
 public void Event_RoundEnd_58_King(Event event, const char[] name, bool dontBroadcast) {
-     UnhookEvent("player_disconnect", HandleKingDisconnect, EventHookMode_Pre);
+     UnhookEvent("player_disconnect", E58_HandleKingDisconnect, EventHookMode_Pre);
 
-     RemoveKingProperties();
+     E58_RemoveKingProperties();
 }
 
-public void HandleKingDisconnect(Event event, const char[] name, bool dontBroadcast) {
+public void E58_HandleKingDisconnect(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
      if(client == g_Effect58_King) {
@@ -67,7 +73,7 @@ public void HandleKingDisconnect(Event event, const char[] name, bool dontBroadc
                g_Effect58_King = GetRandomInt(1, MaxClients);
 
                if(IsClientInGame(g_Effect58_King)) {
-                    ApplyKingProperties();
+                    E58_ApplyKingProperties();
 
                     PrintToChatAll("\x07B143F1[Roundabout]\x01 The King disconnected, %N has been selected as the new King!", g_Effect58_King);
                     break;
@@ -76,18 +82,17 @@ public void HandleKingDisconnect(Event event, const char[] name, bool dontBroadc
      }
 }
 
-public void ApplyKingProperties() {
-     TF2Attrib_SetByName(g_Effect58_King, "damage bonus", 1.5);
-     TF2Attrib_SetByName(g_Effect58_King, "max health additive bonus", 300.0);
-     TF2Attrib_SetByName(g_Effect58_King, "health regen", 6.0);
-     SetEntPropFloat(g_Effect58_King, Prop_Send, "m_flModelScale", 1.2);
+public void E58_ApplyKingProperties() {
+     TF2Attrib_SetByName(g_Effect58_King, "damage bonus", E58_KING_DAMAGE_BONUS);
+     TF2Attrib_SetByName(g_Effect58_King, "max health additive bonus", E58_KING_BONUS_HEALTH);
+     TF2Attrib_SetByName(g_Effect58_King, "health regen", E58_KING_HEALTH_REGEN);
+     SetEntPropFloat(g_Effect58_King, Prop_Send, "m_flModelScale", E58_KING_SCALE);
+     SetEntityHealth(g_Effect58_King, E58_KING_GIVEN_HEALTH);
 
      CreateStaticParticle(g_Effect58_King, "lava_playertouch", 1.0, 60.0);
-
-     SetEntityHealth(g_Effect58_King, 500);
 }
 
-public void RemoveKingProperties() {
+public void E58_RemoveKingProperties() {
      TF2Attrib_RemoveByName(g_Effect58_King, "damage bonus");
      TF2Attrib_RemoveByName(g_Effect58_King, "max health additive bonus");
      TF2Attrib_RemoveByName(g_Effect58_King, "health regen");

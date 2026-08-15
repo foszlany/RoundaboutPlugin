@@ -862,6 +862,108 @@ public void setEffect() {
                     g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
                     g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_70_Bounty;
                }
+
+               case EFFECT_VETERAN: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_71_Veteran;
+                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_71_Veteran;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_FREERESPAWN: {
+                    if(IsGamemodeArena()) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Freeform Respawn was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Freeform Respawn condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_72_FreeRespawn;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_72_FreeRespawn;
+               }
+
+               case EFFECT_KITSWAP: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_73_KitSwap;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_73_KitSwap;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_73_KitSwap;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_PUMPKIN: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_74_PumpkinBomb;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_74_PumpkinBomb;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_BOMBER: {
+                    if(IsGamemodeArena() && activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Suicide Bomber was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Suicide Bomber condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_75_SuicideBomber;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_75_SuicideBomber;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_75_SuicideBomber;
+               }
+
+               case EFFECT_UNIVERSALWEAR: {
+                    if(IsGamemodeArena() && activePlayers < 3) {
+                         if(g_IsForced && !g_IsForcedRandom) {
+                              PrintToChatAll("\x07B143F1[Roundabout]\x01 Universal Wear was forced, but its conditions were not met. \x07FB524FUnwanted effects may occur.\x01");
+                         }
+                         else {
+                              PrintToServer("[Roundabout] Universal Wear condition not met, reshuffled.");
+                              continue;
+                         }
+                    }
+
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_76_UniversalWear;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_76_UniversalWear;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_76_UniversalWear;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_76_UniversalWear;
+               }
+
+               case EFFECT_PROPHUNT: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_77_Prophunt;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_77_Prophunt;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_77_Prophunt;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = Event_PlayerDeath_77_Prophunt;
+               }
+
+               case EFFECT_PHASE: {
+                    g_OnRoundStartFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnRoundEndFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerHitFuncPtr[effectIndex] = INVALID_FUNCTION;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
+
+               case EFFECT_SHAREDHEALTH: {
+                    g_OnRoundStartFuncPtr[effectIndex] = Event_RoundStart_79_SharedHealth;
+                    g_OnRoundEndFuncPtr[effectIndex] = Event_RoundEnd_79_SharedHealth;
+                    g_OnPlayerUpdateFuncPtr[effectIndex] = Event_PlayerUpdate_79_SharedHealth;
+                    g_OnPlayerHitFuncPtr[effectIndex] = Event_PlayerHit_79_SharedHealth;
+                    g_OnPlayerDeathFuncPtr[effectIndex] = INVALID_FUNCTION;
+               }
           }
 
           effectIndex++;

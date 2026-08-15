@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E18_EFFECT_DURATION 8.0
+
 public void Event_RoundStart_18_Snowball(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           g_Effect18_EffectIndex[i] = 0;
@@ -10,13 +12,13 @@ public void Event_RoundStart_18_Snowball(Event event, const char[] name, bool do
 public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool dontBroadcast) {
      int victim = GetClientOfUserId(event.GetInt("userid"));
      g_Effect18_EffectIndex[victim] = 0;
-     SnowballKillTimer(victim);
+     E18_SnowballKillTimer(victim);
 
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      
      if(attacker > 0 && IsClientInGame(attacker) && IsPlayerAlive(attacker)) {
           if(g_Effect18_EffectIndex[attacker] < 7) {
-               SnowballKillTimer(attacker);
+               E18_SnowballKillTimer(attacker);
           }
           
           switch(++g_Effect18_EffectIndex[attacker]) {
@@ -32,26 +34,26 @@ public void Event_PlayerDeath_18_Snowball(Event event, const char[] name, bool d
                }
           }
 
-          g_Effect18_EffectTimer[attacker] = CreateTimer(8.0, SnowballRemoveEffectsTimer, attacker);
+          g_Effect18_EffectTimer[attacker] = CreateTimer(E18_EFFECT_DURATION, E18_E18_SnowballRemoveEffectsTimer, attacker);
      }
 }
 
 public void Event_RoundEnd_18_Snowball(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          SnowballRemoveEffects(i);
-          SnowballKillTimer(i);
+          E18_SnowballRemoveEffects(i);
+          E18_SnowballKillTimer(i);
      }
 }
 
-public Action SnowballRemoveEffectsTimer(Handle timer, int client) {
+public Action E18_E18_SnowballRemoveEffectsTimer(Handle timer, int client) {
      g_Effect18_EffectTimer[client] = null;
      g_Effect18_EffectIndex[client] = 0;
-     SnowballRemoveEffects(client);
+     E18_SnowballRemoveEffects(client);
      
      return Plugin_Handled;
 }
 
-public void SnowballRemoveEffects(int client) {
+public void E18_SnowballRemoveEffects(int client) {
      if(IsClientInGame(client)) {
           TF2_RemoveCondition(client, TFCond_SpeedBuffAlly);
           TF2_RemoveCondition(client, TFCond_Buffed);
@@ -63,7 +65,7 @@ public void SnowballRemoveEffects(int client) {
      }
 }
 
-public void SnowballKillTimer(int client) {
+public void E18_SnowballKillTimer(int client) {
      if(g_Effect18_EffectTimer[client] != null) {
         KillTimer(g_Effect18_EffectTimer[client]);
         g_Effect18_EffectTimer[client] = null;

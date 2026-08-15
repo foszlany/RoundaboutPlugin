@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E15_BLEED_DURATION 8.0
+
 public void Event_RoundStart_15_BleedBuff(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
           g_Effect15_BleedCauserIndex[i] = -1;
@@ -12,12 +14,12 @@ public void Event_PlayerHit_15_BleedBuff(Event event, const char[] name, bool do
 
      if(IsClientInGame(victim) && IsPlayerAlive(victim) && victim >= 1 && attacker >= 1 && attacker != victim) {
           if(!TF2_IsPlayerInCondition(victim, TFCond_Bleeding)) {
-               TF2_MakeBleed(victim, attacker, 8.0);
+               TF2_MakeBleed(victim, attacker, E15_BLEED_DURATION);
                g_Effect15_BleedCauserIndex[victim] = attacker;
           }
           else if(g_Effect15_BleedCauserIndex[victim] != attacker) {
                TF2_RemoveCondition(victim, TFCond_Bleeding);
-               TF2_MakeBleed(victim, attacker, 8.0);
+               TF2_MakeBleed(victim, attacker, E15_BLEED_DURATION);
                g_Effect15_BleedCauserIndex[victim] = attacker;
           }
      }

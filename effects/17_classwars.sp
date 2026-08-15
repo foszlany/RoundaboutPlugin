@@ -5,7 +5,7 @@ public void Event_RoundStart_17_ClassWars(Event event, const char[] name, bool d
      g_Effect17_BluTeamClass = GetRandomInt(1, 9);
 
      for(int i = 1; i <= MaxClients; i++) {
-          ForceClassWarsTeam(i);
+          E17_ForceClassWarsTeam(i);
      }
 
      char classRed[9];
@@ -19,10 +19,10 @@ public void Event_RoundStart_17_ClassWars(Event event, const char[] name, bool d
 
 public void Event_PlayerUpdate_17_ClassWars(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     ForceClassWarsTeam(client);
+     E17_ForceClassWarsTeam(client);
 }
 
-public void ForceClassWarsTeam(int client) {
+public void E17_ForceClassWarsTeam(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           if(TF2_GetClientTeam(client) == TFTeam_Red && TF2_GetPlayerClass(client) != view_as<TFClassType>(g_Effect17_RedTeamClass)) {
                TF2_SetPlayerClass(client, view_as<TFClassType>(g_Effect17_RedTeamClass), false);

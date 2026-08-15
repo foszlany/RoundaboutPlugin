@@ -10,7 +10,7 @@ public void Event_RoundStart_50_Quickswap(Event event, const char[] name, bool d
           g_Effect50_PlayersReadyToBeSwapped[i] = true;
      }
 
-     g_Effect50_SwapTimer = CreateTimer(E50_PLAYERGRACEPERIOD, SwapPlayers);
+     g_Effect50_SwapTimer = CreateTimer(E50_PLAYERGRACEPERIOD, E50_SwapPlayers);
 }
 
 public void Event_RoundEnd_50_Quickswap(Event event, const char[] name, bool dontBroadcast) {
@@ -20,18 +20,23 @@ public void Event_RoundEnd_50_Quickswap(Event event, const char[] name, bool don
      }
 }
 
-public Action SwapPlayers(Handle timer, int client) {
+public Action E50_SwapPlayers(Handle timer, int client) {
+     if(IsWarmup()) {
+          g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), E50_SwapPlayers);
+          return Plugin_Handled;
+     }
+
      int playerCount = CountActivePlayers();
 
      if(playerCount <= 1) {
-          g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), SwapPlayers, client);
+          g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), E50_SwapPlayers, client);
      }
 
-     int client1 = FindSwapCandidate(playerCount);
-     int client2 = FindSwapCandidate(playerCount);
+     int client1 = E50_FindSwapCandidate(playerCount);
+     int client2 = E50_FindSwapCandidate(playerCount);
 
      if(client1 == 0 || client2 == 0 || client1 == client2) {
-          g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), SwapPlayers, client);
+          g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), E50_SwapPlayers, client);
           return Plugin_Handled;
      }
 
@@ -51,10 +56,10 @@ public Action SwapPlayers(Handle timer, int client) {
 
      g_Effect50_PlayersReadyToBeSwapped[client1] = false;
      g_Effect50_PlayersReadyToBeSwapped[client2] = false;
-     CreateTimer(E50_PLAYERGRACEPERIOD, ReadyPlayerForSwap, client1);
-     CreateTimer(E50_PLAYERGRACEPERIOD, ReadyPlayerForSwap, client2);
+     CreateTimer(E50_PLAYERGRACEPERIOD, E50_ReadyPlayerForSwap, client1);
+     CreateTimer(E50_PLAYERGRACEPERIOD, E50_ReadyPlayerForSwap, client2);
 
-     g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), SwapPlayers, client);
+     g_Effect50_SwapTimer = CreateTimer(GetRandomFloat(E50_MINTIME, E50_MAXTIME), E50_SwapPlayers, client);
 
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin1);
      EmitAmbientSound("misc/halloween/spell_teleport.wav", origin2);
@@ -64,7 +69,7 @@ public Action SwapPlayers(Handle timer, int client) {
      return Plugin_Handled;
 }
 
-public int FindSwapCandidate(int playerCount) {
+public int E50_FindSwapCandidate(int playerCount) {
      int client = 0;
 
      for(int i = 1; i <= (playerCount <= 10 ? (playerCount + 2) : 10); i++) {
@@ -81,7 +86,7 @@ public int FindSwapCandidate(int playerCount) {
      return 0;
 }
 
-public Action ReadyPlayerForSwap(Handle timer, int client) {
+public Action E50_ReadyPlayerForSwap(Handle timer, int client) {
      g_Effect50_PlayersReadyToBeSwapped[client] = true;
 
      return Plugin_Handled;

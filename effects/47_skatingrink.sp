@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E47_FRICTION 0.1
+
 public void Event_RoundStart_47_SkatingRink(Event event, const char[] name, bool dontBroadcast) {
      ConVar friction = FindConVar("sv_friction");
      g_Effect47_OriginalFriction = GetConVarFloat(friction);
@@ -8,10 +10,10 @@ public void Event_RoundStart_47_SkatingRink(Event event, const char[] name, bool
           int originalFlags = GetConVarFlags(friction);
           SetConVarFlags(friction, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
 
-          SetConVarFloat(friction, 0.1, true, false);
+          SetConVarFloat(friction, E47_FRICTION, true, false);
      }
      else {
-          ServerCommand("sv_friction 0.1");
+          ServerCommand("sv_friction %f", E47_FRICTION);
      }
 }
 

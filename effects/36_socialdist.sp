@@ -1,5 +1,10 @@
 #pragma semicolon 1
 
+#define E36_MAX_DISTANCE 256.0
+#define E36_DAMAGE_MULTIPLIER 0.66
+
+#define DMG_SOCIALDIST (1 << 30)
+
 public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, bool dontBroadcast) {
      int attacker = GetClientOfUserId(event.GetInt("attacker"));
      int victim = GetClientOfUserId(event.GetInt("userid"));
@@ -19,8 +24,8 @@ public void Event_PlayerHit_36_SocialDistancing(Event event, const char[] name, 
 
           float dist = CalculateDistance(victim, i);
 
-          if(dist <= 256.0) {
-               float newDamage = damage * 0.66;
+          if(dist <= E36_MAX_DISTANCE) {
+               float newDamage = damage * E36_DAMAGE_MULTIPLIER;
 
                EmitSoundToClient(i, "ambient/energy/zap3.wav");
 

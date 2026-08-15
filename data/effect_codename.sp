@@ -1,5 +1,5 @@
 // KEEP EFFECT TOKENS BELOW 32 CHARACTERS
-void InitializeEffectTokens() {
+public void InitializeEffectTokens() {
     EFFECT_TOKENS.Init();
 
     EFFECT_TOKENS.SetPair("pure", 0);
@@ -73,4 +73,13 @@ void InitializeEffectTokens() {
     EFFECT_TOKENS.SetPair("ping", 68);
     EFFECT_TOKENS.SetPair("airdrop", 69);
     EFFECT_TOKENS.SetPair("bounty", 70);
+    EFFECT_TOKENS.SetPair("veteran", 71);
+    EFFECT_TOKENS.SetPair("freerespawn", 72);
+    EFFECT_TOKENS.SetPair("kitswap", 73);
+    EFFECT_TOKENS.SetPair("pumpkin", 74);
+    EFFECT_TOKENS.SetPair("bomber", 75);
+    EFFECT_TOKENS.SetPair("universalwear", 76);
+    EFFECT_TOKENS.SetPair("prophunt", 77);
+    EFFECT_TOKENS.SetPair("phase", 78);
+    EFFECT_TOKENS.SetPair("sharedhealth", 79);
 }

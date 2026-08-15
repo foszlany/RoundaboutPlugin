@@ -1,12 +1,16 @@
 #pragma semicolon 1
 
+#define E24_RARE_CHANCE 2
+#define E24_RARE_KNOCKBACK_BONUS 10.0
+#define E24_KNOCKBACK_BONUS 3.0
+
 public void Event_RoundStart_24_Forceful(Event event, const char[] name, bool dontBroadcast) {
-     if(IsRareEffectForced(EFFECT_FORCEFUL) || GetRandomInt(0, 100) <= 2) {
-          g_Effect24_KnockbackBonus = 10.0;
+     if(IsRareEffectForced(EFFECT_FORCEFUL) || GetRandomInt(0, 100) <= E24_RARE_CHANCE) {
+          g_Effect24_KnockbackBonus = E24_RARE_KNOCKBACK_BONUS;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Knockback multiplier is now way stronger!");
      }
      else {
-          g_Effect24_KnockbackBonus = 3.0;
+          g_Effect24_KnockbackBonus = E24_KNOCKBACK_BONUS;
      }
 
      for(int i = 1; i <= MaxClients; i++) {

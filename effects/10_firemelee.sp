@@ -1,14 +1,16 @@
 #pragma semicolon 1
 
+#define E10_IGNITE_DURATION 8.0
+
 public void Event_RoundStart_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
-          applyMiniCritVsBurning(i);
+          E10_ApplyMiniCritVsBurning(i);
      }
 }
 
 public void Event_PlayerUpdate_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     applyMiniCritVsBurning(client);
+     E10_ApplyMiniCritVsBurning(client);
 }
 
 public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool dontBroadcast) {
@@ -20,7 +22,7 @@ public void Event_PlayerHit_10_FireMelee(Event event, const char[] name, bool do
      }
      
      if(GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon") == GetPlayerWeaponSlot(attacker, TFWeaponSlot_Melee)) {
-          TF2_IgnitePlayer(victim, attacker, 8.0);
+          TF2_IgnitePlayer(victim, attacker, E10_IGNITE_DURATION);
      }
 }
 
@@ -35,7 +37,7 @@ public void Event_RoundEnd_10_FireMelee(Event event, const char[] name, bool don
      }
 }
 
-public void applyMiniCritVsBurning(int client) {
+public void E10_ApplyMiniCritVsBurning(int client) {
      if(IsClientInGame(client)) {
           int meleeWeapon = GetPlayerWeaponSlot(client, TFWeaponSlot_Melee);
           if(meleeWeapon != -1 && IsValidEntity(meleeWeapon)) {

@@ -1,5 +1,7 @@
 #pragma semicolon 1
 
+#define E26_AIRACCELERATE 250
+
 public void Event_RoundStart_26_InControl(Event event, const char[] name, bool dontBroadcast) {
      ConVar airAcceleration = FindConVar("sv_airaccelerate");
      g_Effect26_OriginalAirAcceleration = GetConVarInt(airAcceleration);
@@ -9,22 +11,22 @@ public void Event_RoundStart_26_InControl(Event event, const char[] name, bool d
           int originalFlags = GetConVarFlags(airAcceleration);
           SetConVarFlags(airAcceleration, originalFlags & ~(FCVAR_NOTIFY|FCVAR_REPLICATED));
 
-          SetConVarInt(airAcceleration, 250, true, false);
+          SetConVarInt(airAcceleration, E26_AIRACCELERATE, true, false);
      }
      else {
-          ServerCommand("sm_cvar sv_airaccelerate 250");
+          ServerCommand("sm_cvar sv_airaccelerate %d", E26_AIRACCELERATE);
      }
 
      // WEAPON STAT
      for(int i = 1; i <= MaxClients; i++) {
-          SetInControlAttributes(i);
+          E26_SetInControlAttributes(i);
      }
 }
 
 public void Event_PlayerUpdate_26_InControl(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     SetInControlAttributes(client);
+     E26_SetInControlAttributes(client);
 }
 
 public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool dontBroadcast) {
@@ -51,7 +53,7 @@ public void Event_RoundEnd_26_InControl(Event event, const char[] name, bool don
      }
 }
 
-public void SetInControlAttributes(int client) {
+public void E26_SetInControlAttributes(int client) {
      if(IsClientInGame(client)) {
           ForceClass(client, TFClass_Soldier);
 

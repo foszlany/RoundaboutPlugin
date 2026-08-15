@@ -1,9 +1,12 @@
 #pragma semicolon 1
 
-public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool dontBroadcast) {
-     int bannedClassCount = GetRandomInt(3, 7);
+#define E40_MIN_BANNED_CLASS 3
+#define E40_MAX_BANNED_CLASS 7
 
-     for(int i = 0; i < 7; i++) {
+public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool dontBroadcast) {
+     int bannedClassCount = GetRandomInt(E40_MIN_BANNED_CLASS, E40_MAX_BANNED_CLASS);
+
+     for(int i = 0; i < E40_MAX_BANNED_CLASS; i++) {
           g_Effect40_DisabledClasses[i] = TFClass_Unknown;
      }
 
@@ -32,21 +35,21 @@ public void Event_RoundStart_40_Restriction(Event event, const char[] name, bool
      }
      
      for(int i = 1; i <= MaxClients; i++) {
-          ForceUnrestrictedClass(i);
+          E40_ForceUnrestrictedClass(i);
      }
 }
 
 public void Event_PlayerUpdate_40_Restriction(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
 
-     ForceUnrestrictedClass(client);
+     E40_ForceUnrestrictedClass(client);
 }
  
-public void ForceUnrestrictedClass(int client) {
+public void E40_ForceUnrestrictedClass(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           TFClassType clientClass = TF2_GetPlayerClass(client);
 
-          for(int i = 0; i < 7; i++) {
+          for(int i = 0; i < E40_MAX_BANNED_CLASS; i++) {
                if(clientClass == g_Effect40_DisabledClasses[i]) {
                     char clientClassString[9];
                     GetClassString(g_Effect40_DisabledClasses[i], clientClassString, sizeof(clientClassString));

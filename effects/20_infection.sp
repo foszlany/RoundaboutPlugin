@@ -33,7 +33,7 @@ public void Event_PlayerDeath_20_Infection(Event event, const char[] name, bool 
           g_Effect20_CurrentTeam[victim] = attackerTeam;
      }
 
-     InfectionTeamCheck();
+     E20_InfectionTeamCheck();
 }
 
 public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool dontBroadcast) {
@@ -49,7 +49,7 @@ public void Event_RoundEnd_20_Infection(Event event, const char[] name, bool don
      }
 }
 
-public void InfectionTeamCheck() {
+public void E20_InfectionTeamCheck() {
      int redPlayers = 0;
      int bluPlayers = 0;
 
@@ -99,10 +99,10 @@ public void InfectionTeamCheck() {
      }
      else if(redPlayers == 0) {
           ForceWin(TFTeam_Blue);
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x075885A2BLU\x01 has infected all players and won!");
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x0766C0FABLU\x01 has infected all players and won!");
      }
      else {
           ForceWin(TFTeam_Red);
-          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07B8383BRED\x01 has infected all players and won!");
+          PrintToChatAll("\x07B143F1[Roundabout]\x01 \x07FF4040RED\x01 has infected all players and won!");
      }
 }

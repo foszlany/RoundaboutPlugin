@@ -1,24 +1,28 @@
 #pragma semicolon 1
 
+#define E43_COOLDOWN 4.0
+
 public void Event_RoundStart_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i) && IsPlayerAlive(i)) {
-               SDKHook(i, SDKHook_PreThink, Effect43_OnDuck);
+               SDKHook(i, SDKHook_PreThink, E43_OnDuck);
           }
      }
+
+     SignalCooldown(EFFECT_SUPERJUMP, 66, 151, 255);
 }
 
 public void Event_RoundEnd_43_SuperJump(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               SDKUnhook(i, SDKHook_PreThink, Effect43_OnDuck);
+               SDKUnhook(i, SDKHook_PreThink, E43_OnDuck);
           }
      }
 }
 
-public void Effect43_OnDuck(int client) {
+public void E43_OnDuck(int client) {
      if(!IsEffectLive(EFFECT_SUPERJUMP)) {
-          SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
+          SDKUnhook(client, SDKHook_PreThink, E43_OnDuck);
           return;
      }
 
@@ -26,24 +30,25 @@ public void Effect43_OnDuck(int client) {
      bool isDucking = view_as<bool>(GetEntProp(client, Prop_Send, "m_bDucking"));
 
      if((isDucked || isDucking) && (IsClientInGame(client) && IsPlayerAlive(client))) {
-          CreateExplosionUnderPlayer(client);
+          E43_CreateExplosionUnderPlayer(client);
 
           // APPLY DELAY
-          SDKUnhook(client, SDKHook_PreThink, Effect43_OnDuck);
-          CreateTimer(4.0, Effect43_ReapplyHook, client);
+          SDKUnhook(client, SDKHook_PreThink, E43_OnDuck);
+          CreateTimer(E43_COOLDOWN, E43_ReapplyHook, client);
+          AddCooldown(EFFECT_SUPERJUMP, client, E43_COOLDOWN);
      }
 }
 
-public Action Effect43_ReapplyHook(Handle timer, int client) {
+public Action E43_ReapplyHook(Handle timer, int client) {
      if(IsClientInGame(client)) {
-          SDKHook(client, SDKHook_PreThink, Effect43_OnDuck);
+          SDKHook(client, SDKHook_PreThink, E43_OnDuck);
           EmitSoundToClient(client, "player/recharged.wav");
      }
 
      return Plugin_Handled;
 }
 
-void CreateExplosionUnderPlayer(int client) {
+public void E43_CreateExplosionUnderPlayer(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           // PLAYER POS
           float pos[3];
@@ -52,11 +57,11 @@ void CreateExplosionUnderPlayer(int client) {
 
           EmitSoundToAll("weapons/explode3.wav", SOUND_FROM_WORLD, _, _, _, 0.7, _, _, pos);
 
-          ApplyKnockbackToPlayer(client, pos);
+          E43_ApplyKnockbackToPlayer(client, pos);
      }
 }
 
-void ApplyKnockbackToPlayer(int client, const float explosionPos[3]) {
+public void E43_ApplyKnockbackToPlayer(int client, const float explosionPos[3]) {
      float clientPos[3];
      GetClientAbsOrigin(client, clientPos);
 

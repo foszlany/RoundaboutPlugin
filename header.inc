@@ -4,7 +4,7 @@
 #define _RAHEADER
 
 /* CONSTANTS */
-#define PLUGIN_VERSION "0.50"
+#define PLUGIN_VERSION "0.60"
 
 #define MULTIEFFECT_MAX_COUNT 10
 
@@ -12,11 +12,57 @@
 #define MULTIEFFECT_DEFAULT_BASE_CHANCE "0.04"
 #define MULTIEFFECT_DEFAULT_RARITY_MULTIPLIER "2.0"
 
-#define DMG_SOCIALDIST (1 << 30)
-
 ArrayList MULTIEFFECT_EXCLUDED;
 ArrayList MULTIEFFECT_MUTUALLY_EXCLUSIVE;
 BidirectionalMap EFFECT_TOKENS;
+
+int slots[3] = {
+	TFWeaponSlot_Primary,
+	TFWeaponSlot_Secondary,
+	TFWeaponSlot_Melee
+};
+
+char g_PropModels[][] = {
+	"models/props_2fort/cow001_reference.mdl",
+	"models/props_2fort/frog.mdl",
+	"models/props_2fort/ladder001.mdl",
+	"models/props_2fort/lantern001.mdl",
+	"models/props_2fort/metalbucket001.mdl",
+	"models/props_2fort/metalbucket001.mdl",
+	"models/props_2fort/milkjug001.mdl",
+	"models/props_2fort/miningcrate001.mdl",
+	"models/props_2fort/miningcrate002.mdl",
+	"models/props_2fort/oildrum.mdl",
+	"models/props_2fort/telephone001.mdl",
+	"models/props_2fort/tire001.mdl",
+	"models/props_2fort/trainwheel003.mdl",
+	"models/props_2fort/coffeemachine.mdl",
+	"models/props_coalmines/boulder4.mdl",
+	"models/props_farm/haypile001.mdl",
+	"models/props_farm/oilcan01b.mdl",
+	"models/props_farm/pallet001.mdl",
+	"models/props_farm/scenes/bananana_peel.mdl",
+	"models/props_farm/wood_pile.mdl",
+	"models/props_foliage/shrub_03b.mdl",
+	"models/props_forest/milk_crate.mdl",
+	"models/props_forest/tree_pine_stump02.mdl",
+	"models/props_frontline/flowerpot.mdl",
+	"models/props_gameplay/orange_cone001.mdl",
+	"models/props_hydro/barrel_crate.mdl",
+	"models/props_medieval/anvil.mdl",
+	"models/props_soho/bottlecrate001.mdl",
+	"models/props_soho/trashbag001.mdl",
+	"models/props_spytech/bench001a.mdl",
+	"models/props_spytech/terminal_chair.mdl",
+	"models/props_spytech/watercooler.mdl",
+	"models/props_sunshine/lamppost001.mdl",
+	"models/props_swamp/bug_zapper.mdl",
+	"models/props_swamp/crate_ref.mdl",
+	"models/props_swamp/fern_03.mdl",
+	"models/props_vehicles/mining_car_metal.mdl",
+	"models/props_viaduct_event/coffin_simple_base.mdl",
+	"models/props_well/hand_truck01.mdl"
+};
 
 /* GENERIC INCLUDES */
 #include <sourcemod>
@@ -50,10 +96,19 @@ bool g_IsForcedRare[MULTIEFFECT_MAX_COUNT + 1] = {false, ...};
 bool g_VoteSkip[MAXPLAYERS + 1];
 int g_VoteSkipCount = 0;
 
+Handle g_CooldownTimer;
+Effect g_CooldownEffects[MULTIEFFECT_MAX_COUNT];
+float g_CooldownTimes[MULTIEFFECT_MAX_COUNT][MAXPLAYERS];
+int g_CooldownCount;
+int g_CooldownColorR[MULTIEFFECT_MAX_COUNT];
+int g_CooldownColorG[MULTIEFFECT_MAX_COUNT];
+int g_CooldownColorB[MULTIEFFECT_MAX_COUNT];
+
 StringMap g_Blacklist;
 StringMap g_EffectInfo;
 StringMap g_WeaponInfo;
 StringMap g_ReskinInfo;
+StringMap g_MeleeReskinInfo;
 
 bool g_HasSpawned[MAXPLAYERS + 1];
 
@@ -175,6 +230,32 @@ Handle g_Effect68_PingTimer;
 Handle g_Effect70_BountyTimer;
 int g_Effect70_BountyWeaponIndex;
 
+Handle g_Effect72_RespawnTimer[MAXPLAYERS + 1];
+Handle g_Effect72_HudTimer[MAXPLAYERS + 1];
+TFTeam g_Effect72_PreviousTeam[MAXPLAYERS + 1];
+float g_Effect72_RespawnTime[MAXPLAYERS + 1];
+float g_Effect72_DeathPos[MAXPLAYERS + 1][3];
+float g_Effect72_DeathAng[MAXPLAYERS + 1][3];
+
+int g_Effect73_MaxAmmoCount[MAXPLAYERS + 1][3];
+bool g_Effect73_PickupStatus[2048];
+
+Handle g_Effect74_PumpkinTimers[MAXPLAYERS + 1];
+bool g_Effect74_IsSpecialRound;
+
+StringMap g_Effect76_KillCount;
+
+bool g_Effect77_IsProp[MAXPLAYERS + 1];
+bool g_Effect77_PropCooldown[MAXPLAYERS + 1];
+float g_Effect77_NextPropTime[MAXPLAYERS + 1];
+Handle g_Effect77_ReloadTimer[MAXPLAYERS + 1];
+bool g_Effect77_ReloadHeld[MAXPLAYERS + 1];
+int g_Effect77_PropEntity[MAXPLAYERS + 1];
+Handle g_Effect77_UpdateTimer = null;
+
+int g_Effect79_RedHealth;
+int g_Effect79_BluHealth;
+
 /* EFFECTS */
 #include "effects/0_pure.sp"
 #include "effects/1_lowgravity.sp"
@@ -247,6 +328,15 @@ int g_Effect70_BountyWeaponIndex;
 #include "effects/68_ping.sp"
 #include "effects/69_airdrop.sp"
 #include "effects/70_bounty.sp"
+#include "effects/71_veteran.sp"
+#include "effects/72_freerespawn.sp"
+#include "effects/73_kitswap.sp"
+#include "effects/74_pumpkin.sp"
+#include "effects/75_bomber.sp"
+#include "effects/76_universalwear.sp"
+#include "effects/77_prophunt.sp"
+#include "effects/78_phase.sp"
+#include "effects/79_sharedhealth.sp"
 
 /* UTILS */
 #include "utils/set_effect.sp"
@@ -267,6 +357,10 @@ int g_Effect70_BountyWeaponIndex;
 #include "utils/is_effect_forced_rare.sp"
 #include "utils/apply_powerplay.sp"
 #include "utils/to_lower.sp"
+#include "utils/apply_invisibility.sp"
+#include "utils/handle_cooldown.sp"
+#include "utils/tracefilter.sp"
+#include "utils/is_warmup.sp"
 
 /* DATATYPES */
 #include "datatypes/bmap.sp"
@@ -278,6 +372,7 @@ int g_Effect70_BountyWeaponIndex;
 #include "data/effect_info.sp"
 #include "data/weapon_info.sp"
 #include "data/reskin_info.sp"
+#include "data/melee_reskin_info.sp"
 
 /* CONVARS */
 #include "convars/enable_plugin.sp"
@@ -368,5 +463,14 @@ enum Effect {
 	EFFECT_PING			=	68,
 	EFFECT_AIRDROP			=	69,
 	EFFECT_BOUNTY			=	70,
+	EFFECT_VETERAN			=	71,
+	EFFECT_FREERESPAWN		=	72,
+	EFFECT_KITSWAP			=	73,
+	EFFECT_PUMPKIN			=	74,
+	EFFECT_BOMBER			=	75,
+	EFFECT_UNIVERSALWEAR	=	76,
+	EFFECT_PROPHUNT		=	77,
+	EFFECT_PHASE			=	78,
+	EFFECT_SHAREDHEALTH		=	79,
 	EFFECT_MAXCOUNT
 }

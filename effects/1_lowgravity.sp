@@ -1,13 +1,18 @@
 #pragma semicolon 1
 
+#define E1_BASE_MIN_GRAVITY 100
+#define E1_BASE_MAX_GRAVITY 400
+#define E1_RARE_CHANCE 2
+#define E1_RARE_GRAVITY 5
+
 public void Event_RoundStart_1_LowGravity(Event event, const char[] name, bool dontBroadcast) {
      int randGravity;
-     if(IsRareEffectForced(EFFECT_LOWGRAVITY) || GetRandomInt(0, 100) <= 2) {
-          randGravity = 5;
+     if(IsRareEffectForced(EFFECT_LOWGRAVITY) || GetRandomInt(0, 100) <= E1_RARE_CHANCE) {
+          randGravity = E1_RARE_GRAVITY;
           PrintToChatAll("\x07B143F1[Roundabout]\x01 Special round! Enjoy zero gravity.");
      }
      else {
-          randGravity = GetRandomInt(100, 400);
+          randGravity = GetRandomInt(E1_BASE_MIN_GRAVITY, E1_BASE_MAX_GRAVITY);
      }
 
      ConVar gravity = FindConVar("sv_gravity");

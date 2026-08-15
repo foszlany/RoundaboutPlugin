@@ -3,24 +3,24 @@
 public void Event_RoundStart_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           g_Effect37_PreviousClass[i] = TFClass_Unknown;
-          HandleSpecialAbilityRemoval(i);
+          E37_HandleSpecialAbilityRemoval(i);
      }
 }
 
 public void Event_PlayerUpdate_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {
      int client = GetClientOfUserId(event.GetInt("userid"));
-     HandleSpecialAbilityRemoval(client);
+     E37_HandleSpecialAbilityRemoval(client);
 }
 
 public void Event_RoundEnd_37_Disadvantaged(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MaxClients; i++) {
           if(IsClientInGame(i)) {
-               RemoveDisadvantagePerClass(i);
+               E37_RemoveDisadvantagePerClass(i);
           }
      }
 }
 
-public void HandleSpecialAbilityRemoval(int client) {
+public void E37_HandleSpecialAbilityRemoval(int client) {
      if(IsClientInGame(client) && IsPlayerAlive(client)) {
           bool isNewClass = false;
 
@@ -30,17 +30,17 @@ public void HandleSpecialAbilityRemoval(int client) {
                isNewClass = true;
           }
           else if(g_Effect37_PreviousClass[client] != TF2_GetPlayerClass(client)) {
-               RemoveDisadvantagePerClass(client);
+               E37_RemoveDisadvantagePerClass(client);
                g_Effect37_PreviousClass[client] = TF2_GetPlayerClass(client);
 
                isNewClass = true;
           }
 
-          AddDisadvantagePerClass(client, isNewClass);
+          E37_AddDisadvantagePerClass(client, isNewClass);
      }
 }
 
-public void AddDisadvantagePerClass(int client, bool isNewClass) {
+public void E37_AddDisadvantagePerClass(int client, bool isNewClass) {
      switch(g_Effect37_PreviousClass[client]) {
           case TFClass_Scout: {
                TF2Attrib_SetByName(client, "no double jump", 1.0);
@@ -116,7 +116,7 @@ public void AddDisadvantagePerClass(int client, bool isNewClass) {
      }
 }
 
-public void RemoveDisadvantagePerClass(int client) {
+public void E37_RemoveDisadvantagePerClass(int client) {
      switch(g_Effect37_PreviousClass[client]) {
           case TFClass_Scout: {
                TF2Attrib_RemoveByName(client, "no double jump");

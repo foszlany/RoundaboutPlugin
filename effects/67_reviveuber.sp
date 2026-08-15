@@ -1,16 +1,16 @@
 #pragma semicolon 1
 
-#define E67_UBERPERCENT 0.25
+#define E67_UBER_PERCENT 0.25
 
 public void Event_RoundStart_67_ReviveUber(Event event, const char[] name, bool dontBroadcast) {
-	HookEvent("player_chargedeployed", RevivePlayers, EventHookMode_Pre);
+	HookEvent("player_chargedeployed", E67_RevivePlayers, EventHookMode_Pre);
 }
 
 public void Event_RoundEnd_67_ReviveUber(Event event, const char[] name, bool dontBroadcast) {
-     UnhookEvent("player_chargedeployed", RevivePlayers, EventHookMode_Pre);
+     UnhookEvent("player_chargedeployed", E67_RevivePlayers, EventHookMode_Pre);
 }
 
-public void RevivePlayers(Event event, const char[] name, bool dontBroadcast) {
+public void E67_RevivePlayers(Event event, const char[] name, bool dontBroadcast) {
      int medic = GetClientOfUserId(event.GetInt("userid"));
 
      float pos[3];
@@ -29,36 +29,39 @@ public void RevivePlayers(Event event, const char[] name, bool dontBroadcast) {
                     playersRevived++;
                }
 
-               if(playersRevived * E67_UBERPERCENT >= 1) {
+               if(playersRevived * E67_UBER_PERCENT >= 1) {
                     break;
                }
           }
 
-          SubtractUber(medic, playersRevived * E67_UBERPERCENT);
+          E67_SubtractUber(medic, playersRevived * E67_UBER_PERCENT);
      }
 }
 
-void SubtractUber(int medic, float amount)
-{
-    if (!IsClientInGame(medic) || !IsPlayerAlive(medic))
-        return;
+void E67_SubtractUber(int medic, float amount) {
+     if(!IsClientInGame(medic) || !IsPlayerAlive(medic)) {
+          return;
+     }
 
-    int weapon = GetPlayerWeaponSlot(medic, TFWeaponSlot_Secondary);
-    if (weapon <= MaxClients || !IsValidEntity(weapon))
-        return;
+     int weapon = GetPlayerWeaponSlot(medic, TFWeaponSlot_Secondary);
+     if(weapon <= MaxClients || !IsValidEntity(weapon)) {
+          return;
+     }
+          
+     char classname[64];
+     GetEntityClassname(weapon, classname, sizeof(classname));
 
-    char classname[64];
-    GetEntityClassname(weapon, classname, sizeof(classname));
+     if(!StrEqual(classname, "tf_weapon_medigun")) {
+          return;
+     }
 
-    if(!StrEqual(classname, "tf_weapon_medigun"))
-        return;
+     float uber = GetEntPropFloat(weapon, Prop_Send, "m_flChargeLevel");
 
-    float uber = GetEntPropFloat(weapon, Prop_Send, "m_flChargeLevel");
+     uber -= amount;
 
-    uber -= amount;
+     if(uber < 0.0) {
+          uber = 0.0;
+     }
 
-    if (uber < 0.0)
-        uber = 0.0;
-
-    SetEntPropFloat(weapon, Prop_Send, "m_flChargeLevel", uber);
+     SetEntPropFloat(weapon, Prop_Send, "m_flChargeLevel", uber);
 }

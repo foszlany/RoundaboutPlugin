@@ -69,7 +69,7 @@
      - **ID:** `6`
      - **Token:** `vampire`
      - **Rare variant:** `5%` chance of `100%` heal.
-     - Heals back `60%` of the damage dealt when not overhealed.
+     - Heals back `50%` of the damage dealt when not overhealed.
 
 * **Swim**
      - **ID:** `7`
@@ -199,7 +199,7 @@
      - **ID:** `24`
      - **Token:** `forceful`
      - **Rare variant:** `2%` chance of the knockback being increased by `1000%`
-     - Increases the knockback by `300%`
+     - Increases knockback by `300%`
 
 * **Assassins Indeed**
      - **ID:** `25`
@@ -306,7 +306,8 @@
      - **ID:** `36`
      - **Token:** `socialdist`
      - **Conditional effect:** In-game playercount must be `3` or higher.
-     - Teammates too close to each other (within a `256 Hammer Unit` radius) receive `66%` of the damage taken by someone.
+     - Teammates too close to each other receive `66%` of the damage taken by someone.
+          - Radius: `256 Hammer Units`
           - This does not create a chain-reaction.
 
 * **Disadvantaged**
@@ -429,6 +430,7 @@
      - **Token:** `quickswap`
      - Two players will swap places every `3-8` seconds. There's a `25` second grace period after the round starts.
           - Players have their own `15` second grace period after swapping places so they're not teleported around too often.
+               - Players also cannot be teleported during Warmup.
           - Swaps can happen with players from opposing teams.
 
 * **Mann vs. Machine**
@@ -475,7 +477,8 @@
      - **ID:** `56`
      - **Token:** `buffheal`
      - **Conditional effect:** In-game playercount must be `3` or higher.
-     - Medic healing rate is reduced to `33%` Users healed will now gain `Mini-crits`
+     - Medic healing rate is reduced to `33%`
+     - Users healed will now gain `Mini-crits`
           - If any healing was done using the Crusader's Crossbow, then the buff is also granted.
                - Formula (in seconds): `1.0 + healamount / 20.0`
 
@@ -486,14 +489,14 @@
      - Calling for Medic will teleport one if there is a suitable candidate.
           - There's a `6` second delay between attempts.
           - Conditions for a Medic to be suitable:
-               - Must exist and be within the same team as the caller
-               - Must not already be healing someone
+               - Must exist and be within the same team as the caller.
+               - Must not already be healing someone.
                - Wasn't teleported in the past `8` seconds.
 
 * **King**
      - **ID:** `58`
      - **Token:** `king`
-     - **Conditional effect:** Gamemode cannot be Arena.
+     - **Conditional effect:** Gamemode cannot be `Arena`.
      - At the start of the round a King is randomly selected.
           - Killing the King will give the title to the killer.
           - The King has the following effects:
@@ -591,3 +594,73 @@
                - Doing so grants `8` seconds of Powerplay.
                - The bounty may only be claimed once.
                - Reskins can be used.
+
+* **2007**
+     - **ID:** `71`
+     - **Token:** `veteran`
+     - Hats and unusual effects are removed.
+
+* **Freeform Respawn**
+     - **ID:** `72`
+     - **Token:** `freerespawn`
+     - **Conditional effect:** Gamemode cannot be `Arena`
+     - After dying, players are sent into a ghost state, in which they can choose where they wish to respawn.
+          - Classes must be changed while alive.
+          - Respawn time is a universal value of `10` seconds.
+
+* **Kitswap**
+     - **ID:** `73`
+     - **Token:** `kitswap`
+     - Ammo and health pickups have swapped functionality.
+
+* **Pumpkin Bomber**
+     - **ID:** `74`
+     - **Token:** `pumpkin`
+     - **Rare variant:** `3%` chance of the cooldown being `8` seconds.
+     - Players can call for a medic to spawn a pumpkin bomb.
+          - Cooldown: `24` seconds.
+          
+* **Suicide Bomber**
+     - **ID:** `75`
+     - **Token:** `bomber`
+     - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
+     - Suiciding causes an explosion that damages nearby enemies.
+          - Radius: `300 Hammer Units`
+          - Max damage: `200`
+
+* **Universal Wear**
+     - **ID:** `76`
+     - **Token:** `universalwear`
+     - **Conditional effect:** If the playercount is lower than `3`, the gamemode cannot be `Arena`
+     - When a player is killed with a certain weapon, said weapon will do `2%` less damage for every player on the server for the remainder of the round.
+          - Damage of reskins is the same as the damage of their original counterpart.
+          - Minimum damage: `10%`
+
+* **Prophunt**
+     - **ID:** `77`
+     - **Token:** `prophunt`
+     - Holding Reload for `0.5` seconds causes the player to transfer into a random prop.
+          - This effect comes with thirdperson.
+          - Effect wears off when the player shoots or gets shot.
+          - Cooldown: `15` seconds.
+
+* **Phase**
+     - **ID:** `78`
+     - **Token:** `phase`
+     - Holding Reload and walking straight towards walls allows the player to phase through them.
+          - Players can phase into areas they shouldn't be, but they can't go into the void.
+          - Limit: `256 Hammer Units`
+
+* **Shared Health**
+     - **ID:** `79`
+     - **Token:** `sharedhealth`
+     - Teams have a shared pool of health.
+          - If the pool runs out, all players of that team die.
+          - Spy is not allowed.
+          - Formula: `500 + TeamPlayerCount * 200`
+          - The following don't affect the current pool:
+               - Environmental damage
+               - Self-damage
+               - Player join
+               - Player disconnect
+          

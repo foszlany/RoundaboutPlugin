@@ -1,9 +1,15 @@
 #pragma semicolon 1
 
+enum E8_Invuln {
+     BULLET    = 1,
+     BLAST     = 2,
+     FIRE      = 3
+}
+
 public void Event_RoundStart_8_StrongSuit(Event event, const char[] name, bool dontBroadcast) {
      for(int i = 1; i <= MAXPLAYERS; i++) {
           if(i <= MaxClients && IsClientInGame(i) && IsPlayerAlive(i)) {
-               CreateTimer(0.2, GiveRandomInvuln_Timer, i);
+               CreateTimer(0.2, E8_GiveRandomInvulnTimer, i);
           }
           else {
                g_Effect8_InvulnIndex[i] = -1;
@@ -15,22 +21,22 @@ public void Event_PlayerUpdate_8_StrongSuit(Event event, const char[] name, bool
      int client = GetClientOfUserId(event.GetInt("userid"));
      if(g_Effect8_InvulnIndex[client] != -1) {
           switch(g_Effect8_InvulnIndex[client]) {
-               case 0: {
+               case BULLET: {
                     TF2_AddCondition(client, TFCond_BulletImmune);
                     return;
                }
-               case 1: {
+               case BLAST: {
                     TF2_AddCondition(client, TFCond_BlastImmune);
                     return;
                }
-               case 2: {
+               case FIRE: {
                     TF2_AddCondition(client, TFCond_FireImmune);
                     return;
                }
           }
      }
      else {
-          CreateTimer(0.2, GiveRandomInvuln_Timer, client);
+          CreateTimer(0.2, E8_GiveRandomInvulnTimer, client);
      }
 }
 
@@ -49,25 +55,25 @@ public void Event_RoundEnd_8_StrongSuit(Event event, const char[] name, bool don
      }
 }
 
-public Action GiveRandomInvuln_Timer(Handle timer, int client) {
-     GiveRandomInvuln(client);
+public Action E8_GiveRandomInvulnTimer(Handle timer, int client) {
+     E8_GiveRandomInvuln(client);
 
      return Plugin_Handled;
 }
 
-public void GiveRandomInvuln(int client) {
+public void E8_GiveRandomInvuln(int client) {
      int effect = GetRandomInt(0, 2);
 
      switch(effect) {
-          case 0: {
+          case BULLET: {
                TF2_AddCondition(client, TFCond_BulletImmune);
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 You are invulnerable to \x07C1C1C1Bullets\x01");
           }
-          case 1: {
+          case BLAST: {
                TF2_AddCondition(client, TFCond_BlastImmune);
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 You are invulnerable to \x07ED6240Explosions\x01");
           }
-          case 2: {
+          case FIRE: {
                TF2_AddCondition(client, TFCond_FireImmune);
                PrintToChat(client, "\x07B143F1[Roundabout]\x01 You are invulnerable to \x07FFE400Fire\x01");
           }
